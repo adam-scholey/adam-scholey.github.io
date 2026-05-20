@@ -1,0 +1,87 @@
+ADAM SCHOLEY
+Software Engineer
+
+07511 027403 | adamscholey25@gmail.com | linkedin.com/in/adam-scholey-8306892b0
+github.com/adam-scholey | adam-scholey.github.io | Bradford, West Yorkshire
+
+
+PERSONAL STATEMENT
+
+Backend-focused software engineer with hands-on experience building production systems in C#, Python, and PostgreSQL. I have built multi-tenant SaaS platforms with real-time features, and contributed to products at a UK software company. I am looking for a software engineering apprenticeship where I can apply my existing skills to real-world projects while continuing to grow as a developer.
+
+
+EXPERIENCE
+
+Software Developer | diam Systems Ltd | Oct 2025 - Present
+- Built FredCode, a terminal-based AI coding agent with multi-agent architecture
+- Implemented multi-agent architecture with 5 specialised agents and 214 automated tests
+- Contributed to Fylio, a document management SaaS (Flask, PostgreSQL, Stripe)
+- Worked on the Fred AI chat product (Python, Quart, Gemini API, SQLite)
+- Collaborated on diamOS 2, the company's desktop environment
+
+Production Operator | Pure Pet Food Ltd | Oct 2024 - Present
+- Operated production machinery in a fast-paced manufacturing environment
+- Maintained quality standards and met daily output targets
+
+Prototype Tester | Microsoft HQ, Cambridge | Invited
+- Selected to test a mobile application prototype for partially sighted users
+- Provided structured feedback on accessibility and UX
+
+Farm Hand | Brians Best Wools
+- Physical outdoor work demonstrating reliability and work ethic
+
+
+TECHNICAL SKILLS
+
+Languages:        C#, Python, (Willing to Learn PHP)
+Backend:          ASP.NET Core, Flask,REST APIs, SignalR, WebSockets
+Databases:        PostgreSQL, SQLite,Entity Framework Core, SQLAlchemy
+Infrastructure:   Docker, AWS S3, Git, GitHub
+Security:         JWT Authentication, BCrypt, AES-256 Encryption, RBAC, OAuth
+Desktop/Mobile:   .NET MAUI, WinUI 3, Blazor, PWAs
+Testing:          xUnit, pytest, k6, Plawright
+
+
+KEY PROJECTS
+
+FredCode | AI Coding Agent | Python, 214 tests
+- Terminal-based CLI tool with multi-agent workflows
+- Coordinates Code, Review, Test, Plan, and Research agents
+- File sandboxing, git integration, MCP protocol support
+
+FileFlow | Multi-Tenant Cloud File System | C#, Blazor, PostgreSQL, AWS S3
+- SaaS platform with zero-knowledge AES-256 encryption
+- Real-time collaboration via SignalR, role-based access control
+- Multi-tenant data isolation, invite system, live code sharing
+
+OrgNet | Organisation Management Platform | C#, ASP.NET Core, PostgreSQL, Redis
+- Multi-tenant architecture with EF Core global query filters
+- Real-time messaging, file vault, task board, announcements
+- Docker Compose orchestration
+
+SecureShield | Anti-Malware Security Console | C#, WinUI 3
+- Signature-based threat detection scanning real system directories
+- Real-time file system monitoring with FileSystemWatcher
+- Network traffic analysis and host-based firewall
+
+Bookshop Inventory System | C#, ASP.NET Core, REST API
+- Full REST API with Swagger documentation
+- Role-based authentication, stock tracking, delivery pipeline
+
+
+EDUCATION
+
+Bradford College | 2025 - 2026
+BTEC Level 3 National Extended Diploma in Information Technology
+Expected completion: June 2026
+
+Bradford College | 2023 - 2024
+Level 1/2 Information and Creative Technology — Distinction Merit
+
+Trinity Academy Bradford | 2018 - 2023
+GCSEs: English Language (6), English Literature (5), Mathematics (4)
+
+
+REFERENCES
+
+Available on request.

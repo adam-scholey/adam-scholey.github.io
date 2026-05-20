@@ -92,6 +92,10 @@ a:hover {
     color: var(--text);
 }
 
+.nav-links a.nav-active {
+    color: var(--text);
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -195,6 +199,10 @@ a:hover {
 /* ── Sections ───────────────────────────────── */
 .section {
     padding: 100px 24px;
+}
+
+.page-section {
+    padding-top: 120px;
 }
 
 .section-alt {
@@ -333,6 +341,12 @@ a:hover {
     gap: 20px;
 }
 
+.project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .project-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -342,9 +356,17 @@ a:hover {
     cursor: default;
 }
 
+.project-card.clickable {
+    cursor: pointer;
+}
+
 .project-card:hover {
     border-color: #3f3f46;
     transform: translateY(-2px);
+}
+
+.project-card.clickable:hover {
+    border-color: var(--accent);
 }
 
 .project-card.hidden {
@@ -458,6 +480,12 @@ a:hover {
     background: var(--text-muted);
     border-radius: 50%;
     opacity: 0.5;
+}
+
+.project-github {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
 }
 
 /* ── Experience ─────────────────────────────── */
@@ -637,6 +665,10 @@ a:hover {
 
     .project-card.featured {
         grid-column: span 1;
+    }
+
+    .page-section {
+        padding-top: 100px;
     }
 
     .contact-grid {

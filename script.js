@@ -14,9 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Project filtering
+    // Project filtering (projects page only)
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
+    const projectCards = document.querySelectorAll('.project-card[data-category]');
+    const projectCardLinks = document.querySelectorAll('.project-card-link[data-category]');
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -25,11 +26,21 @@ document.addEventListener('DOMContentLoaded', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
+            // Filter standalone cards (diam Systems)
             projectCards.forEach(card => {
                 if (filter === 'all' || card.dataset.category === filter) {
                     card.classList.remove('hidden');
                 } else {
                     card.classList.add('hidden');
+                }
+            });
+
+            // Filter linked cards (personal)
+            projectCardLinks.forEach(link => {
+                if (filter === 'all' || link.dataset.category === filter) {
+                    link.style.display = '';
+                } else {
+                    link.style.display = 'none';
                 }
             });
         });
@@ -48,32 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { threshold: 0.1 }
     );
 
-    document.querySelectorAll('.project-card, .skill-group, .timeline-item, .stat').forEach(el => {
+    document.querySelectorAll('.project-card, .project-card-link, .skill-group, .timeline-item, .stat, .contact-link').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
         observer.observe(el);
-    });
-
-    // Active nav link highlight on scroll
-    const sections = document.querySelectorAll('section[id]');
-
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY + 100;
-
-        sections.forEach(section => {
-            const top = section.offsetTop;
-            const height = section.offsetHeight;
-            const id = section.getAttribute('id');
-            const link = document.querySelector(`.nav-links a[href="#${id}"]`);
-
-            if (link) {
-                if (scrollY >= top && scrollY < top + height) {
-                    link.style.color = 'var(--text)';
-                } else {
-                    link.style.color = '';
-                }
-            }
-        });
     });
 });

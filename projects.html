@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — Adam Scholey</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">AS</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html" class="nav-active">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="section page-section">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="diamsystems">diam Systems</button>
+                <button class="filter-btn" data-filter="personal">Personal</button>
+            </div>
+            <div class="projects-grid">
+
+                <article class="project-card featured" data-category="diamsystems">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <span class="project-badge">diam Systems</span>
+                    </div>
+                    <h3 class="project-title">Fred — AI Platform</h3>
+                    <p class="project-desc">Two products under the Fred brand. <strong>Fred Web</strong> — a real-time chat interface powered by Gemini 2.5 Flash with streaming responses, file attachments, code workspace, and persistent SQLite storage. <strong>FredCode</strong> — a terminal-based AI coding agent with multi-agent workflows (Code, Review, Test, Plan, Research agents), file sandboxing, git integration, and 214 tests.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Quart</span>
+                        <span>SQLite</span>
+                        <span>Gemini</span>
+                        <span>DeepSeek</span>
+                        <span>Streaming</span>
+                        <span>Multi-Agent</span>
+                    </div>
+                    <div class="project-links">
+                        <span class="project-private">Private repos — proprietary</span>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="diamsystems">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        </div>
+                        <span class="project-badge">diam Systems</span>
+                    </div>
+                    <h3 class="project-title">Fylio — Document Management</h3>
+                    <p class="project-desc">A secure, database-driven document filing service with Companies House-style structure, Stripe billing integration, encrypted storage, and scheduled background processing.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Flask</span>
+                        <span>PostgreSQL</span>
+                        <span>Stripe</span>
+                        <span>APScheduler</span>
+                    </div>
+                    <div class="project-links">
+                        <span class="project-private">Private repo — proprietary</span>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="diamsystems">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        </div>
+                        <span class="project-badge">diam Systems</span>
+                    </div>
+                    <h3 class="project-title">diamsystems.co.uk</h3>
+                    <p class="project-desc">Corporate website and e-commerce platform for diam Systems Ltd. Flask backend with Stripe payment processing, Gumroad digital product sales, Printify print-on-demand integration, multi-locale translation, and full-text search.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Flask</span>
+                        <span>Stripe</span>
+                        <span>Gumroad</span>
+                        <span>Printify</span>
+                        <span>Jinja2</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener">Visit Site</a>
+                        <span class="project-private">Private repo — proprietary</span>
+                    </div>
+                </article>
+
+                <a href="https://github.com/AdamScholey25/fileflow" target="_blank" rel="noopener" class="project-card-link" data-category="personal">
+                    <article class="project-card clickable">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                            </div>
+                            <span class="project-badge">Personal</span>
+                        </div>
+                        <h3 class="project-title">FileFlow — Cloud File System</h3>
+                        <p class="project-desc">Multi-tenant SaaS cloud file storage with zero-knowledge AES-256 encryption, real-time collaboration via SignalR, live code sharing with Monaco editor, and role-based access control.</p>
+                        <div class="project-tech">
+                            <span>C#</span>
+                            <span>Blazor</span>
+                            <span>ASP.NET Core</span>
+                            <span>PostgreSQL</span>
+                            <span>AWS S3</span>
+                            <span>SignalR</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-github">View on GitHub →</span>
+                        </div>
+                    </article>
+                </a>
+
+                <a href="https://github.com/AdamScholey25/orgnet" target="_blank" rel="noopener" class="project-card-link" data-category="personal">
+                    <article class="project-card clickable">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            </div>
+                            <span class="project-badge">Personal</span>
+                        </div>
+                        <h3 class="project-title">OrgNet — Organisation Platform</h3>
+                        <p class="project-desc">Multi-tenant organisation management platform with PostgreSQL row-level isolation, Redis event bus, JWT authentication, Docker orchestration, and real-time SignalR communication.</p>
+                        <div class="project-tech">
+                            <span>C#</span>
+                            <span>ASP.NET Core</span>
+                            <span>PostgreSQL</span>
+                            <span>Redis</span>
+                            <span>Docker</span>
+                            <span>SignalR</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-github">View on GitHub →</span>
+                        </div>
+                    </article>
+                </a>
+
+                <a href="https://github.com/AdamScholey25/Antivirus-Software" target="_blank" rel="noopener" class="project-card-link" data-category="personal">
+                    <article class="project-card clickable">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <span class="project-badge">Personal</span>
+                        </div>
+                        <h3 class="project-title">SecureShield — Anti-Malware Console</h3>
+                        <p class="project-desc">Enterprise security console with signature-based detection, real-time file system monitoring, network traffic analysis, host-based firewall, and EICAR test file scanning across system directories.</p>
+                        <div class="project-tech">
+                            <span>C#</span>
+                            <span>WinUI 3</span>
+                            <span>FileSystemWatcher</span>
+                            <span>SHA-256</span>
+                            <span>RBAC</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-github">View on GitHub →</span>
+                        </div>
+                    </article>
+                </a>
+
+                <a href="https://github.com/AdamScholey25/Bookshop-Inventorysystem" target="_blank" rel="noopener" class="project-card-link" data-category="personal">
+                    <article class="project-card clickable">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                            </div>
+                            <span class="project-badge">Personal</span>
+                        </div>
+                        <h3 class="project-title">Bookshop Inventory System</h3>
+                        <p class="project-desc">REST API backend with WinUI desktop frontend for managing book inventory, stock tracking, delivery pipeline, and role-based user management with Swagger documentation.</p>
+                        <div class="project-tech">
+                            <span>C#</span>
+                            <span>ASP.NET Core</span>
+                            <span>EF Core</span>
+                            <span>WinUI 3</span>
+                            <span>REST API</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-github">View on GitHub →</span>
+                        </div>
+                    </article>
+                </a>
+
+                <a href="https://github.com/AdamScholey25/Incident-Response-Platform" target="_blank" rel="noopener" class="project-card-link" data-category="personal">
+                    <article class="project-card clickable">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            </div>
+                            <span class="project-badge">Personal</span>
+                        </div>
+                        <h3 class="project-title">Incident Response Platform</h3>
+                        <p class="project-desc">Cybersecurity incident management following the NIST framework. Full incident lifecycle tracking, evidence chain of custody, pre-built playbooks, and MTTD/MTTC/MTTR metrics.</p>
+                        <div class="project-tech">
+                            <span>C#</span>
+                            <span>.NET MAUI</span>
+                            <span>SQLite</span>
+                            <span>NIST Framework</span>
+                            <span>MVVM</span>
+                        </div>
+                        <div class="project-links">
+                            <span class="project-github">View on GitHub →</span>
+                        </div>
+                    </article>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Adam Scholey</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
