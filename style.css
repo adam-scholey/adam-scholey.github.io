@@ -429,12 +429,13 @@ a:hover {
 }
 
 .project-tech span {
-    padding: 4px 10px;
+    padding: 6px 12px;
     background: var(--tag-bg);
-    color: var(--tag-text);
-    border-radius: 4px;
+    color: #cbd5e1;
+    border-radius: 6px;
     font-size: 0.75rem;
     font-weight: 500;
+    border: 1px solid var(--border);
 }
 
 .project-card.featured {
@@ -449,7 +450,7 @@ a:hover {
 .project-links {
     display: flex;
     gap: 12px;
-    margin-top: auto;
+    margin-top: 20px;
     padding-top: 16px;
     border-top: 1px solid var(--border);
 }
@@ -697,6 +698,19 @@ a:hover {
     }
 
     .project-filters {
+        flex-wrap: wrap;
+    }
+
+    .project-tech {
+        gap: 4px;
+    }
+
+    .project-tech span {
+        padding: 5px 10px;
+        font-size: 0.7rem;
+    }
+
+    .project-links {
         flex-wrap: wrap;
     }
 }
