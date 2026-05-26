@@ -86,6 +86,29 @@
                 <article class="project-card" data-category="diamsystems">
                     <div class="project-header">
                         <div class="project-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                        </div>
+                        <span class="project-badge">diam Systems</span>
+                    </div>
+                    <h3 class="project-title">Seek — Search Indexing Platform</h3>
+                    <p class="project-desc">Enterprise search platform built to index millions of records from external data sources with sub-second query latency. The core engineering challenge is keeping the search index in sync with source systems — implemented a watermark-based incremental sync with distributed Redis locks to prevent concurrent sync jobs from corrupting the index. PostgreSQL partial indexes and trigram FTS accelerate queries; Redis-backed caching with graceful degradation handles load spikes. Soft-delete pattern preserves audit trails while keeping results clean.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Flask</span>
+                        <span>PostgreSQL</span>
+                        <span>Redis</span>
+                        <span>APScheduler</span>
+                        <span>FTS</span>
+                    </div>
+                    <div class="project-links">
+                        <span class="project-unreleased">In Development</span>
+                        <span class="project-private">Private repo — proprietary</span>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="diamsystems">
+                    <div class="project-header">
+                        <div class="project-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                         </div>
                         <span class="project-badge">diam Systems</span>
