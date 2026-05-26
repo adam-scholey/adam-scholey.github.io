@@ -98,7 +98,7 @@
                         <span>PostgreSQL</span>
                         <span>Redis</span>
                         <span>APScheduler</span>
-                        <span>FTS</span>
+                        <span>PostgreSQL FTS</span>
                     </div>
                     <div class="project-links">
                         <span class="project-unreleased">In Development</span>
@@ -129,122 +129,112 @@
                     </div>
                 </article>
 
-                <a href="https://github.com/AdamScholey25/fileflow" target="_blank" rel="noopener" class="project-card-link" data-category="personal">
-                    <article class="project-card clickable">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                            </div>
-                            <span class="project-badge">Personal</span>
+                <article class="project-card clickable" data-category="personal">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                         </div>
-                        <h3 class="project-title">FileFlow — Cloud File System</h3>
-                        <p class="project-desc">Built to understand what zero-knowledge encryption actually means in practice. Files are encrypted client-side with AES-256 before hitting the API — the server stores ciphertext and handles S3 object management, but never sees plaintext. Real-time collaboration runs over SignalR; the live code sharing workspace uses Monaco editor with operational-transform-style conflict handling. Multi-tenant with RBAC: organisation, team, and user permission tiers enforced at the query layer.</p>
-                        <div class="project-tech">
-                            <span>C#</span>
-                            <span>Blazor</span>
-                            <span>ASP.NET Core</span>
-                            <span>PostgreSQL</span>
-                            <span>AWS S3</span>
-                            <span>SignalR</span>
-                        </div>
-                        <div class="project-links">
-                            <span class="project-github">View on GitHub →</span>
-                        </div>
-                    </article>
-                </a>
+                        <span class="project-badge">Personal</span>
+                    </div>
+                    <h3 class="project-title">FileFlow — Cloud File System</h3>
+                    <p class="project-desc">Built to understand what zero-knowledge encryption actually means in practice. Files are encrypted client-side with AES-256 before hitting the API — the server stores ciphertext and handles S3 object management, but never sees plaintext. Real-time collaboration runs over SignalR; the live code sharing workspace uses Monaco editor with operational-transform-style conflict handling. Multi-tenant with RBAC: organisation, team, and user permission tiers enforced at the query layer.</p>
+                    <div class="project-tech">
+                        <span>C#</span>
+                        <span>Blazor</span>
+                        <span>ASP.NET Core</span>
+                        <span>PostgreSQL</span>
+                        <span>AWS S3</span>
+                        <span>SignalR</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AdamScholey25/fileflow" target="_blank" rel="noopener">View on GitHub →</a>
+                    </div>
+                </article>
 
-                <a href="https://github.com/AdamScholey25/orgnet" target="_blank" rel="noopener" class="project-card-link" data-category="personal">
-                    <article class="project-card clickable">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                            </div>
-                            <span class="project-badge">Personal</span>
+                <article class="project-card clickable" data-category="personal">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                         </div>
-                        <h3 class="project-title">OrgNet — Organisation Platform</h3>
-                        <p class="project-desc">Built specifically to get row-level security right. PostgreSQL RLS policies enforce that every query — even a misconfigured one — returns only the calling tenant's rows. Redis powers the event bus for cross-service messaging so the API stays stateless. JWT auth with refresh token rotation, Docker Compose orchestration for local parity with production, and SignalR for real-time organisation activity feeds.</p>
-                        <div class="project-tech">
-                            <span>C#</span>
-                            <span>ASP.NET Core</span>
-                            <span>PostgreSQL</span>
-                            <span>Redis</span>
-                            <span>Docker</span>
-                            <span>SignalR</span>
-                        </div>
-                        <div class="project-links">
-                            <span class="project-github">View on GitHub →</span>
-                        </div>
-                    </article>
-                </a>
+                        <span class="project-badge">Personal</span>
+                    </div>
+                    <h3 class="project-title">OrgNet — Organisation Platform</h3>
+                    <p class="project-desc">Built specifically to get row-level security right. PostgreSQL RLS policies enforce that every query — even a misconfigured one — returns only the calling tenant's rows. Redis powers the event bus for cross-service messaging so the API stays stateless. JWT auth with refresh token rotation, Docker Compose orchestration for local parity with production, and SignalR for real-time organisation activity feeds.</p>
+                    <div class="project-tech">
+                        <span>C#</span>
+                        <span>ASP.NET Core</span>
+                        <span>PostgreSQL</span>
+                        <span>Redis</span>
+                        <span>Docker</span>
+                        <span>SignalR</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AdamScholey25/orgnet" target="_blank" rel="noopener">View on GitHub →</a>
+                    </div>
+                </article>
 
-                <a href="https://github.com/AdamScholey25/Antivirus-Software" target="_blank" rel="noopener" class="project-card-link" data-category="personal">
-                    <article class="project-card clickable">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                            </div>
-                            <span class="project-badge">Personal</span>
+                <article class="project-card clickable" data-category="personal">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                         </div>
-                        <h3 class="project-title">SecureShield — Anti-Malware Console</h3>
-                        <p class="project-desc">Built to understand how security tooling works at the OS level, not just how to call a security API. Uses .NET's FileSystemWatcher for real-time directory monitoring, SHA-256 signature matching against a hash database, and raw socket inspection for network traffic analysis. Validates correctly against the EICAR test file standard. WinUI 3 console with RBAC so analyst and admin roles see different capabilities.</p>
-                        <div class="project-tech">
-                            <span>C#</span>
-                            <span>WinUI 3</span>
-                            <span>FileSystemWatcher</span>
-                            <span>SHA-256</span>
-                            <span>RBAC</span>
-                        </div>
-                        <div class="project-links">
-                            <span class="project-github">View on GitHub →</span>
-                        </div>
-                    </article>
-                </a>
+                        <span class="project-badge">Personal</span>
+                    </div>
+                    <h3 class="project-title">SecureShield — Anti-Malware Console</h3>
+                    <p class="project-desc">Built to understand how security tooling works at the OS level, not just how to call a security API. Uses .NET's FileSystemWatcher for real-time directory monitoring, SHA-256 signature matching against a hash database, and raw socket inspection for network traffic analysis. Validates correctly against the EICAR test file standard. WinUI 3 console with RBAC so analyst and admin roles see different capabilities.</p>
+                    <div class="project-tech">
+                        <span>C#</span>
+                        <span>WinUI 3</span>
+                        <span>FileSystemWatcher</span>
+                        <span>SHA-256</span>
+                        <span>RBAC</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AdamScholey25/Antivirus-Software" target="_blank" rel="noopener">View on GitHub →</a>
+                    </div>
+                </article>
 
-                <a href="https://github.com/AdamScholey25/Bookshop-Inventorysystem" target="_blank" rel="noopener" class="project-card-link" data-category="personal">
-                    <article class="project-card clickable">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-                            </div>
-                            <span class="project-badge">Personal</span>
+                <article class="project-card clickable" data-category="personal">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                         </div>
-                        <h3 class="project-title">Bookshop Inventory System</h3>
-                        <p class="project-desc">A deliberate exercise in clean API design: RESTful endpoints with proper resource modelling, EF Core migrations for schema evolution, and Swagger/OpenAPI documentation written alongside the code rather than generated afterwards. The WinUI 3 desktop client consumes the same API, so the contract is tested from both sides. Built as a BTEC portfolio piece — the goal was to demonstrate the full backend-to-client stack cleanly, not to add features.</p>
-                        <div class="project-tech">
-                            <span>C#</span>
-                            <span>ASP.NET Core</span>
-                            <span>EF Core</span>
-                            <span>WinUI 3</span>
-                            <span>REST API</span>
-                        </div>
-                        <div class="project-links">
-                            <span class="project-github">View on GitHub →</span>
-                        </div>
-                    </article>
-                </a>
+                        <span class="project-badge">Personal</span>
+                    </div>
+                    <h3 class="project-title">Bookshop Inventory System</h3>
+                    <p class="project-desc">A deliberate exercise in clean API design: RESTful endpoints with proper resource modelling, EF Core migrations for schema evolution, and Swagger/OpenAPI documentation written alongside the code rather than generated afterwards. The WinUI 3 desktop client consumes the same API, so the contract is tested from both sides. Built as a BTEC portfolio piece — the goal was to demonstrate the full backend-to-client stack cleanly, not to add features.</p>
+                    <div class="project-tech">
+                        <span>C#</span>
+                        <span>ASP.NET Core</span>
+                        <span>EF Core</span>
+                        <span>WinUI 3</span>
+                        <span>REST API</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AdamScholey25/Bookshop-Inventorysystem" target="_blank" rel="noopener">View on GitHub →</a>
+                    </div>
+                </article>
 
-                <a href="https://github.com/AdamScholey25/Incident-Response-Platform" target="_blank" rel="noopener" class="project-card-link" data-category="personal">
-                    <article class="project-card clickable">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                            </div>
-                            <span class="project-badge">Personal</span>
+                <article class="project-card clickable" data-category="personal">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                         </div>
-                        <h3 class="project-title">Incident Response Platform</h3>
-                        <p class="project-desc">Implements the NIST incident response lifecycle as a structured workflow, not just a checklist. Each incident has a full chain of custody for evidence — immutable append-only records with timestamps — and pre-built playbooks that guide analysts through containment and recovery steps. Tracks MTTD, MTTC, and MTTR metrics per incident so performance can be reviewed across a team. Built in .NET MAUI with MVVM architecture; SQLite for offline-first local storage.</p>
-                        <div class="project-tech">
-                            <span>C#</span>
-                            <span>.NET MAUI</span>
-                            <span>SQLite</span>
-                            <span>NIST Framework</span>
-                            <span>MVVM</span>
-                        </div>
-                        <div class="project-links">
-                            <span class="project-github">View on GitHub →</span>
-                        </div>
-                    </article>
-                </a>
+                        <span class="project-badge">Personal</span>
+                    </div>
+                    <h3 class="project-title">Incident Response Platform</h3>
+                    <p class="project-desc">Implements the NIST incident response lifecycle as a structured workflow, not just a checklist. Each incident has a full chain of custody for evidence — immutable append-only records with timestamps — and pre-built playbooks that guide analysts through containment and recovery steps. Tracks MTTD, MTTC, and MTTR metrics per incident so performance can be reviewed across a team. Built in .NET MAUI with MVVM architecture; SQLite for offline-first local storage.</p>
+                    <div class="project-tech">
+                        <span>C#</span>
+                        <span>.NET MAUI</span>
+                        <span>SQLite</span>
+                        <span>NIST Framework</span>
+                        <span>MVVM</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AdamScholey25/Incident-Response-Platform" target="_blank" rel="noopener">View on GitHub →</a>
+                    </div>
+                </article>
 
             </div>
         </div>
