@@ -447,7 +447,7 @@ a:hover {
 .project-links {
     display: flex;
     gap: 12px;
-    margin-top: 16px;
+    margin-top: auto;
     padding-top: 16px;
     border-top: 1px solid var(--border);
 }
