@@ -357,16 +357,7 @@ a:hover {
 }
 
 .project-card.clickable {
-    cursor: pointer;
-}
-
-.project-card:hover {
-    border-color: #3f3f46;
-    transform: translateY(-2px);
-}
-
-.project-card.clickable:hover {
-    border-color: var(--accent);
+    cursor: default;
 }
 
 .project-card.hidden {
