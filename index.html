@@ -30,7 +30,7 @@
         <div class="hero-inner">
             <p class="hero-label">Software Engineer</p>
             <h1 class="hero-title">Adam Scholey</h1>
-            <p class="hero-subtitle">Backend developer building resilient systems with .NET, Python, and PostgreSQL. Currently engineering software at <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener">diam Systems</a>.</p>
+            <p class="hero-subtitle">I build the systems underneath the product — APIs, database architectures, and real-time infrastructure. Currently shipping software at <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener">diam Systems</a> and completing a BTEC Level 3 IT Extended Diploma.</p>
             <div class="hero-actions">
                 <a href="projects.html" class="btn btn-primary">View Projects</a>
                 <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
@@ -43,22 +43,22 @@
             <h2 class="section-title">About</h2>
             <div class="about-grid">
                 <div class="about-text">
-                    <p>I'm a backend-focused software engineer based in the UK. I design and build APIs, database architectures, and distributed systems that handle real-world complexity — multi-tenancy, encryption, real-time communication, and payment processing.</p>
-                    <p>At <strong>diam Systems</strong>, I work on production software including FredCode (an AI coding agent), a document management SaaS, and an AI chat interface. My personal projects span cloud storage platforms, organisation management tools, and cybersecurity applications.</p>
-                    <p>I believe backend is where the hard problems live — data isolation, concurrency, security, and scale. Frontend frameworks change every two years. Backend principles last a career.</p>
+                    <p>I'm a backend engineer based in the UK, focused on the problems that don't have obvious answers — how do you isolate one tenant's data from another at the database level? How do you keep a session store consistent when you have two workers and a cache? How do you design an encryption layer that survives a key rotation?</p>
+                    <p>At <strong>diam Systems</strong> I've designed and built multi-product backend systems across Python and .NET — an AI agent runtime with a multi-agent coordinator, a document management service with Stripe billing, and a corporate platform integrating three third-party commerce APIs. None of these are in users' hands yet, which means I've had to validate architectural decisions through tests and design review rather than production traffic.</p>
+                    <p>My personal projects fill the gaps: areas I wanted to understand deeply enough to be wrong about — zero-knowledge encryption, row-level multi-tenancy, security tooling. I build to learn, then I keep the code.</p>
                 </div>
                 <div class="about-stats">
                     <div class="stat">
-                        <span class="stat-number">10+</span>
-                        <span class="stat-label">Projects Built</span>
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label">Systems Built End-to-End</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">2</span>
-                        <span class="stat-label">Languages</span>
+                        <span class="stat-number">370+</span>
+                        <span class="stat-label">Automated Tests Written</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">2</span>
-                        <span class="stat-label">Databases</span>
+                        <span class="stat-number">C# · Python</span>
+                        <span class="stat-label">Primary Languages</span>
                     </div>
                 </div>
             </div>
@@ -148,7 +148,7 @@
                             <span class="timeline-company">diam Systems Ltd</span>
                         </div>
                         <span class="timeline-date">Oct 2025 — Present</span>
-                        <p>Built FredCode, a terminal-based AI coding agent with multi-agent architecture coordinating 5 specialised agents and 214 automated tests. Contributing to Fylio, a document management SaaS built with Flask, PostgreSQL, and Stripe. Worked on the Fred AI chat product using Python, Quart, and Gemini API. Collaborating on diamOS 2, the company's desktop environment.</p>
+                        <p>Designed and built FredCode — a terminal-based AI coding agent where the core engineering challenge was coordinating five specialised sub-agents (Code, Review, Test, Plan, Research) without race conditions or conflicting file edits. Covered the codebase with 214 automated tests. Architected Fylio's backend: multi-tenant document storage with PostgreSQL, APScheduler background jobs, Fernet encryption at rest, and Stripe subscription billing. Built the Fred Web chat service using Python/Quart with server-sent event streaming and per-session SQLite persistence.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -159,7 +159,7 @@
                             <span class="timeline-company">Pure Pet Food Ltd</span>
                         </div>
                         <span class="timeline-date">Oct 2024 — Present</span>
-                        <p>Operated production machinery in a fast-paced manufacturing environment. Maintained quality standards and consistently met daily output targets.</p>
+                        <p>Production role running alongside software work. Developed habits around precision, repeatability, and working under process constraints — which turns out to matter in backend engineering too.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -169,8 +169,8 @@
                             <h3>Prototype Tester</h3>
                             <span class="timeline-company">Microsoft HQ, Cambridge</span>
                         </div>
-                        <span class="timeline-date">Invited</span>
-                        <p>Selected to visit Microsoft's headquarters in Cambridge to test a mobile application prototype designed for partially sighted users. Provided structured feedback on accessibility and user experience.</p>
+                        <span class="timeline-date">Invited Tester</span>
+                        <p>Selected by Microsoft to travel to their Cambridge HQ to test an accessibility-focused mobile prototype built for partially sighted users. Gave structured feedback directly to the engineering team on usability and interaction design — an early signal that I think carefully about how systems behave for the person on the other end.</p>
                     </div>
                 </div>
             </div>

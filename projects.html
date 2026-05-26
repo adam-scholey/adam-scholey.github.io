@@ -44,19 +44,19 @@
                         <span class="project-badge">diam Systems</span>
                     </div>
                     <h3 class="project-title">Fred — AI Platform</h3>
-                    <p class="project-desc">Two products under the Fred brand. <strong>Fred Web</strong> — a real-time chat interface powered by Gemini 2.5 Flash with streaming responses, file attachments, code workspace, and persistent SQLite storage. <strong>FredCode</strong> — a terminal-based AI coding agent with multi-agent workflows (Code, Review, Test, Plan, Research agents), file sandboxing, git integration, and 214 tests.</p>
+                    <p class="project-desc">Two products solving different coordination problems. <strong>FredCode</strong> is a terminal AI coding agent where the hard part was safe multi-agent coordination — five specialised sub-agents (Code, Review, Test, Plan, Research) sharing a file sandbox without conflicting edits, undoable as a unit. 214 tests cover the agent runtime, tool dispatch, and git integration. <strong>Fred Web</strong> is a streaming chat interface built on Quart's async runtime: server-sent events for token-by-token output, file attachment handling, and per-session SQLite storage with zero shared state between users.</p>
                     <div class="project-tech">
                         <span>Python</span>
                         <span>Quart</span>
                         <span>SQLite</span>
-                        <span>Gemini</span>
-                        <span>DeepSeek</span>
-                        <span>Streaming</span>
+                        <span>Gemini API</span>
+                        <span>DeepSeek API</span>
+                        <span>SSE Streaming</span>
                         <span>Multi-Agent</span>
                     </div>
                     <div class="project-links">
-                        <span class="project-unreleased">Unreleased</span>
-                        <span class="project-private">Private repos — proprietary</span>
+                        <span class="project-unreleased">In Development</span>
+                        <span class="project-private">Private repo — proprietary</span>
                     </div>
                 </article>
 
@@ -68,16 +68,17 @@
                         <span class="project-badge">diam Systems</span>
                     </div>
                     <h3 class="project-title">Fylio — Document Management</h3>
-                    <p class="project-desc">A secure, database-driven document filing service with Companies House-style structure, Stripe billing integration, encrypted storage, and scheduled background processing.</p>
+                    <p class="project-desc">Document filing SaaS modelled on Companies House-style organisational hierarchy. The core backend challenge was designing a storage layer that enforces tenant isolation in PostgreSQL without leaking references across organisation boundaries, while encrypting documents at rest using Fernet with a per-tenant key strategy. APScheduler handles background jobs — retention policies, scheduled exports — without blocking request threads. Stripe subscription billing is integrated with webhook-driven state transitions so plan changes are reliable even when the user closes the browser mid-checkout.</p>
                     <div class="project-tech">
                         <span>Python</span>
                         <span>Flask</span>
                         <span>PostgreSQL</span>
-                        <span>Stripe</span>
+                        <span>Fernet Encryption</span>
+                        <span>Stripe Billing</span>
                         <span>APScheduler</span>
                     </div>
                     <div class="project-links">
-                        <span class="project-unreleased">Unreleased</span>
+                        <span class="project-unreleased">In Development</span>
                         <span class="project-private">Private repo — proprietary</span>
                     </div>
                 </article>
@@ -90,17 +91,17 @@
                         <span class="project-badge">diam Systems</span>
                     </div>
                     <h3 class="project-title">diamsystems.co.uk</h3>
-                    <p class="project-desc">Corporate website and e-commerce platform for diam Systems Ltd. Flask backend with Stripe payment processing, Gumroad digital product sales, Printify print-on-demand integration, multi-locale translation, and full-text search.</p>
+                    <p class="project-desc">Corporate site and commerce backend integrating three separate fulfilment APIs — Stripe for direct payments, Gumroad for digital product licensing, and Printify for print-on-demand merchandise. The interesting engineering problem was keeping order state consistent across three external systems that each have their own webhook schemas and failure modes. Built with Flask and Jinja2, multi-locale with a lightweight i18n layer, and full-text search over product and content pages.</p>
                     <div class="project-tech">
                         <span>Python</span>
                         <span>Flask</span>
                         <span>Stripe</span>
-                        <span>Gumroad</span>
-                        <span>Printify</span>
+                        <span>Gumroad API</span>
+                        <span>Printify API</span>
                         <span>Jinja2</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener">Visit Site</a>
+                        <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener">Visit Site →</a>
                         <span class="project-private">Private repo — proprietary</span>
                     </div>
                 </article>
@@ -114,7 +115,7 @@
                             <span class="project-badge">Personal</span>
                         </div>
                         <h3 class="project-title">FileFlow — Cloud File System</h3>
-                        <p class="project-desc">Multi-tenant SaaS cloud file storage with zero-knowledge AES-256 encryption, real-time collaboration via SignalR, live code sharing with Monaco editor, and role-based access control.</p>
+                        <p class="project-desc">Built to understand what zero-knowledge encryption actually means in practice. Files are encrypted client-side with AES-256 before hitting the API — the server stores ciphertext and handles S3 object management, but never sees plaintext. Real-time collaboration runs over SignalR; the live code sharing workspace uses Monaco editor with operational-transform-style conflict handling. Multi-tenant with RBAC: organisation, team, and user permission tiers enforced at the query layer.</p>
                         <div class="project-tech">
                             <span>C#</span>
                             <span>Blazor</span>
@@ -138,7 +139,7 @@
                             <span class="project-badge">Personal</span>
                         </div>
                         <h3 class="project-title">OrgNet — Organisation Platform</h3>
-                        <p class="project-desc">Multi-tenant organisation management platform with PostgreSQL row-level isolation, Redis event bus, JWT authentication, Docker orchestration, and real-time SignalR communication.</p>
+                        <p class="project-desc">Built specifically to get row-level security right. PostgreSQL RLS policies enforce that every query — even a misconfigured one — returns only the calling tenant's rows. Redis powers the event bus for cross-service messaging so the API stays stateless. JWT auth with refresh token rotation, Docker Compose orchestration for local parity with production, and SignalR for real-time organisation activity feeds.</p>
                         <div class="project-tech">
                             <span>C#</span>
                             <span>ASP.NET Core</span>
@@ -162,7 +163,7 @@
                             <span class="project-badge">Personal</span>
                         </div>
                         <h3 class="project-title">SecureShield — Anti-Malware Console</h3>
-                        <p class="project-desc">Enterprise security console with signature-based detection, real-time file system monitoring, network traffic analysis, host-based firewall, and EICAR test file scanning across system directories.</p>
+                        <p class="project-desc">Built to understand how security tooling works at the OS level, not just how to call a security API. Uses .NET's FileSystemWatcher for real-time directory monitoring, SHA-256 signature matching against a hash database, and raw socket inspection for network traffic analysis. Validates correctly against the EICAR test file standard. WinUI 3 console with RBAC so analyst and admin roles see different capabilities.</p>
                         <div class="project-tech">
                             <span>C#</span>
                             <span>WinUI 3</span>
@@ -185,7 +186,7 @@
                             <span class="project-badge">Personal</span>
                         </div>
                         <h3 class="project-title">Bookshop Inventory System</h3>
-                        <p class="project-desc">REST API backend with WinUI desktop frontend for managing book inventory, stock tracking, delivery pipeline, and role-based user management with Swagger documentation.</p>
+                        <p class="project-desc">A deliberate exercise in clean API design: RESTful endpoints with proper resource modelling, EF Core migrations for schema evolution, and Swagger/OpenAPI documentation written alongside the code rather than generated afterwards. The WinUI 3 desktop client consumes the same API, so the contract is tested from both sides. Built as a BTEC portfolio piece — the goal was to demonstrate the full backend-to-client stack cleanly, not to add features.</p>
                         <div class="project-tech">
                             <span>C#</span>
                             <span>ASP.NET Core</span>
@@ -208,7 +209,7 @@
                             <span class="project-badge">Personal</span>
                         </div>
                         <h3 class="project-title">Incident Response Platform</h3>
-                        <p class="project-desc">Cybersecurity incident management following the NIST framework. Full incident lifecycle tracking, evidence chain of custody, pre-built playbooks, and MTTD/MTTC/MTTR metrics.</p>
+                        <p class="project-desc">Implements the NIST incident response lifecycle as a structured workflow, not just a checklist. Each incident has a full chain of custody for evidence — immutable append-only records with timestamps — and pre-built playbooks that guide analysts through containment and recovery steps. Tracks MTTD, MTTC, and MTTR metrics per incident so performance can be reviewed across a team. Built in .NET MAUI with MVVM architecture; SQLite for offline-first local storage.</p>
                         <div class="project-tech">
                             <span>C#</span>
                             <span>.NET MAUI</span>
