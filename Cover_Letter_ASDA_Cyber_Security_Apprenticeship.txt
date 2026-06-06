@@ -1,0 +1,47 @@
+Adam Scholey
+07511 027403
+adamscholey25@gmail.com
+Bradford, West Yorkshire
+
+[Date]
+
+Asda Recruitment Team
+Asda House
+Leeds
+
+RE: Application for Cyber Security Apprenticeship (R-096029)
+
+Dear Hiring Team,
+
+I am writing to express my strong interest in the Cyber Security Apprenticeship at Asda. As a security-focused Software Developer with hands-on experience implementing secure coding practices, encryption, and access controls in production systems, I am eager to apply my technical skills to protect Asda's systems and data while developing my expertise through the L4 Cyber Security Analyst apprenticeship.
+
+Your emphasis on vulnerability management and risk reduction aligns perfectly with my experience. In my current role at diam Systems Ltd, I have developed multi-tenant SaaS platforms with GDPR compliance, implemented AES-256 encryption, and built security auditing tools. I achieved a Distinction in Unit 11: Cyber Security and Incident Management during my BTEC Level 3 National Extended Diploma in Information Technology (D*D*D), which has given me a solid foundation in cybersecurity fundamentals, threat analysis, and incident response procedures.
+
+My technical experience directly relates to the responsibilities outlined in your apprenticeship:
+
+Vulnerability Management & Risk Assessment:
+- Implemented row-level security and audit logging in Seek, a multi-tenant search engine handling cross-border data access across UK and EU regions.
+- Built SecureShield, an anti-malware security console with signature-based threat detection, real-time file system monitoring, and network traffic analysis.
+- Experience with SQL injection prevention, XSS mitigation, and CORS configuration in production environments.
+
+Enterprise Technology & Security Implementation:
+- Developed FileFlow, a multi-tenant cloud file system with zero-knowledge AES-256 encryption and secure key management.
+- Built OrgNet, an organisation management platform with secure session management, role-based access control, and multi-tenant data isolation using EF Core global query filters.
+- Experience with PostgreSQL, SQLite, Docker, and cloud infrastructure (AWS S3).
+
+Communication & Collaboration:
+- Collaborated on multi-agent AI systems (FredCode) with 214 automated tests, demonstrating strong teamwork and attention to detail.
+- Provided structured feedback as a prototype tester for Microsoft, showcasing my ability to analyse systems and communicate findings clearly.
+- Currently working in a hybrid environment at diam Systems, balancing collaborative office work with focused remote development.
+
+I am particularly drawn to Asda's values-led culture and the scale of your operations – £300m worth of transactions weekly and systems supporting millions of customer interactions. This scale presents an exciting opportunity to work with enterprise-level vulnerability management, CVSS scoring, and NIST cyber frameworks, which I am eager to learn and apply.
+
+My retail experience at Pure Pet Food Ltd has given me an understanding of fast-paced, customer-focused environments, and I am excited about the prospect of contributing to Asda's mission while building a career in cyber security.
+
+I meet the qualification requirements (104 UCAS points / Level 3 qualification) with my D*D*D BTEC Level 3 National Extended Diploma, and I am genuinely passionate about identifying and mitigating security vulnerabilities. I am confident that my technical foundation, security-focused mindset, and eagerness to learn make me a strong candidate for this apprenticeship.
+
+Thank you for considering my application. I look forward to the opportunity to discuss how my skills and enthusiasm for cyber security can contribute to Asda's security team.
+
+Yours sincerely,
+
+Adam Scholey
