@@ -1,238 +1,366 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projects — Adam Scholey">
+    <meta name="theme-color" content="#613a3f">
     <title>Projects — Adam Scholey</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            50:  '#fdf2f4',
+                            100: '#fbe6e9',
+                            200: '#f5d1d7',
+                            300: '#edb0b9',
+                            400: '#e38e99',
+                            500: '#B76E79',
+                            600: '#a05a64',
+                            700: '#8a4d55',
+                            800: '#754248',
+                            900: '#613a3f',
+                            950: '#4a2e32',
+                        },
+                        gold: {
+                            300: '#e8d9a0',
+                            400: '#d4c07a',
+                            500: '#c9b97a',
+                            600: '#b09850',
+                        },
+                        cream: {
+                            50:  '#fafaf7',
+                            100: '#f4f4f0',
+                            200: '#eaeae2',
+                            300: '#d8d8cc',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @font-face {
+            font-family: 'Instrument Serif';
+            src: url('https://fonts.gstatic.com/s/instrumentserif/v11/chr2-FY-iJWv2Z1KkO8r3F1LJ.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Instrument Serif';
+            src: url('https://fonts.gstatic.com/s/instrumentserif/v11/chr2-EY-iJWv2Z1KkO8r3F1LJ.woff2') format('woff2');
+            font-weight: 400;
+            font-style: italic;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Inter';
+            src: url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Inter';
+            src: url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZ9hjp-Ek-_EeA.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Inter';
+            src: url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLKYAZ9hjp-Ek-_EeA.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f4f4f0;
+            color: #2a2a2a;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .font-display { font-family: 'Instrument Serif', Georgia, serif; }
+        .signifier {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #c9b97a;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.5rem;
+        }
+    </style>
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav-inner">
-            <a href="index.html" class="nav-logo">AS</a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="projects.html" class="nav-active">Projects</a>
-                <a href="contact.html">Contact</a>
+    <nav class="bg-cream-50 border-b border-cream-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" class="font-display text-2xl text-forest-900">AS</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-forest-600 hover:text-forest-900 transition">Home</a>
+                <a href="projects.html" class="text-forest-900 font-medium">Projects</a>
+                <a href="contact.html" class="text-forest-600 hover:text-forest-900 transition">Contact</a>
             </div>
-            <button class="nav-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="md:hidden text-forest-900" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
             </button>
         </div>
     </nav>
 
-    <section class="section page-section">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="diamsystems">diam Systems</button>
-                <button class="filter-btn" data-filter="personal">Personal</button>
+    <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-display text-4xl text-forest-900 mb-12 text-center">Projects</h2>
+            <div class="flex justify-center gap-4 mb-12">
+                <button class="filter-btn px-6 py-2 rounded-full bg-forest-900 text-white font-medium" data-filter="all">All</button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-white text-forest-600 border border-forest-300 hover:bg-forest-50 transition" data-filter="diamsystems">diam Systems</button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-white text-forest-600 border border-forest-300 hover:bg-forest-50 transition" data-filter="personal">Personal</button>
             </div>
-            <div class="projects-grid">
+            <div class="grid md:grid-cols-2 gap-8">
 
-                <article class="project-card featured" data-category="diamsystems">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="diamsystems">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            </div>
+                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">diam Systems</span>
                         </div>
-                        <span class="project-badge">diam Systems</span>
                     </div>
-                    <h3 class="project-title">Fred — AI Platform</h3>
-                    <p class="project-desc">Two products solving different coordination problems. <strong>FredCode</strong> is a terminal AI coding agent where the hard part was safe multi-agent coordination — five specialised sub-agents (Code, Review, Test, Plan, Research) sharing a file sandbox without conflicting edits, undoable as a unit. 214 tests cover the agent runtime, tool dispatch, and git integration. <strong>Fred Web</strong> is a streaming chat interface built on Quart's async runtime: server-sent events for token-by-token output, file attachment handling, and per-session SQLite storage with zero shared state between users.</p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>Quart</span>
-                        <span>SQLite</span>
-                        <span>Gemini API</span>
-                        <span>DeepSeek API</span>
-                        <span>SSE Streaming</span>
-                        <span>Multi-Agent</span>
+                    <h3 class="font-display text-xl text-forest-900 mb-3">diamReserve — Restaurant Booking System</h3>
+                    <p class="text-forest-700 text-sm mb-4">A professional, production-ready restaurant table booking system with visual floor plan, customer-facing booking flow, admin panel, staff PWA, and Stripe deposits. Features include real-time table availability, £10/head deposit via Stripe Checkout, email notifications, and robust security throughout.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Python</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Flask</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">MySQL</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Tailwind CSS</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Stripe</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">PWA</span>
                     </div>
-                    <div class="project-links">
-                        <span class="project-unreleased">In Development</span>
-                        <span class="project-private">Private repo — proprietary</span>
+                    <div class="flex items-center gap-3 text-xs text-forest-500">
+                        <span class="bg-cream-100 px-2 py-1 rounded">In Development</span>
+                        <span>Private repo — proprietary</span>
                     </div>
                 </article>
 
-                <article class="project-card" data-category="diamsystems">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="diamsystems">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                            </div>
+                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">diam Systems</span>
                         </div>
-                        <span class="project-badge">diam Systems</span>
                     </div>
-                    <h3 class="project-title">Fylio — Document Management</h3>
-                    <p class="project-desc">Document filing SaaS modelled on Companies House-style organisational hierarchy. The core backend challenge was designing a storage layer that enforces tenant isolation in PostgreSQL without leaking references across organisation boundaries, while encrypting documents at rest using Fernet with a per-tenant key strategy. APScheduler handles background jobs — retention policies, scheduled exports — without blocking request threads. Stripe subscription billing is integrated with webhook-driven state transitions so plan changes are reliable even when the user closes the browser mid-checkout.</p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>Flask</span>
-                        <span>PostgreSQL</span>
-                        <span>Fernet Encryption</span>
-                        <span>Stripe Billing</span>
-                        <span>APScheduler</span>
+                    <h3 class="font-display text-xl text-forest-900 mb-3">diamDB — Memory-First NoSQL Database</h3>
+                    <p class="text-forest-700 text-sm mb-4">Ultra-lean, high-concurrency, memory-first NoSQL micro-database designed to bypass traditional file locking issues. Built in Rust using Tokio and Axum with sub-50MB RAM footprint — perfect for micro-VM environments. Features append-only write pipeline, multi-tenant sharding, auto-compaction, and cross-platform CLI provisioning.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Rust</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Tokio</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Axum</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">DashMap</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">CLI</span>
                     </div>
-                    <div class="project-links">
-                        <span class="project-unreleased">In Development</span>
-                        <span class="project-private">Private repo — proprietary</span>
+                    <div class="flex items-center gap-3 text-xs text-forest-500">
+                        <span class="bg-cream-100 px-2 py-1 rounded">In Development</span>
+                        <span>Private repo — proprietary</span>
                     </div>
                 </article>
 
-                <article class="project-card" data-category="diamsystems">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="diamsystems">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                            </div>
+                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">diam Systems</span>
                         </div>
-                        <span class="project-badge">diam Systems</span>
                     </div>
-                    <h3 class="project-title">Seek — Search Indexing Platform</h3>
-                    <p class="project-desc">Enterprise search platform built to index millions of records from external data sources with sub-second query latency. The core engineering challenge is keeping the search index in sync with source systems — implemented a watermark-based incremental sync with distributed Redis locks to prevent concurrent sync jobs from corrupting the index. PostgreSQL partial indexes and trigram FTS accelerate queries; Redis-backed caching with graceful degradation handles load spikes. Soft-delete pattern preserves audit trails while keeping results clean.</p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>Flask</span>
-                        <span>PostgreSQL</span>
-                        <span>Redis</span>
-                        <span>APScheduler</span>
-                        <span>PostgreSQL FTS</span>
+                    <h3 class="font-display text-xl text-forest-900 mb-3">Seek — Internal Search Engine</h3>
+                    <p class="text-forest-700 text-sm mb-4">Internal search engine for organisations with GDPR compliance and multi-region support. Connects to internal databases and presents a single search bar for products, customers, orders, and business data. Features full-text search, Redis caching, incremental sync, distributed locks, and cross-border consent management.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Python</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Flask</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">PostgreSQL</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Redis</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">GDPR</span>
                     </div>
-                    <div class="project-links">
-                        <span class="project-unreleased">In Development</span>
-                        <span class="project-private">Private repo — proprietary</span>
+                    <div class="flex items-center gap-3 text-xs text-forest-500">
+                        <span class="bg-cream-100 px-2 py-1 rounded">In Development</span>
+                        <span>Private repo — proprietary</span>
                     </div>
                 </article>
 
-                <article class="project-card" data-category="diamsystems">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="diamsystems">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                            </div>
+                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">diam Systems</span>
                         </div>
-                        <span class="project-badge">diam Systems</span>
                     </div>
-                    <h3 class="project-title">diamsystems.co.uk</h3>
-                    <p class="project-desc">Corporate site and commerce backend integrating three separate fulfilment APIs — Stripe for direct payments, Gumroad for digital product licensing, and Printify for print-on-demand merchandise. The interesting engineering problem was keeping order state consistent across three external systems that each have their own webhook schemas and failure modes. Built with Flask and Jinja2, multi-locale with a lightweight i18n layer, and full-text search over product and content pages.</p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>Flask</span>
-                        <span>Stripe</span>
-                        <span>Gumroad API</span>
-                        <span>Printify API</span>
-                        <span>Jinja2</span>
+                    <h3 class="font-display text-xl text-forest-900 mb-3">Tracker — Project Management</h3>
+                    <p class="text-forest-700 text-sm mb-4">Project management web app for tracking projects through statuses: Planning, Development, Release Candidate, Released. Features GitHub OAuth authentication, email notifications on status changes, and an elegant UI. Built with Flask, SQLite, and Authlib for secure OAuth integration.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Python</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Flask</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">SQLite</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Authlib</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">GitHub OAuth</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener">Visit Site →</a>
-                        <span class="project-private">Private repo — proprietary</span>
+                    <div class="flex items-center gap-3 text-xs text-forest-500">
+                        <span class="bg-cream-100 px-2 py-1 rounded">In Development</span>
+                        <span>Private repo — proprietary</span>
                     </div>
                 </article>
 
-                <article class="project-card clickable" data-category="personal">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="diamsystems">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            </div>
+                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">diam Systems</span>
                         </div>
-                        <span class="project-badge">Personal</span>
                     </div>
-                    <h3 class="project-title">FileFlow — Cloud File System</h3>
-                    <p class="project-desc">Built to understand what zero-knowledge encryption actually means in practice. Files are encrypted client-side with AES-256 before hitting the API — the server stores ciphertext and handles S3 object management, but never sees plaintext. Real-time collaboration runs over SignalR; the live code sharing workspace uses Monaco editor with operational-transform-style conflict handling. Multi-tenant with RBAC: organisation, team, and user permission tiers enforced at the query layer.</p>
-                    <div class="project-tech">
-                        <span>C#</span>
-                        <span>Blazor</span>
-                        <span>ASP.NET Core</span>
-                        <span>PostgreSQL</span>
-                        <span>AWS S3</span>
-                        <span>SignalR</span>
+                    <h3 class="font-display text-xl text-forest-900 mb-3">diamsystems.co.uk</h3>
+                    <p class="text-forest-700 text-sm mb-4">Corporate website and e-commerce platform integrating three fulfilment APIs — Stripe for direct payments, Gumroad for digital product licensing, and Printify for print-on-demand merchandise. Built with Flask, multi-locale support, and full-text search.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Python</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Flask</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Stripe</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Gumroad API</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Printify API</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/AdamScholey25/fileflow" target="_blank" rel="noopener">View on GitHub →</a>
+                    <div class="flex items-center gap-3 text-xs text-forest-500">
+                        <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener" class="text-forest-900 hover:underline">Visit Site →</a>
+                        <span>Private repo — proprietary</span>
                     </div>
                 </article>
 
-                <article class="project-card clickable" data-category="personal">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="personal">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                            </div>
+                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">Personal</span>
                         </div>
-                        <span class="project-badge">Personal</span>
                     </div>
-                    <h3 class="project-title">OrgNet — Organisation Platform</h3>
-                    <p class="project-desc">Built specifically to get row-level security right. PostgreSQL RLS policies enforce that every query — even a misconfigured one — returns only the calling tenant's rows. Redis powers the event bus for cross-service messaging so the API stays stateless. JWT auth with refresh token rotation, Docker Compose orchestration for local parity with production, and SignalR for real-time organisation activity feeds.</p>
-                    <div class="project-tech">
-                        <span>C#</span>
-                        <span>ASP.NET Core</span>
-                        <span>PostgreSQL</span>
-                        <span>Redis</span>
-                        <span>Docker</span>
-                        <span>SignalR</span>
+                    <h3 class="font-display text-xl text-forest-900 mb-3">FileFlow — Cloud File System</h3>
+                    <p class="text-forest-700 text-sm mb-4">Built to understand what zero-knowledge encryption actually means in practice. Files are encrypted client-side with AES-256 before hitting the API — the server stores ciphertext and handles S3 object management, but never sees plaintext. Real-time collaboration runs over SignalR; the live code sharing workspace uses Monaco editor with operational-transform-style conflict handling.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">C#</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Blazor</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">ASP.NET Core</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">PostgreSQL</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">AWS S3</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">SignalR</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/AdamScholey25/orgnet" target="_blank" rel="noopener">View on GitHub →</a>
+                    <div class="flex items-center gap-3 text-xs text-forest-500">
+                        <a href="https://github.com/AdamScholey25/fileflow" target="_blank" rel="noopener" class="text-forest-900 hover:underline">View on GitHub →</a>
                     </div>
                 </article>
 
-                <article class="project-card clickable" data-category="personal">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="personal">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            </div>
+                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">Personal</span>
                         </div>
-                        <span class="project-badge">Personal</span>
                     </div>
-                    <h3 class="project-title">SecureShield — Anti-Malware Console</h3>
-                    <p class="project-desc">Built to understand how security tooling works at the OS level, not just how to call a security API. Uses .NET's FileSystemWatcher for real-time directory monitoring, SHA-256 signature matching against a hash database, and raw socket inspection for network traffic analysis. Validates correctly against the EICAR test file standard. WinUI 3 console with RBAC so analyst and admin roles see different capabilities.</p>
-                    <div class="project-tech">
-                        <span>C#</span>
-                        <span>WinUI 3</span>
-                        <span>FileSystemWatcher</span>
-                        <span>SHA-256</span>
-                        <span>RBAC</span>
+                    <h3 class="font-display text-xl text-forest-900 mb-3">OrgNet — Organisation Platform</h3>
+                    <p class="text-forest-700 text-sm mb-4">Built specifically to get row-level security right. PostgreSQL RLS policies enforce that every query — even a misconfigured one — returns only the calling tenant's rows. Redis powers the event bus for cross-service messaging so the API stays stateless. JWT auth with refresh token rotation, Docker Compose orchestration for local parity with production, and SignalR for real-time organisation activity feeds.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">C#</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">ASP.NET Core</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">PostgreSQL</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Redis</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Docker</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">SignalR</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/AdamScholey25/Antivirus-Software" target="_blank" rel="noopener">View on GitHub →</a>
+                    <div class="flex items-center gap-3 text-xs text-forest-500">
+                        <a href="https://github.com/AdamScholey25/orgnet" target="_blank" rel="noopener" class="text-forest-900 hover:underline">View on GitHub →</a>
                     </div>
                 </article>
 
-                <article class="project-card clickable" data-category="personal">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="personal">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">Personal</span>
                         </div>
-                        <span class="project-badge">Personal</span>
                     </div>
-                    <h3 class="project-title">Bookshop Inventory System</h3>
-                    <p class="project-desc">A deliberate exercise in clean API design: RESTful endpoints with proper resource modelling, EF Core migrations for schema evolution, and Swagger/OpenAPI documentation written alongside the code rather than generated afterwards. The WinUI 3 desktop client consumes the same API, so the contract is tested from both sides. Built as a BTEC portfolio piece — the goal was to demonstrate the full backend-to-client stack cleanly, not to add features.</p>
-                    <div class="project-tech">
-                        <span>C#</span>
-                        <span>ASP.NET Core</span>
-                        <span>EF Core</span>
-                        <span>WinUI 3</span>
-                        <span>REST API</span>
+                    <h3 class="font-display text-xl text-forest-900 mb-3">SecureShield — Anti-Malware Console</h3>
+                    <p class="text-forest-700 text-sm mb-4">Built to understand how security tooling works at the OS level, not just how to call a security API. Uses .NET's FileSystemWatcher for real-time directory monitoring, SHA-256 signature matching against a hash database, and raw socket inspection for network traffic analysis. Validates correctly against the EICAR test file standard. WinUI 3 console with RBAC so analyst and admin roles see different capabilities.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">C#</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">WinUI 3</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">FileSystemWatcher</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">SHA-256</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">RBAC</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/AdamScholey25/Bookshop-Inventorysystem" target="_blank" rel="noopener">View on GitHub →</a>
+                    <div class="flex items-center gap-3 text-xs text-forest-500">
+                        <a href="https://github.com/AdamScholey25/Antivirus-Software" target="_blank" rel="noopener" class="text-forest-900 hover:underline">View on GitHub →</a>
                     </div>
                 </article>
 
-                <article class="project-card clickable" data-category="personal">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="personal">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                            </div>
+                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">Personal</span>
                         </div>
-                        <span class="project-badge">Personal</span>
                     </div>
-                    <h3 class="project-title">Incident Response Platform</h3>
-                    <p class="project-desc">Implements the NIST incident response lifecycle as a structured workflow, not just a checklist. Each incident has a full chain of custody for evidence — immutable append-only records with timestamps — and pre-built playbooks that guide analysts through containment and recovery steps. Tracks MTTD, MTTC, and MTTR metrics per incident so performance can be reviewed across a team. Built in .NET MAUI with MVVM architecture; SQLite for offline-first local storage.</p>
-                    <div class="project-tech">
-                        <span>C#</span>
-                        <span>.NET MAUI</span>
-                        <span>SQLite</span>
-                        <span>NIST Framework</span>
-                        <span>MVVM</span>
+                    <h3 class="font-display text-xl text-forest-900 mb-3">Bookshop Inventory System</h3>
+                    <p class="text-forest-700 text-sm mb-4">A deliberate exercise in clean API design: RESTful endpoints with proper resource modelling, EF Core migrations for schema evolution, and Swagger/OpenAPI documentation written alongside the code rather than generated afterwards. The WinUI 3 desktop client consumes the same API, so the contract is tested from both sides.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">C#</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">ASP.NET Core</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">EF Core</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">WinUI 3</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">REST API</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/AdamScholey25/Incident-Response-Platform" target="_blank" rel="noopener">View on GitHub →</a>
+                    <div class="flex items-center gap-3 text-xs text-forest-500">
+                        <a href="https://github.com/AdamScholey25/Bookshop-Inventorysystem" target="_blank" rel="noopener" class="text-forest-900 hover:underline">View on GitHub →</a>
+                    </div>
+                </article>
+
+                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="personal">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            </div>
+                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">Personal</span>
+                        </div>
+                    </div>
+                    <h3 class="font-display text-xl text-forest-900 mb-3">Incident Response Platform</h3>
+                    <p class="text-forest-700 text-sm mb-4">Implements the NIST incident response lifecycle as a structured workflow, not just a checklist. Each incident has a full chain of custody for evidence — immutable append-only records with timestamps — and pre-built playbooks that guide analysts through containment and recovery steps. Tracks MTTD, MTTC, and MTTR metrics per incident so performance can be reviewed across a team.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">C#</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">.NET MAUI</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">SQLite</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">NIST Framework</span>
+                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">MVVM</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-xs text-forest-500">
+                        <a href="https://github.com/AdamScholey25/Incident-Response-Platform" target="_blank" rel="noopener" class="text-forest-900 hover:underline">View on GitHub →</a>
                     </div>
                 </article>
 
@@ -240,8 +368,8 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
+    <footer class="bg-forest-900 text-cream-100 py-12 px-6">
+        <div class="max-w-6xl mx-auto text-center">
             <p>&copy; 2026 Adam Scholey</p>
         </div>
     </footer>
