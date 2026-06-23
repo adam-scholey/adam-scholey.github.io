@@ -103,15 +103,15 @@
     </style>
 </head>
 <body>
-    <nav class="bg-cream-50 border-b border-cream-200 sticky top-0 z-50">
+    <nav class="bg-forest-950 border-b border-forest-800 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="index.html" class="font-display text-2xl text-forest-900">AS</a>
-            <div class="nav-links hidden md:flex flex-col md:flex-row absolute md:static top-full inset-x-0 md:inset-auto gap-4 md:gap-8 p-6 md:p-0 bg-cream-50 md:bg-transparent border-b border-cream-200 md:border-0">
-                <a href="index.html" class="text-forest-600 hover:text-forest-900 transition">Home</a>
-                <a href="projects.html" class="text-forest-900 font-medium">Projects</a>
-                <a href="index.html#contact" class="text-forest-600 hover:text-forest-900 transition">Contact</a>
+            <a href="index.html" class="font-display text-2xl text-cream-50">AS</a>
+            <div class="nav-links hidden md:flex flex-col md:flex-row absolute md:static top-full inset-x-0 md:inset-auto gap-4 md:gap-8 p-6 md:p-0 bg-forest-950 md:bg-transparent border-b border-forest-800 md:border-0">
+                <a href="index.html" class="text-cream-200 hover:text-cream-50 transition">Home</a>
+                <a href="projects.html" class="text-cream-50 font-medium">Projects</a>
+                <a href="index.html#contact" class="text-cream-200 hover:text-cream-50 transition">Contact</a>
             </div>
-            <button class="nav-toggle md:hidden text-forest-900" aria-label="Toggle menu">
+            <button class="nav-toggle md:hidden text-cream-50" aria-label="Toggle menu">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
             </button>
         </div>
@@ -119,225 +119,225 @@
 
     <section class="py-20 px-6">
         <div class="max-w-6xl mx-auto">
-            <h2 class="font-display text-4xl text-forest-900 mb-12 text-center">Projects</h2>
+            <h2 class="font-display text-4xl text-cream-50 mb-12 text-center">Projects</h2>
             <div class="flex justify-center gap-4 mb-12">
                 <button class="filter-btn px-6 py-2 rounded-full bg-forest-900 text-white font-medium" data-filter="all">All</button>
-                <button class="filter-btn px-6 py-2 rounded-full bg-white text-forest-600 border border-forest-300 hover:bg-forest-50 transition" data-filter="diamsystems">diam Systems</button>
-                <button class="filter-btn px-6 py-2 rounded-full bg-white text-forest-600 border border-forest-300 hover:bg-forest-50 transition" data-filter="personal">Personal</button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-forest-900 text-cream-200 border border-forest-700 hover:bg-forest-800 transition" data-filter="diamsystems">diam Systems</button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-forest-900 text-cream-200 border border-forest-700 hover:bg-forest-800 transition" data-filter="personal">Personal</button>
             </div>
             <div class="grid md:grid-cols-2 gap-8">
 
-                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="diamsystems">
+                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="diamsystems">
                     <div class="flex items-start justify-between mb-4">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                             </div>
-                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">diam Systems</span>
+                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">diam Systems</span>
                         </div>
                     </div>
-                    <h3 class="font-display text-xl text-forest-900 mb-3">diamReserve — Restaurant Booking System</h3>
-                    <p class="text-forest-700 text-sm mb-4">A professional, production-ready restaurant table booking system with visual floor plan, customer-facing booking flow, admin panel, staff PWA, and Stripe deposits. Features include real-time table availability, £10/head deposit via Stripe Checkout, email notifications, and robust security throughout.</p>
+                    <h3 class="font-display text-xl text-cream-50 mb-3">diamReserve — Restaurant Booking System</h3>
+                    <p class="text-cream-100 text-sm mb-4">A professional, production-ready restaurant table booking system with visual floor plan, customer-facing booking flow, admin panel, staff PWA, and Stripe deposits. Features include real-time table availability, £10/head deposit via Stripe Checkout, email notifications, and robust security throughout.</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Python</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Flask</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">MySQL</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Tailwind CSS</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Stripe</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">PWA</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Python</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Flask</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">MySQL</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Tailwind CSS</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Stripe</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">PWA</span>
                     </div>
-                    <div class="flex items-center gap-3 text-xs text-forest-500">
-                        <span class="bg-cream-100 px-2 py-1 rounded">In Development</span>
+                    <div class="flex items-center gap-3 text-xs text-cream-300">
+                        <span class="bg-forest-800 px-2 py-1 rounded">In Development</span>
                         <span>Private repo — proprietary</span>
                     </div>
                 </article>
 
-                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="diamsystems">
+                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="diamsystems">
                     <div class="flex items-start justify-between mb-4">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                             </div>
-                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">diam Systems</span>
+                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">diam Systems</span>
                         </div>
                     </div>
-                    <h3 class="font-display text-xl text-forest-900 mb-3">Seek — Internal Search Engine</h3>
-                    <p class="text-forest-700 text-sm mb-4">Internal search engine for organisations with GDPR compliance and multi-region support. Connects to internal databases and presents a single search bar for products, customers, orders, and business data. Features full-text search, Redis caching, incremental sync, distributed locks, and cross-border consent management.</p>
+                    <h3 class="font-display text-xl text-cream-50 mb-3">Seek — Internal Search Engine</h3>
+                    <p class="text-cream-100 text-sm mb-4">Internal search engine for organisations with GDPR compliance and multi-region support. Connects to internal databases and presents a single search bar for products, customers, orders, and business data. Features full-text search, Redis caching, incremental sync, distributed locks, and cross-border consent management.</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Python</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Flask</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">PostgreSQL</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Redis</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">GDPR</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Python</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Flask</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">PostgreSQL</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Redis</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">GDPR</span>
                     </div>
-                    <div class="flex items-center gap-3 text-xs text-forest-500">
-                        <span class="bg-cream-100 px-2 py-1 rounded">In Development</span>
+                    <div class="flex items-center gap-3 text-xs text-cream-300">
+                        <span class="bg-forest-800 px-2 py-1 rounded">In Development</span>
                         <span>Private repo — proprietary</span>
                     </div>
                 </article>
 
-                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="diamsystems">
+                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="diamsystems">
                     <div class="flex items-start justify-between mb-4">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
                             </div>
-                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">diam Systems</span>
+                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">diam Systems</span>
                         </div>
                     </div>
-                    <h3 class="font-display text-xl text-forest-900 mb-3">Tracker — Project Management</h3>
-                    <p class="text-forest-700 text-sm mb-4">Project management web app for tracking projects through statuses: Planning, Development, Release Candidate, Released. Features GitHub OAuth authentication, email notifications on status changes, and an elegant UI. Built with Flask, SQLite, and Authlib for secure OAuth integration.</p>
+                    <h3 class="font-display text-xl text-cream-50 mb-3">Tracker — Project Management</h3>
+                    <p class="text-cream-100 text-sm mb-4">Project management web app for tracking projects through statuses: Planning, Development, Release Candidate, Released. Features GitHub OAuth authentication, email notifications on status changes, and an elegant UI. Built with Flask, SQLite, and Authlib for secure OAuth integration.</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Python</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Flask</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">SQLite</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Authlib</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">GitHub OAuth</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Python</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Flask</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">SQLite</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Authlib</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">GitHub OAuth</span>
                     </div>
-                    <div class="flex items-center gap-3 text-xs text-forest-500">
-                        <span class="bg-cream-100 px-2 py-1 rounded">In Development</span>
+                    <div class="flex items-center gap-3 text-xs text-cream-300">
+                        <span class="bg-forest-800 px-2 py-1 rounded">In Development</span>
                         <span>Private repo — proprietary</span>
                     </div>
                 </article>
 
-                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="diamsystems">
+                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="diamsystems">
                     <div class="flex items-start justify-between mb-4">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                             </div>
-                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">diam Systems</span>
+                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">diam Systems</span>
                         </div>
                     </div>
-                    <h3 class="font-display text-xl text-forest-900 mb-3">diamsystems.co.uk</h3>
-                    <p class="text-forest-700 text-sm mb-4">Corporate website and e-commerce platform integrating three fulfilment APIs — Stripe for direct payments, Gumroad for digital product licensing, and Printify for print-on-demand merchandise. Built with Flask, multi-locale support, and full-text search.</p>
+                    <h3 class="font-display text-xl text-cream-50 mb-3">diamsystems.co.uk</h3>
+                    <p class="text-cream-100 text-sm mb-4">Corporate website and e-commerce platform integrating three fulfilment APIs — Stripe for direct payments, Gumroad for digital product licensing, and Printify for print-on-demand merchandise. Built with Flask, multi-locale support, and full-text search.</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Python</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Flask</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Stripe</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Gumroad API</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Printify API</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Python</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Flask</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Stripe</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Gumroad API</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Printify API</span>
                     </div>
-                    <div class="flex items-center gap-3 text-xs text-forest-500">
-                        <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener" class="text-forest-900 hover:underline">Visit Site →</a>
+                    <div class="flex items-center gap-3 text-xs text-cream-300">
+                        <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener" class="text-cream-200 hover:underline">Visit Site →</a>
                         <span>Private repo — proprietary</span>
                     </div>
                 </article>
 
-                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="personal">
+                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="personal">
                     <div class="flex items-start justify-between mb-4">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                             </div>
-                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">Personal</span>
+                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">Personal</span>
                         </div>
                     </div>
-                    <h3 class="font-display text-xl text-forest-900 mb-3">FileFlow — Cloud File System</h3>
-                    <p class="text-forest-700 text-sm mb-4">Built to understand what zero-knowledge encryption actually means in practice. Files are encrypted client-side with AES-256 before hitting the API — the server stores ciphertext and handles S3 object management, but never sees plaintext. Real-time collaboration runs over SignalR; the live code sharing workspace uses Monaco editor with operational-transform-style conflict handling.</p>
+                    <h3 class="font-display text-xl text-cream-50 mb-3">FileFlow — Cloud File System</h3>
+                    <p class="text-cream-100 text-sm mb-4">Built to understand what zero-knowledge encryption actually means in practice. Files are encrypted client-side with AES-256 before hitting the API — the server stores ciphertext and handles S3 object management, but never sees plaintext. Real-time collaboration runs over SignalR; the live code sharing workspace uses Monaco editor with operational-transform-style conflict handling.</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">C#</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Blazor</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">ASP.NET Core</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">PostgreSQL</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">AWS S3</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">SignalR</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">C#</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Blazor</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">ASP.NET Core</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">PostgreSQL</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">AWS S3</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">SignalR</span>
                     </div>
-                    <div class="flex items-center gap-3 text-xs text-forest-500">
-                        <a href="https://github.com/AdamScholey25/fileflow" target="_blank" rel="noopener" class="text-forest-900 hover:underline">View on GitHub →</a>
+                    <div class="flex items-center gap-3 text-xs text-cream-300">
+                        <a href="https://github.com/AdamScholey25/fileflow" target="_blank" rel="noopener" class="text-cream-200 hover:underline">View on GitHub →</a>
                     </div>
                 </article>
 
-                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="personal">
+                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="personal">
                     <div class="flex items-start justify-between mb-4">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                             </div>
-                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">Personal</span>
+                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">Personal</span>
                         </div>
                     </div>
-                    <h3 class="font-display text-xl text-forest-900 mb-3">OrgNet — Organisation Platform</h3>
-                    <p class="text-forest-700 text-sm mb-4">Built specifically to get row-level security right. PostgreSQL RLS policies enforce that every query — even a misconfigured one — returns only the calling tenant's rows. Redis powers the event bus for cross-service messaging so the API stays stateless. JWT auth with refresh token rotation, Docker Compose orchestration for local parity with production, and SignalR for real-time organisation activity feeds.</p>
+                    <h3 class="font-display text-xl text-cream-50 mb-3">OrgNet — Organisation Platform</h3>
+                    <p class="text-cream-100 text-sm mb-4">Built specifically to get row-level security right. PostgreSQL RLS policies enforce that every query — even a misconfigured one — returns only the calling tenant's rows. Redis powers the event bus for cross-service messaging so the API stays stateless. JWT auth with refresh token rotation, Docker Compose orchestration for local parity with production, and SignalR for real-time organisation activity feeds.</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">C#</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">ASP.NET Core</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">PostgreSQL</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Redis</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">Docker</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">SignalR</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">C#</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">ASP.NET Core</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">PostgreSQL</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Redis</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Docker</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">SignalR</span>
                     </div>
-                    <div class="flex items-center gap-3 text-xs text-forest-500">
-                        <a href="https://github.com/AdamScholey25/orgnet" target="_blank" rel="noopener" class="text-forest-900 hover:underline">View on GitHub →</a>
+                    <div class="flex items-center gap-3 text-xs text-cream-300">
+                        <a href="https://github.com/AdamScholey25/orgnet" target="_blank" rel="noopener" class="text-cream-200 hover:underline">View on GitHub →</a>
                     </div>
                 </article>
 
-                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="personal">
+                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="personal">
                     <div class="flex items-start justify-between mb-4">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                             </div>
-                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">Personal</span>
+                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">Personal</span>
                         </div>
                     </div>
-                    <h3 class="font-display text-xl text-forest-900 mb-3">SecureShield — Anti-Malware Console</h3>
-                    <p class="text-forest-700 text-sm mb-4">Built to understand how security tooling works at the OS level, not just how to call a security API. Uses .NET's FileSystemWatcher for real-time directory monitoring, SHA-256 signature matching against a hash database, and raw socket inspection for network traffic analysis. Validates correctly against the EICAR test file standard. WinUI 3 console with RBAC so analyst and admin roles see different capabilities.</p>
+                    <h3 class="font-display text-xl text-cream-50 mb-3">SecureShield — Anti-Malware Console</h3>
+                    <p class="text-cream-100 text-sm mb-4">Built to understand how security tooling works at the OS level, not just how to call a security API. Uses .NET's FileSystemWatcher for real-time directory monitoring, SHA-256 signature matching against a hash database, and raw socket inspection for network traffic analysis. Validates correctly against the EICAR test file standard. WinUI 3 console with RBAC so analyst and admin roles see different capabilities.</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">C#</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">WinUI 3</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">FileSystemWatcher</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">SHA-256</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">RBAC</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">C#</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">WinUI 3</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">FileSystemWatcher</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">SHA-256</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">RBAC</span>
                     </div>
-                    <div class="flex items-center gap-3 text-xs text-forest-500">
-                        <a href="https://github.com/AdamScholey25/Antivirus-Software" target="_blank" rel="noopener" class="text-forest-900 hover:underline">View on GitHub →</a>
+                    <div class="flex items-center gap-3 text-xs text-cream-300">
+                        <a href="https://github.com/AdamScholey25/Antivirus-Software" target="_blank" rel="noopener" class="text-cream-200 hover:underline">View on GitHub →</a>
                     </div>
                 </article>
 
-                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="personal">
+                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="personal">
                     <div class="flex items-start justify-between mb-4">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                             </div>
-                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">Personal</span>
+                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">Personal</span>
                         </div>
                     </div>
-                    <h3 class="font-display text-xl text-forest-900 mb-3">Bookshop Inventory System</h3>
-                    <p class="text-forest-700 text-sm mb-4">A deliberate exercise in clean API design: RESTful endpoints with proper resource modelling, EF Core migrations for schema evolution, and Swagger/OpenAPI documentation written alongside the code rather than generated afterwards. The WinUI 3 desktop client consumes the same API, so the contract is tested from both sides.</p>
+                    <h3 class="font-display text-xl text-cream-50 mb-3">Bookshop Inventory System</h3>
+                    <p class="text-cream-100 text-sm mb-4">A deliberate exercise in clean API design: RESTful endpoints with proper resource modelling, EF Core migrations for schema evolution, and Swagger/OpenAPI documentation written alongside the code rather than generated afterwards. The WinUI 3 desktop client consumes the same API, so the contract is tested from both sides.</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">C#</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">ASP.NET Core</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">EF Core</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">WinUI 3</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">REST API</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">C#</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">ASP.NET Core</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">EF Core</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">WinUI 3</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">REST API</span>
                     </div>
-                    <div class="flex items-center gap-3 text-xs text-forest-500">
-                        <a href="https://github.com/AdamScholey25/Bookshop-Inventorysystem" target="_blank" rel="noopener" class="text-forest-900 hover:underline">View on GitHub →</a>
+                    <div class="flex items-center gap-3 text-xs text-cream-300">
+                        <a href="https://github.com/AdamScholey25/Bookshop-Inventorysystem" target="_blank" rel="noopener" class="text-cream-200 hover:underline">View on GitHub →</a>
                     </div>
                 </article>
 
-                <article class="bg-white p-6 rounded-lg shadow-sm border border-cream-200 hover:shadow-md transition" data-category="personal">
+                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="personal">
                     <div class="flex items-start justify-between mb-4">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-100 rounded-lg flex items-center justify-center text-forest-900">
+                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                             </div>
-                            <span class="text-xs font-medium text-forest-600 bg-forest-100 px-2 py-1 rounded-full">Personal</span>
+                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">Personal</span>
                         </div>
                     </div>
-                    <h3 class="font-display text-xl text-forest-900 mb-3">Incident Response Platform</h3>
-                    <p class="text-forest-700 text-sm mb-4">Implements the NIST incident response lifecycle as a structured workflow, not just a checklist. Each incident has a full chain of custody for evidence — immutable append-only records with timestamps — and pre-built playbooks that guide analysts through containment and recovery steps. Tracks MTTD, MTTC, and MTTR metrics per incident so performance can be reviewed across a team.</p>
+                    <h3 class="font-display text-xl text-cream-50 mb-3">Incident Response Platform</h3>
+                    <p class="text-cream-100 text-sm mb-4">Implements the NIST incident response lifecycle as a structured workflow, not just a checklist. Each incident has a full chain of custody for evidence — immutable append-only records with timestamps — and pre-built playbooks that guide analysts through containment and recovery steps. Tracks MTTD, MTTC, and MTTR metrics per incident so performance can be reviewed across a team.</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">C#</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">.NET MAUI</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">SQLite</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">NIST Framework</span>
-                        <span class="text-xs bg-cream-200 text-forest-800 px-2 py-1 rounded">MVVM</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">C#</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">.NET MAUI</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">SQLite</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">NIST Framework</span>
+                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">MVVM</span>
                     </div>
-                    <div class="flex items-center gap-3 text-xs text-forest-500">
-                        <a href="https://github.com/AdamScholey25/Incident-Response-Platform" target="_blank" rel="noopener" class="text-forest-900 hover:underline">View on GitHub →</a>
+                    <div class="flex items-center gap-3 text-xs text-cream-300">
+                        <a href="https://github.com/AdamScholey25/Incident-Response-Platform" target="_blank" rel="noopener" class="text-cream-200 hover:underline">View on GitHub →</a>
                     </div>
                 </article>
 
