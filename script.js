@@ -37,11 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update button styles
             filterBtns.forEach(b => {
-                b.classList.remove('bg-forest-900', 'text-white');
-                b.classList.add('bg-white', 'text-forest-600', 'border', 'border-forest-300');
+                b.classList.remove('text-white');
+                b.classList.add('text-cream-200', 'border', 'border-forest-700');
             });
-            btn.classList.remove('bg-white', 'text-forest-600', 'border', 'border-forest-300');
-            btn.classList.add('bg-forest-900', 'text-white');
+            btn.classList.remove('text-cream-200', 'border', 'border-forest-700');
+            btn.classList.add('text-white');
 
             // Filter cards
             projectCards.forEach(card => {
