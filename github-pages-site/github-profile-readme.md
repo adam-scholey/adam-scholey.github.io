@@ -6,7 +6,7 @@ Currently building software at [diam Systems](https://diamsystems.co.uk). Focuse
 
 ---
 
-### What I work with
+### *What I work with*
 
 **Languages**\
 ![C#](https://img.shields.io/badge/C%23-239120?style=flat&logo=csharp&logoColor=white)
@@ -52,7 +52,7 @@ Currently building software at [diam Systems](https://diamsystems.co.uk). Focuse
 
 ---
 
-### Notable work
+### *Notable work*
 
 #### diam Systems — proprietary, private repos
 
@@ -90,7 +90,7 @@ Currently building software at [diam Systems](https://diamsystems.co.uk). Focuse
 
 ---
 
-### Links
+### *Links*
 
 - [Portfolio](https://adam-scholey.github.io)
 - [LinkedIn](https://www.linkedin.com/in/adam-scholey-8306892b0/)
