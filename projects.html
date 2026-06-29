@@ -1,396 +1,446 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Projects — Adam Scholey">
-    <meta name="theme-color" content="#613a3f">
-    <meta name="color-scheme" content="dark">
-    <title>Projects — Adam Scholey</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Projects — Adam Scholey">
+<title>Projects — Adam Scholey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0e0a09;
+  --panel:#1a100e;
+  --panel2:#221410;
+  --text:#f5f0eb;
+  --muted:#c4b8b0;
+  --soft:#8a7a72;
+  --gold:#c9b97a;
+  --gold2:#b09850;
+  --rose:#B76E79;
+  --rose2:#a05a64;
+  --cream:#faf7f2;
+  --border:rgba(255,255,255,.09);
+  --gold-border:rgba(201,185,122,.32);
+  --shadow:0 25px 80px rgba(0,0,0,.5);
+  --radius:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+  font-family:'Inter',Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;z-index:-5;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(183,110,121,.16), transparent 32%),
+    radial-gradient(circle at 86% 10%, rgba(201,185,122,.12), transparent 30%),
+    radial-gradient(circle at 60% 78%, rgba(176,152,80,.10), transparent 35%),
+    linear-gradient(180deg,#0e0a09 0%,#130c0a 55%,#0e0a09 100%);
+}
+.orb{position:fixed;border-radius:999px;filter:blur(60px);opacity:.35;z-index:-1;pointer-events:none;animation:orb 18s ease-in-out infinite alternate}
+.orb.one{width:280px;height:280px;background:var(--rose);left:-80px;top:18%}
+.orb.two{width:320px;height:320px;background:var(--gold);right:-110px;top:6%;animation-delay:3s}
+.orb.three{width:260px;height:260px;background:var(--rose2);left:40%;bottom:-120px;animation-delay:6s}
+@keyframes orb{0%{transform:translate3d(0,0,0) scale(.9)}100%{transform:translate3d(28px,-20px,0) scale(1.1)}}
+a{color:inherit;text-decoration:none}
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        forest: {
-                            50:  '#fdf2f4',
-                            100: '#fbe6e9',
-                            200: '#f5d1d7',
-                            300: '#edb0b9',
-                            400: '#e38e99',
-                            500: '#B76E79',
-                            600: '#a05a64',
-                            700: '#8a4d55',
-                            800: '#754248',
-                            900: '#613a3f',
-                            950: '#4a2e32',
-                        },
-                        gold: {
-                            300: '#e8d9a0',
-                            400: '#d4c07a',
-                            500: '#c9b97a',
-                            600: '#b09850',
-                        },
-                        cream: {
-                            50:  '#fafaf7',
-                            100: '#f4f4f0',
-                            200: '#eaeae2',
-                            300: '#d8d8cc',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+nav{
+  position:sticky;top:0;z-index:100;
+  padding:14px 20px;
+  backdrop-filter:blur(20px) saturate(1.4);
+  background:rgba(14,10,9,.75);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.nav-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:var(--cream);letter-spacing:-.3px}
+.nav-links{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.nav-links a{color:var(--muted);font-size:13px;font-weight:500;padding:8px 12px;border-radius:999px;transition:.22s ease}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+.nav-links .nav-cta{color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--rose));font-weight:700;box-shadow:0 8px 28px rgba(201,185,122,.18)}
+.nav-links .active{color:var(--text);background:rgba(255,255,255,.06)}
 
-    <style>
-        @font-face {
-            font-family: 'Instrument Serif';
-            src: url('https://fonts.gstatic.com/s/instrumentserif/v11/chr2-FY-iJWv2Z1KkO8r3F1LJ.woff2') format('woff2');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Instrument Serif';
-            src: url('https://fonts.gstatic.com/s/instrumentserif/v11/chr2-EY-iJWv2Z1KkO8r3F1LJ.woff2') format('woff2');
-            font-weight: 400;
-            font-style: italic;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Inter';
-            src: url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff2') format('woff2');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Inter';
-            src: url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZ9hjp-Ek-_EeA.woff2') format('woff2');
-            font-weight: 500;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Inter';
-            src: url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLKYAZ9hjp-Ek-_EeA.woff2') format('woff2');
-            font-weight: 600;
-            font-style: normal;
-            font-display: swap;
-        }
+main{position:relative;z-index:2}
+section{max-width:1180px;margin:0 auto;padding:88px 20px}
 
-        *, *::before, *::after { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #1a1a1a;
-            color: #e5e5e5;
-            margin: 0;
-            overflow-x: hidden;
-        }
-        .font-display { font-family: 'Instrument Serif', Georgia, serif; }
-        .signifier {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-style: italic;
-            font-size: 0.9rem;
-            color: #c9b97a;
-            letter-spacing: 0.03em;
-            margin-bottom: 0.5rem;
-        }
-    </style>
+.section-head{margin-bottom:36px}
+.kicker{color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:10px}
+h2{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.5px;margin-bottom:12px}
+.subtitle{color:var(--muted);max-width:800px;font-size:16px;line-height:1.7}
+
+/* FILTER TABS */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+.filter-btn{
+  padding:9px 18px;border-radius:999px;
+  font-size:12px;font-weight:600;letter-spacing:.4px;
+  border:1px solid var(--border);
+  background:var(--panel);color:var(--muted);
+  cursor:pointer;transition:.2s ease;
+}
+.filter-btn:hover{color:var(--text);border-color:rgba(255,255,255,.18)}
+.filter-btn.active{
+  color:var(--bg);
+  background:linear-gradient(135deg,var(--gold),var(--rose));
+  border-color:transparent;
+  box-shadow:0 6px 20px rgba(201,185,122,.2);
+}
+
+/* PROJECT GRID */
+.project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+
+.proj-card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:28px 28px 28px 30px;
+  box-shadow:0 1px 0 rgba(255,255,255,.025) inset,0 16px 30px -24px rgba(0,0,0,.8);
+  transition:transform .22s ease,border-color .22s ease;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.proj-card::after{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:rgba(255,255,255,.08);transition:background .22s ease;pointer-events:none;
+}
+.proj-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.2)}
+.proj-card:hover::after{background:linear-gradient(180deg,var(--gold),var(--rose))}
+
+.proj-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;gap:12px}
+.proj-icon{
+  width:42px;height:42px;border-radius:10px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  display:grid;place-items:center;font-size:20px;flex-shrink:0;
+}
+.proj-badge{
+  font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;
+  padding:4px 10px;border-radius:999px;
+}
+.badge-diam{background:rgba(201,185,122,.12);color:var(--gold);border:1px solid var(--gold-border)}
+.badge-personal{background:rgba(183,110,121,.12);color:var(--rose);border:1px solid rgba(183,110,121,.3)}
+
+.proj-card h3{
+  font-family:'Instrument Serif',Georgia,serif;
+  font-size:19px;color:var(--text);
+  margin-bottom:10px;line-height:1.2;
+}
+.proj-card p{color:var(--muted);font-size:13px;line-height:1.75;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.tag{
+  color:var(--soft);border:1px solid var(--border);border-radius:6px;
+  padding:4px 9px;font-size:11px;letter-spacing:.2px;font-weight:500;
+}
+.proj-footer{
+  display:flex;align-items:center;gap:12px;
+  margin-top:18px;padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.06);
+  font-size:12px;
+}
+.proj-status{
+  padding:4px 10px;border-radius:6px;font-weight:600;font-size:11px;letter-spacing:.3px;
+}
+.status-dev{background:rgba(201,185,122,.1);color:var(--gold)}
+.status-live{background:rgba(40,200,100,.1);color:#5dd98a}
+.proj-link{
+  color:var(--muted);transition:.2s;margin-left:auto;
+}
+.proj-link:hover{color:var(--gold)}
+
+/* CONTACT */
+.contact-panel{
+  text-align:center;padding:50px 28px;
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:var(--radius);position:relative;overflow:hidden;
+}
+.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-top:28px}
+.contact-links a{
+  min-width:200px;padding:16px 20px;
+  border-radius:12px;border:1px solid var(--border);
+  background:var(--panel2);
+  transition:transform .2s ease,border-color .2s ease;
+  position:relative;overflow:hidden;
+}
+.contact-links a::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:rgba(255,255,255,.08);transition:background .2s ease}
+.contact-links a:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.18)}
+.contact-links a:hover::after{background:linear-gradient(180deg,var(--gold),var(--rose))}
+.small{color:var(--soft);font-size:11px;margin-top:3px;display:block}
+
+footer{
+  position:relative;z-index:2;
+  border-top:1px solid rgba(255,255,255,.07);
+  background:rgba(0,0,0,.3);
+  padding:32px 20px;text-align:center;
+}
+.footer-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:14px}
+.footer-nav a{color:var(--soft);font-size:12px;padding:6px 8px;transition:.2s}
+.footer-nav a:hover{color:var(--gold)}
+
+.reveal{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.visible{opacity:1;transform:translateY(0) scale(1)}
+
+@media(max-width:860px){.project-grid{grid-template-columns:1fr}}
+@media(max-width:720px){
+  .nav-inner{flex-direction:column;align-items:flex-start}
+  section{padding:60px 16px}
+  .contact-links a{width:100%}
+}
+</style>
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
-    <nav class="absolute top-0 left-0 right-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-            <a href="index.html" class="font-display text-2xl text-cream-50">AS</a>
-            <div class="nav-links hidden md:flex flex-col md:flex-row absolute md:static top-full inset-x-0 md:inset-auto gap-4 md:gap-8 p-6 md:p-0 bg-transparent backdrop-blur-none border-b border-cream-100/10 md:border-0">
-                <a href="index.html" class="text-cream-100/80 hover:text-cream-50 transition">Home</a>
-                <a href="projects.html" class="text-cream-50 font-medium">Projects</a>
-                <a href="index.html#contact" class="text-cream-100/80 hover:text-cream-50 transition">Contact</a>
-            </div>
-            <button class="nav-toggle md:hidden text-cream-50" aria-label="Toggle menu">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            </button>
+<div class="orb one"></div>
+<div class="orb two"></div>
+<div class="orb three"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">Adam Scholey</a>
+    <div class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class="reveal">
+    <div class="section-head">
+      <div class="kicker">// projects</div>
+      <h2>Systems built with intent.</h2>
+      <p class="subtitle">Every project here exists because I wanted to understand something deeply enough to build it from scratch — not just use a library for it.</p>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="diamsystems">diam Systems</button>
+      <button class="filter-btn" data-filter="personal">Personal</button>
+    </div>
+
+    <div class="project-grid" id="project-grid">
+
+      <div class="proj-card" data-category="diamsystems">
+        <div class="proj-header">
+          <div class="proj-icon">🍽️</div>
+          <span class="proj-badge badge-diam">diam Systems</span>
         </div>
-    </nav>
-
-    <section class="py-20 px-6 bg-forest-950 relative overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=90&w=3840&auto=format&fit=crop');"></div>
-        <div class="absolute inset-0 bg-forest-950/75"></div>
-        <div class="relative z-10 max-w-6xl mx-auto">
-            <h2 class="font-display text-4xl text-cream-50 mb-12 text-center">Projects</h2>
-            <div class="flex justify-center gap-4 mb-12">
-                <button class="filter-btn px-6 py-2 rounded-full bg-forest-900 text-white font-medium" data-filter="all">All</button>
-                <button class="filter-btn px-6 py-2 rounded-full bg-forest-800 text-cream-200 border border-forest-700 hover:bg-forest-700 transition" data-filter="diamsystems">diam Systems</button>
-                <button class="filter-btn px-6 py-2 rounded-full bg-forest-800 text-cream-200 border border-forest-700 hover:bg-forest-700 transition" data-filter="personal">Personal</button>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8">
-
-                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="diamsystems">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                            </div>
-                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">diam Systems</span>
-                        </div>
-                    </div>
-                    <h3 class="font-display text-xl text-cream-50 mb-3">diamReserve — Restaurant Booking System</h3>
-                    <p class="text-cream-100 text-sm mb-4">A professional, production-ready restaurant table booking system with visual floor plan, customer-facing booking flow, admin panel, staff PWA, and Stripe deposits. Features include real-time table availability, £10/head deposit via Stripe Checkout, email notifications, and robust security throughout.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Python</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Flask</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">MySQL</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Tailwind CSS</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Stripe</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">PWA</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-xs text-cream-300">
-                        <span class="bg-forest-800 px-2 py-1 rounded">In Development</span>
-                        <span>Private repo — proprietary</span>
-                    </div>
-                </article>
-
-                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="diamsystems">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                            </div>
-                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">diam Systems</span>
-                        </div>
-                    </div>
-                    <h3 class="font-display text-xl text-cream-50 mb-3">Seek — Internal Search Engine</h3>
-                    <p class="text-cream-100 text-sm mb-4">Internal search engine for organisations with GDPR compliance and multi-region support. Connects to internal databases and presents a single search bar for products, customers, orders, and business data. Features full-text search, Redis caching, incremental sync, distributed locks, and cross-border consent management.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Python</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Flask</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">PostgreSQL</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Redis</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">GDPR</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-xs text-cream-300">
-                        <span class="bg-forest-800 px-2 py-1 rounded">In Development</span>
-                        <span>Private repo — proprietary</span>
-                    </div>
-                </article>
-
-                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="diamsystems">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-                            </div>
-                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">diam Systems</span>
-                        </div>
-                    </div>
-                    <h3 class="font-display text-xl text-cream-50 mb-3">Tracker — Project Management</h3>
-                    <p class="text-cream-100 text-sm mb-4">Project management web app for tracking projects through statuses: Planning, Development, Release Candidate, Released. Features GitHub OAuth authentication, email notifications on status changes, and an elegant UI. Built with Flask, SQLite, and Authlib for secure OAuth integration.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Python</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Flask</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">SQLite</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Authlib</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">GitHub OAuth</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-xs text-cream-300">
-                        <span class="bg-forest-800 px-2 py-1 rounded">In Development</span>
-                        <span>Private repo — proprietary</span>
-                    </div>
-                </article>
-
-                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="diamsystems">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                            </div>
-                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">diam Systems</span>
-                        </div>
-                    </div>
-                    <h3 class="font-display text-xl text-cream-50 mb-3">diamsystems.co.uk</h3>
-                    <p class="text-cream-100 text-sm mb-4">Corporate website and e-commerce platform integrating three fulfilment APIs — Stripe for direct payments, Gumroad for digital product licensing, and Printify for print-on-demand merchandise. Built with Flask, multi-locale support, and full-text search.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Python</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Flask</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Stripe</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Gumroad API</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Printify API</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-xs text-cream-300">
-                        <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener" class="text-cream-200 hover:underline">Visit Site →</a>
-                        <span>Private repo — proprietary</span>
-                    </div>
-                </article>
-
-                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="personal">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                            </div>
-                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">Personal</span>
-                        </div>
-                    </div>
-                    <h3 class="font-display text-xl text-cream-50 mb-3">FileFlow — Cloud File System</h3>
-                    <p class="text-cream-100 text-sm mb-4">Built to understand what zero-knowledge encryption actually means in practice. Files are encrypted client-side with AES-256 before hitting the API — the server stores ciphertext and handles S3 object management, but never sees plaintext. Real-time collaboration runs over SignalR; the live code sharing workspace uses Monaco editor with operational-transform-style conflict handling.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">C#</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Blazor</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">ASP.NET Core</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">PostgreSQL</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">AWS S3</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">SignalR</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-xs text-cream-300">
-                        <a href="https://github.com/AdamScholey25/fileflow" target="_blank" rel="noopener" class="text-cream-200 hover:underline">View on GitHub →</a>
-                    </div>
-                </article>
-
-                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="personal">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                            </div>
-                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">Personal</span>
-                        </div>
-                    </div>
-                    <h3 class="font-display text-xl text-cream-50 mb-3">OrgNet — Organisation Platform</h3>
-                    <p class="text-cream-100 text-sm mb-4">Built specifically to get row-level security right. PostgreSQL RLS policies enforce that every query — even a misconfigured one — returns only the calling tenant's rows. Redis powers the event bus for cross-service messaging so the API stays stateless. JWT auth with refresh token rotation, Docker Compose orchestration for local parity with production, and SignalR for real-time organisation activity feeds.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">C#</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">ASP.NET Core</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">PostgreSQL</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Redis</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">Docker</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">SignalR</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-xs text-cream-300">
-                        <a href="https://github.com/AdamScholey25/orgnet" target="_blank" rel="noopener" class="text-cream-200 hover:underline">View on GitHub →</a>
-                    </div>
-                </article>
-
-                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="personal">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                            </div>
-                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">Personal</span>
-                        </div>
-                    </div>
-                    <h3 class="font-display text-xl text-cream-50 mb-3">SecureShield — Anti-Malware Console</h3>
-                    <p class="text-cream-100 text-sm mb-4">Built to understand how security tooling works at the OS level, not just how to call a security API. Uses .NET's FileSystemWatcher for real-time directory monitoring, SHA-256 signature matching against a hash database, and raw socket inspection for network traffic analysis. Validates correctly against the EICAR test file standard. WinUI 3 console with RBAC so analyst and admin roles see different capabilities.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">C#</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">WinUI 3</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">FileSystemWatcher</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">SHA-256</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">RBAC</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-xs text-cream-300">
-                        <a href="https://github.com/AdamScholey25/Antivirus-Software" target="_blank" rel="noopener" class="text-cream-200 hover:underline">View on GitHub →</a>
-                    </div>
-                </article>
-
-                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="personal">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-                            </div>
-                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">Personal</span>
-                        </div>
-                    </div>
-                    <h3 class="font-display text-xl text-cream-50 mb-3">Bookshop Inventory System</h3>
-                    <p class="text-cream-100 text-sm mb-4">A deliberate exercise in clean API design: RESTful endpoints with proper resource modelling, EF Core migrations for schema evolution, and Swagger/OpenAPI documentation written alongside the code rather than generated afterwards. The WinUI 3 desktop client consumes the same API, so the contract is tested from both sides.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">C#</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">ASP.NET Core</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">EF Core</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">WinUI 3</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">REST API</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-xs text-cream-300">
-                        <a href="https://github.com/AdamScholey25/Bookshop-Inventorysystem" target="_blank" rel="noopener" class="text-cream-200 hover:underline">View on GitHub →</a>
-                    </div>
-                </article>
-
-                <article class="bg-forest-900 p-6 rounded-lg shadow-sm border border-forest-800 hover:shadow-md transition" data-category="personal">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-forest-800 rounded-lg flex items-center justify-center text-cream-50">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                            </div>
-                            <span class="text-xs font-medium text-cream-200 bg-forest-800 px-2 py-1 rounded-full">Personal</span>
-                        </div>
-                    </div>
-                    <h3 class="font-display text-xl text-cream-50 mb-3">Incident Response Platform</h3>
-                    <p class="text-cream-100 text-sm mb-4">Implements the NIST incident response lifecycle as a structured workflow, not just a checklist. Each incident has a full chain of custody for evidence — immutable append-only records with timestamps — and pre-built playbooks that guide analysts through containment and recovery steps. Tracks MTTD, MTTC, and MTTR metrics per incident so performance can be reviewed across a team.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">C#</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">.NET MAUI</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">SQLite</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">NIST Framework</span>
-                        <span class="text-xs bg-forest-800 text-cream-200 px-2 py-1 rounded">MVVM</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-xs text-cream-300">
-                        <a href="https://github.com/AdamScholey25/Incident-Response-Platform" target="_blank" rel="noopener" class="text-cream-200 hover:underline">View on GitHub →</a>
-                    </div>
-                </article>
-
-            </div>
+        <h3>diamReserve — Restaurant Booking System</h3>
+        <p>Production-ready restaurant table booking system with visual floor plan, customer-facing booking flow, admin dashboard, staff PWA, and Stripe deposits. Features real-time table availability, £10/head deposit via Stripe Checkout, email notifications, and robust security throughout.</p>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MySQL</span><span class="tag">Tailwind CSS</span><span class="tag">Stripe</span><span class="tag">PWA</span>
         </div>
-    </section>
-
-    <footer id="contact" class="bg-forest-950 text-cream-100 pt-20 pb-10 px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid md:grid-cols-3 gap-12 mb-16">
-                <div class="md:col-span-1">
-                    <h3 class="font-display text-3xl text-cream-50 mb-4">Let's talk</h3>
-                    <p class="text-cream-100/70 text-sm leading-relaxed">I'm always up for a conversation about backend architecture, hard engineering problems, or what I'm building next. Particularly interested in teams working on infrastructure, developer tooling, or anything where the backend is genuinely the hard part.</p>
-                </div>
-                <div class="md:col-span-1">
-                    <p class="signifier">Get in touch</p>
-                    <div class="space-y-3 mt-2">
-                        <a href="mailto:adamscholey25@gmail.com" class="flex items-center gap-3 text-cream-100/80 hover:text-cream-50 transition">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            adamscholey25@gmail.com
-                        </a>
-                        <a href="https://www.linkedin.com/in/adam-scholey-8306892b0/" target="_blank" rel="noopener" class="flex items-center gap-3 text-cream-100/80 hover:text-cream-50 transition">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                            LinkedIn
-                        </a>
-                        <a href="https://github.com/adam-scholey" target="_blank" rel="noopener" class="flex items-center gap-3 text-cream-100/80 hover:text-cream-50 transition">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            GitHub
-                        </a>
-                        <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener" class="flex items-center gap-3 text-cream-100/80 hover:text-cream-50 transition">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                            diam Systems
-                        </a>
-                    </div>
-                </div>
-                <div class="md:col-span-1">
-                    <p class="signifier">Navigate</p>
-                    <div class="space-y-3 mt-2">
-                        <a href="index.html" class="block text-cream-100/80 hover:text-cream-50 transition">Home</a>
-                        <a href="projects.html" class="block text-cream-100/80 hover:text-cream-50 transition">Projects</a>
-                        <a href="index.html#contact" class="block text-cream-100/80 hover:text-cream-50 transition">Contact</a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-cream-100/15 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p class="font-display text-xl text-cream-50">AS</p>
-                <p class="text-cream-100/50 text-sm">&copy; 2026 Adam Scholey. All rights reserved.</p>
-            </div>
+        <div class="proj-footer">
+          <span class="proj-status status-dev">In Development</span>
+          <span class="proj-link">Private repo — proprietary</span>
         </div>
-    </footer>
+      </div>
 
-    <script src="script.js"></script>
+      <div class="proj-card" data-category="diamsystems">
+        <div class="proj-header">
+          <div class="proj-icon">🔍</div>
+          <span class="proj-badge badge-diam">diam Systems</span>
+        </div>
+        <h3>Seek — Internal Search Engine</h3>
+        <p>Internal search engine for organisations with GDPR compliance and multi-region support. Connects to internal databases and presents a single search bar for products, customers, orders, and business data. Features full-text search, Redis caching, incremental sync, and distributed locks.</p>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">GDPR</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-status status-dev">In Development</span>
+          <span class="proj-link">Private repo — proprietary</span>
+        </div>
+      </div>
+
+      <div class="proj-card" data-category="diamsystems">
+        <div class="proj-header">
+          <div class="proj-icon">✅</div>
+          <span class="proj-badge badge-diam">diam Systems</span>
+        </div>
+        <h3>Tracker — Project Management</h3>
+        <p>Project management web app for tracking projects through statuses: Planning, Development, Release Candidate, Released. Features GitHub OAuth authentication, email notifications on status changes, and an elegant UI. Built with Flask, SQLite, and Authlib for secure OAuth integration.</p>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">SQLite</span><span class="tag">Authlib</span><span class="tag">GitHub OAuth</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-status status-dev">In Development</span>
+          <span class="proj-link">Private repo — proprietary</span>
+        </div>
+      </div>
+
+      <div class="proj-card" data-category="diamsystems">
+        <div class="proj-header">
+          <div class="proj-icon">🌐</div>
+          <span class="proj-badge badge-diam">diam Systems</span>
+        </div>
+        <h3>diamsystems.co.uk</h3>
+        <p>Corporate website and e-commerce platform integrating three fulfilment APIs — Stripe for direct payments, Gumroad for digital product licensing, and Printify for print-on-demand merchandise. Built with Flask, multi-locale support, and full-text search.</p>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Stripe</span><span class="tag">Gumroad API</span><span class="tag">Printify API</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-status status-live">Live</span>
+          <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener" class="proj-link">Visit Site →</a>
+        </div>
+      </div>
+
+      <div class="proj-card" data-category="personal">
+        <div class="proj-header">
+          <div class="proj-icon">📁</div>
+          <span class="proj-badge badge-personal">Personal</span>
+        </div>
+        <h3>FileFlow — Zero-Knowledge Cloud Storage</h3>
+        <p>Built to understand what zero-knowledge encryption actually means in practice. Files are encrypted client-side with AES-256 before hitting the API — the server stores ciphertext and handles S3 object management, but never sees plaintext. Real-time collaboration runs over SignalR with Monaco editor and operational-transform conflict handling.</p>
+        <div class="tags">
+          <span class="tag">C#</span><span class="tag">Blazor</span><span class="tag">ASP.NET Core</span><span class="tag">PostgreSQL</span><span class="tag">AWS S3</span><span class="tag">SignalR</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-status status-dev">In Development</span>
+          <a href="https://github.com/AdamScholey25/fileflow" target="_blank" rel="noopener" class="proj-link">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="proj-card" data-category="personal">
+        <div class="proj-header">
+          <div class="proj-icon">🏢</div>
+          <span class="proj-badge badge-personal">Personal</span>
+        </div>
+        <h3>OrgNet — Organisation Platform</h3>
+        <p>Built specifically to get row-level security right. PostgreSQL RLS policies enforce that every query — even a misconfigured one — returns only the calling tenant's rows. Redis powers the event bus, JWT with refresh token rotation, Docker Compose orchestration, and SignalR for real-time activity feeds.</p>
+        <div class="tags">
+          <span class="tag">C#</span><span class="tag">ASP.NET Core</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">SignalR</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-status status-dev">In Development</span>
+          <a href="https://github.com/AdamScholey25/orgnet" target="_blank" rel="noopener" class="proj-link">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="proj-card" data-category="personal">
+        <div class="proj-header">
+          <div class="proj-icon">🛡️</div>
+          <span class="proj-badge badge-personal">Personal</span>
+        </div>
+        <h3>SecureShield — Anti-Malware Console</h3>
+        <p>Built to understand how security tooling works at the OS level. Uses .NET FileSystemWatcher for real-time directory monitoring, SHA-256 signature matching against a hash database, and raw socket inspection for network traffic analysis. Validates correctly against the EICAR test file standard. WinUI 3 with RBAC.</p>
+        <div class="tags">
+          <span class="tag">C#</span><span class="tag">WinUI 3</span><span class="tag">FileSystemWatcher</span><span class="tag">SHA-256</span><span class="tag">RBAC</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-status status-dev">In Development</span>
+          <a href="https://github.com/AdamScholey25/Antivirus-Software" target="_blank" rel="noopener" class="proj-link">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="proj-card" data-category="personal">
+        <div class="proj-header">
+          <div class="proj-icon">📚</div>
+          <span class="proj-badge badge-personal">Personal</span>
+        </div>
+        <h3>Bookshop Inventory System</h3>
+        <p>A deliberate exercise in clean API design: RESTful endpoints with proper resource modelling, EF Core migrations for schema evolution, and Swagger/OpenAPI documentation written alongside the code. The WinUI 3 desktop client consumes the same API, so the contract is tested from both sides.</p>
+        <div class="tags">
+          <span class="tag">C#</span><span class="tag">ASP.NET Core</span><span class="tag">EF Core</span><span class="tag">WinUI 3</span><span class="tag">REST API</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-status status-dev">Complete</span>
+          <a href="https://github.com/AdamScholey25/Bookshop-Inventorysystem" target="_blank" rel="noopener" class="proj-link">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="proj-card" data-category="personal">
+        <div class="proj-header">
+          <div class="proj-icon">⚠️</div>
+          <span class="proj-badge badge-personal">Personal</span>
+        </div>
+        <h3>Incident Response Platform</h3>
+        <p>Implements the NIST incident response lifecycle as a structured workflow. Each incident has a full chain of custody — immutable append-only records with timestamps — and pre-built playbooks guiding analysts through containment and recovery. Tracks MTTD, MTTC, and MTTR metrics per incident.</p>
+        <div class="tags">
+          <span class="tag">C#</span><span class="tag">.NET MAUI</span><span class="tag">SQLite</span><span class="tag">NIST Framework</span><span class="tag">MVVM</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-status status-dev">Complete</span>
+          <a href="https://github.com/AdamScholey25/Incident-Response-Platform" target="_blank" rel="noopener" class="proj-link">View on GitHub →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <div class="contact-panel">
+      <div class="kicker">// contact</div>
+      <h2>Let's talk.</h2>
+      <p class="subtitle" style="margin:0 auto">Particularly interested in teams working on infrastructure, developer tooling, or anything where the backend is genuinely the hard part.</p>
+      <div class="contact-links">
+        <a href="mailto:adamscholey25@gmail.com">
+          📧 Email<br>
+          <span class="small">adamscholey25@gmail.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/adam-scholey-8306892b0/" target="_blank" rel="noopener">
+          💼 LinkedIn<br>
+          <span class="small">adam-scholey-8306892b0</span>
+        </a>
+        <a href="https://github.com/AdamScholey25" target="_blank" rel="noopener">
+          🐙 GitHub<br>
+          <span class="small">github.com/AdamScholey25</span>
+        </a>
+        <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener">
+          🌐 diam Systems<br>
+          <span class="small">diamsystems.co.uk</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-nav">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#skills">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <p style="color:var(--soft);font-size:12px">© <span id="year">2026</span> Adam Scholey · Software Engineer</p>
+</footer>
+
+<script>
+document.documentElement.classList.add("js");
+
+const btns = document.querySelectorAll(".filter-btn");
+const cards = document.querySelectorAll(".proj-card");
+
+btns.forEach(function(btn){
+  btn.addEventListener("click", function(){
+    btns.forEach(function(b){b.classList.remove("active")});
+    btn.classList.add("active");
+    const filter = btn.dataset.filter;
+    cards.forEach(function(card){
+      if(filter === "all" || card.dataset.category === filter){
+        card.style.display = "";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+});
+
+const reveals = document.querySelectorAll(".reveal");
+const observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){entry.target.classList.add("visible")}
+  });
+},{threshold:.05,rootMargin:"0px 0px -6% 0px"});
+reveals.forEach(function(s){observer.observe(s)});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>

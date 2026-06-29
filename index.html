@@ -1,326 +1,816 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Adam Scholey — Software Engineer">
-    <meta name="theme-color" content="#613a3f">
-    <meta name="color-scheme" content="dark">
-    <title>Adam Scholey — Software Engineer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Adam Scholey — Software Engineer">
+<title>Adam Scholey — Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0e0a09;
+  --panel:#1a100e;
+  --panel2:#221410;
+  --text:#f5f0eb;
+  --muted:#c4b8b0;
+  --soft:#8a7a72;
+  --gold:#c9b97a;
+  --gold2:#b09850;
+  --rose:#B76E79;
+  --rose2:#a05a64;
+  --cream:#faf7f2;
+  --border:rgba(255,255,255,.09);
+  --gold-border:rgba(201,185,122,.32);
+  --shadow:0 25px 80px rgba(0,0,0,.5);
+  --radius:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+  font-family:'Inter',Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-5;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(183,110,121,.16), transparent 32%),
+    radial-gradient(circle at 86% 10%, rgba(201,185,122,.12), transparent 30%),
+    radial-gradient(circle at 60% 78%, rgba(176,152,80,.10), transparent 35%),
+    linear-gradient(180deg,#0e0a09 0%,#130c0a 55%,#0e0a09 100%);
+}
+.orb{
+  position:fixed;
+  border-radius:999px;
+  filter:blur(60px);
+  opacity:.35;
+  z-index:-1;
+  pointer-events:none;
+  animation:orb 18s ease-in-out infinite alternate;
+}
+.orb.one{width:280px;height:280px;background:var(--rose);left:-80px;top:18%}
+.orb.two{width:320px;height:320px;background:var(--gold);right:-110px;top:6%;animation-delay:3s}
+.orb.three{width:260px;height:260px;background:var(--rose2);left:40%;bottom:-120px;animation-delay:6s}
+@keyframes orb{
+  0%{transform:translate3d(0,0,0) scale(.9)}
+  100%{transform:translate3d(28px,-20px,0) scale(1.1)}
+}
+a{color:inherit;text-decoration:none}
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        forest: {
-                            50:  '#fdf2f4',
-                            100: '#fbe6e9',
-                            200: '#f5d1d7',
-                            300: '#edb0b9',
-                            400: '#e38e99',
-                            500: '#B76E79',
-                            600: '#a05a64',
-                            700: '#8a4d55',
-                            800: '#754248',
-                            900: '#613a3f',
-                            950: '#4a2e32',
-                        },
-                        gold: {
-                            300: '#e8d9a0',
-                            400: '#d4c07a',
-                            500: '#c9b97a',
-                            600: '#b09850',
-                        },
-                        cream: {
-                            50:  '#fafaf7',
-                            100: '#f4f4f0',
-                            200: '#eaeae2',
-                            300: '#d8d8cc',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  padding:14px 20px;
+  backdrop-filter:blur(20px) saturate(1.4);
+  background:rgba(14,10,9,.75);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.nav-inner{
+  max-width:1180px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.logo{
+  font-family:'Instrument Serif',Georgia,serif;
+  font-size:22px;
+  color:var(--cream);
+  letter-spacing:-.3px;
+}
+.nav-links{
+  display:flex;
+  gap:6px;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.nav-links a{
+  color:var(--muted);
+  font-size:13px;
+  font-weight:500;
+  padding:8px 12px;
+  border-radius:999px;
+  transition:.22s ease;
+}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+.nav-links .nav-cta{
+  color:var(--bg);
+  background:linear-gradient(135deg,var(--gold),var(--rose));
+  font-weight:700;
+  box-shadow:0 8px 28px rgba(201,185,122,.18);
+}
 
-    <style>
-        @font-face {
-            font-family: 'Instrument Serif';
-            src: url('https://fonts.gstatic.com/s/instrumentserif/v11/chr2-FY-iJWv2Z1KkO8r3F1LJ.woff2') format('woff2');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Instrument Serif';
-            src: url('https://fonts.gstatic.com/s/instrumentserif/v11/chr2-EY-iJWv2Z1KkO8r3F1LJ.woff2') format('woff2');
-            font-weight: 400;
-            font-style: italic;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Inter';
-            src: url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff2') format('woff2');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Inter';
-            src: url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZ9hjp-Ek-_EeA.woff2') format('woff2');
-            font-weight: 500;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Inter';
-            src: url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLKYAZ9hjp-Ek-_EeA.woff2') format('woff2');
-            font-weight: 600;
-            font-style: normal;
-            font-display: swap;
-        }
+main{position:relative;z-index:2}
+section{
+  max-width:1180px;
+  margin:0 auto;
+  padding:88px 20px;
+}
 
-        *, *::before, *::after { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #1a1a1a;
-            color: #e5e5e5;
-            margin: 0;
-            overflow-x: hidden;
-        }
-        .font-display { font-family: 'Instrument Serif', Georgia, serif; }
-        .signifier {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-style: italic;
-            font-size: 0.9rem;
-            color: #c9b97a;
-            letter-spacing: 0.03em;
-            margin-bottom: 0.5rem;
-        }
-    </style>
+/* HERO */
+.hero{
+  min-height:calc(100vh - 66px);
+  display:grid;
+  align-items:center;
+  padding-top:60px;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:40px;
+  align-items:center;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 14px;
+  border-radius:999px;
+  color:var(--gold);
+  border:1px solid var(--gold-border);
+  background:rgba(201,185,122,.07);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+.badge-dot{
+  width:7px;height:7px;
+  background:var(--gold);
+  border-radius:999px;
+  box-shadow:0 0 12px var(--gold);
+  animation:pulseDot 1.8s ease-in-out infinite;
+}
+@keyframes pulseDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.6);opacity:.5}}
+h1{
+  font-family:'Instrument Serif',Georgia,serif;
+  font-size:clamp(52px,7.5vw,92px);
+  line-height:.96;
+  letter-spacing:-3px;
+  margin-bottom:20px;
+}
+.gradient-text{
+  background:linear-gradient(135deg,#f5f0eb 0%,var(--gold) 50%,var(--rose) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.typing-line{
+  font-family:'Instrument Serif',Georgia,serif;
+  font-style:italic;
+  color:var(--gold);
+  font-size:clamp(17px,2.2vw,22px);
+  min-height:30px;
+  margin-bottom:16px;
+}
+.cursor{animation:blink 1s steps(1) infinite;color:var(--rose)}
+@keyframes blink{50%{opacity:0}}
+.hero-copy{
+  color:var(--muted);
+  font-size:17px;
+  max-width:680px;
+  margin-bottom:28px;
+  line-height:1.75;
+}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:32px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border-radius:12px;
+  padding:13px 20px;
+  font-size:13px;
+  font-weight:700;
+  transition:.22s ease;
+  position:relative;
+  overflow:hidden;
+}
+.btn.primary{
+  color:var(--bg);
+  background:linear-gradient(135deg,var(--gold),var(--rose));
+  box-shadow:0 12px 36px rgba(201,185,122,.18);
+}
+.btn.secondary{
+  color:var(--gold);
+  border:1px solid var(--gold-border);
+  background:rgba(201,185,122,.06);
+}
+.btn.ghost{
+  color:var(--text);
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.04);
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.quick-stats{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  max-width:600px;
+}
+.quick-stat{
+  padding:14px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--panel);
+}
+.quick-stat strong{
+  display:block;
+  color:var(--gold);
+  font-family:'Instrument Serif',Georgia,serif;
+  font-size:20px;
+  margin-bottom:2px;
+}
+.quick-stat span{color:var(--soft);font-size:12px}
+
+/* PROFILE CARD */
+.profile-card{
+  position:relative;
+  background:linear-gradient(160deg,rgba(34,20,16,.9),rgba(20,12,10,.95));
+  border:1px solid rgba(201,185,122,.2);
+  border-radius:var(--radius);
+  padding:28px;
+  box-shadow:var(--shadow),0 0 50px rgba(201,185,122,.05);
+  overflow:hidden;
+  animation:floatPanel 7s ease-in-out infinite;
+}
+@keyframes floatPanel{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.profile-card::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:linear-gradient(120deg,transparent,rgba(201,185,122,.2),transparent);
+  transform:translateX(-100%);
+  animation:shine 6s ease-in-out infinite;
+  border-radius:var(--radius);
+}
+@keyframes shine{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.card-avatar{
+  width:56px;height:56px;
+  border-radius:14px;
+  background:linear-gradient(135deg,rgba(201,185,122,.2),rgba(183,110,121,.15));
+  border:1px solid var(--gold-border);
+  display:grid;
+  place-items:center;
+  font-family:'Instrument Serif',Georgia,serif;
+  font-size:22px;
+  color:var(--gold);
+  margin-bottom:18px;
+}
+.profile-name{
+  font-family:'Instrument Serif',Georgia,serif;
+  font-size:22px;
+  color:var(--text);
+  margin-bottom:4px;
+}
+.profile-role{
+  font-size:13px;
+  color:var(--gold);
+  font-weight:500;
+  margin-bottom:18px;
+  font-style:italic;
+}
+.profile-divider{
+  height:1px;
+  background:rgba(255,255,255,.08);
+  margin:18px 0;
+}
+.profile-row{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin-bottom:12px;
+  font-size:13px;
+}
+.profile-row .label{color:var(--soft);min-width:70px;font-size:11px;text-transform:uppercase;letter-spacing:.5px;padding-top:1px}
+.profile-row .val{color:var(--muted)}
+.award-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:7px 12px;border-radius:8px;
+  background:rgba(201,185,122,.1);
+  border:1px solid var(--gold-border);
+  font-size:12px;color:var(--gold);
+  margin-top:14px;width:100%;
+}
+
+/* SECTION HEADS */
+.section-head{margin-bottom:36px}
+.kicker{
+  color:var(--gold);
+  font-size:11px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:2.5px;
+  margin-bottom:10px;
+}
+h2{
+  font-family:'Instrument Serif',Georgia,serif;
+  font-size:clamp(32px,5vw,52px);
+  line-height:1.05;
+  letter-spacing:-1.5px;
+  margin-bottom:12px;
+}
+.subtitle{
+  color:var(--muted);
+  max-width:800px;
+  font-size:16px;
+  line-height:1.7;
+}
+
+/* CARDS */
+.grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:22px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+.card,.proj-card,.repo-card,.tl-item{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:26px 26px 26px 28px;
+  box-shadow:0 1px 0 rgba(255,255,255,.025) inset,0 16px 30px -24px rgba(0,0,0,.8);
+  transition:transform .2s ease,border-color .2s ease;
+  position:relative;
+  overflow:hidden;
+}
+.card::after,.proj-card::after,.repo-card::after,.tl-item::after{
+  content:"";
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:3px;
+  background:rgba(255,255,255,.08);
+  transition:background .2s ease;
+  pointer-events:none;
+}
+.card:hover,.proj-card:hover,.repo-card:hover,.tl-item:hover{
+  transform:translateY(-3px);
+  border-color:rgba(255,255,255,.18);
+}
+.card:hover::after,.proj-card:hover::after,.repo-card:hover::after,.tl-item:hover::after{
+  background:linear-gradient(180deg,var(--gold),var(--rose));
+}
+.card h3,.proj-card h3{
+  color:var(--text);
+  font-family:'Instrument Serif',Georgia,serif;
+  font-size:19px;
+  margin-bottom:12px;
+}
+.repo-card h3{
+  color:var(--gold);
+  font-size:15px;
+  font-weight:600;
+  margin-bottom:10px;
+}
+.card p,.proj-card p,.repo-card p,.tl-item li{color:var(--muted);font-size:14px;line-height:1.7}
+ul{padding-left:18px}
+li{margin-bottom:8px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tag{
+  color:var(--soft);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:4px 9px;
+  font-size:11px;
+  letter-spacing:.2px;
+  font-weight:500;
+}
+
+/* STAT CARDS */
+.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.stat-card{
+  border-radius:14px;
+  padding:20px;
+  border:1px solid var(--border);
+  background:var(--panel);
+  min-height:110px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  transition:transform .2s ease,border-color .2s ease;
+  position:relative;overflow:hidden;
+}
+.stat-card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:rgba(255,255,255,.08);transition:background .2s ease}
+.stat-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.18)}
+.stat-card:hover::after{background:linear-gradient(180deg,var(--gold),var(--rose))}
+.stat-card strong{
+  color:var(--gold);
+  font-family:'Instrument Serif',Georgia,serif;
+  font-size:28px;
+  margin-bottom:4px;
+}
+.stat-card span{color:var(--muted);font-size:13px}
+
+/* ICON */
+.icon{
+  width:44px;height:44px;
+  display:grid;place-items:center;
+  border-radius:10px;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border);
+  font-size:22px;
+  margin-bottom:14px;
+}
+
+/* SKILL LIST */
+.skill-list{list-style:none;padding-left:0}
+.skill-list li{padding-left:20px;position:relative;font-size:14px;color:var(--muted)}
+.skill-list li::before{content:"→";position:absolute;left:0;color:var(--gold);font-size:12px}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:28px}
+.timeline::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,var(--gold),var(--rose),transparent);
+}
+.tl-item{margin-bottom:22px;overflow:visible}
+.tl-item::before{
+  content:"";position:absolute;left:-37px;top:28px;
+  width:12px;height:12px;border-radius:999px;
+  background:var(--bg);border:2px solid var(--gold);
+}
+.tl-date{color:var(--gold);font-size:12px;font-weight:600;margin-bottom:6px;letter-spacing:.3px}
+.tl-role{font-family:'Instrument Serif',Georgia,serif;font-size:20px;margin-bottom:2px}
+.tl-place{color:var(--rose);font-size:13px;margin-bottom:12px}
+
+/* CONTACT */
+.contact-panel{
+  text-align:center;
+  padding:50px 28px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  position:relative;overflow:hidden;
+}
+.contact-links{
+  display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-top:28px;
+}
+.contact-links a{
+  min-width:200px;padding:16px 20px;
+  border-radius:12px;border:1px solid var(--border);
+  background:var(--panel2);
+  transition:transform .2s ease,border-color .2s ease;
+  position:relative;overflow:hidden;
+}
+.contact-links a::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:rgba(255,255,255,.08);transition:background .2s ease}
+.contact-links a:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.18)}
+.contact-links a:hover::after{background:linear-gradient(180deg,var(--gold),var(--rose))}
+.small{color:var(--soft);font-size:11px;margin-top:3px;display:block}
+
+/* FOOTER */
+footer{
+  position:relative;z-index:2;
+  border-top:1px solid rgba(255,255,255,.07);
+  background:rgba(0,0,0,.3);
+  padding:32px 20px;
+  text-align:center;
+}
+.footer-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:14px}
+.footer-nav a{color:var(--soft);font-size:12px;padding:6px 8px;transition:.2s}
+.footer-nav a:hover{color:var(--gold)}
+
+/* REVEAL */
+.reveal{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.visible{opacity:1;transform:translateY(0) scale(1)}
+
+@media(max-width:960px){
+  .hero-grid,.grid-2,.grid-3{grid-template-columns:1fr}
+  .profile-card{max-width:560px;margin:auto}
+}
+@media(max-width:720px){
+  .nav-inner{flex-direction:column;align-items:flex-start}
+  section{padding:60px 16px}
+  .hero{padding-top:30px;min-height:auto}
+  .quick-stats,.stat-grid{grid-template-columns:1fr}
+  .profile-card{animation:none}
+  .contact-links a{width:100%}
+}
+</style>
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
-    <nav class="absolute top-0 left-0 right-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-            <a href="index.html" class="font-display text-2xl text-cream-50">AS</a>
-            <div class="nav-links hidden md:flex flex-col md:flex-row absolute md:static top-full inset-x-0 md:inset-auto gap-4 md:gap-8 p-6 md:p-0 bg-forest-950/95 md:bg-transparent backdrop-blur md:backdrop-blur-none border-b border-cream-100/10 md:border-0">
-                <a href="index.html" class="text-cream-50 font-medium">Home</a>
-                <a href="projects.html" class="text-cream-100/80 hover:text-cream-50 transition">Projects</a>
-                <a href="#contact" class="text-cream-100/80 hover:text-cream-50 transition">Contact</a>
-            </div>
-            <button class="nav-toggle md:hidden text-cream-50" aria-label="Toggle menu">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            </button>
-        </div>
-    </nav>
+<div class="orb one"></div>
+<div class="orb two"></div>
+<div class="orb three"></div>
 
-    <section class="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1761259787691-79cd369d9d55?q=90&w=3840&auto=format&fit=crop');"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-forest-950/55 via-forest-950/45 to-forest-950/70"></div>
-        <div class="relative z-10 max-w-3xl text-center">
-            <p class="signifier">Software Engineer</p>
-            <h1 class="font-display text-5xl md:text-7xl text-cream-50 mb-6">Adam Scholey</h1>
-            <p class="text-xl text-cream-100/90 mb-8 max-w-2xl mx-auto">The problems that don't have obvious answers are the ones worth solving — multi-tenant data isolation, real-time infrastructure, and encryption layers that survive key rotations. I build the systems underneath the product: APIs, database architectures, and security layers that power user experiences.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="projects.html" class="bg-forest-700 text-cream-50 px-8 py-3 rounded-lg hover:bg-forest-600 transition font-medium">View Projects</a>
-                <a href="#contact" class="bg-forest-800 text-cream-50 px-8 py-3 rounded-lg hover:bg-cream-50 hover:text-forest-900 transition font-medium">Get in Touch</a>
-            </div>
-        </div>
-    </section>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">Adam Scholey</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
 
-    <section id="about" class="py-20 px-6 bg-forest-950 relative overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=90&w=3840&auto=format&fit=crop');"></div>
-        <div class="absolute inset-0 bg-forest-950/75"></div>
-        <div class="relative z-10 max-w-6xl mx-auto">
-            <h2 class="font-display text-4xl text-cream-50 mb-12 text-center">About</h2>
-            <div class="grid md:grid-cols-2 gap-12 items-start">
-                <div class="space-y-6 text-cream-100">
-                    <p>I'm a backend engineer based in the UK, focused on the problems that don't have obvious answers — how do you isolate one tenant's data from another at the database level? How do you keep a session store consistent when you have two workers and a cache? How do you design an encryption layer that survives a key rotation?</p>
-                    <p>At <strong>diam Systems</strong> I've designed and built multi-product backend systems across Python and .NET — a memory-first NoSQL database in Rust, an internal search engine with GDPR compliance, a project management app with GitHub OAuth, and a corporate platform integrating three third-party commerce APIs.</p>
-                    <p>My personal projects fill the gaps: areas I wanted to understand deeply enough to be wrong about — zero-knowledge encryption, row-level multi-tenancy, security tooling. I build to learn, then I keep the code.</p>
-                </div>
-                <div class="space-y-6">
-                    <div class="bg-forest-900 p-6 rounded-lg">
-                        <span class="font-display text-3xl text-cream-50">8+</span>
-                        <p class="text-cream-200 mt-2">Systems Built End-to-End</p>
-                    </div>
-                    <div class="bg-forest-900 p-6 rounded-lg">
-                        <span class="font-display text-3xl text-cream-50">370+</span>
-                        <p class="text-cream-200 mt-2">Automated Tests Written</p>
-                    </div>
-                    <div class="bg-forest-900 p-6 rounded-lg">
-                        <span class="font-display text-3xl text-cream-50">C# · Python</span>
-                        <p class="text-cream-200 mt-2">Primary Languages</p>
-                    </div>
-                </div>
-            </div>
+<main id="top">
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="badge"><span class="badge-dot"></span>Open to new opportunities</div>
+        <h1><span class="gradient-text">Adam Scholey</span></h1>
+        <div class="typing-line"><span id="typing">Software Engineer</span><span class="cursor">|</span></div>
+        <p class="hero-copy">The problems that don't have obvious answers are the ones worth solving — multi-tenant data isolation, real-time infrastructure, and encryption layers that survive key rotations. I build the systems underneath the product.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="projects.html">View Projects →</a>
+          <a class="btn secondary" href="https://www.linkedin.com/in/adam-scholey-8306892b0/" target="_blank">LinkedIn ↗</a>
+          <a class="btn ghost" href="#contact">Get in Touch</a>
         </div>
-    </section>
-
-    <section id="skills" class="py-20 px-6 bg-forest-950 relative overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=90&w=3840&auto=format&fit=crop');"></div>
-        <div class="absolute inset-0 bg-forest-950/75"></div>
-        <div class="relative z-10 max-w-6xl mx-auto">
-            <h2 class="font-display text-4xl text-cream-50 mb-12 text-center">Skills</h2>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-forest-900 p-6 rounded-lg">
-                    <h3 class="font-display text-xl text-cream-50 mb-4">Languages</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">C#</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">Python</span>
-                    </div>
-                </div>
-                <div class="bg-forest-900 p-6 rounded-lg">
-                    <h3 class="font-display text-xl text-cream-50 mb-4">Backend</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">ASP.NET Core</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">Flask</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">REST APIs</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">SignalR</span>
-                    </div>
-                </div>
-                <div class="bg-forest-900 p-6 rounded-lg">
-                    <h3 class="font-display text-xl text-cream-50 mb-4">Databases</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">PostgreSQL</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">SQLite</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">EF Core</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">SQLAlchemy</span>
-                    </div>
-                </div>
-                <div class="bg-forest-900 p-6 rounded-lg">
-                    <h3 class="font-display text-xl text-cream-50 mb-4">Infrastructure</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">Docker</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">AWS S3</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">Git</span>
-                    </div>
-                </div>
-                <div class="bg-forest-900 p-6 rounded-lg">
-                    <h3 class="font-display text-xl text-cream-50 mb-4">Security</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">JWT</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">BCrypt</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">AES-256</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">RBAC</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">OAuth</span>
-                    </div>
-                </div>
-                <div class="bg-forest-900 p-6 rounded-lg">
-                    <h3 class="font-display text-xl text-cream-50 mb-4">Desktop & Mobile</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">.NET MAUI</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">WinUI 3</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">Blazor</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">PWAs</span>
-                    </div>
-                </div>
-                <div class="bg-forest-900 p-6 rounded-lg">
-                    <h3 class="font-display text-xl text-cream-50 mb-4">Testing</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">xUnit</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">pytest</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">k6</span>
-                        <span class="bg-cream-200 text-forest-800 px-3 py-1 rounded-full text-sm">Playwright</span>
-                    </div>
-                </div>
-            </div>
+        <div class="quick-stats">
+          <div class="quick-stat"><strong>8+</strong><span>Systems built end-to-end</span></div>
+          <div class="quick-stat"><strong>370+</strong><span>Automated tests written</span></div>
+          <div class="quick-stat"><strong>C# · Python</strong><span>Primary languages</span></div>
         </div>
-    </section>
+      </div>
 
-    <section id="experience" class="py-20 px-6 pb-32 bg-forest-950 relative overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=90&w=3840&auto=format&fit=crop');"></div>
-        <div class="absolute inset-0 bg-forest-950/75"></div>
-        <div class="relative z-10 max-w-4xl mx-auto">
-            <h2 class="font-display text-4xl text-cream-50 mb-12 text-center">Experience</h2>
-            <div class="space-y-8">
-                <div class="border-l-2 border-forest-600 pl-6 relative">
-                    <div class="absolute -left-2 top-0 w-4 h-4 bg-forest-400 rounded-full"></div>
-                    <div class="mb-2">
-                        <h3 class="font-display text-2xl text-cream-50">Software Developer</h3>
-                        <div class="flex items-center gap-2">
-                            <span class="text-cream-200">diam Systems Ltd</span>
-                            <span class="text-sm text-cream-300">·</span>
-                            <span class="text-sm text-cream-300">Oct 2025 — Present</span>
-                        </div>
-                    </div>
-                    <p class="mt-4 text-cream-100">Built Seek — an internal search engine with GDPR compliance, multi-region support, and full-text search. Developed Tracker — a project management app with GitHub OAuth authentication and real-time SSE updates. Architected diamReserve — a restaurant booking system with visual floor plan and Stripe deposits.</p>
-                </div>
-                <div class="border-l-2 border-forest-600 pl-6 relative">
-                    <div class="absolute -left-2 top-0 w-4 h-4 bg-forest-400 rounded-full"></div>
-                    <div class="mb-2">
-                        <h3 class="font-display text-2xl text-cream-50">Production Operator</h3>
-                        <div class="flex items-center gap-2">
-                            <span class="text-cream-200">Pure Pet Food Ltd</span>
-                            <span class="text-sm text-cream-300">·</span>
-                            <span class="text-sm text-cream-300">Oct 2024 — Present</span>
-                        </div>
-                    </div>
-                    <p class="mt-4 text-cream-100">Production role running alongside software work. Developed habits around precision, repeatability, and working under process constraints — which turns out to matter in backend engineering too.</p>
-                </div>
-                <div class="border-l-2 border-forest-600 pl-6 relative">
-                    <div class="absolute -left-2 top-0 w-4 h-4 bg-forest-400 rounded-full"></div>
-                    <div class="mb-2">
-                        <h3 class="font-display text-2xl text-cream-50">Prototype Tester</h3>
-                        <div class="flex items-center gap-2">
-                            <span class="text-cream-200">Microsoft HQ, Cambridge</span>
-                            <span class="text-sm text-cream-300">·</span>
-                            <span class="text-sm text-cream-300">Invited Tester</span>
-                        </div>
-                    </div>
-                    <p class="mt-4 text-cream-100">Selected by Microsoft to travel to their Cambridge HQ to test an accessibility-focused mobile prototype built for partially sighted users. Gave structured feedback directly to the engineering team on usability and interaction design.</p>
-                </div>
-            </div>
+      <div class="profile-card">
+        <div class="card-avatar">AS</div>
+        <div class="profile-name">Adam Scholey</div>
+        <div class="profile-role">Software Engineer · diam Systems</div>
+        <div class="profile-divider"></div>
+        <div class="profile-row">
+          <span class="label">Focus</span>
+          <span class="val">Backend APIs, security layers, database architecture</span>
         </div>
-    </section>
-
-    <footer id="contact" class="bg-forest-950 text-cream-100 pt-20 pb-10 px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid md:grid-cols-3 gap-12 mb-16">
-                <div class="md:col-span-1">
-                    <h3 class="font-display text-3xl text-cream-50 mb-4">Let's talk</h3>
-                    <p class="text-cream-100/70 text-sm leading-relaxed">I'm always up for a conversation about backend architecture, hard engineering problems, or what I'm building next. Particularly interested in teams working on infrastructure, developer tooling, or anything where the backend is genuinely the hard part.</p>
-                </div>
-                <div class="md:col-span-1">
-                    <p class="signifier">Get in touch</p>
-                    <div class="space-y-3 mt-2">
-                        <a href="mailto:adamscholey25@gmail.com" class="flex items-center gap-3 text-cream-100/80 hover:text-cream-50 transition">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            adamscholey25@gmail.com
-                        </a>
-                        <a href="https://www.linkedin.com/in/adam-scholey-8306892b0/" target="_blank" rel="noopener" class="flex items-center gap-3 text-cream-100/80 hover:text-cream-50 transition">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                            LinkedIn
-                        </a>
-                        <a href="https://github.com/adam-scholey" target="_blank" rel="noopener" class="flex items-center gap-3 text-cream-100/80 hover:text-cream-50 transition">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            GitHub
-                        </a>
-                        <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener" class="flex items-center gap-3 text-cream-100/80 hover:text-cream-50 transition">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                            diam Systems
-                        </a>
-                    </div>
-                </div>
-                <div class="md:col-span-1">
-                    <p class="signifier">Navigate</p>
-                    <div class="space-y-3 mt-2">
-                        <a href="index.html" class="block text-cream-100/80 hover:text-cream-50 transition">Home</a>
-                        <a href="projects.html" class="block text-cream-100/80 hover:text-cream-50 transition">Projects</a>
-                        <a href="#contact" class="block text-cream-100/80 hover:text-cream-50 transition">Contact</a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-cream-100/15 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p class="font-display text-xl text-cream-50">AS</p>
-                <p class="text-cream-100/50 text-sm">&copy; 2026 Adam Scholey. All rights reserved.</p>
-            </div>
+        <div class="profile-row">
+          <span class="label">Stack</span>
+          <span class="val">C#, Python, ASP.NET Core, Flask, PostgreSQL</span>
         </div>
-    </footer>
+        <div class="profile-row">
+          <span class="label">Currently</span>
+          <span class="val">Building multi-product systems at diam Systems</span>
+        </div>
+        <div class="profile-row">
+          <span class="label">GitHub</span>
+          <span class="val"><a href="https://github.com/AdamScholey25" target="_blank" style="color:var(--gold)">AdamScholey25 ↗</a></span>
+        </div>
+        <div class="award-badge">
+          🏆 Learner of the Year — Computing, Science &amp; Environmental Technology · Skillshouse CTE
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <section id="about" class="reveal">
+    <div class="section-head">
+      <div class="kicker">// about_me</div>
+      <h2>Built around engineering problems worth solving.</h2>
+      <p class="subtitle">Backend-focused software engineer with hands-on experience building production systems across Python and .NET — from search engines to real-time platforms to security tooling.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Profile</h3>
+        <p>I'm a backend engineer based in the UK, focused on the problems that don't have obvious answers — how do you isolate one tenant's data from another at the database level? How do you keep a session store consistent when you have two workers and a cache? How do you design an encryption layer that survives a key rotation?</p>
+        <br>
+        <p>At <strong style="color:var(--text)">diam Systems</strong> I've designed and built multi-product backend systems across Python and .NET — a memory-first NoSQL database in Rust, an internal search engine with GDPR compliance, a project management app with GitHub OAuth, and a corporate platform integrating three third-party commerce APIs.</p>
+        <br>
+        <p>My personal projects fill the gaps: areas I wanted to understand deeply enough to be wrong about — zero-knowledge encryption, row-level multi-tenancy, security tooling. I build to learn, then I keep the code.</p>
+        <div class="tags">
+          <span class="tag">Backend Engineering</span>
+          <span class="tag">C# · .NET</span>
+          <span class="tag">Python · Flask</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Security</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">SignalR</span>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card"><strong>8+</strong><span>Systems built end-to-end</span></div>
+        <div class="stat-card"><strong>370+</strong><span>Automated tests written</span></div>
+        <div class="stat-card"><strong>C# · Python</strong><span>Primary languages</span></div>
+        <div class="stat-card"><strong>diam Systems</strong><span>Oct 2025 — Present</span></div>
+        <div class="stat-card" style="grid-column:1/-1">
+          <strong style="font-size:14px;color:var(--gold)">🏆 Learner of the Year</strong>
+          <span>Computing, Science &amp; Environmental Technology · Skillshouse CTE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="reveal">
+    <div class="section-head">
+      <div class="kicker">// technical_skills</div>
+      <h2>A full-stack of engineering depth.</h2>
+      <p class="subtitle">Production skills across backend, databases, security, testing, and infrastructure — built through real systems, not just coursework.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon">⚙️</div>
+        <h3>Backend</h3>
+        <ul class="skill-list">
+          <li>ASP.NET Core — REST APIs, middleware, auth pipelines</li>
+          <li>Flask — async routes, blueprints, SQLAlchemy</li>
+          <li>SignalR — real-time hubs and SSE</li>
+          <li>OAuth 2.0 / GitHub OAuth with Authlib</li>
+          <li>Rate limiting, JWT, BCrypt, RBAC</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">🗄️</div>
+        <h3>Databases</h3>
+        <ul class="skill-list">
+          <li>PostgreSQL — RLS, migrations, query optimisation</li>
+          <li>SQLite — lightweight production DBs</li>
+          <li>EF Core — code-first schema, relationships</li>
+          <li>SQLAlchemy — ORM patterns and raw queries</li>
+          <li>Redis — caching, pub/sub, distributed locks</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">🔒</div>
+        <h3>Security</h3>
+        <ul class="skill-list">
+          <li>AES-256 encryption, key rotation design</li>
+          <li>Zero-knowledge encryption patterns</li>
+          <li>JWT auth with refresh token rotation</li>
+          <li>GDPR compliance and data handling</li>
+          <li>Security headers, CSP, input validation</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">🧪</div>
+        <h3>Testing</h3>
+        <ul class="skill-list">
+          <li>xUnit — unit and integration tests</li>
+          <li>pytest — fixtures, parametrize, coverage</li>
+          <li>k6 — load testing and performance baselines</li>
+          <li>Playwright — E2E browser automation</li>
+          <li>370+ tests written across production systems</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">🖥️</div>
+        <h3>Desktop &amp; Mobile</h3>
+        <ul class="skill-list">
+          <li>WinUI 3 — modern Windows applications</li>
+          <li>.NET MAUI — cross-platform desktop/mobile</li>
+          <li>Blazor — component-based web UIs</li>
+          <li>CommunityToolkit.Mvvm — MVVM patterns</li>
+          <li>PWAs — progressive web apps</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">☁️</div>
+        <h3>Infrastructure</h3>
+        <ul class="skill-list">
+          <li>Docker — containerisation and Compose</li>
+          <li>AWS S3 — object storage and signed URLs</li>
+          <li>Git — branching, PR workflows</li>
+          <li>Rust — memory-first NoSQL database (diamDB)</li>
+          <li>CI/CD — build pipelines and deployment</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="reveal">
+    <div class="section-head">
+      <div class="kicker">// work_experience</div>
+      <h2>Experience building real systems.</h2>
+      <p class="subtitle">From production backend engineering at a software company to invited prototype testing at Microsoft HQ.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Oct 2025 — Present</div>
+        <div class="tl-role">Software Developer</div>
+        <div class="tl-place">diam Systems Ltd</div>
+        <ul>
+          <li>Built Seek — internal search engine with GDPR compliance, multi-region support, Redis caching, and full-text search across business data.</li>
+          <li>Developed Tracker — project management app with GitHub OAuth, real-time SSE updates, and email notification system.</li>
+          <li>Architected diamReserve — restaurant booking system with visual floor plan, Stripe deposit integration, and admin dashboard.</li>
+          <li>Built diamDB — a memory-first NoSQL micro-database in Rust with enterprise security gateway.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">C#</span><span class="tag">Rust</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Invited Tester</div>
+        <div class="tl-role">Prototype Tester</div>
+        <div class="tl-place">Microsoft HQ, Cambridge</div>
+        <ul>
+          <li>Selected by Microsoft to travel to their Cambridge HQ to test an accessibility-focused mobile prototype built for partially sighted users.</li>
+          <li>Gave structured feedback directly to the engineering team on usability and interaction design.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Oct 2024 — Present</div>
+        <div class="tl-role">Production Operator</div>
+        <div class="tl-place">Pure Pet Food Ltd</div>
+        <ul>
+          <li>Production role running alongside software work — developed precision, repeatability, and process-constraint habits that translate directly into backend engineering discipline.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="reveal">
+    <div class="section-head">
+      <div class="kicker">// education_and_awards</div>
+      <h2>Academic background &amp; recognition.</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">🏆 Award</div>
+        <div class="tl-role">Learner of the Year</div>
+        <div class="tl-place">Computing, Science &amp; Environmental Technology · Skillshouse CTE</div>
+        <ul>
+          <li>Awarded Learner of the Year for Computing, Science, and Environmental Technology — recognition of outstanding academic performance and practical contribution to the computing programme.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">In Progress</div>
+        <div class="tl-role">Self-Directed Engineering Study</div>
+        <div class="tl-place">Independent / diam Systems</div>
+        <ul>
+          <li>Continuous self-directed study across backend systems, security, database internals, and distributed architecture — applied directly through production work at diam Systems.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <div class="contact-panel">
+      <div class="kicker">// contact</div>
+      <h2>Let's talk.</h2>
+      <p class="subtitle" style="margin:0 auto">I'm always open to conversations about backend architecture, hard engineering problems, or what I'm building next. Particularly interested in teams working on infrastructure, developer tooling, or anything where the backend is genuinely the hard part.</p>
+      <div class="contact-links">
+        <a href="mailto:adamscholey25@gmail.com">
+          📧 Email<br>
+          <span class="small">adamscholey25@gmail.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/adam-scholey-8306892b0/" target="_blank" rel="noopener">
+          💼 LinkedIn<br>
+          <span class="small">adam-scholey-8306892b0</span>
+        </a>
+        <a href="https://github.com/AdamScholey25" target="_blank" rel="noopener">
+          🐙 GitHub<br>
+          <span class="small">github.com/AdamScholey25</span>
+        </a>
+        <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener">
+          🌐 diam Systems<br>
+          <span class="small">diamsystems.co.uk</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-nav">
+    <a href="#top">Top</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <p style="color:var(--soft);font-size:12px">© <span id="year">2026</span> Adam Scholey · Software Engineer</p>
+</footer>
+
+<script>
+document.documentElement.classList.add("js");
+
+const phrases = ["Software Engineer","Backend Developer","Systems Builder","API Architect","Security-Focused Dev"];
+let p=0,c=0,del=false;
+const el=document.getElementById("typing");
+function type(){
+  const word=phrases[p];
+  el.textContent=del?word.substring(0,c-1):word.substring(0,c+1);
+  c=del?c-1:c+1;
+  let speed=del?38:80;
+  if(!del&&c===word.length){speed=1600;del=true;}
+  if(del&&c===0){del=false;p=(p+1)%phrases.length;speed=300;}
+  setTimeout(type,speed);
+}
+type();
+
+const reveals=document.querySelectorAll(".reveal");
+const observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){entry.target.classList.add("visible")}
+  });
+},{threshold:.05,rootMargin:"0px 0px -6% 0px"});
+reveals.forEach(function(s){observer.observe(s)});
+
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
