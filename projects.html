@@ -156,15 +156,15 @@ h2{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(32px,5vw,52px);l
 }
 .contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-top:28px}
 .contact-links a{
-  min-width:200px;padding:16px 20px;
+  min-width:200px;padding:20px 20px 16px;
   border-radius:12px;border:1px solid var(--border);
   background:var(--panel2);
   transition:transform .2s ease,border-color .2s ease;
   position:relative;overflow:hidden;
+  font-size:14px;font-weight:500;color:var(--text);
 }
-.contact-links a::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:rgba(255,255,255,.08);transition:background .2s ease}
 .contact-links a:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.18)}
-.contact-links a:hover::after{background:linear-gradient(180deg,var(--gold),var(--rose))}
+.contact-icon{display:block;margin-bottom:12px;line-height:1}
 .small{color:var(--soft);font-size:11px;margin-top:3px;display:block}
 
 footer{
@@ -378,19 +378,23 @@ footer{
       <p class="subtitle" style="margin:0 auto">Particularly interested in teams working on infrastructure, developer tooling, or anything where the backend is genuinely the hard part.</p>
       <div class="contact-links">
         <a href="mailto:adamscholey25@gmail.com">
-          📧 Email<br>
+          <span class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="28" height="28"><path fill="#4285F4" d="M45 16.5v22A4.5 4.5 0 0 1 40.5 43h-33A4.5 4.5 0 0 1 3 38.5v-22L24 28z"/><path fill="#34A853" d="M45 16.5 24 28 3 16.5 24 5z"/><path fill="#FBBC05" d="M3 16.5v22l9-11z"/><path fill="#EA4335" d="M45 16.5v22l-9-11z"/><path fill="#C5221F" d="m3 38.5 12-13.5L24 28l9-3 12 13.5"/></svg></span>
+          Email<br>
           <span class="small">adamscholey25@gmail.com</span>
         </a>
         <a href="https://www.linkedin.com/in/adam-scholey-8306892b0/" target="_blank" rel="noopener">
-          💼 LinkedIn<br>
+          <span class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="28" height="28"><path fill="#0077B5" d="M42 37a5 5 0 0 1-5 5H11a5 5 0 0 1-5-5V11a5 5 0 0 1 5-5h26a5 5 0 0 1 5 5z"/><path fill="#fff" d="M12 19h5v17h-5zm2.485-2a2.485 2.485 0 1 1 0-4.97 2.485 2.485 0 0 1 0 4.97zM36 36h-5v-9.099c0-2.198-1.96-3.999-4.5-3.999s-4.5 1.801-4.5 3.999V36h-5V19h5v2.616C23.721 20.5 25.8 19 28.5 19c4.136 0 7.5 3.582 7.5 8z"/></svg></span>
+          LinkedIn<br>
           <span class="small">adam-scholey-8306892b0</span>
         </a>
         <a href="https://github.com/adam-scholey" target="_blank" rel="noopener">
-          🐙 GitHub<br>
+          <span class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
+          GitHub<br>
           <span class="small">github.com/adam-scholey</span>
         </a>
         <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener">
-          🌐 diam Systems<br>
+          <span class="contact-icon"><img src="diam_icon_white.png" width="28" height="28" alt="diam Systems" style="object-fit:contain"></span>
+          diam Systems<br>
           <span class="small">diamsystems.co.uk</span>
         </a>
       </div>
