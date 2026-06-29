@@ -337,21 +337,9 @@ h2{
   position:relative;
   overflow:hidden;
 }
-.card::after,.proj-card::after,.repo-card::after{
-  content:"";
-  position:absolute;
-  left:0;top:0;bottom:0;
-  width:3px;
-  background:rgba(255,255,255,.08);
-  transition:background .2s ease;
-  pointer-events:none;
-}
 .card:hover,.proj-card:hover,.repo-card:hover{
   transform:translateY(-3px);
   border-color:rgba(255,255,255,.18);
-}
-.card:hover::after,.proj-card:hover::after,.repo-card:hover::after{
-  background:linear-gradient(180deg,var(--gold),var(--rose));
 }
 .tl-item{
   background:var(--panel);

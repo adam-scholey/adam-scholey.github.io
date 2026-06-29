@@ -101,12 +101,7 @@ h2{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(32px,5vw,52px);l
   position:relative;overflow:hidden;
   display:flex;flex-direction:column;
 }
-.proj-card::after{
-  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
-  background:rgba(255,255,255,.08);transition:background .22s ease;pointer-events:none;
-}
 .proj-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.2)}
-.proj-card:hover::after{background:linear-gradient(180deg,var(--gold),var(--rose))}
 
 .proj-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;gap:12px}
 .proj-icon{
