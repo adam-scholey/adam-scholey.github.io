@@ -53,17 +53,15 @@ a{color:inherit;text-decoration:none}
 nav{
   position:sticky;top:0;z-index:100;
   padding:14px 20px;
-  backdrop-filter:blur(20px) saturate(1.4);
-  background:rgba(14,10,9,.75);
-  border-bottom:1px solid rgba(255,255,255,.07);
+  background:transparent;
+  border-bottom:none;
 }
 .nav-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .logo{font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:var(--cream);letter-spacing:-.3px}
-.nav-links{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-.nav-links a{color:var(--muted);font-size:13px;font-weight:500;padding:8px 12px;border-radius:999px;transition:.22s ease}
-.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.06)}
-.nav-links .nav-cta{color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--rose));font-weight:700;box-shadow:0 8px 28px rgba(201,185,122,.18)}
-.nav-links .active{color:var(--text);background:rgba(255,255,255,.06)}
+.nav-links{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.nav-links a{color:rgba(245,240,235,.6);font-size:13px;font-weight:500;padding:6px 2px;letter-spacing:.2px;transition:.18s ease;border-bottom:1px solid transparent;}
+.nav-links a:hover{color:var(--text);border-bottom-color:rgba(201,185,122,.4)}
+.nav-links .active{color:var(--text)}
 
 main{position:relative;z-index:2}
 section{max-width:1180px;margin:0 auto;padding:88px 20px}
@@ -199,13 +197,13 @@ footer{
 
 <nav>
   <div class="nav-inner">
-    <a class="logo" href="index.html">Adam Scholey</a>
     <div class="nav-links">
+      <a href="index.html">Home</a>
       <a href="index.html#about">About</a>
       <a href="index.html#skills">Skills</a>
       <a href="index.html#experience">Experience</a>
       <a href="projects.html" class="active">Projects</a>
-      <a href="index.html#contact" class="nav-cta">Contact</a>
+      <a href="index.html#contact">Contact</a>
     </div>
   </div>
 </nav>

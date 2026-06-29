@@ -69,9 +69,8 @@ nav{
   top:0;
   z-index:100;
   padding:14px 20px;
-  backdrop-filter:blur(20px) saturate(1.4);
-  background:rgba(14,10,9,.75);
-  border-bottom:1px solid rgba(255,255,255,.07);
+  background:transparent;
+  border-bottom:none;
 }
 .nav-inner{
   max-width:1180px;
@@ -89,26 +88,21 @@ nav{
 }
 .nav-links{
   display:flex;
-  gap:6px;
+  gap:28px;
   align-items:center;
   flex-wrap:wrap;
   justify-content:flex-end;
 }
 .nav-links a{
-  color:var(--muted);
+  color:rgba(245,240,235,.6);
   font-size:13px;
   font-weight:500;
-  padding:8px 12px;
-  border-radius:999px;
-  transition:.22s ease;
+  padding:6px 2px;
+  letter-spacing:.2px;
+  transition:.18s ease;
+  border-bottom:1px solid transparent;
 }
-.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.06)}
-.nav-links .nav-cta{
-  color:var(--bg);
-  background:linear-gradient(135deg,var(--gold),var(--rose));
-  font-weight:700;
-  box-shadow:0 8px 28px rgba(201,185,122,.18);
-}
+.nav-links a:hover{color:var(--text);border-bottom-color:rgba(201,185,122,.4)}
 
 main{position:relative;z-index:2}
 section{
@@ -161,10 +155,7 @@ h1{
   margin-bottom:20px;
 }
 .gradient-text{
-  background:linear-gradient(135deg,#f5f0eb 0%,var(--gold) 50%,var(--rose) 100%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+  color:var(--text);
 }
 .typing-line{
   font-family:'Instrument Serif',Georgia,serif;
@@ -508,13 +499,13 @@ footer{
 
 <nav>
   <div class="nav-inner">
-    <a class="logo" href="index.html">Adam Scholey</a>
     <div class="nav-links">
+      <a href="index.html">Home</a>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
       <a href="projects.html">Projects</a>
-      <a href="#contact" class="nav-cta">Contact</a>
+      <a href="#contact">Contact</a>
     </div>
   </div>
 </nav>
