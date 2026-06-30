@@ -41,29 +41,42 @@ body::before{
   position:fixed;
   inset:0;
   z-index:-5;
-  background:
-    radial-gradient(circle at 10% 15%, rgba(183,110,121,.16), transparent 32%),
-    radial-gradient(circle at 86% 10%, rgba(201,185,122,.12), transparent 30%),
-    radial-gradient(circle at 60% 78%, rgba(176,152,80,.10), transparent 35%),
-    linear-gradient(180deg,#0e0a09 0%,#130c0a 55%,#0e0a09 100%);
+  background:linear-gradient(180deg,#0e0a09 0%,#130c0a 55%,#0e0a09 100%);
 }
 .orb{
   position:fixed;
-  border-radius:999px;
-  filter:blur(40px);
-  opacity:.28;
+  inset:0;
   z-index:-1;
   pointer-events:none;
   will-change:transform;
-  contain:strict;
-  animation:orb 18s ease-in-out infinite alternate;
 }
-.orb.one{width:320px;height:320px;background:var(--rose);left:-100px;top:18%}
-.orb.two{width:360px;height:360px;background:var(--gold);right:-130px;top:6%;animation-delay:3s}
-.orb.three{width:300px;height:300px;background:var(--rose2);left:40%;bottom:-140px;animation-delay:6s}
-@keyframes orb{
-  0%{transform:translate3d(0,0,0)}
-  100%{transform:translate3d(22px,-18px,0)}
+.orb.one{
+  background:
+    radial-gradient(ellipse 65% 55% at 0% 0%,   rgba(183,110,121,.45) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 65% at 100% 0%,  rgba(201,185,122,.38) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 50% at 50% 100%, rgba(176,152,80,.32)  0%, transparent 65%),
+    radial-gradient(ellipse 45% 55% at 100% 70%, rgba(183,110,121,.28) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 45% at 0% 75%,   rgba(201,185,122,.25) 0%, transparent 55%);
+  animation:mesh-a 18s ease-in-out infinite alternate;
+}
+.orb.two{
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 15%,  rgba(183,110,121,.30) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 60% at 15% 55%,  rgba(176,152,80,.28)  0%, transparent 60%),
+    radial-gradient(ellipse 65% 45% at 85% 85%,  rgba(201,185,122,.25) 0%, transparent 60%);
+  animation:mesh-b 24s ease-in-out infinite alternate;
+}
+.orb.three{display:none}
+@keyframes mesh-a{
+  0%  {transform:scale(1)    translate3d(0,    0,    0);opacity:1}
+  33% {transform:scale(1.06) translate3d(28px,-22px, 0);opacity:.85}
+  66% {transform:scale(.96)  translate3d(-20px,28px, 0);opacity:.92}
+  100%{transform:scale(1.04) translate3d(14px, 14px,0);opacity:1}
+}
+@keyframes mesh-b{
+  0%  {transform:scale(1.03) translate3d(-14px,12px, 0);opacity:.8}
+  50% {transform:scale(.97)  translate3d(20px, -28px,0);opacity:1}
+  100%{transform:scale(1.05) translate3d(-24px,6px,  0);opacity:.85}
 }
 a{color:inherit;text-decoration:none}
 
