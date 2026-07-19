@@ -59,11 +59,8 @@ Currently building software at [diam Systems](https://diamsystems.co.uk). Focuse
 - **FredCode** — Terminal-based AI coding agent with multi-agent workflows and 148 tests  
   *Stack: Python, DeepSeek, Gemini*
 
-- **diamDB** — Memory-first NoSQL micro-database with sub-50MB RAM footprint, built in Rust  
-  *Stack: Rust, Tokio, Axum, DashMap*
-
-- **Seek** — Internal search engine for organisations with GDPR compliance and multi-region support  
-  *Stack: Python, Flask, PostgreSQL, Redis*
+- **Seek** — Internal search engine for organisations with GDPR compliance, multi-region support, and full-text search  
+  *Stack: Python, Flask, PostgreSQL, Redis, Kubernetes*
 
 - **Tracker** — Project management web app with GitHub OAuth authentication  
   *Stack: Python, Flask, SQLite, Authlib*
