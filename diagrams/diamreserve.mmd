@@ -1,0 +1,25 @@
+%%{init: {'theme':'base','themeVariables':{'darkMode':true,'background':'#0d1117','primaryColor':'#1f2937','primaryTextColor':'#ffffff','primaryBorderColor':'#4a90e2','secondaryColor':'#111827','secondaryTextColor':'#ffffff','secondaryBorderColor':'#4a90e2','tertiaryColor':'#0b1220','tertiaryTextColor':'#ffffff','tertiaryBorderColor':'#4a90e2','lineColor':'#ffffff','arrowheadColor':'#ffffff','textColor':'#ffffff','fontFamily':'Inter, sans-serif','fontSize':'16px'}}}%%
+flowchart TB
+    subgraph Client[" "
+]
+        customer[Customer]
+        staff[Staff]
+    end
+
+    subgraph diamReserve["diamReserve"]
+        flask[Flask Web App<br/>Python / Flask 3 / Gunicorn<br/>CSRF, rate limits, PBKDF2, secure cookies, CSP, HSTS]
+        mysql[(MySQL 8)]
+        redis[(Redis)]
+        mail[Email Worker]
+    end
+
+    stripe[Stripe Checkout]
+    smtp[SMTP / Gmail]
+
+    customer -->|HTTPS + CSRF / rate limits| flask
+    staff -->|HTTPS| flask
+    flask -->|SQLAlchemy ORM| mysql
+    flask -->|sessions / cache| redis
+    flask -->|queues| mail
+    mail -->|SMTP| smtp
+    flask -->|PCI token only| stripe
