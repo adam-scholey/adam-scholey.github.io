@@ -853,12 +853,8 @@ const observer=new IntersectionObserver(function(entries){
 },{threshold:.05,rootMargin:"0px 0px -6% 0px"});
 reveals.forEach(function(s){observer.observe(s)});
 
-// Respect reduced motion for the typewriter effect
-if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-  el.textContent = phrases[0];
-} else {
-  type();
-}
+// Start the typewriter effect
+type();
 
 document.getElementById("year").textContent=new Date().getFullYear();
 </script>
