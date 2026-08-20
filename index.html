@@ -25,7 +25,7 @@
   --border:rgba(255,255,255,.09);
   --gold-border:rgba(201,185,122,.32);
   --shadow:0 25px 80px rgba(0,0,0,.5);
-  --radius:24px;
+  --radius:0px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -36,7 +36,26 @@ body{
   line-height:1.65;
   overflow-x:hidden;
 }
-/* flat background */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-5;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 10%,  rgba(183,110,121,.08) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 65% at 88% 8%,   rgba(201,185,122,.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 50% 95%,  rgba(176,152,80,.05)  0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 92% 72%,  rgba(183,110,121,.05) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 8%  78%,  rgba(201,185,122,.05) 0%, transparent 55%);
+  background-size:200% 200%;
+  background-position:0% 0%;
+  opacity:.7;
+  animation:mesh-drift 60s ease-in-out infinite alternate;
+}
+@keyframes mesh-drift{
+  0%  {background-position:0%   0%  }
+  100%{background-position:100% 100%}
+}
 .orb{
   position:fixed;
   inset:0;
@@ -199,30 +218,27 @@ h1{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  border-radius:12px;
+  border-radius:0;
   padding:13px 20px;
   font-size:13px;
-  font-weight:700;
-  transition:.22s ease;
-  position:relative;
-  overflow:hidden;
+  font-weight:500;
+  transition:.15s ease;
 }
 .btn.primary{
   color:var(--bg);
-  background:linear-gradient(135deg,var(--gold),var(--rose));
-  box-shadow:0 12px 36px rgba(201,185,122,.18);
+  background:var(--gold);
 }
 .btn.secondary{
   color:var(--gold);
   border:1px solid var(--gold-border);
-  background:rgba(201,185,122,.06);
+  background:transparent;
 }
 .btn.ghost{
   color:var(--text);
   border:1px solid var(--border);
-  background:rgba(255,255,255,.04);
+  background:transparent;
 }
-.btn:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.btn:hover{transform:translateY(-2px)}
 .quick-stats{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
@@ -251,7 +267,7 @@ h1{
   border:1px solid rgba(201,185,122,.2);
   border-radius:var(--radius);
   padding:28px;
-  box-shadow:var(--shadow);
+  box-shadow:none;
   overflow:hidden;
 }
 @keyframes floatPanel{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
@@ -336,9 +352,8 @@ h2{
 .card,.proj-card,.repo-card{
   background:var(--panel);
   border:1px solid var(--border);
-  border-radius:14px;
+  border-radius:0;
   padding:26px 26px 26px 28px;
-  box-shadow:0 1px 0 rgba(255,255,255,.025) inset,0 16px 30px -24px rgba(0,0,0,.8);
   transition:transform .2s ease,border-color .2s ease;
   position:relative;
   overflow:hidden;
@@ -354,9 +369,8 @@ h2{
 .tl-item{
   background:var(--panel);
   border:1px solid var(--border);
-  border-radius:14px;
+  border-radius:0;
   padding:26px 26px 26px 28px;
-  box-shadow:0 1px 0 rgba(255,255,255,.025) inset,0 16px 30px -24px rgba(0,0,0,.8);
   position:relative;
   overflow:hidden;
 }
@@ -389,7 +403,7 @@ li{margin-bottom:8px}
 /* STAT CARDS */
 .stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .stat-card{
-  border-radius:14px;
+  border-radius:0;
   padding:20px;
   border:1px solid var(--border);
   background:var(--panel);
@@ -402,7 +416,7 @@ li{margin-bottom:8px}
 }
 .stat-card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:rgba(255,255,255,.08);transition:background .2s ease}
 .stat-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.18)}
-.stat-card:hover::after{background:linear-gradient(180deg,var(--gold),var(--rose))}
+.stat-card:hover::after{background:var(--gold)}
 .stat-card strong{
   color:var(--gold);
   font-family:'Instrument Serif',Georgia,serif;
@@ -457,10 +471,9 @@ li{margin-bottom:8px}
 }
 .contact-links a{
   min-width:200px;padding:20px 20px 16px;
-  border-radius:12px;border:1px solid var(--border);
+  border-radius:0;border:1px solid var(--border);
   background:var(--panel2);
   transition:transform .2s ease,border-color .2s ease;
-  position:relative;overflow:hidden;
   font-size:14px;font-weight:500;color:var(--text);
 }
 .contact-links a:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.18)}
