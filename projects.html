@@ -37,11 +37,7 @@ body{
   line-height:1.65;
   overflow-x:hidden;
 }
-body::before{
-  content:"";
-  position:fixed;inset:0;z-index:-5;
-  background:linear-gradient(180deg,#0e0a09 0%,#130c0a 55%,#0e0a09 100%);
-}
+/* flat background */
 .orb{position:fixed;inset:0;z-index:-1;pointer-events:none;background-size:200% 200%}
 .orb.one{
   background-image:
@@ -85,9 +81,9 @@ nav{
   border-bottom:none;
 }
 .nav-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:var(--cream);letter-spacing:-.3px}
+.logo{font-family:'Inter',Arial,sans-serif;font-size:22px;color:var(--cream);letter-spacing:-.3px}
 .nav-links{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-.nav-links a{color:rgba(245,240,235,.6);font-size:13px;font-weight:500;padding:6px 2px;letter-spacing:.2px;transition:.18s ease;border-bottom:1px solid transparent;}
+.nav-links a{font-family:'Inter',Arial,sans-serif;color:rgba(245,240,235,.6);font-size:13px;font-weight:500;padding:6px 2px;letter-spacing:.2px;transition:.18s ease;border-bottom:1px solid transparent;}
 .nav-links a:hover{color:var(--text);border-bottom-color:rgba(201,185,122,.4)}
 .nav-links .active{color:var(--text)}
 
@@ -215,9 +211,7 @@ footer{
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
-<div class="orb one"></div>
-<div class="orb two"></div>
-<div class="orb three"></div>
+<!-- background orbs removed -->
 
 <nav>
   <div class="nav-inner">

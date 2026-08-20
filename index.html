@@ -36,13 +36,7 @@ body{
   line-height:1.65;
   overflow-x:hidden;
 }
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-5;
-  background:linear-gradient(180deg,#0e0a09 0%,#130c0a 55%,#0e0a09 100%);
-}
+/* flat background */
 .orb{
   position:fixed;
   inset:0;
@@ -103,7 +97,7 @@ nav{
   gap:20px;
 }
 .logo{
-  font-family:'Instrument Serif',Georgia,serif;
+  font-family:'Inter',Arial,sans-serif;
   font-size:22px;
   color:var(--cream);
   letter-spacing:-.3px;
@@ -116,6 +110,7 @@ nav{
   justify-content:flex-end;
 }
 .nav-links a{
+  font-family:'Inter',Arial,sans-serif;
   color:rgba(245,240,235,.6);
   font-size:13px;
   font-weight:500;
@@ -165,8 +160,6 @@ section{
   width:7px;height:7px;
   background:var(--gold);
   border-radius:999px;
-  box-shadow:0 0 12px var(--gold);
-  animation:pulseDot 1.8s ease-in-out infinite;
 }
 @keyframes pulseDot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.6);opacity:.5}}
 h1{
@@ -258,20 +251,11 @@ h1{
   border:1px solid rgba(201,185,122,.2);
   border-radius:var(--radius);
   padding:28px;
-  box-shadow:var(--shadow),0 0 50px rgba(201,185,122,.05);
+  box-shadow:var(--shadow);
   overflow:hidden;
-  animation:floatPanel 7s ease-in-out infinite;
 }
 @keyframes floatPanel{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.profile-card::before{
-  content:"";
-  position:absolute;
-  inset:-1px;
-  background:linear-gradient(120deg,transparent,rgba(201,185,122,.2),transparent);
-  transform:translateX(-100%);
-  animation:shine 6s ease-in-out infinite;
-  border-radius:var(--radius);
-}
+/* card shine removed */
 @keyframes shine{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
 .card-avatar{
   width:56px;height:56px;
@@ -520,9 +504,7 @@ footer{
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
-<div class="orb one"></div>
-<div class="orb two"></div>
-<div class="orb three"></div>
+<!-- background orbs removed -->
 
 <nav>
   <div class="nav-inner">
