@@ -139,7 +139,7 @@ nav{
   border-bottom:1px solid transparent;
 }
 .nav-links a:hover{color:var(--text);border-bottom-color:rgba(56,189,248,.5)}
-.nav-links .active{color:var(--gold)}
+.nav-links .active{color:var(--gold);border-bottom-color:var(--gold)}
 
 main{position:relative;z-index:2}
 section{
@@ -527,7 +527,7 @@ footer{
 <nav>
   <div class="nav-inner">
     <div class="nav-links">
-      <a href="index.html">Home</a>
+      <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
@@ -538,7 +538,7 @@ footer{
 </nav>
 
 <main id="top">
-  <section class="hero">
+  <section id="home" class="hero">
     <div class="hero-grid">
       <div>
         <h1><span class="gradient-text">Adam Scholey</span></h1>
@@ -852,6 +852,32 @@ const observer=new IntersectionObserver(function(entries){
   });
 },{threshold:.05,rootMargin:"0px 0px -6% 0px"});
 reveals.forEach(function(s){observer.observe(s)});
+
+// Active nav highlighting on scroll
+const navLinks=document.querySelectorAll(".nav-links a");
+const sections=document.querySelectorAll("section[id]");
+function setActiveNav(){
+  const threshold=120;
+  let current="";
+  sections.forEach(function(section){
+    if(section.getBoundingClientRect().top<=threshold) current=section.id;
+  });
+  navLinks.forEach(function(link){
+    link.classList.remove("active");
+    if(link.getAttribute("href")==="#"+current) link.classList.add("active");
+  });
+}
+let ticking=false;
+window.addEventListener("scroll",function(){
+  if(!ticking){
+    requestAnimationFrame(function(){
+      setActiveNav();
+      ticking=false;
+    });
+    ticking=true;
+  }
+},{passive:true});
+setActiveNav();
 
 // Start the typewriter effect
 type();
