@@ -11,50 +11,54 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"></noscript>
 <style>
 :root{
-  --bg:#0e0a09;
-  --panel:#1a100e;
-  --panel2:#221410;
-  --text:#f5f0eb;
-  --muted:#c4b8b0;
-  --soft:#8a7a72;
-  --gold:#c9b97a;
-  --gold2:#b09850;
-  --rose:#B76E79;
-  --rose2:#a05a64;
-  --cream:#faf7f2;
-  --border:rgba(255,255,255,.09);
-  --gold-border:rgba(201,185,122,.32);
-  --shadow:0 25px 80px rgba(0,0,0,.5);
+  --bg:#0D1117;
+  --panel:#161B22;
+  --panel2:#1C2128;
+  --text:#f0f6fc;
+  --muted:#c9d1d9;
+  --soft:#c2c9d0;
+  --gold:#2EA043;
+  --gold2:#238636;
+  --rose:#38BDF8;
+  --rose2:#79c0ff;
+  --cream:#f0f6fc;
+  --border:#30363D;
+  --gold-border:rgba(46,160,67,.45);
+  --shadow:none;
   --radius:0px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{
   font-family:'Inter',Arial,sans-serif;
   color:var(--text);
   background:var(--bg);
   line-height:1.65;
   overflow-x:hidden;
+  padding-top:64px;
 }
 body::before{
   content:"";
   position:fixed;
   inset:0;
   z-index:-5;
+  pointer-events:none;
   background:
-    radial-gradient(ellipse 60% 50% at 15% 10%,  rgba(183,110,121,.08) 0%, transparent 60%),
-    radial-gradient(ellipse 55% 65% at 88% 8%,   rgba(201,185,122,.06) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 50% 95%,  rgba(176,152,80,.05)  0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 92% 72%,  rgba(183,110,121,.05) 0%, transparent 55%),
-    radial-gradient(ellipse 55% 45% at 8%  78%,  rgba(201,185,122,.05) 0%, transparent 55%);
-  background-size:200% 200%;
-  background-position:0% 0%;
-  opacity:.7;
-  animation:mesh-drift 60s ease-in-out infinite alternate;
+    radial-gradient(circle 240px at var(--mouse-x,50%) var(--mouse-y,50%), rgba(56,189,248,.05) 0%, transparent 70%),
+    radial-gradient(circle at 50% 0%, rgba(46,160,67,.08) 0%, transparent 60%),
+    linear-gradient(to right, rgba(48,54,61,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(48,54,61,.05) 1px, transparent 1px);
+  background-size:100% 100%, 100% 100%, 24px 24px, 24px 24px;
+  background-position:0 0, 0 0, 0 0, 0 0;
 }
-@keyframes mesh-drift{
-  0%  {background-position:0%   0%  }
-  100%{background-position:100% 100%}
+@media (prefers-reduced-motion: reduce){
+  body::before{
+    background:
+      radial-gradient(circle at 50% 0%, rgba(46,160,67,.08) 0%, transparent 60%),
+      linear-gradient(to right, rgba(48,54,61,.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(48,54,61,.05) 1px, transparent 1px);
+    background-size:100% 100%, 24px 24px, 24px 24px;
+  }
 }
 .orb{
   position:fixed;
@@ -102,10 +106,16 @@ a{color:inherit;text-decoration:none}
 
 /* NAV */
 nav{
-  position:relative;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:100;
   padding:14px 20px;
-  background:transparent;
-  border-bottom:none;
+  background:rgba(13,17,23,.9);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
 }
 .nav-inner{
   max-width:1180px;
@@ -130,7 +140,7 @@ nav{
 }
 .nav-links a{
   font-family:'Inter',Arial,sans-serif;
-  color:rgba(245,240,235,.6);
+  color:var(--muted);
   font-size:13px;
   font-weight:500;
   padding:6px 2px;
@@ -138,21 +148,21 @@ nav{
   transition:.18s ease;
   border-bottom:1px solid transparent;
 }
-.nav-links a:hover{color:var(--text);border-bottom-color:rgba(201,185,122,.4)}
+.nav-links a:hover{color:var(--text);border-bottom-color:rgba(46,160,67,.5)}
 
 main{position:relative;z-index:2}
 section{
   max-width:1180px;
   margin:0 auto;
-  padding:88px 20px;
+  padding:72px 20px;
 }
 
 /* HERO */
 .hero{
-  min-height:calc(100vh - 66px);
+  min-height:calc(100vh - 64px);
   display:grid;
   align-items:center;
-  padding-top:60px;
+  padding:0 20px;
 }
 .hero-grid{
   display:grid;
@@ -168,7 +178,7 @@ section{
   border-radius:999px;
   color:var(--gold);
   border:1px solid var(--gold-border);
-  background:rgba(201,185,122,.07);
+  background:rgba(46,160,67,.1);
   font-size:11px;
   font-weight:600;
   letter-spacing:.6px;
@@ -263,8 +273,8 @@ h1{
 /* PROFILE CARD */
 .profile-card{
   position:relative;
-  background:linear-gradient(160deg,rgba(34,20,16,.9),rgba(20,12,10,.95));
-  border:1px solid rgba(201,185,122,.2);
+  background:var(--panel);
+  border:1px solid var(--gold-border);
   border-radius:var(--radius);
   padding:28px;
   box-shadow:none;
@@ -276,7 +286,7 @@ h1{
 .card-avatar{
   width:56px;height:56px;
   border-radius:14px;
-  background:linear-gradient(135deg,rgba(201,185,122,.2),rgba(183,110,121,.15));
+  background:linear-gradient(135deg,rgba(46,160,67,.2),rgba(56,189,248,.15));
   border:1px solid var(--gold-border);
   display:grid;
   place-items:center;
@@ -315,7 +325,7 @@ h1{
 .award-badge{
   display:inline-flex;align-items:center;gap:7px;
   padding:7px 12px;border-radius:8px;
-  background:rgba(201,185,122,.1);
+  background:rgba(46,160,67,.1);
   border:1px solid var(--gold-border);
   font-size:12px;color:var(--gold);
   margin-top:14px;width:100%;
@@ -512,6 +522,9 @@ footer{
   .quick-stats,.stat-grid{grid-template-columns:1fr}
   .profile-card{animation:none}
   .contact-links a{width:100%}
+}
+@media (prefers-reduced-motion: reduce){
+  .js .reveal,.js .reveal.visible{opacity:1;transform:none;transition:none}
 }
 </style>
 <script>document.documentElement.classList.add("js")</script>
@@ -848,6 +861,21 @@ const observer=new IntersectionObserver(function(entries){
   });
 },{threshold:.05,rootMargin:"0px 0px -6% 0px"});
 reveals.forEach(function(s){observer.observe(s)});
+
+// Cursor spotlight
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  document.body.style.setProperty('--mouse-x','50%');
+  document.body.style.setProperty('--mouse-y','50%');
+  let raf=0;
+  document.addEventListener('mousemove',function(e){
+    if(raf) return;
+    raf=requestAnimationFrame(function(){
+      document.body.style.setProperty('--mouse-x',e.clientX+'px');
+      document.body.style.setProperty('--mouse-y',e.clientY+'px');
+      raf=0;
+    });
+  },{passive:true});
+}
 
 document.getElementById("year").textContent=new Date().getFullYear();
 </script>
