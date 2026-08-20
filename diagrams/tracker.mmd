@@ -1,4 +1,4 @@
-%%{init: {'theme':'base','themeVariables':{'darkMode':true,'background':'#0d1117','primaryColor':'#1f2937','primaryTextColor':'#ffffff','primaryBorderColor':'#4a90e2','secondaryColor':'#111827','secondaryTextColor':'#ffffff','secondaryBorderColor':'#4a90e2','tertiaryColor':'#0b1220','tertiaryTextColor':'#ffffff','tertiaryBorderColor':'#4a90e2','lineColor':'#ffffff','arrowheadColor':'#ffffff','textColor':'#ffffff','fontSize':'13px'}}}%%
+%%{init: {'theme':'base','themeVariables':{'darkMode':true,'background':'#0d1117','primaryColor':'#1f2937','primaryTextColor':'#ffffff','primaryBorderColor':'#4a90e2','secondaryColor':'#111827','secondaryTextColor':'#ffffff','secondaryBorderColor':'#4a90e2','tertiaryColor':'#0b1220','tertiaryTextColor':'#ffffff','tertiaryBorderColor':'#4a90e2','lineColor':'#ffffff','arrowheadColor':'#ffffff','textColor':'#ffffff','fontSize':'12px'}}}%%
 flowchart TB
     subgraph Client[" "]
         user[Web User]
@@ -6,7 +6,7 @@ flowchart TB
     end
 
     subgraph Tracker["Tracker"]
-        flask[Flask Backend<br/>Python / Flask 3 async<br/>Session + token auth<br/>login-required decorator]
+        flask[Flask Backend<br/>Python / Flask 3<br/>async<br/>Session + token auth<br/>login-required decorator]
         db[(SQLite)]
         sse[Server-Sent Events]
         mail[Email Worker]
