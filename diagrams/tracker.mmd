@@ -16,7 +16,7 @@ flowchart TB
 
     user -->|HTTPS + session| flask
     cli -->|HTTPS + token| flask
-    flask -->|SQLAlchemy| db
+    flask -->|plain sqlite3| db
     flask -->|pushes updates| sse
     sse -->|live updates| user
     flask -->|queues| mail

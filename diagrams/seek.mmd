@@ -6,11 +6,10 @@ flowchart TB
     end
 
     subgraph Seek["Seek"]
-        flask[Flask Web App<br/>Python / Flask 3<br/>Gunicorn<br/>API-key rate limits, BCrypt<br/>OIDC/SAML, RLS]
+        flask[Flask Web App<br/>Python / Flask 3<br/>Gunicorn<br/>BCrypt / JWT<br/>API keys]
         search[Search Engine<br/>Single / parallel<br/>federated<br/>with consent filtering]
-        pg[(PostgreSQL 16 + RLS)]
+        pg[(PostgreSQL)]
         redis[(Redis)]
-        pgb[PgBouncer]
     end
 
     sources[(External Data Sources<br/>PostgreSQL, MySQL, MSSQL)]
@@ -19,7 +18,6 @@ flowchart TB
     api -->|HTTPS + API key| flask
     flask -->|queries| search
     search -->|federated<br/>httpx| sources
-    search -->|stores / queries<br/>SQLAlchemy<br/>async + RLS| pg
+    search -->|stores / queries<br/>SQLAlchemy| pg
     flask -->|admin / auth| pg
     flask -->|sessions / cache| redis
-    pg -->|pooled through| pgb
