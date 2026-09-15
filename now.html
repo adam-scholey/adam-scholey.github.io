@@ -4,7 +4,7 @@
 <meta charset='UTF-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 <meta name='description' content='What Adam Scholey is working on now'>
-<title>Now - Adam Scholey</title>
+<title>Working On - Adam Scholey</title>
 <link rel='preconnect' href='https://fonts.googleapis.com'>
 <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Inter:wght@400;500;600;700&amp;display=swap'>
@@ -63,7 +63,6 @@ nav{
   -webkit-backdrop-filter:blur(12px);
 }
 .nav-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{font-family:'Inter',Arial,sans-serif;font-size:22px;color:var(--cream);letter-spacing:-.3px}
 .nav-links{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
 .nav-links a{font-family:'Inter',Arial,sans-serif;color:var(--muted);font-size:13px;font-weight:500;padding:6px 2px;letter-spacing:.2px;transition:.18s ease;border-bottom:1px solid transparent;}
 .nav-links a:hover{color:var(--text);border-bottom-color:rgba(56,189,248,.5)}
@@ -72,7 +71,7 @@ main{position:relative;z-index:2}
 section{max-width:1180px;margin:0 auto;padding:72px 20px}
 .section-head{margin-bottom:36px}
 .kicker{color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:10px}
-h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.5px;margin-bottom:12px}
+h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.5px;margin-bottom:12px}
 .subtitle{color:var(--muted);max-width:800px;font-size:16px;line-height:1.7}
 .card,.now-card{
   background:var(--panel);
@@ -85,14 +84,16 @@ h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,5vw,52px)
 .card h3,.now-card h3{
   color:var(--text);
   font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:19px;
-  margin-bottom:12px;
+  font-weight:600;
+  font-size:22px;
+  margin-bottom:4px;
 }
+.card-sub{color:var(--gold);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
 .now-card p,.now-card li{color:var(--muted);font-size:14px;line-height:1.7}
 .now-card ul{padding-left:18px}
 .now-card li{margin-bottom:8px}
+.now-card li strong{color:var(--text)}
 .grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:22px}
-.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .status-line{display:flex;gap:12px;align-items:center;margin-top:18px}
 .status-dot{width:8px;height:8px;border-radius:999px;background:var(--rose);box-shadow:0 0 8px var(--rose)}
 .status-text{color:var(--rose);font-size:13px;font-weight:600}
@@ -119,7 +120,7 @@ footer{
 .reveal{opacity:1;transform:none}
 .js .reveal{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .7s ease,transform .7s ease}
 .js .reveal.visible{opacity:1;transform:translateY(0) scale(1)}
-@media(max-width:960px){.grid-2,.grid-3{grid-template-columns:1fr}}
+@media(max-width:960px){.grid-2{grid-template-columns:1fr}}
 @media(max-width:720px){
   .nav-inner{flex-direction:column;align-items:flex-start}
   section{padding:60px 16px}
@@ -140,7 +141,7 @@ footer{
       <a href='index.html#skills'>Skills</a>
       <a href='index.html#experience'>Experience</a>
       <a href='projects.html'>Projects</a>
-      <a href='now.html' class='active'>Now</a>
+      <a href='now.html' class='active'>Working On</a>
       <a href='index.html#contact'>Contact</a>
     </div>
   </div>
@@ -149,43 +150,67 @@ footer{
 <main>
   <section class='reveal'>
     <div class='section-head'>
-      <div class='kicker'>What I am doing now</div>
-      <h2>Building systems, sharpening skills, staying open.</h2>
-      <p class='subtitle'>A snapshot of what I am working on and where my attention is going. Updated every few months.</p>
+      <div class='kicker'>Working On</div>
+      <h2>What I am building right now.</h2>
+      <p class='subtitle'>A snapshot of the systems currently on my desk — a paid client platform, internal tooling we use every day, and the diam Enterprise Suite.</p>
     </div>
 
     <div class='grid-2'>
       <div class='now-card reveal'>
-        <h3>Work</h3>
-        <p>I am a Software Developer at <strong style='color:var(--text)'>diam Systems</strong>, building production Python backends for multiple live products. My current focus is on the <strong style='color:var(--text)'>framed@</strong> events platform &mdash; a paid client engagement built on FastAPI, async SQLAlchemy, PostgreSQL, Stripe checkout, and passwordless magic-link authentication.</p>
-        <p style='margin-top:12px'>I am also contributing to <strong style='color:var(--text)'>diamReserve</strong> (restaurant booking with Stripe deposits and staff PWA), <strong style='color:var(--text)'>Seek</strong> (federated internal search with GDPR compliance), and <strong style='color:var(--text)'>Tracker</strong> (project management with SSE updates and GitHub OAuth).</p>
-      </div>
-
-      <div class='now-card reveal'>
-        <h3>Learning</h3>
-        <ul>
-          <li>Deeper Kubernetes &mdash; writing manifests, HPA, and NetworkPolicy for real deployments.</li>
-          <li>Production security tooling &mdash; SAST/DAST, Semgrep, Snyk, and threat modelling workflows.</li>
-          <li>Async Python patterns with FastAPI and SQLAlchemy 2.0.</li>
-          <li>System design for multi-tenant SaaS with row-level security and data sovereignty.</li>
+        <h3>framed@ &middot; framedat.uk</h3>
+        <div class='card-sub'>Client work &middot; Ticketing &amp; archive platform</div>
+        <p>A ticketing and event-archive platform for framed@ Limited, a Northern UK arts and music promoter. I designed the preview site and built the backend myself in FastAPI.</p>
+        <ul style='margin-top:14px'>
+          <li><strong>Passwordless auth</strong> — magic links and 6-digit codes via Resend; tokens are SHA-256 hashed, single-use, 5-minute TTL, rate-limited per email and IP.</li>
+          <li><strong>Stripe ticketing</strong> — hosted checkout, signed idempotent webhooks, QR-code tickets, and a per-event door scanner where a conditional UPDATE guarantees one admission even under concurrent scans.</li>
+          <li><strong>Direct-to-R2 uploads</strong> — browsers PUT multi-GB videos straight to Cloudflare R2 via presigned SigV4 URLs, so large media never touches the app server.</li>
+          <li><strong>Video pipeline</strong> — phone-recorded MP4s keep their moov atom at the end of the file, which broke seeking; an ffmpeg <code style='color:var(--rose)'>+faststart</code> background task re-muxes uploads in place.</li>
+          <li><strong>52+ pytest tests</strong> — feature-complete codebase; next step is the first Alembic migration and deployment artifacts.</li>
         </ul>
-      </div>
-
-      <div class='now-card reveal'>
-        <h3>Personal Projects</h3>
-        <p>Working on <strong style='color:var(--text)'>FileFlow</strong> (zero-knowledge cloud storage in C#/Blazor), <strong style='color:var(--text)'>OrgNet</strong> (PostgreSQL RLS multi-tenant platform), and <strong style='color:var(--text)'>SecureShield</strong> (anti-malware console with OS-level monitoring).</p>
         <div class='tags'>
-          <span class='tag'>C#</span>
-          <span class='tag'>Blazor</span>
-          <span class='tag'>PostgreSQL RLS</span>
-          <span class='tag'>SignalR</span>
-          <span class='tag'>AES-256</span>
+          <span class='tag'>FastAPI</span>
+          <span class='tag'>PostgreSQL</span>
+          <span class='tag'>Stripe</span>
+          <span class='tag'>Resend</span>
+          <span class='tag'>Cloudflare R2</span>
+          <span class='tag'>Alembic</span>
         </div>
       </div>
 
       <div class='now-card reveal'>
+        <h3>diam Enterprise Suite</h3>
+        <div class='card-sub'>diam Systems &middot; Internal products</div>
+        <p>Security-first internal tooling we actually use day to day — all sharing a house style of vanilla frontends, hashed tokens, and org-scoped data.</p>
+        <ul style='margin-top:14px'>
+          <li><strong>Tracker</strong> — project lifecycle board live on Fly.io (diamtracker.fly.dev). SSE live updates, email on every change, GitHub OAuth, a to-do section with @mentions, and a CLI client that auto-detects the project from the working directory.</li>
+          <li><strong>Enterprise Messenger</strong> — E2EE team messaging. RSA-OAEP keypairs generated in the browser, private keys encrypted client-side, channel key epochs with fill-once member slots, and an organisation escrow key for recovery. Postgres RLS does the tenant isolation.</li>
+          <li><strong>Helpdesk</strong> — IT support ticketing with a full lifecycle, SLA targets, FTS5 search, magic-byte attachment checks, Argon2 + MFA, and seeded demo data.</li>
+        </ul>
+        <div class='tags'>
+          <span class='tag'>Flask</span>
+          <span class='tag'>FastAPI</span>
+          <span class='tag'>PostgreSQL RLS</span>
+          <span class='tag'>Socket.IO</span>
+          <span class='tag'>SSE</span>
+          <span class='tag'>Fly.io</span>
+        </div>
+      </div>
+
+      <div class='now-card reveal'>
+        <h3>Hard problems I have solved recently</h3>
+        <div class='card-sub'>Engineering depth</div>
+        <ul>
+          <li><strong>MP4s that would not seek</strong> — Cloudflare R2 serves raw bytes with no transmuxing, and phone recordings store the moov index at the end. Fixed by re-muxing with a stream copy, no re-encode, run as a background task after upload.</li>
+          <li><strong>Concurrent door scans</strong> — ticket admission uses a conditional UPDATE so two scanners hitting the same QR at once still admit only one person.</li>
+          <li><strong>Key rotation in E2EE</strong> — removing a messenger member bumps the channel key epoch atomically, with fill-once slots preventing key substitution.</li>
+          <li><strong>Real tenant isolation</strong> — a ContextVar-driven PostgreSQL RLS layer where even a misconfigured query cannot leak another tenant's rows.</li>
+        </ul>
+      </div>
+
+      <div class='now-card reveal'>
         <h3>Looking for</h3>
-        <p>Backend or full-stack software engineering roles where I can work on infrastructure, security, or developer tooling. I am particularly interested in teams where the backend is the genuinely hard part of the product.</p>
+        <div class='card-sub'>Next step</div>
+        <p>Backend or full-stack software engineering roles where the backend is the genuinely hard part — infrastructure, developer tooling, or anything with real security and data-isolation constraints.</p>
         <div class='status-line'>
           <span class='status-dot'></span>
           <span class='status-text'>Open to opportunities</span>
@@ -204,7 +229,7 @@ footer{
     <a href='index.html#skills'>Skills</a>
     <a href='index.html#experience'>Experience</a>
     <a href='projects.html'>Projects</a>
-    <a href='now.html'>Now</a>
+    <a href='now.html'>Working On</a>
     <a href='cv.html'>CV</a>
     <a href='index.html#contact'>Contact</a>
   </div>
