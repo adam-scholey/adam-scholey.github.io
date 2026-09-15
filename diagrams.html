@@ -86,19 +86,8 @@ h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clam
 .decisions li::before{content:'';position:absolute;left:0;top:11px;width:9px;height:1px;background:var(--gold)}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
 .tag{color:var(--soft);border:1px solid var(--border);border-radius:6px;padding:4px 9px;font-size:11px;letter-spacing:.2px;font-weight:500}
-.diagram-canvas-wrap{background:var(--panel);border:1px solid var(--border);overflow-x:auto}
-.diagram-canvas{position:relative;min-width:960px}
-.dgroup{position:absolute;border:1px dashed rgba(168,184,204,.3);border-radius:8px;z-index:1}
-.dgroup-label{position:absolute;top:-11px;left:14px;padding:0 8px;background:var(--panel);color:var(--soft);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
-.dgroup.app{border-color:rgba(56,189,248,.4)}
-.dgroup.app .dgroup-label{color:var(--gold)}
-.edges-svg{position:absolute;inset:0;z-index:2;pointer-events:none}
-.dnode{position:absolute;z-index:3;background:#20304a;border:1px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:4px;justify-content:center;transition:border-color .2s}
-.dnode:hover{border-color:var(--gold)}
-.dnode-head{display:flex;align-items:center;gap:8px}
-.dnode-head svg{width:15px;height:15px;color:var(--gold);flex-shrink:0}
-.dnode-title{color:var(--text);font-size:12.5px;font-weight:600;line-height:1.2}
-.dnode-sub{color:var(--soft);font-size:10.5px;line-height:1.5}
+.diagram-canvas-wrap{background:var(--panel);border:1px solid var(--border);padding:18px}
+.diagram-canvas-wrap svg{display:block;width:100%;height:auto}
 #error{
   display:none;
   padding:20px;
@@ -164,7 +153,7 @@ footer{
     <div class='section-head'>
       <div class='kicker'>Architecture</div>
       <h2 id='project-title'>System architecture</h2>
-      <p class='subtitle' id='project-subtitle'>Custom-drawn system design for each project.</p>
+      <p class='subtitle' id='project-subtitle'>Hand-drawn system design for each project.</p>
     </div>
 
     <div id='error' role='alert'></div>
@@ -179,11 +168,7 @@ footer{
         <div class='tags' id='info-tags'></div>
       </aside>
       <div class='diagram-canvas-wrap'>
-        <div class='diagram-canvas' id='canvas'>
-          <div id='groups'></div>
-          <svg class='edges-svg' id='edges'></svg>
-          <div id='nodes'></div>
-        </div>
+        <div id='canvas'></div>
       </div>
     </div>
 
@@ -220,19 +205,6 @@ footer{
 </footer>
 
 <script>
-const ICONS = {
-  user:`<circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 3.6-6 8-6s8 2 8 6'/>`,
-  server:`<rect x='3' y='4' width='18' height='8' rx='1'/><rect x='3' y='12' width='18' height='8' rx='1'/><path d='M7 8h.01'/><path d='M7 16h.01'/>`,
-  db:`<ellipse cx='12' cy='5' rx='8' ry='3'/><path d='M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5'/><path d='M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6'/>`,
-  mail:`<rect x='3' y='5' width='18' height='14' rx='2'/><path d='m3 7 9 6 9-6'/>`,
-  card:`<rect x='2' y='5' width='20' height='14' rx='2'/><path d='M2 10h20'/>`,
-  search:`<circle cx='11' cy='11' r='7'/><path d='m21 21-4.3-4.3'/>`,
-  api:`<path d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'/><path d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'/>`,
-  terminal:`<path d='m4 17 6-6-6-6'/><path d='M12 19h8'/>`,
-  zap:`<path d='M13 2 3 14h7l-1 8 10-12h-7l1-8z'/>`,
-  globe:`<circle cx='12' cy='12' r='10'/><path d='M2 12h20'/><path d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20'/>`
-};
-
 const diagrams = {
   diamreserve: {
     name:'diamReserve',
@@ -249,16 +221,16 @@ const diagrams = {
     height:480,
     groups:[
       {x:16,y:60,w:210,h:280,label:'Client'},
-      {x:280,y:40,w:400,h:400,label:'diamReserve',cls:'app'}
+      {x:280,y:40,w:400,h:400,label:'diamReserve',app:true}
     ],
     nodes:[
-      {id:'customer',x:40,y:110,w:160,h:64,title:'Customer',icon:'user'},
-      {id:'staff',x:40,y:225,w:160,h:64,title:'Staff',icon:'user'},
-      {id:'flask',x:330,y:95,w:280,h:135,title:'Flask Web App',sub:'Python / Flask 3 &middot; Gunicorn<br>CSRF &middot; rate limits &middot; PBKDF2 &middot; CSP &middot; HSTS',icon:'server'},
-      {id:'mysql',x:330,y:300,w:150,h:80,title:'MySQL 8',sub:'SQLite in dev',icon:'db'},
-      {id:'mail',x:520,y:300,w:160,h:80,title:'Email Worker',icon:'mail'},
-      {id:'stripe',x:740,y:120,w:200,h:70,title:'Stripe Checkout',icon:'card'},
-      {id:'smtp',x:740,y:300,w:200,h:70,title:'SMTP / Gmail',icon:'mail'}
+      {id:'customer',x:75,y:100,w:90,h:100,title:'Customer',type:'actor'},
+      {id:'staff',x:75,y:215,w:90,h:100,title:'Staff',type:'actor'},
+      {id:'flask',x:330,y:95,w:280,h:135,title:'Flask Web App',sub:['Python / Flask 3 &middot; Gunicorn','CSRF &middot; rate limits &middot; PBKDF2','secure cookies &middot; CSP &middot; HSTS'],type:'service'},
+      {id:'mysql',x:330,y:300,w:150,h:84,title:'MySQL 8',sub:['SQLite in dev'],type:'db'},
+      {id:'mail',x:520,y:300,w:160,h:80,title:'Email Worker',type:'service'},
+      {id:'stripe',x:740,y:120,w:200,h:70,title:'Stripe Checkout',type:'ext'},
+      {id:'smtp',x:740,y:300,w:200,h:70,title:'SMTP / Gmail',type:'ext'}
     ],
     edges:[
       {from:'customer',to:'flask',label:'HTTPS + CSRF'},
@@ -284,16 +256,16 @@ const diagrams = {
     height:580,
     groups:[
       {x:16,y:60,w:210,h:270,label:'Client'},
-      {x:280,y:40,w:410,h:500,label:'Seek',cls:'app'}
+      {x:280,y:40,w:410,h:500,label:'Seek',app:true}
     ],
     nodes:[
-      {id:'user',x:40,y:110,w:160,h:64,title:'User / Admin',icon:'user'},
-      {id:'api',x:40,y:225,w:160,h:64,title:'API Client',icon:'api'},
-      {id:'flask',x:330,y:90,w:280,h:130,title:'Flask Web App',sub:'Python / Flask 3 &middot; Gunicorn<br>BCrypt &middot; JWT &middot; API keys',icon:'server'},
-      {id:'search',x:330,y:285,w:280,h:120,title:'Search Engine',sub:'Single / parallel &middot; federated<br>with consent filtering',icon:'search'},
-      {id:'pg',x:330,y:445,w:150,h:70,title:'PostgreSQL',icon:'db'},
-      {id:'redis',x:520,y:445,w:160,h:70,title:'Redis',icon:'db'},
-      {id:'sources',x:740,y:300,w:200,h:110,title:'External Data Sources',sub:'PostgreSQL &middot; MySQL &middot; MSSQL',icon:'db'}
+      {id:'user',x:75,y:100,w:90,h:100,title:'User / Admin',type:'actor'},
+      {id:'api',x:40,y:228,w:160,h:64,title:'API Client',type:'ext'},
+      {id:'flask',x:330,y:90,w:280,h:130,title:'Flask Web App',sub:['Python / Flask 3 &middot; Gunicorn','BCrypt &middot; JWT &middot; API keys'],type:'service'},
+      {id:'search',x:330,y:285,w:280,h:120,title:'Search Engine',sub:['Single / parallel &middot; federated','with consent filtering'],type:'service'},
+      {id:'pg',x:330,y:445,w:150,h:74,title:'PostgreSQL',type:'db'},
+      {id:'redis',x:520,y:445,w:160,h:74,title:'Redis',type:'db'},
+      {id:'sources',x:740,y:300,w:200,h:110,title:'External Data Sources',sub:['PostgreSQL &middot; MySQL &middot; MSSQL'],type:'db'}
     ],
     edges:[
       {from:'user',to:'flask',label:'HTTPS + session'},
@@ -320,16 +292,16 @@ const diagrams = {
     height:540,
     groups:[
       {x:16,y:60,w:210,h:270,label:'Client'},
-      {x:280,y:40,w:400,h:460,label:'Tracker',cls:'app'}
+      {x:280,y:40,w:400,h:460,label:'Tracker',app:true}
     ],
     nodes:[
-      {id:'user',x:40,y:110,w:160,h:64,title:'Web User',icon:'user'},
-      {id:'cli',x:40,y:225,w:160,h:64,title:'tracker CLI',icon:'terminal'},
-      {id:'flask',x:330,y:90,w:280,h:130,title:'Flask Backend',sub:'Python / Flask 3 &middot; async<br>Session + token auth',icon:'server'},
-      {id:'db',x:330,y:290,w:150,h:80,title:'SQLite',icon:'db'},
-      {id:'sse',x:520,y:290,w:160,h:80,title:'Server-Sent Events',icon:'zap'},
-      {id:'mail',x:330,y:410,w:150,h:70,title:'Email Worker',icon:'mail'},
-      {id:'smtp',x:740,y:300,w:200,h:70,title:'SMTP',icon:'mail'}
+      {id:'user',x:75,y:100,w:90,h:100,title:'Web User',type:'actor'},
+      {id:'cli',x:40,y:228,w:160,h:64,title:'tracker CLI',type:'ext'},
+      {id:'flask',x:330,y:90,w:280,h:130,title:'Flask Backend',sub:['Python / Flask 3 &middot; async','Session + token auth'],type:'service'},
+      {id:'db',x:330,y:290,w:150,h:84,title:'SQLite',type:'db'},
+      {id:'sse',x:520,y:290,w:160,h:80,title:'Server-Sent Events',type:'service'},
+      {id:'mail',x:330,y:410,w:150,h:74,title:'Email Worker',type:'service'},
+      {id:'smtp',x:740,y:300,w:200,h:70,title:'SMTP',type:'ext'}
     ],
     edges:[
       {from:'user',to:'flask',label:'HTTPS + session'},
@@ -343,6 +315,8 @@ const diagrams = {
   }
 };
 
+const C = { node:'#20304a', nodeBorder:'#334155', ext:'#1a2438', text:'#F8FAFC', sub:'#A8B8CC', edge:'rgba(56,189,248,.55)', arrow:'rgba(56,189,248,.9)', group:'rgba(168,184,204,.3)', groupApp:'rgba(56,189,248,.4)' };
+
 function anchor(n, o){
   const cx = n.x + n.w/2, cy = n.y + n.h/2;
   const ox = o.x + o.w/2, oy = o.y + o.h/2;
@@ -354,30 +328,63 @@ function anchor(n, o){
   return { x: cx + dx*t, y: cy + dy*t };
 }
 
-function renderDiagram(key){
-  const d = diagrams[key];
-  const canvas = document.getElementById('canvas');
-  canvas.style.height = d.height + 'px';
-  document.getElementById('groups').innerHTML = d.groups.map(function(g){
-    return `<div class='dgroup ${g.cls||''}' style='left:${g.x}px;top:${g.y}px;width:${g.w}px;height:${g.h}px'><span class='dgroup-label'>${g.label}</span></div>`;
+function textAt(cx, cy, lines){
+  const lh = 16;
+  const startY = cy - ((lines.length - 1) * lh) / 2;
+  return lines.map(function(l, i){
+    const cls = i === 0 ? `font-size='12.5' font-weight='600' fill='${C.text}'` : `font-size='10.5' fill='${C.sub}'`;
+    return `<text x='${cx}' y='${startY + i*lh + 4}' text-anchor='middle' ${cls}>${l}</text>`;
   }).join('');
-  document.getElementById('nodes').innerHTML = d.nodes.map(function(n){
-    return `<div class='dnode' style='left:${n.x}px;top:${n.y}px;width:${n.w}px;height:${n.h}px'>
-      <div class='dnode-head'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>${ICONS[n.icon]||ICONS.server}</svg><span class='dnode-title'>${n.title}</span></div>
-      ${n.sub ? `<div class='dnode-sub'>${n.sub}</div>` : ''}
-    </div>`;
-  }).join('');
+}
+
+function drawNode(n){
+  const cx = n.x + n.w/2;
+  if(n.type === 'actor'){
+    return `
+      <circle cx='${cx}' cy='${n.y+18}' r='11' fill='${C.node}' stroke='${C.nodeBorder}' stroke-width='1.5'/>
+      <rect x='${cx-16}' y='${n.y+33}' width='32' height='40' rx='15' fill='${C.node}' stroke='${C.nodeBorder}' stroke-width='1.5'/>
+      <text x='${cx}' y='${n.y+n.h-6}' text-anchor='middle' font-size='11.5' font-weight='600' fill='${C.text}'>${n.title}</text>`;
+  }
+  if(n.type === 'db'){
+    const rw = n.w/2 - 6;
+    const top = n.y + 11, bottom = n.y + n.h - 14;
+    const lines = [n.title].concat(n.sub || []);
+    return `
+      <path d='M ${cx-rw} ${top} V ${bottom} A ${rw} 10 0 0 0 ${cx+rw} ${bottom} V ${top}' fill='${C.node}' stroke='${C.nodeBorder}' stroke-width='1.5'/>
+      <ellipse cx='${cx}' cy='${top}' rx='${rw}' ry='10' fill='${C.node}' stroke='${C.nodeBorder}' stroke-width='1.5'/>
+      ${textAt(cx, n.y + 14 + (n.h-14)/2, lines)}`;
+  }
+  const fill = n.type === 'ext' ? C.ext : C.node;
+  const lines = [n.title].concat(n.sub || []);
+  return `
+    <rect x='${n.x}' y='${n.y}' width='${n.w}' height='${n.h}' rx='10' fill='${fill}' stroke='${C.nodeBorder}' stroke-width='1.5'/>
+    ${textAt(cx, n.y + n.h/2, lines)}`;
+}
+
+function buildSvg(d){
   const ns = {};
   d.nodes.forEach(function(n){ ns[n.id] = n; });
-  let svg = `<defs><marker id='arr' markerWidth='9' markerHeight='9' refX='7' refY='4.5' orient='auto'><path d='M1 1 L8 4.5 L1 8' fill='none' stroke='rgba(56,189,248,.9)' stroke-width='1.4'/></marker></defs>`;
+  let s = `<svg viewBox='0 0 960 ${d.height}' xmlns='http://www.w3.org/2000/svg' font-family='Inter, Arial, sans-serif'>
+    <defs><marker id='arr' markerWidth='9' markerHeight='9' refX='7' refY='4.5' orient='auto'><path d='M1 1 L8 4.5 L1 8' fill='none' stroke='${C.arrow}' stroke-width='1.4'/></marker></defs>`;
+  d.groups.forEach(function(g){
+    s += `<rect x='${g.x}' y='${g.y}' width='${g.w}' height='${g.h}' rx='8' fill='none' stroke='${g.app ? C.groupApp : C.group}' stroke-width='1.2' stroke-dasharray='6 5'/>
+      <text x='${g.x+12}' y='${g.y+20}' font-size='11' letter-spacing='1.5' fill='${g.app ? C.arrow : C.sub}'>${g.label.toUpperCase()}</text>`;
+  });
   d.edges.forEach(function(e){
     const a = anchor(ns[e.from], ns[e.to]);
     const b = anchor(ns[e.to], ns[e.from]);
     const mx = (a.x + b.x)/2, my = (a.y + b.y)/2;
-    svg += `<line x1='${a.x}' y1='${a.y}' x2='${b.x}' y2='${b.y}' stroke='rgba(56,189,248,.5)' stroke-width='1.5' marker-end='url(#arr)'/>`;
-    if(e.label) svg += `<text x='${mx}' y='${my-5}' text-anchor='middle' font-size='10.5' fill='#A8B8CC' paint-order='stroke' stroke='#1E293B' stroke-width='6'>${e.label}</text>`;
+    s += `<line x1='${a.x}' y1='${a.y}' x2='${b.x}' y2='${b.y}' stroke='${C.edge}' stroke-width='1.5' marker-end='url(#arr)'/>`;
+    if(e.label) s += `<text x='${mx}' y='${my-5}' text-anchor='middle' font-size='10.5' fill='${C.sub}' paint-order='stroke' stroke='#1E293B' stroke-width='6'>${e.label}</text>`;
   });
-  document.getElementById('edges').innerHTML = svg;
+  d.nodes.forEach(function(n){ s += drawNode(n); });
+  s += `</svg>`;
+  return s;
+}
+
+function renderDiagram(key){
+  const d = diagrams[key];
+  document.getElementById('canvas').innerHTML = buildSvg(d);
   document.getElementById('info-title').textContent = d.name;
   document.getElementById('info-sub').textContent = d.subtitle;
   document.getElementById('info-desc').textContent = d.desc;

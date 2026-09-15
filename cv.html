@@ -71,8 +71,8 @@ nav{
 main{position:relative;z-index:2}
 section{max-width:1180px;margin:0 auto;padding:72px 20px}
 .kicker{color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:10px}
-h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.5px;margin-bottom:12px}
-h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;margin-bottom:12px}
+h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(24px,3.4vw,38px);line-height:1.05;letter-spacing:-1px;margin-bottom:12px}
+h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:19px;margin-bottom:12px}
 .cv-hero{
   background:var(--panel);
   border:1px solid var(--border);
@@ -80,7 +80,7 @@ h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;margin-bottom:1
   margin-bottom:32px;
   position:relative;
 }
-.cv-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(38px,6vw,62px);letter-spacing:-2px;margin-bottom:8px}
+.cv-name{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(30px,4.5vw,46px);letter-spacing:-1.5px;margin-bottom:8px}
 .cv-role{color:var(--gold);font-size:17px;font-weight:500;margin-bottom:18px}
 .cv-contact{display:flex;flex-wrap:wrap;gap:12px 22px;color:var(--soft);font-size:13px;margin-bottom:24px}
 .cv-contact a:hover{color:var(--gold)}
@@ -132,7 +132,12 @@ h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;margin-bottom:1
 }
 .cv-section ul{padding-left:18px}
 .cv-section li{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:8px}
-.skill-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.skill-grid{display:grid;grid-template-columns:1fr;gap:20px}
+.skill-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.skill-group h5{color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.8px;margin-bottom:10px}
+.skill-list{list-style:none;padding:0}
+.skill-list li{position:relative;padding-left:16px;font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:6px}
+.skill-list li::before{content:'\2192';position:absolute;left:0;color:var(--gold);font-size:11px}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
 .tag{
   color:var(--soft);
@@ -156,8 +161,12 @@ footer{
 .js .reveal{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .7s ease,transform .7s ease}
 .js .reveal.visible{opacity:1;transform:translateY(0) scale(1)}
 @media(max-width:960px){
-  .cv-grid,.skill-grid{grid-template-columns:1fr}
+  .cv-grid{grid-template-columns:1fr}
+  .skill-groups{grid-template-columns:1fr 1fr}
   .cv-hero{padding:28px 20px}
+}
+@media(max-width:640px){
+  .skill-groups{grid-template-columns:1fr}
 }
 @media(max-width:720px){
   .nav-inner{flex-direction:column;align-items:flex-start}
@@ -278,18 +287,68 @@ footer{
 
       <div class='cv-card reveal'>
         <h3>Technical Skills</h3>
-        <p>Python, C#, Flask, FastAPI, ASP.NET Core, PostgreSQL, Redis, SQLite, Docker, Kubernetes, Git, SQLAlchemy, Stripe API, SignalR, REST APIs.</p>
-        <div class='tags'>
-          <span class='tag'>Python</span>
-          <span class='tag'>C#</span>
-          <span class='tag'>Flask</span>
-          <span class='tag'>FastAPI</span>
-          <span class='tag'>PostgreSQL</span>
-          <span class='tag'>Redis</span>
-          <span class='tag'>Docker</span>
-          <span class='tag'>Kubernetes</span>
-          <span class='tag'>SignalR</span>
-          <span class='tag'>Stripe API</span>
+        <div class='skill-groups'>
+          <div class='skill-group'>
+            <h5>Backend</h5>
+            <ul class='skill-list'>
+              <li>ASP.NET Core - REST APIs, middleware, auth pipelines</li>
+              <li>Flask - async routes, blueprints, SQLAlchemy</li>
+              <li>FastAPI - async endpoints, Pydantic, webhooks</li>
+              <li>SignalR - real-time hubs and SSE</li>
+              <li>OAuth 2.0 / GitHub OAuth with Authlib</li>
+              <li>Rate limiting, JWT, BCrypt, RBAC</li>
+            </ul>
+          </div>
+          <div class='skill-group'>
+            <h5>Databases</h5>
+            <ul class='skill-list'>
+              <li>PostgreSQL - RLS, migrations, query optimisation</li>
+              <li>SQLite - lightweight production DBs</li>
+              <li>EF Core - code-first schema, relationships</li>
+              <li>SQLAlchemy - ORM patterns and raw queries</li>
+              <li>Redis - caching, pub/sub, distributed locks</li>
+            </ul>
+          </div>
+          <div class='skill-group'>
+            <h5>Security</h5>
+            <ul class='skill-list'>
+              <li>SAST / DAST / SCA - Semgrep, Snyk, GitLeaks, pip-audit</li>
+              <li>OWASP ZAP - authenticated security testing</li>
+              <li>AES-256 encryption, key rotation design</li>
+              <li>Zero-knowledge encryption patterns</li>
+              <li>GDPR compliance, CSP, input validation</li>
+            </ul>
+          </div>
+          <div class='skill-group'>
+            <h5>Testing</h5>
+            <ul class='skill-list'>
+              <li>xUnit - unit and integration tests</li>
+              <li>pytest - fixtures, parametrize, coverage</li>
+              <li>k6 - load testing and performance baselines</li>
+              <li>Playwright - E2E browser automation</li>
+              <li>370+ tests across production systems</li>
+            </ul>
+          </div>
+          <div class='skill-group'>
+            <h5>Desktop &amp; Mobile</h5>
+            <ul class='skill-list'>
+              <li>WinUI 3 - modern Windows applications</li>
+              <li>.NET MAUI - cross-platform desktop/mobile</li>
+              <li>Blazor - component-based web UIs</li>
+              <li>CommunityToolkit.Mvvm - MVVM patterns</li>
+              <li>PWAs - progressive web apps</li>
+            </ul>
+          </div>
+          <div class='skill-group'>
+            <h5>Infrastructure</h5>
+            <ul class='skill-list'>
+              <li>Docker - containerisation and Compose</li>
+              <li>AWS S3 - object storage and signed URLs</li>
+              <li>Git, GitHub Actions, CI/CD pipelines</li>
+              <li>Cloudflare and Cloudflare Tunnel</li>
+              <li>Kubernetes - Deployment, HPA, NetworkPolicy</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
