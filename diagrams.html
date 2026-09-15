@@ -7,7 +7,7 @@
 <title>Architecture - Adam Scholey</title>
 <link rel='preconnect' href='https://fonts.googleapis.com'>
 <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Inter:wght@400;500;600;700&amp;display=swap'>
 <style>
 @font-face { font-family:'Inter Display'; src:url('fonts/InterDisplay-Medium.ttf') format('truetype'); font-weight:500; font-style:normal; font-display:swap; }
 :root{
@@ -63,7 +63,6 @@ nav{
   -webkit-backdrop-filter:blur(12px);
 }
 .nav-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{font-family:'Inter',Arial,sans-serif;font-size:22px;color:var(--cream);letter-spacing:-.3px}
 .nav-links{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
 .nav-links a{font-family:'Inter',Arial,sans-serif;color:var(--muted);font-size:13px;font-weight:500;padding:6px 2px;letter-spacing:.2px;transition:.18s ease;border-bottom:1px solid transparent;}
 .nav-links a:hover{color:var(--text);border-bottom-color:rgba(56,189,248,.5)}
@@ -72,30 +71,40 @@ main{position:relative;z-index:2}
 section{max-width:1180px;margin:0 auto;padding:72px 20px}
 .section-head{margin-bottom:36px}
 .kicker{color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:10px}
-h2{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.5px;margin-bottom:12px}
+h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.5px;margin-bottom:12px}
 .subtitle{color:var(--muted);max-width:800px;font-size:16px;line-height:1.7}
 .back-link{display:inline-flex;align-items:center;gap:8px;color:var(--gold);font-size:13px;font-weight:500;margin-bottom:24px}
 .back-link:hover{text-decoration:underline}
-.diagram-panel{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:0;
-  padding:32px;
-  min-height:400px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:auto;
-}
-#diagram{max-width:100%}
-#diagram svg{max-width:100%;height:auto}
+.diagram-layout{display:grid;grid-template-columns:340px minmax(0,1fr);gap:22px;align-items:start}
+.diagram-info{background:var(--panel);border:1px solid var(--border);padding:26px}
+.diagram-info h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:28px;letter-spacing:-.5px;margin-bottom:4px}
+.info-sub{color:var(--gold);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.info-desc{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:20px}
+.diagram-info h4{color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px}
+.decisions{list-style:none;padding:0}
+.decisions li{color:var(--muted);font-size:13px;line-height:1.7;margin-bottom:12px;padding-left:20px;position:relative}
+.decisions li::before{content:'';position:absolute;left:0;top:11px;width:9px;height:1px;background:var(--gold)}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.tag{color:var(--soft);border:1px solid var(--border);border-radius:6px;padding:4px 9px;font-size:11px;letter-spacing:.2px;font-weight:500}
+.diagram-canvas-wrap{background:var(--panel);border:1px solid var(--border);overflow-x:auto}
+.diagram-canvas{position:relative;min-width:960px}
+.dgroup{position:absolute;border:1px dashed rgba(168,184,204,.3);border-radius:8px;z-index:1}
+.dgroup-label{position:absolute;top:-11px;left:14px;padding:0 8px;background:var(--panel);color:var(--soft);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+.dgroup.app{border-color:rgba(56,189,248,.4)}
+.dgroup.app .dgroup-label{color:var(--gold)}
+.edges-svg{position:absolute;inset:0;z-index:2;pointer-events:none}
+.dnode{position:absolute;z-index:3;background:#20304a;border:1px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:4px;justify-content:center;transition:border-color .2s}
+.dnode:hover{border-color:var(--gold)}
+.dnode-head{display:flex;align-items:center;gap:8px}
+.dnode-head svg{width:15px;height:15px;color:var(--gold);flex-shrink:0}
+.dnode-title{color:var(--text);font-size:12.5px;font-weight:600;line-height:1.2}
+.dnode-sub{color:var(--soft);font-size:10.5px;line-height:1.5}
 #error{
   display:none;
   padding:20px;
   background:rgba(220,38,38,.1);
   border:1px solid rgba(220,38,38,.3);
   color:#fca5a5;
-  border-radius:0;
   margin-bottom:24px;
 }
 #project-list{display:none;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:24px}
@@ -121,10 +130,11 @@ footer{
 .reveal{opacity:1;transform:none}
 .js .reveal{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .7s ease,transform .7s ease}
 .js .reveal.visible{opacity:1;transform:translateY(0) scale(1)}
+@media(max-width:1080px){.diagram-layout{grid-template-columns:1fr}}
 @media(max-width:720px){
   .nav-inner{flex-direction:column;align-items:flex-start}
   section{padding:60px 16px}
-  .diagram-panel{padding:20px}
+  .diagram-info{padding:20px}
 }
 @media (prefers-reduced-motion: reduce){
   .js .reveal,.js .reveal.visible{opacity:1;transform:none;transition:none}
@@ -136,7 +146,6 @@ footer{
 
 <nav>
   <div class='nav-inner'>
-    <a href='index.html' class='logo'>Adam Scholey</a>
     <div class='nav-links'>
       <a href='index.html'>Home</a>
       <a href='index.html#about'>About</a>
@@ -154,13 +163,28 @@ footer{
     <a href='projects.html' class='back-link'>&larr; Back to Projects</a>
     <div class='section-head'>
       <div class='kicker'>Architecture</div>
-      <h2 id='project-title'>Diagram</h2>
-      <p class='subtitle' id='project-subtitle'>High-level system architecture.</p>
+      <h2 id='project-title'>System architecture</h2>
+      <p class='subtitle' id='project-subtitle'>Custom-drawn system design for each project.</p>
     </div>
 
     <div id='error' role='alert'></div>
-    <div class='diagram-panel' id='diagram-panel'>
-      <div id='diagram' style='opacity:0'></div>
+
+    <div class='diagram-layout' id='diagram-layout'>
+      <aside class='diagram-info' id='info-panel'>
+        <h3 id='info-title'></h3>
+        <div class='info-sub' id='info-sub'></div>
+        <p class='info-desc' id='info-desc'></p>
+        <h4>Why it is built this way</h4>
+        <ul class='decisions' id='decisions'></ul>
+        <div class='tags' id='info-tags'></div>
+      </aside>
+      <div class='diagram-canvas-wrap'>
+        <div class='diagram-canvas' id='canvas'>
+          <div id='groups'></div>
+          <svg class='edges-svg' id='edges'></svg>
+          <div id='nodes'></div>
+        </div>
+      </div>
     </div>
 
     <div id='project-list'>
@@ -195,51 +219,189 @@ footer{
   <p style='color:var(--soft);font-size:12px'>&copy; <span id='year'>2026</span> Adam Scholey &middot; Software Engineer</p>
 </footer>
 
-<script src='https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js'></script>
 <script>
-mermaid.initialize({ startOnLoad: false });
-(async function(){
-  const params = new URLSearchParams(location.search);
-  const project = params.get('project') || '';
-  const names = { diamreserve: 'diamReserve', seek: 'Seek', tracker: 'Tracker' };
-  const subtitles = {
-    diamreserve: 'Restaurant booking system with visual floor plan, Stripe deposits, and staff PWA.',
-    seek: 'Internal search engine with GDPR-compliant cross-border data access and federated connectors.',
-    tracker: 'Project management tool with real-time SSE updates, GitHub OAuth, and CLI integration.'
-  };
-  const valid = Object.keys(names);
-  const titleEl = document.getElementById('project-title');
-  const subtitleEl = document.getElementById('project-subtitle');
-  const errorEl = document.getElementById('error');
-  const diagramEl = document.getElementById('diagram');
-  const listEl = document.getElementById('project-list');
+const ICONS = {
+  user:`<circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 3.6-6 8-6s8 2 8 6'/>`,
+  server:`<rect x='3' y='4' width='18' height='8' rx='1'/><rect x='3' y='12' width='18' height='8' rx='1'/><path d='M7 8h.01'/><path d='M7 16h.01'/>`,
+  db:`<ellipse cx='12' cy='5' rx='8' ry='3'/><path d='M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5'/><path d='M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6'/>`,
+  mail:`<rect x='3' y='5' width='18' height='14' rx='2'/><path d='m3 7 9 6 9-6'/>`,
+  card:`<rect x='2' y='5' width='20' height='14' rx='2'/><path d='M2 10h20'/>`,
+  search:`<circle cx='11' cy='11' r='7'/><path d='m21 21-4.3-4.3'/>`,
+  api:`<path d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'/><path d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'/>`,
+  terminal:`<path d='m4 17 6-6-6-6'/><path d='M12 19h8'/>`,
+  zap:`<path d='M13 2 3 14h7l-1 8 10-12h-7l1-8z'/>`,
+  globe:`<circle cx='12' cy='12' r='10'/><path d='M2 12h20'/><path d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20'/>`
+};
 
-  if (!valid.includes(project)) {
-    errorEl.textContent = 'Select a project to view its architecture diagram.';
+const diagrams = {
+  diamreserve: {
+    name:'diamReserve',
+    subtitle:'Restaurant Booking System',
+    desc:'Production-ready booking platform — visual SVG floor plan, Stripe deposits, admin dashboard with analytics, and an offline-capable staff PWA.',
+    decisions:[
+      'Stripe Checkout instead of handling card details — the server only ever sees a PCI-safe token, so payments stay out of PCI scope.',
+      'Email worker sits outside the request path so SMTP latency never slows down a booking.',
+      'MySQL 8 in production, SQLite in development — SQLAlchemy makes the switch trivial.',
+      'PBKDF2 hashing, CSRF protection, rate limiting, secure cookies, CSP and HSTS are the baseline, not bolt-ons.',
+      'Staff PWA keeps the floor plan usable even when the venue Wi-Fi drops.'
+    ],
+    tags:['Python','Flask','MySQL','Stripe','SQLAlchemy','PWA'],
+    height:480,
+    groups:[
+      {x:16,y:60,w:210,h:280,label:'Client'},
+      {x:280,y:40,w:400,h:400,label:'diamReserve',cls:'app'}
+    ],
+    nodes:[
+      {id:'customer',x:40,y:110,w:160,h:64,title:'Customer',icon:'user'},
+      {id:'staff',x:40,y:225,w:160,h:64,title:'Staff',icon:'user'},
+      {id:'flask',x:330,y:95,w:280,h:135,title:'Flask Web App',sub:'Python / Flask 3 &middot; Gunicorn<br>CSRF &middot; rate limits &middot; PBKDF2 &middot; CSP &middot; HSTS',icon:'server'},
+      {id:'mysql',x:330,y:300,w:150,h:80,title:'MySQL 8',sub:'SQLite in dev',icon:'db'},
+      {id:'mail',x:520,y:300,w:160,h:80,title:'Email Worker',icon:'mail'},
+      {id:'stripe',x:740,y:120,w:200,h:70,title:'Stripe Checkout',icon:'card'},
+      {id:'smtp',x:740,y:300,w:200,h:70,title:'SMTP / Gmail',icon:'mail'}
+    ],
+    edges:[
+      {from:'customer',to:'flask',label:'HTTPS + CSRF'},
+      {from:'staff',to:'flask',label:'HTTPS'},
+      {from:'flask',to:'mysql',label:'SQLAlchemy ORM'},
+      {from:'flask',to:'mail',label:'queues'},
+      {from:'mail',to:'smtp',label:'SMTP'},
+      {from:'flask',to:'stripe',label:'PCI token only'}
+    ]
+  },
+  seek: {
+    name:'Seek',
+    subtitle:'Internal Search Engine',
+    desc:'Multi-tenant search across internal databases with GDPR-compliant cross-border access, consent filtering and federated connectors.',
+    decisions:[
+      'Row-level security plus table partitioning by region — data sovereignty is enforced inside Postgres, not application code.',
+      'Federated search via asyncio + httpx — queries fan out to sources in parallel instead of centralising data.',
+      'tsvector + pg_trgm GIN indexes give full-text search without running a separate Elasticsearch cluster.',
+      'Redis handles sessions, caching and distributed locks so workers stay stateless.',
+      'Kubernetes HPA scales search workers under load; consent management and audit logging satisfy GDPR.'
+    ],
+    tags:['Python','Flask','PostgreSQL','Redis','Kubernetes','GDPR'],
+    height:580,
+    groups:[
+      {x:16,y:60,w:210,h:270,label:'Client'},
+      {x:280,y:40,w:410,h:500,label:'Seek',cls:'app'}
+    ],
+    nodes:[
+      {id:'user',x:40,y:110,w:160,h:64,title:'User / Admin',icon:'user'},
+      {id:'api',x:40,y:225,w:160,h:64,title:'API Client',icon:'api'},
+      {id:'flask',x:330,y:90,w:280,h:130,title:'Flask Web App',sub:'Python / Flask 3 &middot; Gunicorn<br>BCrypt &middot; JWT &middot; API keys',icon:'server'},
+      {id:'search',x:330,y:285,w:280,h:120,title:'Search Engine',sub:'Single / parallel &middot; federated<br>with consent filtering',icon:'search'},
+      {id:'pg',x:330,y:445,w:150,h:70,title:'PostgreSQL',icon:'db'},
+      {id:'redis',x:520,y:445,w:160,h:70,title:'Redis',icon:'db'},
+      {id:'sources',x:740,y:300,w:200,h:110,title:'External Data Sources',sub:'PostgreSQL &middot; MySQL &middot; MSSQL',icon:'db'}
+    ],
+    edges:[
+      {from:'user',to:'flask',label:'HTTPS + session'},
+      {from:'api',to:'flask',label:'HTTPS + API key'},
+      {from:'flask',to:'search',label:'queries'},
+      {from:'search',to:'sources',label:'federated &middot; httpx'},
+      {from:'search',to:'pg',label:'SQLAlchemy'},
+      {from:'flask',to:'pg',label:'admin / auth'},
+      {from:'flask',to:'redis',label:'sessions / cache'}
+    ]
+  },
+  tracker: {
+    name:'Tracker',
+    subtitle:'Project Management',
+    desc:'Lifecycle tracker in daily use by the team — live SSE updates, GitHub OAuth, email notifications and a CLI client sharing one REST API.',
+    decisions:[
+      'Server-Sent Events instead of WebSockets — updates are one-way, so SSE gives live pushes without socket infrastructure.',
+      'GitHub OAuth via Authlib — no passwords to store, and the team already lives in GitHub.',
+      'plain sqlite3 over an ORM — the schema is small enough that raw SQL keeps it transparent.',
+      'CLI and web UI share the same REST API, so project status is scriptable.',
+      'Email worker is decoupled from the request path for status-change notifications.'
+    ],
+    tags:['Python','Flask','SQLite','SSE','GitHub OAuth','Authlib'],
+    height:540,
+    groups:[
+      {x:16,y:60,w:210,h:270,label:'Client'},
+      {x:280,y:40,w:400,h:460,label:'Tracker',cls:'app'}
+    ],
+    nodes:[
+      {id:'user',x:40,y:110,w:160,h:64,title:'Web User',icon:'user'},
+      {id:'cli',x:40,y:225,w:160,h:64,title:'tracker CLI',icon:'terminal'},
+      {id:'flask',x:330,y:90,w:280,h:130,title:'Flask Backend',sub:'Python / Flask 3 &middot; async<br>Session + token auth',icon:'server'},
+      {id:'db',x:330,y:290,w:150,h:80,title:'SQLite',icon:'db'},
+      {id:'sse',x:520,y:290,w:160,h:80,title:'Server-Sent Events',icon:'zap'},
+      {id:'mail',x:330,y:410,w:150,h:70,title:'Email Worker',icon:'mail'},
+      {id:'smtp',x:740,y:300,w:200,h:70,title:'SMTP',icon:'mail'}
+    ],
+    edges:[
+      {from:'user',to:'flask',label:'HTTPS + session'},
+      {from:'cli',to:'flask',label:'HTTPS + token'},
+      {from:'flask',to:'db',label:'plain sqlite3'},
+      {from:'flask',to:'sse',label:'pushes updates'},
+      {from:'sse',to:'user',label:'live updates'},
+      {from:'flask',to:'mail',label:'queues'},
+      {from:'mail',to:'smtp',label:'SMTP'}
+    ]
+  }
+};
+
+function anchor(n, o){
+  const cx = n.x + n.w/2, cy = n.y + n.h/2;
+  const ox = o.x + o.w/2, oy = o.y + o.h/2;
+  const dx = ox - cx, dy = oy - cy;
+  let t = Infinity;
+  if(dx !== 0) t = Math.min(t, (dx > 0 ? n.x + n.w - cx : n.x - cx) / dx);
+  if(dy !== 0) t = Math.min(t, (dy > 0 ? n.y + n.h - cy : n.y - cy) / dy);
+  if(!isFinite(t)) t = 0;
+  return { x: cx + dx*t, y: cy + dy*t };
+}
+
+function renderDiagram(key){
+  const d = diagrams[key];
+  const canvas = document.getElementById('canvas');
+  canvas.style.height = d.height + 'px';
+  document.getElementById('groups').innerHTML = d.groups.map(function(g){
+    return `<div class='dgroup ${g.cls||''}' style='left:${g.x}px;top:${g.y}px;width:${g.w}px;height:${g.h}px'><span class='dgroup-label'>${g.label}</span></div>`;
+  }).join('');
+  document.getElementById('nodes').innerHTML = d.nodes.map(function(n){
+    return `<div class='dnode' style='left:${n.x}px;top:${n.y}px;width:${n.w}px;height:${n.h}px'>
+      <div class='dnode-head'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>${ICONS[n.icon]||ICONS.server}</svg><span class='dnode-title'>${n.title}</span></div>
+      ${n.sub ? `<div class='dnode-sub'>${n.sub}</div>` : ''}
+    </div>`;
+  }).join('');
+  const ns = {};
+  d.nodes.forEach(function(n){ ns[n.id] = n; });
+  let svg = `<defs><marker id='arr' markerWidth='9' markerHeight='9' refX='7' refY='4.5' orient='auto'><path d='M1 1 L8 4.5 L1 8' fill='none' stroke='rgba(56,189,248,.9)' stroke-width='1.4'/></marker></defs>`;
+  d.edges.forEach(function(e){
+    const a = anchor(ns[e.from], ns[e.to]);
+    const b = anchor(ns[e.to], ns[e.from]);
+    const mx = (a.x + b.x)/2, my = (a.y + b.y)/2;
+    svg += `<line x1='${a.x}' y1='${a.y}' x2='${b.x}' y2='${b.y}' stroke='rgba(56,189,248,.5)' stroke-width='1.5' marker-end='url(#arr)'/>`;
+    if(e.label) svg += `<text x='${mx}' y='${my-5}' text-anchor='middle' font-size='10.5' fill='#A8B8CC' paint-order='stroke' stroke='#1E293B' stroke-width='6'>${e.label}</text>`;
+  });
+  document.getElementById('edges').innerHTML = svg;
+  document.getElementById('info-title').textContent = d.name;
+  document.getElementById('info-sub').textContent = d.subtitle;
+  document.getElementById('info-desc').textContent = d.desc;
+  document.getElementById('decisions').innerHTML = d.decisions.map(function(x){ return `<li>${x}</li>`; }).join('');
+  document.getElementById('info-tags').innerHTML = d.tags.map(function(t){ return `<span class='tag'>${t}</span>`; }).join('');
+  document.getElementById('project-title').textContent = d.name + ' Architecture';
+  document.getElementById('project-subtitle').textContent = d.subtitle + ' — system design.';
+}
+
+(function(){
+  const project = (new URLSearchParams(location.search)).get('project') || '';
+  const layout = document.getElementById('diagram-layout');
+  const list = document.getElementById('project-list');
+  const errorEl = document.getElementById('error');
+  if(!diagrams[project]){
+    layout.style.display = 'none';
+    errorEl.textContent = 'Select a project to view its architecture.';
     errorEl.style.display = 'block';
-    titleEl.textContent = 'Architecture Diagrams';
-    subtitleEl.textContent = 'Choose a project below to see its system design.';
-    listEl.style.display = 'grid';
+    list.style.display = 'grid';
     return;
   }
-
-  titleEl.textContent = names[project] + ' Architecture';
-  subtitleEl.textContent = subtitles[project];
-
-  try {
-    const response = await fetch('diagrams/' + project + '.mmd');
-    if (!response.ok) throw new Error('Could not load diagram file.');
-    const text = await response.text();
-    const { svg } = await mermaid.render('mermaid-' + project, text.trim());
-    diagramEl.innerHTML = svg;
-    diagramEl.style.opacity = '1';
-  } catch (err) {
-    errorEl.textContent = 'Could not render the diagram: ' + err.message;
-    errorEl.style.display = 'block';
-  }
+  renderDiagram(project);
 })();
-</script>
-<script>
+
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver(function(entries){
   entries.forEach(function(entry){ if(entry.isIntersecting){ entry.target.classList.add('visible'); } });
