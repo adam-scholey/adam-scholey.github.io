@@ -94,9 +94,6 @@ h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clam
 .now-card li{margin-bottom:8px}
 .now-card li strong{color:var(--text)}
 .grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:22px}
-.status-line{display:flex;gap:12px;align-items:center;margin-top:18px}
-.status-dot{width:8px;height:8px;border-radius:999px;background:var(--rose);box-shadow:0 0 8px var(--rose)}
-.status-text{color:var(--rose);font-size:13px;font-weight:600}
 .last-updated{color:var(--soft);font-size:12px;margin-top:24px}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .tag{
@@ -179,12 +176,12 @@ footer{
 
       <div class='now-card reveal'>
         <h3>diam Enterprise Suite</h3>
-        <div class='card-sub'>diam Systems &middot; Internal products</div>
-        <p>Security-first internal tooling we actually use day to day — all sharing a house style of vanilla frontends, hashed tokens, and org-scoped data.</p>
+        <div class='card-sub'>diam Systems &middot; Enterprise products</div>
+        <p>Enterprise software we build and sell at diam Systems — all sharing a house style of vanilla frontends, hashed tokens, and org-scoped data.</p>
         <ul style='margin-top:14px'>
-          <li><strong>Tracker</strong> — project lifecycle board live on Fly.io (diamtracker.fly.dev). SSE live updates, email on every change, GitHub OAuth, a to-do section with @mentions, and a CLI client that auto-detects the project from the working directory.</li>
-          <li><strong>Enterprise Messenger</strong> — E2EE team messaging. RSA-OAEP keypairs generated in the browser, private keys encrypted client-side, channel key epochs with fill-once member slots, and an organisation escrow key for recovery. Postgres RLS does the tenant isolation.</li>
-          <li><strong>Helpdesk</strong> — IT support ticketing with a full lifecycle, SLA targets, FTS5 search, magic-byte attachment checks, Argon2 + MFA, and seeded demo data.</li>
+          <li><strong>Enterprise Messenger</strong> — end-to-end-encrypted team messaging for businesses. RSA-OAEP keypairs generated in the browser, private keys encrypted client-side, channel key epochs with fill-once member slots, and an organisation escrow key for recovery. Postgres RLS does the tenant isolation.</li>
+          <li><strong>Helpdesk</strong> — IT support ticketing for businesses. Full ticket lifecycle, SLA targets, FTS5 search, magic-byte attachment checks, Argon2 + MFA, and seeded demo data.</li>
+          <li><strong>Tracker</strong> — our own internal lifecycle board, live on Fly.io (diamtracker.fly.dev). SSE live updates, email on every change, GitHub OAuth, a to-do section with @mentions, and a CLI client that auto-detects the project from the working directory.</li>
         </ul>
         <div class='tags'>
           <span class='tag'>Flask</span>
@@ -208,13 +205,13 @@ footer{
       </div>
 
       <div class='now-card reveal'>
-        <h3>Looking for</h3>
+        <h3>Get in touch</h3>
         <div class='card-sub'>Next step</div>
-        <p>Backend or full-stack software engineering roles where the backend is the genuinely hard part — infrastructure, developer tooling, or anything with real security and data-isolation constraints.</p>
-        <div class='status-line'>
-          <span class='status-dot'></span>
-          <span class='status-text'>Open to opportunities</span>
-        </div>
+        <p>We design and build websites and software for businesses at diam Systems. If you need something built, start here:</p>
+        <ul style='margin-top:14px'>
+          <li><strong>Website services</strong> — <a href='https://diamsystems.co.uk/websites' style='color:var(--gold)' target='_blank' rel='noopener'>diamsystems.co.uk/websites</a></li>
+          <li><strong>Email me directly</strong> — <a href='mailto:adam@diamsystems.co.uk' style='color:var(--gold)'>adam@diamsystems.co.uk</a></li>
+        </ul>
       </div>
     </div>
 
