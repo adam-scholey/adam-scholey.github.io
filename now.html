@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang='en' class='js'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<meta name='description' content='What Adam Scholey is working on now'>
+<title>Now - Adam Scholey</title>
+<link rel='preconnect' href='https://fonts.googleapis.com'>
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap'>
+<style>
+@font-face { font-family:'Inter Display'; src:url('fonts/InterDisplay-Medium.ttf') format('truetype'); font-weight:500; font-style:normal; font-display:swap; }
+:root{
+  --bg:#0F172A;
+  --panel:#1E293B;
+  --panel2:#1E293B;
+  --text:#F8FAFC;
+  --muted:#A8B8CC;
+  --soft:#A8B8CC;
+  --gold:#38BDF8;
+  --gold2:#0ea5e9;
+  --rose:#34D399;
+  --rose2:#10b981;
+  --cream:#F8FAFC;
+  --border:#334155;
+  --border-hover:#475569;
+  --gold-border:rgba(56,189,248,.45);
+  --shadow:none;
+  --radius:0px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:-5;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(56,189,248,.18) 0%, rgba(15,23,42,0) 70%),
+    linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:100% 100%, 24px 24px, 24px 24px;
+}
+a{color:inherit;text-decoration:none}
+nav{
+  position:sticky;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  padding:14px 20px;
+  background:rgba(15,23,42,.75);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.nav-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:'Inter',Arial,sans-serif;font-size:22px;color:var(--cream);letter-spacing:-.3px}
+.nav-links{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.nav-links a{font-family:'Inter',Arial,sans-serif;color:var(--muted);font-size:13px;font-weight:500;padding:6px 2px;letter-spacing:.2px;transition:.18s ease;border-bottom:1px solid transparent;}
+.nav-links a:hover{color:var(--text);border-bottom-color:rgba(56,189,248,.5)}
+.nav-links .active{color:var(--gold);border-bottom-color:var(--gold-border)}
+main{position:relative;z-index:2}
+section{max-width:1180px;margin:0 auto;padding:72px 20px}
+.section-head{margin-bottom:36px}
+.kicker{color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:10px}
+h2{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.5px;margin-bottom:12px}
+.subtitle{color:var(--muted);max-width:800px;font-size:16px;line-height:1.7}
+.card,.now-card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:0;
+  padding:26px 26px 26px 28px;
+  transition:transform .2s ease,border-color .2s ease;
+}
+.card:hover,.now-card:hover{transform:translateY(-2px);border-color:var(--border-hover)}
+.card h3,.now-card h3{
+  color:var(--text);
+  font-family:'Instrument Serif',Georgia,serif;
+  font-size:19px;
+  margin-bottom:12px;
+}
+.now-card p,.now-card li{color:var(--muted);font-size:14px;line-height:1.7}
+.now-card ul{padding-left:18px}
+.now-card li{margin-bottom:8px}
+.grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:22px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.status-line{display:flex;gap:12px;align-items:center;margin-top:18px}
+.status-dot{width:8px;height:8px;border-radius:999px;background:var(--rose);box-shadow:0 0 8px var(--rose)}
+.status-text{color:var(--rose);font-size:13px;font-weight:600}
+.last-updated{color:var(--soft);font-size:12px;margin-top:24px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tag{
+  color:var(--soft);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:4px 9px;
+  font-size:11px;
+  letter-spacing:.2px;
+  font-weight:500;
+}
+footer{
+  position:relative;z-index:2;
+  border-top:1px solid rgba(255,255,255,.07);
+  background:rgba(0,0,0,.3);
+  padding:32px 20px;text-align:center;
+}
+.footer-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:14px}
+.footer-nav a{color:var(--soft);font-size:12px;padding:6px 8px;transition:.2s}
+.footer-nav a:hover{color:var(--gold)}
+.reveal{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.visible{opacity:1;transform:translateY(0) scale(1)}
+@media(max-width:960px){.grid-2,.grid-3{grid-template-columns:1fr}}
+@media(max-width:720px){
+  .nav-inner{flex-direction:column;align-items:flex-start}
+  section{padding:60px 16px}
+}
+@media (prefers-reduced-motion: reduce){
+  .js .reveal,.js .reveal.visible{opacity:1;transform:none;transition:none}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<nav>
+  <div class='nav-inner'>
+    <a href='index.html' class='logo'>Adam Scholey</a>
+    <div class='nav-links'>
+      <a href='index.html'>Home</a>
+      <a href='index.html#about'>About</a>
+      <a href='index.html#skills'>Skills</a>
+      <a href='index.html#experience'>Experience</a>
+      <a href='projects.html'>Projects</a>
+      <a href='now.html' class='active'>Now</a>
+      <a href='cv.html'>CV</a>
+      <a href='index.html#contact'>Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class='reveal'>
+    <div class='section-head'>
+      <div class='kicker'>What I am doing now</div>
+      <h2>Building systems, sharpening skills, staying open.</h2>
+      <p class='subtitle'>A snapshot of what I am working on and where my attention is going. Updated every few months.</p>
+    </div>
+
+    <div class='grid-2'>
+      <div class='now-card reveal'>
+        <h3>Work</h3>
+        <p>I am a Software Developer at <strong style='color:var(--text)'>diam Systems</strong>, building production Python backends for multiple live products. My current focus is on the <strong style='color:var(--text)'>framed@</strong> events platform &mdash; a paid client engagement built on FastAPI, async SQLAlchemy, PostgreSQL, Stripe checkout, and passwordless magic-link authentication.</p>
+        <p style='margin-top:12px'>I am also contributing to <strong style='color:var(--text)'>diamReserve</strong> (restaurant booking with Stripe deposits and staff PWA), <strong style='color:var(--text)'>Seek</strong> (federated internal search with GDPR compliance), and <strong style='color:var(--text)'>Tracker</strong> (project management with SSE updates and GitHub OAuth).</p>
+      </div>
+
+      <div class='now-card reveal'>
+        <h3>Learning</h3>
+        <ul>
+          <li>Deeper Kubernetes &mdash; writing manifests, HPA, and NetworkPolicy for real deployments.</li>
+          <li>Production security tooling &mdash; SAST/DAST, Semgrep, Snyk, and threat modelling workflows.</li>
+          <li>Async Python patterns with FastAPI and SQLAlchemy 2.0.</li>
+          <li>System design for multi-tenant SaaS with row-level security and data sovereignty.</li>
+        </ul>
+      </div>
+
+      <div class='now-card reveal'>
+        <h3>Personal Projects</h3>
+        <p>Working on <strong style='color:var(--text)'>FileFlow</strong> (zero-knowledge cloud storage in C#/Blazor), <strong style='color:var(--text)'>OrgNet</strong> (PostgreSQL RLS multi-tenant platform), and <strong style='color:var(--text)'>SecureShield</strong> (anti-malware console with OS-level monitoring).</p>
+        <div class='tags'>
+          <span class='tag'>C#</span>
+          <span class='tag'>Blazor</span>
+          <span class='tag'>PostgreSQL RLS</span>
+          <span class='tag'>SignalR</span>
+          <span class='tag'>AES-256</span>
+        </div>
+      </div>
+
+      <div class='now-card reveal'>
+        <h3>Looking for</h3>
+        <p>Backend or full-stack software engineering roles where I can work on infrastructure, security, or developer tooling. I am particularly interested in teams where the backend is the genuinely hard part of the product.</p>
+        <div class='status-line'>
+          <span class='status-dot'></span>
+          <span class='status-text'>Open to opportunities</span>
+        </div>
+      </div>
+    </div>
+
+    <p class='last-updated'>Last updated: September 2026 &middot; <a href='cv.html' style='color:var(--gold)'>View full CV &rarr;</a></p>
+  </section>
+</main>
+
+<footer>
+  <div class='footer-nav'>
+    <a href='index.html'>Home</a>
+    <a href='index.html#about'>About</a>
+    <a href='index.html#skills'>Skills</a>
+    <a href='index.html#experience'>Experience</a>
+    <a href='projects.html'>Projects</a>
+    <a href='now.html'>Now</a>
+    <a href='cv.html'>CV</a>
+    <a href='index.html#contact'>Contact</a>
+  </div>
+  <p style='color:var(--soft);font-size:12px'>&copy; <span id='year'>2026</span> Adam Scholey &middot; Software Engineer</p>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){ if(entry.isIntersecting){ entry.target.classList.add('visible'); } });
+},{threshold:.05,rootMargin:'0px 0px -6% 0px'});
+reveals.forEach(function(s){ observer.observe(s); });
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

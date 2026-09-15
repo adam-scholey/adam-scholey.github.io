@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang='en' class='js'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<meta name='description' content='CV - Adam Scholey, Software Developer'>
+<title>CV - Adam Scholey</title>
+<link rel='preconnect' href='https://fonts.googleapis.com'>
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap'>
+<style>
+@font-face { font-family:'Inter Display'; src:url('fonts/InterDisplay-Medium.ttf') format('truetype'); font-weight:500; font-style:normal; font-display:swap; }
+:root{
+  --bg:#0F172A;
+  --panel:#1E293B;
+  --panel2:#1E293B;
+  --text:#F8FAFC;
+  --muted:#A8B8CC;
+  --soft:#A8B8CC;
+  --gold:#38BDF8;
+  --gold2:#0ea5e9;
+  --rose:#34D399;
+  --rose2:#10b981;
+  --cream:#F8FAFC;
+  --border:#334155;
+  --border-hover:#475569;
+  --gold-border:rgba(56,189,248,.45);
+  --shadow:none;
+  --radius:0px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:-5;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(56,189,248,.18) 0%, rgba(15,23,42,0) 70%),
+    linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:100% 100%, 24px 24px, 24px 24px;
+}
+a{color:inherit;text-decoration:none}
+nav{
+  position:sticky;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  padding:14px 20px;
+  background:rgba(15,23,42,.75);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.nav-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:'Inter',Arial,sans-serif;font-size:22px;color:var(--cream);letter-spacing:-.3px}
+.nav-links{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.nav-links a{font-family:'Inter',Arial,sans-serif;color:var(--muted);font-size:13px;font-weight:500;padding:6px 2px;letter-spacing:.2px;transition:.18s ease;border-bottom:1px solid transparent;}
+.nav-links a:hover{color:var(--text);border-bottom-color:rgba(56,189,248,.5)}
+.nav-links .active{color:var(--gold);border-bottom-color:var(--gold-border)}
+main{position:relative;z-index:2}
+section{max-width:1180px;margin:0 auto;padding:72px 20px}
+.kicker{color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:10px}
+h2{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.5px;margin-bottom:12px}
+h3{font-family:'Instrument Serif',Georgia,serif;font-size:22px;margin-bottom:12px}
+.cv-hero{
+  background:var(--panel);
+  border:1px solid var(--border);
+  padding:42px 32px;
+  margin-bottom:32px;
+  position:relative;
+}
+.cv-name{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(38px,6vw,62px);letter-spacing:-2px;margin-bottom:8px}
+.cv-role{color:var(--gold);font-size:17px;font-weight:500;margin-bottom:18px}
+.cv-contact{display:flex;flex-wrap:wrap;gap:12px 22px;color:var(--soft);font-size:13px;margin-bottom:24px}
+.cv-contact a:hover{color:var(--gold)}
+.cv-actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border-radius:999px;
+  padding:13px 22px;
+  font-size:13px;
+  font-weight:500;
+  transition:.15s ease;
+}
+.btn.primary{
+  color:var(--text);
+  background:#020617;
+}
+.btn.secondary{
+  color:var(--gold);
+  border:1px solid var(--gold-border);
+  background:transparent;
+}
+.btn:hover{transform:translateY(-2px)}
+.cv-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.cv-card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:0;
+  padding:26px 26px 26px 28px;
+  transition:transform .2s ease,border-color .2s ease;
+}
+.cv-card:hover{transform:translateY(-2px);border-color:var(--border-hover)}
+.cv-card p,.cv-card li{color:var(--muted);font-size:14px;line-height:1.7}
+.cv-card ul{padding-left:18px}
+.cv-card li{margin-bottom:8px}
+.cv-section{margin-bottom:22px}
+.cv-section h4{
+  color:var(--text);
+  font-family:'Inter Display','Inter',Arial,sans-serif;
+  font-size:16px;
+  font-weight:500;
+  margin-bottom:4px;
+}
+.cv-section .meta{
+  color:var(--gold);
+  font-size:13px;
+  margin-bottom:10px;
+}
+.cv-section ul{padding-left:18px}
+.cv-section li{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:8px}
+.skill-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.tag{
+  color:var(--soft);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:4px 9px;
+  font-size:11px;
+  letter-spacing:.2px;
+  font-weight:500;
+}
+footer{
+  position:relative;z-index:2;
+  border-top:1px solid rgba(255,255,255,.07);
+  background:rgba(0,0,0,.3);
+  padding:32px 20px;text-align:center;
+}
+.footer-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:14px}
+.footer-nav a{color:var(--soft);font-size:12px;padding:6px 8px;transition:.2s}
+.footer-nav a:hover{color:var(--gold)}
+.reveal{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.visible{opacity:1;transform:translateY(0) scale(1)}
+@media(max-width:960px){
+  .cv-grid,.skill-grid{grid-template-columns:1fr}
+  .cv-hero{padding:28px 20px}
+}
+@media(max-width:720px){
+  .nav-inner{flex-direction:column;align-items:flex-start}
+  section{padding:60px 16px}
+  .cv-contact{gap:10px 18px}
+}
+@media (prefers-reduced-motion: reduce){
+  .js .reveal,.js .reveal.visible{opacity:1;transform:none;transition:none}
+}
+@media print{
+  nav,footer,.cv-actions{display:none}
+  body::before{display:none}
+  .cv-hero,.cv-card{border:1px solid #999}
+  section{padding:20px}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<nav>
+  <div class='nav-inner'>
+    <a href='index.html' class='logo'>Adam Scholey</a>
+    <div class='nav-links'>
+      <a href='index.html'>Home</a>
+      <a href='index.html#about'>About</a>
+      <a href='index.html#skills'>Skills</a>
+      <a href='index.html#experience'>Experience</a>
+      <a href='projects.html'>Projects</a>
+      <a href='now.html'>Now</a>
+      <a href='cv.html' class='active'>CV</a>
+      <a href='index.html#contact'>Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section>
+    <div class='cv-hero reveal'>
+      <div class='kicker'>Curriculum Vitae</div>
+      <h1 class='cv-name'>Adam Scholey</h1>
+      <p class='cv-role'>Software Developer</p>
+      <div class='cv-contact'>
+        <span>07511 027403</span>
+        <span>&middot;</span>
+        <a href='mailto:adamscholey25@gmail.com'>adamscholey25@gmail.com</a>
+        <span>&middot;</span>
+        <a href='https://www.linkedin.com/in/adam-scholey-8306892b0/' target='_blank' rel='noopener'>LinkedIn</a>
+        <span>&middot;</span>
+        <a href='https://github.com/adam-scholey' target='_blank' rel='noopener'>GitHub</a>
+        <span>&middot;</span>
+        <a href='index.html'>Portfolio</a>
+        <span>&middot;</span>
+        <span>Bradford, West Yorkshire</span>
+      </div>
+      <div class='cv-actions'>
+        <a class='btn primary' href='Adam_Scholey_CV.pdf' download='Adam_Scholey_CV.pdf'>Download PDF &darr;</a>
+        <a class='btn secondary' href='mailto:adamscholey25@gmail.com'>Get in Touch</a>
+      </div>
+    </div>
+
+    <div class='cv-card reveal' style='margin-bottom:22px'>
+      <h3>Personal Statement</h3>
+      <p>A backend-focused Software Developer with hands-on experience building secure, production-oriented systems, primarily using Python and PostgreSQL. I specialise in building multi-tenant architectures with a strong emphasis on data security, including Seek, an enterprise search engine with row-level security and GDPR-compliant cross-border data access, and a live client platform built on FastAPI with Stripe payments and secure authentication. I hold a Distinction in Cyber Security and bring that security mindset into every system I build, from access control to data isolation. I am seeking a backend or full-stack software engineering role where I can apply this foundation to real-world products in a professional environment.</p>
+    </div>
+
+    <h2 style='margin-bottom:22px'>Experience</h2>
+    <div class='cv-grid'>
+      <div class='cv-card reveal cv-section'>
+        <h4>Software Developer (Part-time)</h4>
+        <p class='meta'>diam Systems Ltd &middot; Oct 2025 &ndash; Present</p>
+        <ul>
+          <li>Built Seek, a multi-tenant internal search engine using Python and PostgreSQL, with GDPR-compliant cross-border data access.</li>
+          <li>Implemented advanced PostgreSQL architecture with tsvector full-text search, row-level security, and table partitioning.</li>
+          <li>Developed Tracker, an internal project management tool in active daily use across the team, with real-time SSE updates and CLI integration.</li>
+          <li>Built diamReserve, a production-ready restaurant booking system using Python and Flask, with Stripe payments and a visual floor plan.</li>
+          <li>Building a paid client platform (framed@) on FastAPI with async SQLAlchemy, PostgreSQL, Stripe checkout, and passwordless authentication.</li>
+          <li>Contributed to diamsystems.co.uk, the company website with e-commerce (Printify + Stripe) and i18n support.</li>
+        </ul>
+      </div>
+
+      <div class='cv-card reveal cv-section'>
+        <h4>Production Operator (Part-time)</h4>
+        <p class='meta'>Pure Pet Food Ltd &middot; Oct 2024 &ndash; Present</p>
+        <ul>
+          <li>Operated production machinery in a fast-paced manufacturing environment.</li>
+          <li>Maintained quality standards and met daily output targets.</li>
+        </ul>
+      </div>
+
+      <div class='cv-card reveal cv-section'>
+        <h4>Prototype Tester</h4>
+        <p class='meta'>Microsoft, Cambridge &middot; 2019</p>
+        <ul>
+          <li>Selected by Microsoft to test an accessibility-focused mobile application prototype as a partially sighted user.</li>
+          <li>Provided structured feedback on screen reader compatibility, contrast, and UX for visually impaired users.</li>
+        </ul>
+      </div>
+
+      <div class='cv-card reveal cv-section'>
+        <h4>Farm Hand</h4>
+        <p class='meta'>Brians Best Wools &middot; Sept 2023 &ndash; Aug 2024</p>
+        <ul>
+          <li>Managed daily production tasks to strict schedules in a physically demanding environment, demonstrating reliability and consistency.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 style='margin:40px 0 22px'>Skills</h2>
+    <div class='skill-grid'>
+      <div class='cv-card reveal'>
+        <h3>Professional Skills</h3>
+        <ul>
+          <li><strong style='color:var(--text)'>Communication:</strong> Communicated directly with the framed@ client to gather requirements and share project updates; able to explain technical concepts clearly to non-technical stakeholders.</li>
+          <li><strong style='color:var(--text)'>Teamwork &amp; Collaboration:</strong> Collaborated with a team at diam Systems Ltd on multiple live products including Seek, Tracker, and diamReserve, contributing alongside other developers in a professional environment.</li>
+          <li><strong style='color:var(--text)'>Self-Motivation &amp; Initiative:</strong> Independently designed and built multiple full-stack production systems from scratch, managing architecture, security, and deployment decisions without supervision.</li>
+          <li><strong style='color:var(--text)'>Problem-Solving:</strong> Consistently tackled complex technical challenges across projects, including multi-region data sovereignty, real-time collaboration, and multi-agent AI coordination.</li>
+          <li><strong style='color:var(--text)'>Adaptability:</strong> Quickly picked up new languages, frameworks, and tools across varied roles and projects, from production manufacturing to software development and accessibility testing.</li>
+          <li><strong style='color:var(--text)'>Attention to Detail:</strong> Maintained rigorous quality standards and test coverage across production systems, including FileFlow, ensuring reliability and correctness in both manufacturing and software roles.</li>
+        </ul>
+      </div>
+
+      <div class='cv-card reveal'>
+        <h3>Technical Skills</h3>
+        <p>Python, C#, Flask, FastAPI, ASP.NET Core, PostgreSQL, Redis, SQLite, Docker, Kubernetes, Git, SQLAlchemy, Stripe API, SignalR, REST APIs.</p>
+        <div class='tags'>
+          <span class='tag'>Python</span>
+          <span class='tag'>C#</span>
+          <span class='tag'>Flask</span>
+          <span class='tag'>FastAPI</span>
+          <span class='tag'>PostgreSQL</span>
+          <span class='tag'>Redis</span>
+          <span class='tag'>Docker</span>
+          <span class='tag'>Kubernetes</span>
+          <span class='tag'>SignalR</span>
+          <span class='tag'>Stripe API</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 style='margin:40px 0 22px'>Projects</h2>
+    <div class='cv-grid'>
+      <div class='cv-card reveal cv-section'>
+        <h4>Seek &middot; Internal Search Engine for Organisations</h4>
+        <p class='meta'>Python, Flask, PostgreSQL, Redis, Kubernetes</p>
+        <ul>
+          <li>Multi-tenant SaaS platform with multi-region deployment across UK and EU.</li>
+          <li>Advanced PostgreSQL architecture: tsvector full-text search, pg_trgm GIN indexes, row-level security, table partitioning by region, and PgBouncer connection pooling.</li>
+          <li>GDPR-compliant cross-border data access with consent management, audit logging, and data sovereignty enforcement across UK and EU regions.</li>
+          <li>Kubernetes deployment with horizontal pod autoscaling, multi-connector parallel search via asyncio, and guided database connection wizard with SSH tunnel.</li>
+        </ul>
+      </div>
+
+      <div class='cv-card reveal cv-section'>
+        <h4>Tracker &middot; Project Management Tool</h4>
+        <p class='meta'>Python, Flask, SQLite</p>
+        <ul>
+          <li>Elegant project management tool with seven-stage lifecycle tracking.</li>
+          <li>Real-time updates via Server-Sent Events (SSE) and email notifications.</li>
+          <li>CLI package for command-line project management with REST API integration.</li>
+          <li>Deployed to Fly.io with SQLite database and SMTP email notifications.</li>
+        </ul>
+      </div>
+
+      <div class='cv-card reveal cv-section'>
+        <h4>diamReserve &middot; Restaurant Booking System</h4>
+        <p class='meta'>Python, Flask, SQLite, Stripe</p>
+        <ul>
+          <li>Production-ready booking system with visual SVG floor plan and time slider.</li>
+          <li>Stripe Checkout integration for secure &pound;10/head deposits with PCI compliance.</li>
+          <li>Admin dashboard with Chart.js analytics, staff PWA with offline support.</li>
+          <li>Email notifications, role-based access control, and comprehensive security.</li>
+        </ul>
+      </div>
+
+      <div class='cv-card reveal cv-section'>
+        <h4>framed@ &middot; Client Booking &amp; Events Platform</h4>
+        <p class='meta'>FastAPI, PostgreSQL, Stripe</p>
+        <ul>
+          <li>Paid client engagement building a music and events platform for framed@ Limited.</li>
+          <li>FastAPI backend with async SQLAlchemy, PostgreSQL, and Pydantic; Stripe hosted checkout and webhooks.</li>
+          <li>Passwordless magic-link authentication and real-time admin dashboard via SSE.</li>
+          <li>48 automated tests passing; live preview deployed ahead of production launch.</li>
+        </ul>
+      </div>
+
+      <div class='cv-card reveal cv-section' style='grid-column:1/-1'>
+        <h4>FileFlow &middot; Zero-Knowledge Cloud Storage</h4>
+        <p class='meta'>C#, Blazor, ASP.NET Core, PostgreSQL, AWS S3, SignalR</p>
+        <ul>
+          <li>Client-side AES-256 encryption before upload, so the server stores ciphertext only and never sees plaintext.</li>
+          <li>Real-time collaborative editing via SignalR with Monaco editor and operational-transform conflict handling.</li>
+          <li>AWS S3 object storage integration with signed URL handling for uploads and downloads.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 style='margin:40px 0 22px'>Education</h2>
+    <div class='cv-grid'>
+      <div class='cv-card reveal cv-section'>
+        <h4>Bradford College</h4>
+        <p class='meta'>Sept 2023 &ndash; Jun 2026</p>
+        <ul>
+          <li>Level 1/2 Information and Creative Technology &mdash; DM</li>
+          <li>English Language (6), Mathematics (4)</li>
+          <li>BTEC Level 3 National Extended Diploma in Information Technology &mdash; D*D*D</li>
+          <li><strong style='color:var(--text)'>Award:</strong> Learner of the Year, Computing, Science &amp; Environmental Technology, University of Bradford.</li>
+        </ul>
+      </div>
+
+      <div class='cv-card reveal cv-section'>
+        <h4>Trinity Academy Bradford</h4>
+        <p class='meta'>Sept 2018 &ndash; June 2023</p>
+        <ul>
+          <li>English Literature (5)</li>
+          <li>BTEC Level 1/2 in Sport (Distinction)</li>
+          <li>BTEC Level 1/2 in Engineering (Merit)</li>
+          <li>BTEC Level 1/2 in Creative Imedia (Merit)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class='footer-nav'>
+    <a href='index.html'>Home</a>
+    <a href='index.html#about'>About</a>
+    <a href='index.html#skills'>Skills</a>
+    <a href='index.html#experience'>Experience</a>
+    <a href='projects.html'>Projects</a>
+    <a href='now.html'>Now</a>
+    <a href='cv.html'>CV</a>
+    <a href='index.html#contact'>Contact</a>
+  </div>
+  <p style='color:var(--soft);font-size:12px'>&copy; <span id='year'>2026</span> Adam Scholey &middot; Software Engineer</p>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){ if(entry.isIntersecting){ entry.target.classList.add('visible'); } });
+},{threshold:.05,rootMargin:'0px 0px -6% 0px'});
+reveals.forEach(function(s){ observer.observe(s); });
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

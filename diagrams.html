@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang='en' class='js'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<meta name='description' content='Architecture diagrams for Adam Scholey projects'>
+<title>Architecture - Adam Scholey</title>
+<link rel='preconnect' href='https://fonts.googleapis.com'>
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap'>
+<style>
+@font-face { font-family:'Inter Display'; src:url('fonts/InterDisplay-Medium.ttf') format('truetype'); font-weight:500; font-style:normal; font-display:swap; }
+:root{
+  --bg:#0F172A;
+  --panel:#1E293B;
+  --panel2:#1E293B;
+  --text:#F8FAFC;
+  --muted:#A8B8CC;
+  --soft:#A8B8CC;
+  --gold:#38BDF8;
+  --gold2:#0ea5e9;
+  --rose:#34D399;
+  --rose2:#10b981;
+  --cream:#F8FAFC;
+  --border:#334155;
+  --border-hover:#475569;
+  --gold-border:rgba(56,189,248,.45);
+  --shadow:none;
+  --radius:0px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:-5;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(56,189,248,.18) 0%, rgba(15,23,42,0) 70%),
+    linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:100% 100%, 24px 24px, 24px 24px;
+}
+a{color:inherit;text-decoration:none}
+nav{
+  position:sticky;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  padding:14px 20px;
+  background:rgba(15,23,42,.75);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.nav-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:'Inter',Arial,sans-serif;font-size:22px;color:var(--cream);letter-spacing:-.3px}
+.nav-links{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.nav-links a{font-family:'Inter',Arial,sans-serif;color:var(--muted);font-size:13px;font-weight:500;padding:6px 2px;letter-spacing:.2px;transition:.18s ease;border-bottom:1px solid transparent;}
+.nav-links a:hover{color:var(--text);border-bottom-color:rgba(56,189,248,.5)}
+.nav-links .active{color:var(--gold);border-bottom-color:var(--gold-border)}
+main{position:relative;z-index:2}
+section{max-width:1180px;margin:0 auto;padding:72px 20px}
+.section-head{margin-bottom:36px}
+.kicker{color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:10px}
+h2{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.5px;margin-bottom:12px}
+.subtitle{color:var(--muted);max-width:800px;font-size:16px;line-height:1.7}
+.back-link{display:inline-flex;align-items:center;gap:8px;color:var(--gold);font-size:13px;font-weight:500;margin-bottom:24px}
+.back-link:hover{text-decoration:underline}
+.diagram-panel{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:0;
+  padding:32px;
+  min-height:400px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:auto;
+}
+#diagram{max-width:100%}
+#diagram svg{max-width:100%;height:auto}
+#error{
+  display:none;
+  padding:20px;
+  background:rgba(220,38,38,.1);
+  border:1px solid rgba(220,38,38,.3);
+  color:#fca5a5;
+  border-radius:0;
+  margin-bottom:24px;
+}
+#project-list{display:none;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:24px}
+.project-list-link{
+  background:var(--panel);
+  border:1px solid var(--border);
+  padding:20px;
+  display:block;
+  transition:.2s;
+}
+.project-list-link:hover{border-color:var(--gold)}
+.list-title{color:var(--gold);font-family:'Inter Display','Inter',Arial,sans-serif;font-size:16px;font-weight:500;margin-bottom:6px}
+.list-desc{color:var(--muted);font-size:13px;line-height:1.6}
+footer{
+  position:relative;z-index:2;
+  border-top:1px solid rgba(255,255,255,.07);
+  background:rgba(0,0,0,.3);
+  padding:32px 20px;text-align:center;
+}
+.footer-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:14px}
+.footer-nav a{color:var(--soft);font-size:12px;padding:6px 8px;transition:.2s}
+.footer-nav a:hover{color:var(--gold)}
+.reveal{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.visible{opacity:1;transform:translateY(0) scale(1)}
+@media(max-width:720px){
+  .nav-inner{flex-direction:column;align-items:flex-start}
+  section{padding:60px 16px}
+  .diagram-panel{padding:20px}
+}
+@media (prefers-reduced-motion: reduce){
+  .js .reveal,.js .reveal.visible{opacity:1;transform:none;transition:none}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<nav>
+  <div class='nav-inner'>
+    <a href='index.html' class='logo'>Adam Scholey</a>
+    <div class='nav-links'>
+      <a href='index.html'>Home</a>
+      <a href='index.html#about'>About</a>
+      <a href='index.html#skills'>Skills</a>
+      <a href='index.html#experience'>Experience</a>
+      <a href='projects.html'>Projects</a>
+      <a href='now.html'>Now</a>
+      <a href='cv.html'>CV</a>
+      <a href='index.html#contact'>Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class='reveal'>
+    <a href='projects.html' class='back-link'>&larr; Back to Projects</a>
+    <div class='section-head'>
+      <div class='kicker'>Architecture</div>
+      <h2 id='project-title'>Diagram</h2>
+      <p class='subtitle' id='project-subtitle'>High-level system architecture.</p>
+    </div>
+
+    <div id='error' role='alert'></div>
+    <div class='diagram-panel' id='diagram-panel'>
+      <div id='diagram' style='opacity:0'></div>
+    </div>
+
+    <div id='project-list'>
+      <h3 style='color:var(--text);margin-bottom:8px'>Available diagrams</h3>
+      <a class='project-list-link' href='diagrams.html?project=diamreserve'>
+        <div class='list-title'>diamReserve</div>
+        <div class='list-desc'>Restaurant booking system with visual floor plan, Stripe deposits, and staff PWA.</div>
+      </a>
+      <a class='project-list-link' href='diagrams.html?project=seek'>
+        <div class='list-title'>Seek</div>
+        <div class='list-desc'>Internal search engine with GDPR-compliant cross-border data access and federated connectors.</div>
+      </a>
+      <a class='project-list-link' href='diagrams.html?project=tracker'>
+        <div class='list-title'>Tracker</div>
+        <div class='list-desc'>Project management tool with real-time SSE updates, GitHub OAuth, and CLI integration.</div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class='footer-nav'>
+    <a href='index.html'>Home</a>
+    <a href='index.html#about'>About</a>
+    <a href='index.html#skills'>Skills</a>
+    <a href='index.html#experience'>Experience</a>
+    <a href='projects.html'>Projects</a>
+    <a href='now.html'>Now</a>
+    <a href='cv.html'>CV</a>
+    <a href='index.html#contact'>Contact</a>
+  </div>
+  <p style='color:var(--soft);font-size:12px'>&copy; <span id='year'>2026</span> Adam Scholey &middot; Software Engineer</p>
+</footer>
+
+<script src='https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js'></script>
+<script>
+mermaid.initialize({ startOnLoad: false });
+(async function(){
+  const params = new URLSearchParams(location.search);
+  const project = params.get('project') || '';
+  const names = { diamreserve: 'diamReserve', seek: 'Seek', tracker: 'Tracker' };
+  const subtitles = {
+    diamreserve: 'Restaurant booking system with visual floor plan, Stripe deposits, and staff PWA.',
+    seek: 'Internal search engine with GDPR-compliant cross-border data access and federated connectors.',
+    tracker: 'Project management tool with real-time SSE updates, GitHub OAuth, and CLI integration.'
+  };
+  const valid = Object.keys(names);
+  const titleEl = document.getElementById('project-title');
+  const subtitleEl = document.getElementById('project-subtitle');
+  const errorEl = document.getElementById('error');
+  const diagramEl = document.getElementById('diagram');
+  const listEl = document.getElementById('project-list');
+
+  if (!valid.includes(project)) {
+    errorEl.textContent = 'Select a project to view its architecture diagram.';
+    errorEl.style.display = 'block';
+    titleEl.textContent = 'Architecture Diagrams';
+    subtitleEl.textContent = 'Choose a project below to see its system design.';
+    listEl.style.display = 'grid';
+    return;
+  }
+
+  titleEl.textContent = names[project] + ' Architecture';
+  subtitleEl.textContent = subtitles[project];
+
+  try {
+    const response = await fetch('diagrams/' + project + '.mmd');
+    if (!response.ok) throw new Error('Could not load diagram file.');
+    const text = await response.text();
+    const { svg } = await mermaid.render('mermaid-' + project, text.trim());
+    diagramEl.innerHTML = svg;
+    diagramEl.style.opacity = '1';
+  } catch (err) {
+    errorEl.textContent = 'Could not render the diagram: ' + err.message;
+    errorEl.style.display = 'block';
+  }
+})();
+</script>
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){ if(entry.isIntersecting){ entry.target.classList.add('visible'); } });
+},{threshold:.05,rootMargin:'0px 0px -6% 0px'});
+reveals.forEach(function(s){ observer.observe(s); });
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
