@@ -4,7 +4,7 @@
 <meta charset='UTF-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 <meta name='description' content='Architecture diagrams for Adam Scholey projects'>
-<title>Architecture - Adam Scholey</title>
+<title>Documentation &amp; Architecture - Adam Scholey</title>
 <link rel='preconnect' href='https://fonts.googleapis.com'>
 <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Inter:wght@400;500;600;700&amp;display=swap'>
@@ -88,6 +88,30 @@ h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clam
 .tag{color:var(--soft);border:1px solid var(--border);border-radius:6px;padding:4px 9px;font-size:11px;letter-spacing:.2px;font-weight:500}
 .diagram-canvas-wrap{background:var(--panel);border:1px solid var(--border);padding:18px}
 .diagram-canvas-wrap svg{display:block;width:100%;height:auto}
+.docs-list{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:20px}
+.doc-item{display:flex;align-items:center;gap:9px;padding:9px 12px;font-size:12.5px;color:var(--muted);cursor:pointer;border-bottom:1px solid var(--border);font-family:ui-monospace,Consolas,monospace;transition:.15s}
+.doc-item:last-child{border-bottom:none}
+.doc-item:hover{background:rgba(56,189,248,.06);color:var(--text)}
+.doc-item.active{background:rgba(56,189,248,.12);color:var(--gold)}
+.doc-item svg{width:14px;height:14px;flex-shrink:0}
+.markdown-body{display:block;padding:14px 18px;overflow-x:auto}
+.markdown-body h1,.markdown-body h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;letter-spacing:-.5px;border-bottom:1px solid var(--border);padding-bottom:8px;margin:8px 0 14px}
+.markdown-body h1{font-size:30px}
+.markdown-body h2{font-size:24px;margin-top:26px}
+.markdown-body h3{font-size:17px;font-weight:600;margin:22px 0 10px;color:var(--text)}
+.markdown-body p,.markdown-body li{color:var(--muted);font-size:14px;line-height:1.7}
+.markdown-body p{margin-bottom:14px}
+.markdown-body ul,.markdown-body ol{padding-left:22px;margin-bottom:14px}
+.markdown-body li{margin-bottom:5px}
+.markdown-body code{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;background:rgba(56,189,248,.1);color:#7dd3fc;padding:2px 6px;border-radius:4px}
+.markdown-body pre{background:#0d1626;border:1px solid var(--border);border-radius:8px;padding:16px;overflow-x:auto;margin-bottom:16px}
+.markdown-body pre code{background:none;padding:0;color:var(--text)}
+.markdown-body a{color:var(--gold)}
+.markdown-body table{border-collapse:collapse;width:100%;margin-bottom:16px;font-size:13px}
+.markdown-body th,.markdown-body td{border:1px solid var(--border);padding:8px 12px;text-align:left;color:var(--muted)}
+.markdown-body th{background:#16203a;color:var(--text);font-weight:600}
+.markdown-body blockquote{border-left:3px solid var(--border);padding:4px 14px;margin:0 0 14px;color:var(--soft)}
+.markdown-body strong{color:var(--text)}
 #error{
   display:none;
   padding:20px;
@@ -151,9 +175,9 @@ footer{
   <section class='reveal'>
     <a href='projects.html' class='back-link'>&larr; Back to Projects</a>
     <div class='section-head'>
-      <div class='kicker'>Architecture</div>
-      <h2 id='project-title'>System architecture</h2>
-      <p class='subtitle' id='project-subtitle'>Hand-drawn system design for each project.</p>
+      <div class='kicker'>Documentation &amp; Architecture</div>
+      <h2 id='project-title'>Documentation &amp; Architecture</h2>
+      <p class='subtitle' id='project-subtitle'>Hand-drawn system design and project documentation.</p>
     </div>
 
     <div id='error' role='alert'></div>
@@ -163,12 +187,15 @@ footer{
         <h3 id='info-title'></h3>
         <div class='info-sub' id='info-sub'></div>
         <p class='info-desc' id='info-desc'></p>
+        <h4>Documentation</h4>
+        <div class='docs-list' id='docs-list'></div>
         <h4>Why it is built this way</h4>
         <ul class='decisions' id='decisions'></ul>
         <div class='tags' id='info-tags'></div>
       </aside>
       <div class='diagram-canvas-wrap'>
         <div id='canvas'></div>
+        <div id='doc-view' class='markdown-body' style='display:none'></div>
       </div>
     </div>
 
@@ -204,6 +231,7 @@ footer{
   <p style='color:var(--soft);font-size:12px'>&copy; <span id='year'>2026</span> Adam Scholey &middot; Software Engineer</p>
 </footer>
 
+<script src='https://cdn.jsdelivr.net/npm/marked@12.0.2/lib/marked.umd.min.js'></script>
 <script>
 const diagrams = {
   diamreserve: {
@@ -218,6 +246,7 @@ const diagrams = {
       'Staff PWA keeps the floor plan usable even when the venue Wi-Fi drops.'
     ],
     tags:['Python','Flask','MySQL','Stripe','SQLAlchemy','PWA'],
+    docs:[{file:'diamreserve-architecture.md',label:'ARCHITECTURE.md'}],
     height:480,
     groups:[
       {x:16,y:60,w:210,h:280,label:'Client'},
@@ -253,6 +282,7 @@ const diagrams = {
       'Kubernetes HPA scales search workers under load; consent management and audit logging satisfy GDPR.'
     ],
     tags:['Python','Flask','PostgreSQL','Redis','Kubernetes','GDPR'],
+    docs:[],
     height:580,
     groups:[
       {x:16,y:60,w:210,h:270,label:'Client'},
@@ -289,6 +319,7 @@ const diagrams = {
       'Email worker is decoupled from the request path for status-change notifications.'
     ],
     tags:['Python','Flask','SQLite','SSE','GitHub OAuth','Authlib'],
+    docs:[],
     height:540,
     groups:[
       {x:16,y:60,w:210,h:270,label:'Client'},
@@ -382,16 +413,58 @@ function buildSvg(d){
   return s;
 }
 
+const DOC_ICON = `<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><path d='M14 2v6h6'/></svg>`;
+const DIAG_ICON = `<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='18' cy='5' r='3'/><circle cx='6' cy='12' r='3'/><circle cx='18' cy='19' r='3'/><path d='m8.6 13.5 6.8 4'/><path d='m15.4 6.5-6.8 4'/></svg>`;
+let currentDoc = '';
+
+function renderDocsList(key){
+  const d = diagrams[key];
+  const items = [{label:'ARCHITECTURE', file:'', icon:DIAG_ICON}]
+    .concat((d.docs || []).map(function(doc){ return {label:doc.label, file:doc.file, icon:DOC_ICON}; }));
+  const list = document.getElementById('docs-list');
+  list.innerHTML = items.map(function(it){
+    return `<div class='doc-item ${it.file === currentDoc ? 'active' : ''}' data-file='${it.file}'>${it.icon}<span>${it.label}</span></div>`;
+  }).join('');
+  list.querySelectorAll('.doc-item').forEach(function(el){
+    el.addEventListener('click', function(){ selectDoc(el.dataset.file); });
+  });
+}
+
+function selectDoc(file){
+  currentDoc = file;
+  const canvas = document.getElementById('canvas');
+  const view = document.getElementById('doc-view');
+  if(!file){
+    canvas.style.display = 'block';
+    view.style.display = 'none';
+  } else {
+    canvas.style.display = 'none';
+    view.style.display = 'block';
+    view.innerHTML = '<p>Loading...</p>';
+    fetch('docs/' + file)
+      .then(function(r){ if(!r.ok) throw new Error(); return r.text(); })
+      .then(function(md){ view.innerHTML = marked.parse(md); })
+      .catch(function(){ view.innerHTML = '<p>Could not load this document.</p>'; });
+  }
+  document.querySelectorAll('#docs-list .doc-item').forEach(function(el){
+    el.classList.toggle('active', el.dataset.file === file);
+  });
+}
+
 function renderDiagram(key){
   const d = diagrams[key];
+  currentDoc = '';
+  document.getElementById('canvas').style.display = 'block';
+  document.getElementById('doc-view').style.display = 'none';
   document.getElementById('canvas').innerHTML = buildSvg(d);
   document.getElementById('info-title').textContent = d.name;
   document.getElementById('info-sub').textContent = d.subtitle;
   document.getElementById('info-desc').textContent = d.desc;
+  renderDocsList(key);
   document.getElementById('decisions').innerHTML = d.decisions.map(function(x){ return `<li>${x}</li>`; }).join('');
   document.getElementById('info-tags').innerHTML = d.tags.map(function(t){ return `<span class='tag'>${t}</span>`; }).join('');
-  document.getElementById('project-title').textContent = d.name + ' Architecture';
-  document.getElementById('project-subtitle').textContent = d.subtitle + ' — system design.';
+  document.getElementById('project-title').textContent = d.name + ' Documentation';
+  document.getElementById('project-subtitle').textContent = d.subtitle + ' — documentation and system design.';
 }
 
 (function(){
