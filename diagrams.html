@@ -73,6 +73,10 @@ section{max-width:1180px;margin:0 auto;padding:72px 20px}
 .kicker{color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:10px}
 h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.5px;margin-bottom:12px}
 .subtitle{color:var(--muted);max-width:800px;font-size:16px;line-height:1.7}
+.proj-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.proj-tab{background:var(--panel);border:1px solid var(--border);padding:10px 18px;font-size:13px;color:var(--muted);cursor:pointer;transition:.15s;font-family:'Inter',Arial,sans-serif}
+.proj-tab:hover{border-color:var(--border-hover);color:var(--text)}
+.proj-tab.active{border-color:var(--gold);color:var(--gold)}
 .back-link{display:inline-flex;align-items:center;gap:8px;color:var(--gold);font-size:13px;font-weight:500;margin-bottom:24px}
 .back-link:hover{text-decoration:underline}
 .diagram-layout{display:grid;grid-template-columns:340px minmax(0,1fr);gap:22px;align-items:start}
@@ -180,6 +184,8 @@ footer{
       <p class='subtitle' id='project-subtitle'>Hand-drawn system design and project documentation.</p>
     </div>
 
+    <div class='proj-tabs' id='proj-tabs'></div>
+
     <div id='error' role='alert'></div>
 
     <div class='diagram-layout' id='diagram-layout'>
@@ -200,7 +206,11 @@ footer{
     </div>
 
     <div id='project-list'>
-      <h3 style='color:var(--text);margin-bottom:8px'>Available diagrams</h3>
+      <h3 style='color:var(--text);margin-bottom:8px'>Available projects</h3>
+      <a class='project-list-link' href='diagrams.html?project=framedat'>
+        <div class='list-title'>framed@</div>
+        <div class='list-desc'>Ticketing and event-archive platform — FastAPI, Stripe, passwordless auth, Cloudflare R2.</div>
+      </a>
       <a class='project-list-link' href='diagrams.html?project=diamreserve'>
         <div class='list-title'>diamReserve</div>
         <div class='list-desc'>Restaurant booking system with visual floor plan, Stripe deposits, and staff PWA.</div>
@@ -234,6 +244,48 @@ footer{
 <script src='https://cdn.jsdelivr.net/npm/marked@12.0.2/lib/marked.umd.min.js'></script>
 <script>
 const diagrams = {
+  framedat: {
+    name:'framed@',
+    subtitle:'Ticketing &amp; Archive Platform',
+    desc:'Client ticketing and event-archive platform for a Northern UK arts and music promoter — FastAPI backend, Stripe ticketing, passwordless auth, and direct-to-R2 media uploads.',
+    decisions:[
+      'Passwordless auth — magic links and 6-digit codes via Resend; tokens SHA-256 hashed, single-use, 5-minute TTL.',
+      'Direct-to-R2 uploads — browsers PUT multi-GB video via presigned URLs, so media never touches the app server.',
+      'ffmpeg faststart worker — phone-recorded MP4s store their index at the end of the file; a background task re-muxes so seeking works.',
+      'Idempotent Stripe webhooks — fulfilment, refunds and checkout holds are safe to retry.',
+      'Door scanning — a conditional UPDATE guarantees one admission even under concurrent scans.'
+    ],
+    tags:['Python','FastAPI','PostgreSQL','Stripe','Resend','Cloudflare R2'],
+    docs:[
+      {file:'framedat/ARCHITECTURE.md',label:'ARCHITECTURE.md'},
+      {file:'framedat/API.md',label:'API.md'}
+    ],
+    height:520,
+    groups:[
+      {x:16,y:60,w:210,h:280,label:'Client'},
+      {x:280,y:40,w:410,h:430,label:'framed@',app:true}
+    ],
+    nodes:[
+      {id:'customer',x:75,y:100,w:90,h:100,title:'Customer',type:'actor'},
+      {id:'admin',x:75,y:220,w:90,h:100,title:'Admin',type:'actor'},
+      {id:'api',x:330,y:90,w:280,h:140,title:'FastAPI App',sub:['Python / FastAPI &middot; async SQLAlchemy','magic links &middot; checkout &middot; webhooks','scanner &middot; admin &middot; analytics'],type:'service'},
+      {id:'pg',x:330,y:290,w:150,h:84,title:'PostgreSQL',sub:['Alembic'],type:'db'},
+      {id:'worker',x:520,y:290,w:160,h:80,title:'Video Worker',sub:['ffmpeg faststart'],type:'service'},
+      {id:'stripe',x:740,y:80,w:200,h:64,title:'Stripe',type:'ext'},
+      {id:'resend',x:740,y:170,w:200,h:64,title:'Resend',type:'ext'},
+      {id:'r2',x:740,y:290,w:200,h:84,title:'Cloudflare R2',sub:['media storage'],type:'db'}
+    ],
+    edges:[
+      {from:'customer',to:'api',label:'HTTPS + magic link'},
+      {from:'admin',to:'api',label:'HTTPS + session'},
+      {from:'api',to:'pg',label:'async SQLAlchemy'},
+      {from:'api',to:'stripe',label:'Checkout + webhooks'},
+      {from:'api',to:'resend',label:'email'},
+      {from:'api',to:'r2',label:'presigned PUTs'},
+      {from:'api',to:'worker',label:'queues'},
+      {from:'worker',to:'r2',label:'re-mux + re-upload'}
+    ]
+  },
   diamreserve: {
     name:'diamReserve',
     subtitle:'Restaurant Booking System',
@@ -246,7 +298,7 @@ const diagrams = {
       'Staff PWA keeps the floor plan usable even when the venue Wi-Fi drops.'
     ],
     tags:['Python','Flask','MySQL','Stripe','SQLAlchemy','PWA'],
-    docs:[{file:'diamreserve-architecture.md',label:'ARCHITECTURE.md'}],
+    docs:[{file:'diamreserve/ARCHITECTURE.md',label:'ARCHITECTURE.md'}],
     height:480,
     groups:[
       {x:16,y:60,w:210,h:280,label:'Client'},
@@ -282,7 +334,7 @@ const diagrams = {
       'Kubernetes HPA scales search workers under load; consent management and audit logging satisfy GDPR.'
     ],
     tags:['Python','Flask','PostgreSQL','Redis','Kubernetes','GDPR'],
-    docs:[],
+    docs:[{file:'seek/ARCHITECTURE.md',label:'ARCHITECTURE.md'}],
     height:580,
     groups:[
       {x:16,y:60,w:210,h:270,label:'Client'},
@@ -319,7 +371,7 @@ const diagrams = {
       'Email worker is decoupled from the request path for status-change notifications.'
     ],
     tags:['Python','Flask','SQLite','SSE','GitHub OAuth','Authlib'],
-    docs:[],
+    docs:[{file:'tracker/ARCHITECTURE.md',label:'ARCHITECTURE.md'}],
     height:540,
     groups:[
       {x:16,y:60,w:210,h:270,label:'Client'},
@@ -467,14 +519,30 @@ function renderDiagram(key){
   document.getElementById('project-subtitle').textContent = d.subtitle + ' — documentation and system design.';
 }
 
+function renderTabs(activeKey){
+  const tabs = document.getElementById('proj-tabs');
+  tabs.innerHTML = Object.keys(diagrams).map(function(k){
+    return `<button class='proj-tab ${k === activeKey ? 'active' : ''}' data-project='${k}'>${diagrams[k].name}</button>`;
+  }).join('');
+  tabs.querySelectorAll('.proj-tab').forEach(function(b){
+    b.addEventListener('click', function(){
+      const key = b.dataset.project;
+      history.replaceState(null, '', 'diagrams.html?project=' + key);
+      renderTabs(key);
+      renderDiagram(key);
+    });
+  });
+}
+
 (function(){
   const project = (new URLSearchParams(location.search)).get('project') || '';
   const layout = document.getElementById('diagram-layout');
   const list = document.getElementById('project-list');
   const errorEl = document.getElementById('error');
+  renderTabs(diagrams[project] ? project : '');
   if(!diagrams[project]){
     layout.style.display = 'none';
-    errorEl.textContent = 'Select a project to view its architecture.';
+    errorEl.textContent = 'Select a project to view its documentation and architecture.';
     errorEl.style.display = 'block';
     list.style.display = 'grid';
     return;
