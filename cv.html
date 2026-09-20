@@ -471,6 +471,7 @@ const observer = new IntersectionObserver(function(entries){
 reveals.forEach(function(s){ observer.observe(s); });
 const navToggle = document.getElementById('nav-toggle');
 if(navToggle){navToggle.addEventListener('click', function(){document.querySelector('nav').classList.toggle('open')})}
+document.querySelectorAll('.nav-links a').forEach(function(l){l.addEventListener('click', function(){document.querySelector('nav').classList.remove('open')})});
 
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
