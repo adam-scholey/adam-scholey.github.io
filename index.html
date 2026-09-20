@@ -140,6 +140,8 @@ nav{
 }
 .nav-links a:hover{color:var(--text);border-bottom-color:rgba(56,189,248,.5)}
 .nav-links .active{color:var(--gold);border-bottom-color:var(--gold)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--text);transition:.25s}
 
 main{position:relative;z-index:2}
 section{
@@ -508,7 +510,14 @@ footer{
   .profile-card{max-width:560px;margin:auto}
 }
 @media(max-width:720px){
-  .nav-inner{flex-direction:column;align-items:flex-start}
+  .nav-inner{flex-direction:row;align-items:center}
+  .nav-toggle{display:flex}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(15,23,42,.97);flex-direction:column;align-items:flex-start;gap:0;padding:10px 20px 16px;border-bottom:1px solid var(--border);flex-wrap:nowrap}
+  nav.open .nav-links{display:flex}
+  .nav-links a{width:100%;padding:12px 0;border-bottom:none}
+  nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  nav.open .nav-toggle span:nth-child(2){opacity:0}
+  nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   section{padding:60px 16px}
   .hero{padding-top:30px;min-height:auto}
   .quick-stats,.stat-grid{grid-template-columns:1fr}
@@ -536,6 +545,7 @@ footer{
       <a href="now.html">Working On</a>
       <a href="#contact">Contact</a>
     </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -895,6 +905,10 @@ window.addEventListener("scroll",function(){
   }
 },{passive:true});
 setActiveNav();
+
+// Mobile nav toggle
+const navToggle=document.getElementById("nav-toggle");
+if(navToggle){navToggle.addEventListener("click",function(){document.querySelector("nav").classList.toggle("open")})}
 
 // Start the typewriter effect
 type();
