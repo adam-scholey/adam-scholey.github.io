@@ -291,7 +291,7 @@ h1{
   margin-bottom:18px;
   overflow:hidden;
 }
-.avatar-photo{position:absolute;inset:0;background-size:cover;background-position:center;border-radius:inherit}
+.avatar-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit}
 .profile-name{
   font-family:'Cormorant Garamond',Georgia,serif;
   font-size:22px;
@@ -338,7 +338,7 @@ h1{
 .shot-dot{width:9px;height:9px;border-radius:999px;background:rgba(255,255,255,.14);flex-shrink:0}
 .shot-url{flex:1;margin-left:8px;font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--soft);background:rgba(0,0,0,.28);border:1px solid var(--border);border-radius:6px;padding:3px 10px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .shot-body{position:relative;aspect-ratio:16/10;background:radial-gradient(ellipse at 30% 20%,rgba(56,189,248,.12),transparent 60%),#0d1626}
-.shot-img{position:absolute;inset:0;background-size:cover;background-position:top center}
+.shot-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
 .shot-fallback{position:absolute;inset:0;display:grid;place-items:center;font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:clamp(20px,3vw,30px);font-weight:500;color:var(--gold);letter-spacing:-.5px}
 .featured-title{font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:23px;font-weight:500;color:var(--text);letter-spacing:-.5px;margin-bottom:10px}
 .featured-desc{color:var(--muted);font-size:14.5px;line-height:1.75;margin-bottom:18px}
@@ -595,7 +595,7 @@ footer{
       </div>
 
       <div class="profile-card">
-        <div class="card-avatar"><span>AS</span><div class="avatar-photo" style="background-image:url('images/portrait.jpg')" role="img" aria-label="Adam Scholey"></div></div>
+        <div class="card-avatar"><span>AS</span><img class="avatar-photo" src="images/portrait.jpg" alt="Adam Scholey" data-optional></div>
         <div class="profile-name">Adam Scholey</div>
         <div class="profile-role">Software Engineer · diam Systems</div>
         <div class="profile-divider"></div>
@@ -632,7 +632,7 @@ footer{
         <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">framedat.uk</span></div>
         <div class="shot-body">
           <div class="shot-fallback">framedat.uk</div>
-          <div class="shot-img" style="background-image:url('images/framedat.png')" role="img" aria-label="framedat.uk — ticketing and event archive platform"></div>
+          <img class="shot-img" src="images/framedat.png" alt="framedat.uk — ticketing and event archive platform" data-optional>
         </div>
       </a>
       <div>
@@ -663,7 +663,7 @@ footer{
         <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">diamsystems.co.uk</span></div>
         <div class="shot-body">
           <div class="shot-fallback">diamsystems.co.uk</div>
-          <div class="shot-img" style="background-image:url('images/diamsystems.png')" role="img" aria-label="diamsystems.co.uk — diam Systems corporate platform"></div>
+          <img class="shot-img" src="images/diamsystems.png" alt="diamsystems.co.uk — diam Systems corporate platform" data-optional>
         </div>
       </a>
     </div>
@@ -969,6 +969,12 @@ setActiveNav();
 const navToggle=document.getElementById("nav-toggle");
 if(navToggle){navToggle.addEventListener("click",function(){document.querySelector("nav").classList.toggle("open")})}
 document.querySelectorAll(".nav-links a").forEach(function(l){l.addEventListener("click",function(){document.querySelector("nav").classList.remove("open")})});
+
+window.addEventListener("load",function(){
+  document.querySelectorAll("img[data-optional]").forEach(function(i){
+    if(!i.complete||i.naturalWidth===0)i.style.display="none";
+  });
+});
 
 document.getElementById("year").textContent=new Date().getFullYear();
 </script>
