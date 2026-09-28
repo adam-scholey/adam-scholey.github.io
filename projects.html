@@ -10,24 +10,20 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Space+Grotesk:wght@500&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Space+Grotesk:wght@500&family=Inter:wght@400;500;600;700&display=swap"></noscript>
 <style>
-@font-face { font-family:'Inter Display'; src:url('fonts/InterDisplay-Medium.ttf') format('truetype'); font-weight:500; font-style:normal; font-display:swap; }
 :root{
-  --bg:#0F172A;
-  --panel:#1E293B;
-  --panel2:#1E293B;
-  --text:#F8FAFC;
-  --muted:#A8B8CC;
-  --soft:#A8B8CC;
-  --gold:#38BDF8;
-  --gold2:#0ea5e9;
-  --rose:#34D399;
-  --rose2:#10b981;
-  --cream:#F8FAFC;
-  --border:#334155;
-  --border-hover:#475569;
-  --gold-border:rgba(56,189,248,.45);
-  --shadow:none;
-  --radius:0px;
+  --bg:#ffffff;
+  --panel:#f6f7f8;
+  --text:#101214;
+  --muted:#5b6472;
+  --soft:#8b94a1;
+  --accent:#0369a1;
+  --accent-hover:#075985;
+  --green-bg:#dcfce7;
+  --green-text:#166534;
+  --blue-bg:#e0f2fe;
+  --blue-text:#075985;
+  --border:#e5e8ec;
+  --border-hover:#c3cad2;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
@@ -38,55 +34,9 @@ body{
   line-height:1.65;
   overflow-x:hidden;
 }
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-5;
-  pointer-events:none;
-  background:
-    radial-gradient(ellipse at 50% -10%, rgba(56,189,248,.18) 0%, rgba(15,23,42,0) 70%),
-    linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
-  background-size:100% 100%, 24px 24px, 24px 24px;
-  background-position:0 0, 0 0, 0 0;
-}
-.orb{position:fixed;inset:0;z-index:-1;pointer-events:none;background-size:200% 200%}
-.orb.one{
-  background-image:
-    radial-gradient(ellipse 65% 55% at 15% 10%,  rgba(183,110,121,.42) 0%, transparent 60%),
-    radial-gradient(ellipse 55% 65% at 88% 8%,   rgba(201,185,122,.35) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 50% 95%,  rgba(176,152,80,.30)  0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 92% 72%,  rgba(183,110,121,.26) 0%, transparent 55%),
-    radial-gradient(ellipse 55% 45% at 8%  78%,  rgba(201,185,122,.24) 0%, transparent 55%);
-  background-size:200% 200%;background-position:0% 0%;
-  animation:drift-a 22s ease-in-out infinite alternate;
-}
-.orb.two{
-  background-image:
-    radial-gradient(ellipse 60% 50% at 72% 18%,  rgba(183,110,121,.28) 0%, transparent 58%),
-    radial-gradient(ellipse 55% 60% at 18% 58%,  rgba(176,152,80,.26)  0%, transparent 58%),
-    radial-gradient(ellipse 65% 45% at 82% 88%,  rgba(201,185,122,.24) 0%, transparent 58%);
-  background-size:200% 200%;background-position:100% 100%;
-  animation:drift-b 28s ease-in-out infinite alternate;
-}
-.orb.three{display:none}
-@keyframes drift-a{
-  0%  {background-position:0%   0%  }
-  25% {background-position:60%  30% }
-  50% {background-position:100% 60% }
-  75% {background-position:40%  100%}
-  100%{background-position:80%  20% }
-}
-@keyframes drift-b{
-  0%  {background-position:100% 100%}
-  25% {background-position:30%  70% }
-  50% {background-position:0%   40% }
-  75% {background-position:70%  0%  }
-  100%{background-position:20%  80% }
-}
 a{color:inherit;text-decoration:none}
 
+/* NAV */
 nav{
   position:sticky;
   top:0;
@@ -94,144 +44,165 @@ nav{
   right:0;
   z-index:1000;
   padding:14px 20px;
-  background:rgba(15,23,42,.75);
-  border-bottom:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.82);
+  border-bottom:1px solid var(--border);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
 }
 .nav-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{font-family:'Inter',Arial,sans-serif;font-size:22px;color:var(--cream);letter-spacing:-.3px}
+.logo{font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:19px;font-weight:500;color:var(--text);letter-spacing:-.4px}
+.logo em{font-style:normal;color:var(--accent)}
 .nav-links{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-.nav-links a{font-family:'Inter',Arial,sans-serif;color:var(--muted);font-size:13px;font-weight:500;padding:6px 2px;letter-spacing:.2px;transition:.18s ease;border-bottom:1px solid transparent;}
-.nav-links a:hover{color:var(--text);border-bottom-color:rgba(56,189,248,.5)}
-.nav-links .active{color:var(--gold)}
+.nav-links a{font-family:'Inter',Arial,sans-serif;color:var(--muted);font-size:13px;font-weight:500;padding:6px 2px;letter-spacing:.2px;transition:.18s ease;border-bottom:1px solid transparent}
+.nav-links a:hover{color:var(--text);border-bottom-color:rgba(3,105,161,.5)}
+.nav-links .active{color:var(--accent);border-bottom-color:var(--accent)}
 .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto}
 .nav-toggle span{display:block;width:22px;height:2px;background:var(--text);transition:.25s}
 
 main{position:relative;z-index:2}
 section{max-width:1180px;margin:0 auto;padding:72px 20px}
 
-.section-head{margin-bottom:36px}
-.kicker{color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:10px}
-h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.5px;margin-bottom:12px}
-.subtitle{color:var(--muted);max-width:800px;font-size:16px;line-height:1.7}
+/* HEAD */
+.section-head{margin-bottom:48px;max-width:720px}
+.kicker{color:var(--accent);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.6px;margin-bottom:10px}
+h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(34px,5vw,56px);line-height:1.05;letter-spacing:-1.5px;margin-bottom:14px}
+.subtitle{color:var(--muted);font-size:16px;line-height:1.7}
 
-/* FILTER TABS */
-.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+/* FILTERS */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:56px}
 .filter-btn{
-  padding:9px 18px;border-radius:999px;
-  font-size:12px;font-weight:600;letter-spacing:.4px;
+  padding:9px 18px;
+  border-radius:999px;
   border:1px solid var(--border);
-  background:var(--panel);color:var(--muted);
-  cursor:pointer;transition:.2s ease;
+  background:transparent;
+  color:var(--muted);
+  font-family:'Inter',Arial,sans-serif;
+  font-size:13px;
+  font-weight:500;
+  cursor:pointer;
+  transition:.15s;
 }
-.filter-btn:hover{color:var(--text);border-color:var(--border-hover)}
-.filter-btn.active{
-  color:var(--text);
-  background:#020617;
-  border-color:#020617;
+.filter-btn:hover{border-color:var(--border-hover);color:var(--text)}
+.filter-btn.active{background:var(--text);border-color:var(--text);color:#fff}
+
+/* SHOWCASE ROWS */
+.showcase{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:44px;
+  align-items:center;
+  padding:44px 0;
+  border-top:1px solid var(--border);
 }
+.showcase:first-of-type{border-top:none;padding-top:0}
+.showcase.flip .shot-frame{order:2}
+.showcase.flip .show-info{order:1}
 
-/* PROJECT GRID */
-.project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-
-.proj-card{
+.shot-frame{
+  display:block;
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
   background:var(--panel);
+  transition:border-color .2s,box-shadow .2s;
+}
+.shot-frame:hover{border-color:var(--border-hover);box-shadow:0 12px 40px rgba(16,18,20,.08)}
+.shot-bar{display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid var(--border);background:#fff}
+.shot-dot{width:9px;height:9px;border-radius:999px;background:#dde1e6;flex-shrink:0}
+.shot-url{flex:1;margin-left:8px;font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--soft);background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:3px 10px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shot-body{position:relative;aspect-ratio:16/10;background:linear-gradient(160deg,#eef2f6,#dfe6ee)}
+.shot-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.shot-fallback{position:absolute;inset:0;display:grid;place-items:center;font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:clamp(20px,3vw,30px);font-weight:500;color:var(--accent);letter-spacing:-.5px}
+
+.show-label{color:var(--accent);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.show-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(26px,3.2vw,38px);line-height:1.1;letter-spacing:-1px;color:var(--text);margin-bottom:14px}
+.show-desc{color:var(--muted);font-size:15px;line-height:1.75;margin-bottom:18px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
+.tag{color:var(--muted);border:1px solid var(--border);border-radius:6px;padding:4px 9px;font-size:11px;letter-spacing:.2px;font-weight:500}
+.show-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.show-links a{color:var(--accent);font-size:13px;font-weight:600;transition:.15s}
+.show-links a:hover{color:var(--accent-hover);text-decoration:underline}
+.proj-status{display:inline-flex;align-items:center;padding:4px 11px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.4px}
+.status-dev{background:var(--blue-bg);color:var(--blue-text)}
+.status-live{background:var(--green-bg);color:var(--green-text)}
+.status-done{background:var(--panel);color:var(--muted);border:1px solid var(--border)}
+
+/* PERSONAL */
+.personal-head{margin:64px 0 32px;padding-top:48px;border-top:1px solid var(--border)}
+.personal-head h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(24px,3vw,34px);letter-spacing:-.8px;margin-bottom:8px}
+.personal-head p{color:var(--muted);font-size:14px;max-width:640px}
+.mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.mini-card{
+  background:#fff;
   border:1px solid var(--border);
-  border-radius:0;
-  padding:28px 28px 28px 30px;
-  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;
-  position:relative;overflow:hidden;
-  display:flex;flex-direction:column;
+  border-radius:12px;
+  padding:22px;
+  transition:border-color .2s,transform .2s;
 }
-.proj-card:hover{transform:translateY(-2px);border-color:var(--gold);box-shadow:0 0 22px rgba(56,189,248,.12)}
-
-.proj-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;gap:12px}
-.proj-icon svg{width:20px;height:20px}
-.proj-icon{
-  width:42px;height:42px;border-radius:10px;
-  background:rgba(255,255,255,.04);border:1px solid var(--border);
-  display:grid;place-items:center;font-size:20px;color:var(--gold);flex-shrink:0;
-}
-.proj-badge{
-  font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;
-  padding:4px 10px;border-radius:999px;
-}
-.badge-diam{background:rgba(56,189,248,.12);color:var(--gold);border:1px solid var(--gold-border)}
-.badge-personal{background:rgba(52,211,153,.12);color:var(--rose);border:1px solid rgba(52,211,153,.3)}
-
-.proj-card h3{
-  font-family:'Space Grotesk','Inter',Arial,sans-serif;
-  font-size:19px;font-weight:500;
-  color:var(--text);
-  margin-bottom:10px;line-height:1.2;
-}
-.proj-card p{color:var(--muted);font-size:13px;line-height:1.75;flex:1}
-.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
-.tag{
-  color:var(--soft);border:1px solid var(--border);border-radius:6px;
-  padding:4px 9px;font-size:11px;letter-spacing:.2px;font-weight:500;
-}
-.proj-footer{
-  display:flex;align-items:center;gap:12px;
-  margin-top:18px;padding-top:16px;
-  border-top:1px solid rgba(255,255,255,.06);
-  font-size:12px;
-}
-.proj-status{
-  padding:4px 10px;border-radius:6px;font-weight:600;font-size:11px;letter-spacing:.3px;
-}
-.status-dev{background:rgba(56,189,248,.1);color:var(--gold)}
-.status-live{background:#14532d;color:#bbf7d0}
-.proj-link{
-  color:var(--muted);transition:.2s;margin-left:auto;
-}
-.proj-link:hover{color:var(--gold)}
+.mini-card:hover{border-color:var(--border-hover);transform:translateY(-2px)}
+.mini-card h4{font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:16px;font-weight:500;color:var(--text);margin-bottom:8px;letter-spacing:-.3px}
+.mini-card p{color:var(--muted);font-size:13px;line-height:1.65;margin-bottom:14px}
+.mini-card .tags{margin-bottom:16px}
+.mini-links{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.mini-links a{color:var(--accent);font-size:12.5px;font-weight:600}
+.mini-links a:hover{color:var(--accent-hover);text-decoration:underline}
 
 /* CONTACT */
 .contact-panel{
-  text-align:center;padding:50px 28px;
-  background:var(--panel);border:1px solid var(--border);
-  border-radius:var(--radius);position:relative;overflow:hidden;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:56px 32px;
+  text-align:center;
 }
-.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-top:28px}
+.contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:28px}
 .contact-links a{
-  min-width:200px;padding:20px 20px 16px;
-  border-radius:0;border:1px solid var(--border);
-  background:var(--panel2);
-  transition:transform .2s ease,border-color .2s ease;
-  font-size:14px;font-weight:500;color:var(--text);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:13px 22px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:#fff;
+  color:var(--text);
+  font-size:13px;
+  font-weight:500;
+  transition:.15s;
 }
-.contact-links a:hover{transform:translateY(-2px);border-color:var(--border-hover)}
-.contact-icon{display:block;margin-bottom:12px;line-height:1}
-.small{color:var(--soft);font-size:11px;margin-top:3px;display:block}
+.contact-links a:hover{border-color:var(--text)}
+.contact-links .small{color:var(--soft);font-size:12px;font-weight:400}
 
 footer{
-  position:relative;z-index:2;
-  border-top:1px solid rgba(255,255,255,.07);
-  background:rgba(0,0,0,.3);
-  padding:32px 20px;text-align:center;
+  border-top:1px solid var(--border);
+  background:var(--panel);
+  padding:32px 20px;
+  text-align:center;
 }
 .footer-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:14px}
-.footer-nav a{color:var(--soft);font-size:12px;padding:6px 8px;transition:.2s}
-.footer-nav a:hover{color:var(--gold)}
+.footer-nav a{color:var(--muted);font-size:12px;padding:6px 8px;transition:.2s}
+.footer-nav a:hover{color:var(--accent)}
+.footer-note{color:var(--soft);font-size:12px;margin-top:6px}
 
 .reveal{opacity:1;transform:none}
 .js .reveal{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .7s ease,transform .7s ease}
 .js .reveal.visible{opacity:1;transform:translateY(0) scale(1)}
 
-@media(max-width:860px){.project-grid{grid-template-columns:1fr}}
+@media(max-width:960px){
+  .showcase,.showcase.flip{grid-template-columns:1fr;gap:26px}
+  .showcase.flip .shot-frame{order:0}
+  .showcase.flip .show-info{order:1}
+}
 @media(max-width:720px){
   .nav-inner{flex-direction:row;align-items:center}
   .nav-toggle{display:flex}
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(15,23,42,.97);flex-direction:column;align-items:flex-start;gap:0;padding:10px 20px 16px;border-bottom:1px solid var(--border);flex-wrap:nowrap}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(255,255,255,.97);flex-direction:column;align-items:flex-start;gap:0;padding:10px 20px 16px;border-bottom:1px solid var(--border);flex-wrap:nowrap}
   nav.open .nav-links{display:flex}
   .nav-links a{width:100%;padding:12px 0;border-bottom:none}
   nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
   nav.open .nav-toggle span:nth-child(2){opacity:0}
   nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   section{padding:60px 16px}
-  .contact-links a{width:100%}
+  .showcase{padding:36px 0;gap:22px}
 }
 @media (prefers-reduced-motion: reduce){
   .js .reveal,.js .reveal.visible{opacity:1;transform:none;transition:none}
@@ -240,10 +211,10 @@ footer{
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
-<!-- background orbs removed -->
 
 <nav>
   <div class="nav-inner">
+    <a class="logo" href="index.html">AS<em>.</em></a>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="index.html#about">About</a>
@@ -261,8 +232,8 @@ footer{
   <section class="reveal">
     <div class="section-head">
       <div class="kicker">Projects</div>
-      <h2>Systems built with intent.</h2>
-      <p class="subtitle">Every project here exists because I wanted to understand something deeply enough to build it from scratch - not just use a library for it.</p>
+      <h2>Software, built with intent.</h2>
+      <p class="subtitle">Everything here exists because I wanted to understand something deeply enough to build it from scratch — not just wire up a library for it.</p>
     </div>
 
     <div class="filters">
@@ -271,168 +242,169 @@ footer{
       <button class="filter-btn" data-filter="personal">Personal</button>
     </div>
 
-    <div class="project-grid" id="project-grid">
-
-      <div class="proj-card" data-category="diamsystems">
-        <div class="proj-header">
-          <div class="proj-icon"><svg style="width:20px;height:20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" /> <path d="M13 5v2" /> <path d="M13 17v2" /> <path d="M13 11v2" /> </svg></div>
-          <span class="proj-badge badge-diam">diam Systems</span>
+    <div class="showcase" data-category="diamsystems">
+      <a class="shot-frame" href="https://framedat.uk" target="_blank" rel="noopener">
+        <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">framedat.uk</span></div>
+        <div class="shot-body">
+          <div class="shot-fallback">framedat.uk</div>
+          <img class="shot-img" src="images/framedat.png" alt="framedat.uk — ticketing and event archive platform" data-optional>
         </div>
-        <h3>framed@ — Event Ticketing Platform</h3>
-        <p>Paid client platform built on FastAPI, async SQLAlchemy, PostgreSQL, Stripe checkout, passwordless magic-link authentication, 48 automated tests passing, live preview deployed.</p>
+      </a>
+      <div class="show-info">
+        <div class="show-label">framed@ — Client Work</div>
+        <h3 class="show-title">Ticketing that survives the door.</h3>
+        <p class="show-desc">A ticketing and event-archive platform for framed@ Limited. Passwordless auth, Stripe checkout with signed webhooks, QR door scanning that can't double-admit, and a media pipeline that re-muxes video for the web.</p>
         <div class="tags">
-          <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">SQLAlchemy</span><span class="tag">Stripe</span>
+          <span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">Stripe</span><span class="tag">Cloudflare R2</span><span class="tag">Resend</span>
         </div>
-        <div class="proj-footer">
+        <div class="show-links">
           <span class="proj-status status-dev">In Development</span>
-          <a href="diagrams.html?project=framedat" class="proj-link" title="View the framed@ documentation and architecture">Docs &amp; Architecture →</a>
+          <a href="https://framedat.uk" target="_blank" rel="noopener">Visit framedat.uk ↗</a>
+          <a href="diagrams.html?project=framedat">Docs &amp; Architecture →</a>
         </div>
       </div>
+    </div>
 
-      <div class="proj-card" data-category="diamsystems">
-        <div class="proj-header">
-          <div class="proj-icon"><svg style="width:20px;height:20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" /> <path d="M7 2v20" /> <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" /> </svg></div>
-          <span class="proj-badge badge-diam">diam Systems</span>
+    <div class="showcase flip" data-category="diamsystems">
+      <a class="shot-frame" href="https://diamsystems.co.uk/" target="_blank" rel="noopener">
+        <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">diamsystems.co.uk</span></div>
+        <div class="shot-body">
+          <div class="shot-fallback">diamsystems.co.uk</div>
+          <img class="shot-img" src="images/diamsystems.png" alt="diamsystems.co.uk — diam Systems corporate platform" data-optional>
         </div>
-        <h3>diamReserve - Restaurant Booking System</h3>
-        <p>Production-ready restaurant table booking system with visual floor plan, customer-facing booking flow, admin dashboard, staff PWA, and Stripe deposits. Features real-time table availability, £10/head deposit via Stripe Checkout, email notifications, and robust security throughout.</p>
+      </a>
+      <div class="show-info">
+        <div class="show-label">diam Systems — Corporate Platform</div>
+        <h3 class="show-title">The storefront for everything we build.</h3>
+        <p class="show-desc">The diam Systems site and commerce platform — Stripe for direct payments, Gumroad for digital licensing, Printify for merchandise, with multi-locale support and full-text search.</p>
         <div class="tags">
-          <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MySQL</span><span class="tag">Tailwind CSS</span><span class="tag">Stripe</span><span class="tag">PWA</span>
+          <span class="tag">Flask</span><span class="tag">Stripe</span><span class="tag">Gumroad API</span><span class="tag">Printify API</span>
         </div>
-        <div class="proj-footer">
-          <span class="proj-status status-dev">In Development</span>
-          <a href="diagrams.html?project=diamreserve" class="proj-link" title="View the diamReserve documentation and architecture">Docs &amp; Architecture →</a>
-        </div>
-      </div>
-
-      <div class="proj-card" data-category="diamsystems">
-        <div class="proj-header">
-          <div class="proj-icon"><svg style="width:20px;height:20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /> </svg></div>
-          <span class="proj-badge badge-diam">diam Systems</span>
-        </div>
-        <h3>Seek - Internal Search Engine</h3>
-        <p>Internal search engine for organisations with GDPR compliance and multi-region support. Connects to internal databases and presents a single search bar for products, customers, orders, and business data. Features full-text search, Redis caching, incremental sync, and distributed locks.</p>
-        <div class="tags">
-          <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">GDPR</span>
-        </div>
-        <div class="proj-footer">
-          <span class="proj-status status-dev">In Development</span>
-          <a href="diagrams.html?project=seek" class="proj-link" title="View the Seek documentation and architecture">Docs &amp; Architecture →</a>
-        </div>
-      </div>
-
-      <div class="proj-card" data-category="diamsystems">
-        <div class="proj-header">
-          <div class="proj-icon"><svg style="width:20px;height:20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M13 5h8" /> <path d="M13 12h8" /> <path d="M13 19h8" /> <path d="m3 17 2 2 4-4" /> <path d="m3 7 2 2 4-4" /> </svg></div>
-          <span class="proj-badge badge-diam">diam Systems</span>
-        </div>
-        <h3>Tracker - Project Management</h3>
-        <p>Project management web app for tracking projects through statuses: Planning, Development, Release Candidate, Released. Features GitHub OAuth authentication, email notifications on status changes, and an elegant UI. Built with Flask, SQLite, and Authlib for secure OAuth integration.</p>
-        <div class="tags">
-          <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">SQLite</span><span class="tag">Authlib</span><span class="tag">GitHub OAuth</span>
-        </div>
-        <div class="proj-footer">
-          <span class="proj-status status-dev">In Development</span>
-          <a href="diagrams.html?project=tracker" class="proj-link" title="View the Tracker documentation and architecture">Docs &amp; Architecture →</a>
-        </div>
-      </div>
-
-      <div class="proj-card" data-category="diamsystems">
-        <div class="proj-header">
-          <div class="proj-icon"><svg style="width:20px;height:20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /> <path d="M2 12h20" /> </svg></div>
-          <span class="proj-badge badge-diam">diam Systems</span>
-        </div>
-        <h3>diamsystems.co.uk</h3>
-        <p>Corporate website and e-commerce platform integrating three fulfilment APIs - Stripe for direct payments, Gumroad for digital product licensing, and Printify for print-on-demand merchandise. Built with Flask, multi-locale support, and full-text search.</p>
-        <div class="tags">
-          <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Stripe</span><span class="tag">Gumroad API</span><span class="tag">Printify API</span>
-        </div>
-        <div class="proj-footer">
+        <div class="show-links">
           <span class="proj-status status-live">Live</span>
-          <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener" class="proj-link">Visit Site →</a>
+          <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener">Visit diamsystems.co.uk ↗</a>
         </div>
       </div>
+    </div>
 
-      <div class="proj-card" data-category="personal">
-        <div class="proj-header">
-          <div class="proj-icon"><svg style="width:20px;height:20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" /> </svg></div>
-          <span class="proj-badge badge-personal">Personal</span>
+    <div class="showcase" data-category="diamsystems">
+      <a class="shot-frame" href="https://diamtracker.fly.dev" target="_blank" rel="noopener">
+        <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">diamtracker.fly.dev</span></div>
+        <div class="shot-body">
+          <div class="shot-fallback">diamtracker.fly.dev</div>
+          <img class="shot-img" src="images/tracker.png" alt="Tracker — diam Systems project management board" data-optional>
         </div>
-        <h3>FileFlow - Zero-Knowledge Cloud Storage</h3>
-        <p>Built to understand what zero-knowledge encryption actually means in practice. Files are encrypted client-side with AES-256 before hitting the API - the server stores ciphertext and handles S3 object management, but never sees plaintext. Real-time collaboration runs over SignalR with Monaco editor and operational-transform conflict handling.</p>
+      </a>
+      <div class="show-info">
+        <div class="show-label">Tracker — Internal Tooling</div>
+        <h3 class="show-title">The board we actually run on.</h3>
+        <p class="show-desc">Our internal project lifecycle board, deployed on Fly.io. SSE live updates, email on every status change, GitHub OAuth, a shared to-do section with @mentions, and a CLI that detects the project from the working directory.</p>
         <div class="tags">
-          <span class="tag">C#</span><span class="tag">Blazor</span><span class="tag">ASP.NET Core</span><span class="tag">PostgreSQL</span><span class="tag">AWS S3</span><span class="tag">SignalR</span>
+          <span class="tag">Flask</span><span class="tag">SQLite</span><span class="tag">SSE</span><span class="tag">GitHub OAuth</span><span class="tag">Fly.io</span>
         </div>
-        <div class="proj-footer">
+        <div class="show-links">
+          <span class="proj-status status-live">Live</span>
+          <a href="https://diamtracker.fly.dev" target="_blank" rel="noopener">Visit diamtracker.fly.dev ↗</a>
+          <a href="diagrams.html?project=tracker">Docs &amp; Architecture →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="showcase flip" data-category="diamsystems">
+      <div class="shot-frame">
+        <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">diamReserve</span></div>
+        <div class="shot-body">
+          <div class="shot-fallback">diamReserve</div>
+          <img class="shot-img" src="images/diamreserve.png" alt="diamReserve — restaurant booking system" data-optional>
+        </div>
+      </div>
+      <div class="show-info">
+        <div class="show-label">diamReserve — Booking System</div>
+        <h3 class="show-title">Bookings, end to end.</h3>
+        <p class="show-desc">Restaurant table booking with a visual floor plan, customer-facing flow, admin dashboard, staff PWA, and Stripe deposits — real-time availability with £10/head deposit handling.</p>
+        <div class="tags">
+          <span class="tag">Flask</span><span class="tag">MySQL</span><span class="tag">Tailwind CSS</span><span class="tag">Stripe</span><span class="tag">PWA</span>
+        </div>
+        <div class="show-links">
           <span class="proj-status status-dev">In Development</span>
-          <a href="https://github.com/AdamScholey25/fileflow" target="_blank" rel="noopener" class="proj-link">View on GitHub →</a>
+          <a href="diagrams.html?project=diamreserve">Docs &amp; Architecture →</a>
         </div>
       </div>
+    </div>
 
-      <div class="proj-card" data-category="personal">
-        <div class="proj-header">
-          <div class="proj-icon"><svg style="width:20px;height:20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect x="16" y="16" width="6" height="6" rx="1" /> <rect x="2" y="16" width="6" height="6" rx="1" /> <rect x="9" y="2" width="6" height="6" rx="1" /> <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" /> <path d="M12 12V8" /> </svg></div>
-          <span class="proj-badge badge-personal">Personal</span>
+    <div class="showcase" data-category="diamsystems">
+      <div class="shot-frame">
+        <div class="shot-bar"><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-dot"></span><span class="shot-url">Seek</span></div>
+        <div class="shot-body">
+          <div class="shot-fallback">Seek</div>
+          <img class="shot-img" src="images/seek.png" alt="Seek — internal search engine" data-optional>
         </div>
-        <h3>OrgNet - Organisation Platform</h3>
-        <p>Built specifically to get row-level security right. PostgreSQL RLS policies enforce that every query - even a misconfigured one - returns only the calling tenant's rows. Redis powers the event bus, JWT with refresh token rotation, Docker Compose orchestration, and SignalR for real-time activity feeds.</p>
+      </div>
+      <div class="show-info">
+        <div class="show-label">Seek — Internal Search</div>
+        <h3 class="show-title">One search bar for the whole organisation.</h3>
+        <p class="show-desc">Internal search engine with GDPR compliance and multi-region support. Connects to internal databases and presents a single bar for products, customers and orders — full-text search, Redis caching, incremental sync and distributed locks.</p>
         <div class="tags">
-          <span class="tag">C#</span><span class="tag">ASP.NET Core</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">SignalR</span>
+          <span class="tag">Flask</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">GDPR</span>
         </div>
-        <div class="proj-footer">
+        <div class="show-links">
           <span class="proj-status status-dev">In Development</span>
-          <a href="https://github.com/AdamScholey25/orgnet" target="_blank" rel="noopener" class="proj-link">View on GitHub →</a>
+          <a href="diagrams.html?project=seek">Docs &amp; Architecture →</a>
         </div>
       </div>
+    </div>
 
-      <div class="proj-card" data-category="personal">
-        <div class="proj-header">
-          <div class="proj-icon"><svg style="width:20px;height:20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /> </svg></div>
-          <span class="proj-badge badge-personal">Personal</span>
-        </div>
-        <h3>SecureShield - Anti-Malware Console</h3>
-        <p>Built to understand how security tooling works at the OS level. Uses .NET FileSystemWatcher for real-time directory monitoring, SHA-256 signature matching against a hash database, and raw socket inspection for network traffic analysis. Validates correctly against the EICAR test file standard. WinUI 3 with RBAC.</p>
-        <div class="tags">
-          <span class="tag">C#</span><span class="tag">WinUI 3</span><span class="tag">FileSystemWatcher</span><span class="tag">SHA-256</span><span class="tag">RBAC</span>
-        </div>
-        <div class="proj-footer">
+    <div class="personal-head" data-category="personal">
+      <div class="kicker">Personal Projects</div>
+      <h3>Built to learn. Kept because they work.</h3>
+      <p>Areas I wanted to understand deeply enough to be wrong about — zero-knowledge encryption, row-level multi-tenancy, security tooling.</p>
+    </div>
+    <div class="mini-grid">
+      <div class="mini-card" data-category="personal">
+        <h4>FileFlow — Zero-Knowledge Cloud Storage</h4>
+        <p>Files encrypted client-side with AES-256 before hitting the API — the server stores ciphertext and never sees plaintext. Real-time collaboration over SignalR with operational-transform conflict handling.</p>
+        <div class="tags"><span class="tag">C#</span><span class="tag">Blazor</span><span class="tag">ASP.NET Core</span><span class="tag">PostgreSQL</span><span class="tag">SignalR</span></div>
+        <div class="mini-links">
           <span class="proj-status status-dev">In Development</span>
-          <a href="https://github.com/AdamScholey25/Antivirus-Software" target="_blank" rel="noopener" class="proj-link">View on GitHub →</a>
+          <a href="https://github.com/AdamScholey25/fileflow" target="_blank" rel="noopener">GitHub →</a>
         </div>
       </div>
-
-      <div class="proj-card" data-category="personal">
-        <div class="proj-header">
-          <div class="proj-icon"><svg style="width:20px;height:20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 5v16" /> <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" /> </svg></div>
-          <span class="proj-badge badge-personal">Personal</span>
-        </div>
-        <h3>Bookshop Inventory System</h3>
-        <p>A deliberate exercise in clean API design: RESTful endpoints with proper resource modelling, EF Core migrations for schema evolution, and Swagger/OpenAPI documentation written alongside the code. The WinUI 3 desktop client consumes the same API, so the contract is tested from both sides.</p>
-        <div class="tags">
-          <span class="tag">C#</span><span class="tag">ASP.NET Core</span><span class="tag">EF Core</span><span class="tag">WinUI 3</span><span class="tag">REST API</span>
-        </div>
-        <div class="proj-footer">
-          <span class="proj-status status-dev">Complete</span>
-          <a href="https://github.com/AdamScholey25/Bookshop-Inventorysystem" target="_blank" rel="noopener" class="proj-link">View on GitHub →</a>
+      <div class="mini-card" data-category="personal">
+        <h4>OrgNet — Organisation Platform</h4>
+        <p>Built specifically to get row-level security right — PostgreSQL RLS enforces tenant isolation even on misconfigured queries. Redis event bus, JWT refresh rotation, Docker Compose.</p>
+        <div class="tags"><span class="tag">C#</span><span class="tag">ASP.NET Core</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Docker</span></div>
+        <div class="mini-links">
+          <span class="proj-status status-dev">In Development</span>
+          <a href="https://github.com/AdamScholey25/orgnet" target="_blank" rel="noopener">GitHub →</a>
         </div>
       </div>
-
-      <div class="proj-card" data-category="personal">
-        <div class="proj-header">
-          <div class="proj-icon"><svg style="width:20px;height:20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /> <path d="M12 9v4" /> <path d="M12 17h.01" /> </svg></div>
-          <span class="proj-badge badge-personal">Personal</span>
-        </div>
-        <h3>Incident Response Platform</h3>
-        <p>Implements the NIST incident response lifecycle as a structured workflow. Each incident has a full chain of custody - immutable append-only records with timestamps - and pre-built playbooks guiding analysts through containment and recovery. Tracks MTTD, MTTC, and MTTR metrics per incident.</p>
-        <div class="tags">
-          <span class="tag">C#</span><span class="tag">.NET MAUI</span><span class="tag">SQLite</span><span class="tag">NIST Framework</span><span class="tag">MVVM</span>
-        </div>
-        <div class="proj-footer">
-          <span class="proj-status status-dev">Complete</span>
-          <a href="https://github.com/AdamScholey25/Incident-Response-Platform" target="_blank" rel="noopener" class="proj-link">View on GitHub →</a>
+      <div class="mini-card" data-category="personal">
+        <h4>SecureShield — Anti-Malware Console</h4>
+        <p>Security tooling at the OS level — FileSystemWatcher real-time monitoring, SHA-256 signature matching, raw socket inspection. Validates against the EICAR standard. WinUI 3 with RBAC.</p>
+        <div class="tags"><span class="tag">C#</span><span class="tag">WinUI 3</span><span class="tag">FileSystemWatcher</span><span class="tag">SHA-256</span><span class="tag">RBAC</span></div>
+        <div class="mini-links">
+          <span class="proj-status status-dev">In Development</span>
+          <a href="https://github.com/AdamScholey25/Antivirus-Software" target="_blank" rel="noopener">GitHub →</a>
         </div>
       </div>
-
+      <div class="mini-card" data-category="personal">
+        <h4>Bookshop Inventory System</h4>
+        <p>A deliberate exercise in clean API design — RESTful resource modelling, EF Core migrations, Swagger/OpenAPI written alongside the code, and a WinUI 3 client consuming the same contract.</p>
+        <div class="tags"><span class="tag">C#</span><span class="tag">ASP.NET Core</span><span class="tag">EF Core</span><span class="tag">WinUI 3</span><span class="tag">REST API</span></div>
+        <div class="mini-links">
+          <span class="proj-status status-done">Complete</span>
+          <a href="https://github.com/AdamScholey25/Bookshop-Inventorysystem" target="_blank" rel="noopener">GitHub →</a>
+        </div>
+      </div>
+      <div class="mini-card" data-category="personal">
+        <h4>Incident Response Platform</h4>
+        <p>The NIST incident response lifecycle as a structured workflow — immutable chain-of-custody records, guided playbooks for containment, and MTTD/MTTC/MTTR metrics per incident.</p>
+        <div class="tags"><span class="tag">C#</span><span class="tag">.NET MAUI</span><span class="tag">SQLite</span><span class="tag">NIST</span><span class="tag">MVVM</span></div>
+        <div class="mini-links">
+          <span class="proj-status status-done">Complete</span>
+          <a href="https://github.com/AdamScholey25/Incident-Response-Platform" target="_blank" rel="noopener">GitHub →</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -440,28 +412,11 @@ footer{
     <div class="contact-panel">
       <div class="kicker">Contact</div>
       <h2>Let's talk.</h2>
-      <p class="subtitle" style="margin:0 auto">Particularly interested in teams working on infrastructure, developer tooling, or anything where the backend is genuinely the hard part.</p>
+      <p class="subtitle" style="margin:0 auto;max-width:560px">Particularly interested in teams working on infrastructure, developer tooling, or anything where the backend is genuinely the hard part.</p>
       <div class="contact-links">
-        <a href="mailto:adamscholey25@gmail.com">
-          <span class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="28" height="28"><path fill="#4285F4" d="M45 16.5v22A4.5 4.5 0 0 1 40.5 43h-33A4.5 4.5 0 0 1 3 38.5v-22L24 28z"/><path fill="#34A853" d="M45 16.5 24 28 3 16.5 24 5z"/><path fill="#FBBC05" d="M3 16.5v22l9-11z"/><path fill="#EA4335" d="M45 16.5v22l-9-11z"/><path fill="#C5221F" d="m3 38.5 12-13.5L24 28l9-3 12 13.5"/></svg></span>
-          Email<br>
-          <span class="small">adamscholey25@gmail.com</span>
-        </a>
-        <a href="https://www.linkedin.com/in/adam-scholey-8306892b0/" target="_blank" rel="noopener">
-          <span class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="28" height="28"><path fill="#0077B5" d="M42 37a5 5 0 0 1-5 5H11a5 5 0 0 1-5-5V11a5 5 0 0 1 5-5h26a5 5 0 0 1 5 5z"/><path fill="#fff" d="M12 19h5v17h-5zm2.485-2a2.485 2.485 0 1 1 0-4.97 2.485 2.485 0 0 1 0 4.97zM36 36h-5v-9.099c0-2.198-1.96-3.999-4.5-3.999s-4.5 1.801-4.5 3.999V36h-5V19h5v2.616C23.721 20.5 25.8 19 28.5 19c4.136 0 7.5 3.582 7.5 8z"/></svg></span>
-          LinkedIn<br>
-          <span class="small">adam-scholey-8306892b0</span>
-        </a>
-        <a href="https://github.com/adam-scholey" target="_blank" rel="noopener">
-          <span class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
-          GitHub<br>
-          <span class="small">github.com/adam-scholey</span>
-        </a>
-        <a href="https://diamsystems.co.uk/" target="_blank" rel="noopener">
-          <span class="contact-icon"><img src="diam_icon_white.png" width="28" height="28" alt="diam Systems" style="object-fit:contain"></span>
-          diam Systems<br>
-          <span class="small">diamsystems.co.uk</span>
-        </a>
+        <a href="mailto:adamscholey25@gmail.com">Email <span class="small">adamscholey25@gmail.com</span></a>
+        <a href="https://www.linkedin.com/in/adam-scholey-8306892b0/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/adam-scholey" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
     </div>
   </section>
@@ -472,48 +427,47 @@ footer{
     <a href="index.html">Home</a>
     <a href="index.html#about">About</a>
     <a href="index.html#skills">Skills</a>
+    <a href="index.html#experience">Experience</a>
     <a href="projects.html">Projects</a>
     <a href="now.html">Working On</a>
-    <a href="cv.html">CV</a>
     <a href="index.html#contact">Contact</a>
   </div>
-  <p style="color:var(--soft);font-size:12px">© <span id="year">2026</span> Adam Scholey · Software Engineer</p>
+  <p class="footer-note">© <span id="year">2026</span> Adam Scholey · Software Engineer</p>
+  <p class="footer-note">hand-written html. no frameworks, no templates.</p>
 </footer>
 
 <script>
-document.documentElement.classList.add("js");
-
-const btns = document.querySelectorAll(".filter-btn");
-const cards = document.querySelectorAll(".proj-card");
-
-btns.forEach(function(btn){
-  btn.addEventListener("click", function(){
-    btns.forEach(function(b){b.classList.remove("active")});
-    btn.classList.add("active");
-    const filter = btn.dataset.filter;
-    cards.forEach(function(card){
-      if(filter === "all" || card.dataset.category === filter){
-        card.style.display = "";
-      } else {
-        card.style.display = "none";
-      }
-    });
-  });
-});
-
-const reveals = document.querySelectorAll(".reveal");
-const observer = new IntersectionObserver(function(entries){
+const reveals=document.querySelectorAll(".reveal");
+const observer=new IntersectionObserver(function(entries){
   entries.forEach(function(entry){
     if(entry.isIntersecting){entry.target.classList.add("visible")}
   });
 },{threshold:.05,rootMargin:"0px 0px -6% 0px"});
 reveals.forEach(function(s){observer.observe(s)});
 
+const filterBtns=document.querySelectorAll(".filter-btn");
+filterBtns.forEach(function(btn){
+  btn.addEventListener("click",function(){
+    filterBtns.forEach(function(b){b.classList.remove("active")});
+    btn.classList.add("active");
+    const f=btn.dataset.filter;
+    document.querySelectorAll("[data-category]").forEach(function(el){
+      el.style.display=(f==="all"||el.dataset.category===f)?"":"none";
+    });
+  });
+});
+
 const navToggle=document.getElementById("nav-toggle");
 if(navToggle){navToggle.addEventListener("click",function(){document.querySelector("nav").classList.toggle("open")})}
 document.querySelectorAll(".nav-links a").forEach(function(l){l.addEventListener("click",function(){document.querySelector("nav").classList.remove("open")})});
 
-document.getElementById("year").textContent = new Date().getFullYear();
+window.addEventListener("load",function(){
+  document.querySelectorAll("img[data-optional]").forEach(function(i){
+    if(!i.complete||i.naturalWidth===0)i.style.display="none";
+  });
+});
+
+document.getElementById("year").textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
