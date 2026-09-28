@@ -7,7 +7,7 @@
 <title>Working On - Adam Scholey</title>
 <link rel='preconnect' href='https://fonts.googleapis.com'>
 <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Inter:wght@400;500;600;700&amp;display=swap'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Inter:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap'>
 <style>
 @font-face { font-family:'Inter Display'; src:url('fonts/InterDisplay-Medium.ttf') format('truetype'); font-weight:500; font-style:normal; font-display:swap; }
 :root{
@@ -62,21 +62,25 @@ nav{
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
 }
-.nav-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.nav-item{position:relative}
-.caret{font-size:9px}
-.nav-drop{display:none;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);min-width:210px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:8px;box-shadow:0 14px 34px rgba(16,18,20,.1);z-index:1001}
-.nav-drop::before{content:'';position:absolute;top:-12px;left:0;right:0;height:12px}
-.nav-item:hover .nav-drop,.nav-item:focus-within .nav-drop{display:block}
-.nav-drop a{display:block;width:100%;padding:9px 12px;font-size:13px;color:var(--muted);border-radius:7px;border-bottom:none}
-.nav-drop a:hover{background:var(--panel);color:var(--text);border-bottom-color:transparent}
-.nav-drop a.active{color:var(--gold)}
-.nav-links{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-.nav-links a{font-family:'Inter',Arial,sans-serif;color:var(--muted);font-size:13px;font-weight:500;padding:6px 2px;letter-spacing:.2px;transition:.18s ease;border-bottom:1px solid transparent;}
-.nav-links a:hover{color:var(--text);border-bottom-color:rgba(3,105,161,.5)}
-.nav-links .active{color:var(--gold);border-bottom-color:var(--gold-border)}
-.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto}
+.nav-inner{position:relative;max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:21px;letter-spacing:-.3px;color:var(--text);flex-shrink:0}
+.nav-flat{display:flex;align-items:center;margin:0 auto}
+.nav-flat a{font-family:'Inter Display','Inter',Arial,sans-serif;color:var(--muted);font-size:13.5px;font-weight:500;padding:6px 2px;transition:.18s ease}
+.nav-flat a:hover,.nav-flat a.active{color:var(--text)}
+.nav-flat .sep{color:var(--soft);margin:0 7px;font-size:13px;user-select:none}
+.nav-toggle{display:flex;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px}
 .nav-toggle span{display:block;width:22px;height:2px;background:var(--text);transition:.25s}
+nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+nav.open .nav-toggle span:nth-child(2){opacity:0}
+nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-links{display:none;position:absolute;top:calc(100% + 15px);right:0;min-width:250px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px;box-shadow:0 18px 44px rgba(16,18,20,.14);flex-direction:column;z-index:1001}
+nav.open .nav-links{display:flex}
+.nav-links a{font-family:'Inter Display','Inter',Arial,sans-serif;color:var(--text);font-size:14.5px;font-weight:500;padding:10px 14px;border-radius:8px;transition:.15s ease}
+.nav-links a:hover{background:var(--panel)}
+.nav-links a.active{color:var(--gold)}
+.nav-links-foot{display:flex;gap:16px;margin-top:6px;padding:12px 14px 6px;border-top:1px solid var(--border)}
+.nav-links-foot a{font-size:12.5px;color:var(--muted);padding:2px 0;border-radius:0}
+.nav-links-foot a:hover{background:none;color:var(--text)}
 main{position:relative;z-index:2}
 section{max-width:1180px;margin:0 auto;padding:72px 20px}
 .section-head{margin-bottom:36px}
@@ -130,16 +134,9 @@ footer{
 @media(max-width:960px){.grid-2{grid-template-columns:1fr}}
 @media(max-width:720px){
   .nav-inner{flex-direction:row;align-items:center}
-  .nav-toggle{display:flex}
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(255,255,255,.97);flex-direction:column;align-items:flex-start;gap:0;padding:10px 20px 16px;border-bottom:1px solid var(--border);flex-wrap:nowrap}
-  nav.open .nav-links{display:flex}
-  .nav-links a{width:100%;padding:12px 0;border-bottom:none}
-  nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-  nav.open .nav-toggle span:nth-child(2){opacity:0}
-  nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-  .nav-item{width:100%}
-  .nav-drop{display:block;position:static;transform:none;min-width:0;box-shadow:none;border:none;padding:2px 0 0 16px;background:transparent}
-  .nav-drop a{padding:9px 0}
+  .nav-flat{display:none}
+  .nav-links{left:0;right:0;min-width:0;border-radius:0;border-left:none;border-right:none}
+  .nav-links a{padding:11px 8px;font-size:15px}
   section{padding:60px 16px}
 }
 @media (prefers-reduced-motion: reduce){
@@ -151,24 +148,32 @@ footer{
 <body>
 
 <nav>
-  <div class='nav-inner'>
-    <div class='nav-links'>
-      <a href='index.html'>Home</a>
-      <a href='index.html#about'>About</a>
-      <a href='index.html#skills'>Skills</a>
-      <a href='index.html#experience'>Experience</a>
-      <div class='nav-item'>
-        <a href='projects.html' class='active'>Work <span class='caret'>▾</span></a>
-        <div class='nav-drop'>
-          <a href='projects.html'>Projects</a>
-          <a href='diagrams.html'>Docs &amp; Architecture</a>
-          <a href='now.html' class='active'>Working On</a>
-          <a href='cv.html'>CV</a>
-        </div>
-      </div>
-      <a href='index.html#contact'>Contact</a>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">adam scholey</a>
+    <div class="nav-flat">
+      <a href="index.html">home</a><span class="sep">,</span>
+      <a href="projects.html">work</a><span class="sep">,</span>
+      <a href="diagrams.html">docs</a><span class="sep">,</span>
+      <a href="now.html" class="active">now</a><span class="sep">,</span>
+      <a href="cv.html">cv</a>
     </div>
-    <button class='nav-toggle' id='nav-toggle' aria-label='Menu'><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="index.html">home</a>
+      <a href="index.html#about">about</a>
+      <a href="index.html#skills">skills</a>
+      <a href="index.html#experience">experience</a>
+      <a href="projects.html">projects</a>
+      <a href="diagrams.html">docs &amp; architecture</a>
+      <a href="now.html" class="active">working on</a>
+      <a href="cv.html">cv</a>
+      <a href="index.html#contact">contact</a>
+      <div class="nav-links-foot">
+        <a href="https://github.com/adam-scholey" target="_blank" rel="noopener">github</a>
+        <a href="https://www.linkedin.com/in/adam-scholey-8306892b0/" target="_blank" rel="noopener">linkedin</a>
+        <a href="mailto:adam@diamsystems.co.uk">email</a>
+      </div>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -270,6 +275,8 @@ reveals.forEach(function(s){ observer.observe(s); });
 const navToggle = document.getElementById('nav-toggle');
 if(navToggle){navToggle.addEventListener('click', function(){document.querySelector('nav').classList.toggle('open')})}
 document.querySelectorAll('.nav-links a').forEach(function(l){l.addEventListener('click', function(){document.querySelector('nav').classList.remove('open')})});
+document.addEventListener("click",function(e){var nav=document.querySelector("nav");if(nav&&nav.classList.contains("open")&&!nav.contains(e.target))nav.classList.remove("open")});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){var nav=document.querySelector("nav");if(nav)nav.classList.remove("open")}});
 
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
