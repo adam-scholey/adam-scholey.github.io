@@ -1,6 +1,7 @@
-Drop screenshots here (~1600x1000):
-- framedat.png
-- diamsystems.png
-- tracker.png
-- diamreserve.png
-- seek.png
+Site images:
+- hero.jpg        (homepage hero)
+- framedat.png    (when live)
+- diamsystems.png (when live)
+- tracker.png     (when live)
+- diamreserve.png (when live)
+- seek.png        (when live)

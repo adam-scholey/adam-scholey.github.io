@@ -63,8 +63,14 @@ nav{
   -webkit-backdrop-filter:blur(12px);
 }
 .nav-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:19px;font-weight:500;color:var(--text);letter-spacing:-.4px}
-.logo em{font-style:normal;color:var(--gold)}
+.nav-item{position:relative}
+.caret{font-size:9px}
+.nav-drop{display:none;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);min-width:210px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:8px;box-shadow:0 14px 34px rgba(16,18,20,.1);z-index:1001}
+.nav-drop::before{content:'';position:absolute;top:-12px;left:0;right:0;height:12px}
+.nav-item:hover .nav-drop,.nav-item:focus-within .nav-drop{display:block}
+.nav-drop a{display:block;width:100%;padding:9px 12px;font-size:13px;color:var(--muted);border-radius:7px;border-bottom:none}
+.nav-drop a:hover{background:var(--panel);color:var(--text);border-bottom-color:transparent}
+.nav-drop a.active{color:var(--gold)}
 .nav-links{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
 .nav-links a{font-family:'Inter',Arial,sans-serif;color:var(--muted);font-size:13px;font-weight:500;padding:6px 2px;letter-spacing:.2px;transition:.18s ease;border-bottom:1px solid transparent;}
 .nav-links a:hover{color:var(--text);border-bottom-color:rgba(3,105,161,.5)}
@@ -161,6 +167,9 @@ footer{
   nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
   nav.open .nav-toggle span:nth-child(2){opacity:0}
   nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .nav-item{width:100%}
+  .nav-drop{display:block;position:static;transform:none;min-width:0;box-shadow:none;border:none;padding:2px 0 0 16px;background:transparent}
+  .nav-drop a{padding:9px 0}
   section{padding:60px 16px}
   .diagram-info{padding:20px}
   .diagram-canvas-wrap{overflow-x:auto}
@@ -179,14 +188,20 @@ footer{
 
 <nav>
   <div class='nav-inner'>
-    <a class='logo' href='index.html'>AS<em>.</em></a>
     <div class='nav-links'>
       <a href='index.html'>Home</a>
       <a href='index.html#about'>About</a>
       <a href='index.html#skills'>Skills</a>
       <a href='index.html#experience'>Experience</a>
-      <a href='projects.html'>Projects</a>
-      <a href='now.html'>Working On</a>
+      <div class='nav-item'>
+        <a href='projects.html' class='active'>Work <span class='caret'>▾</span></a>
+        <div class='nav-drop'>
+          <a href='projects.html'>Projects</a>
+          <a href='diagrams.html' class='active'>Docs &amp; Architecture</a>
+          <a href='now.html'>Working On</a>
+          <a href='cv.html'>CV</a>
+        </div>
+      </div>
       <a href='index.html#contact'>Contact</a>
     </div>
     <button class='nav-toggle' id='nav-toggle' aria-label='Menu'><span></span><span></span><span></span></button>
