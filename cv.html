@@ -11,20 +11,20 @@
 <style>
 @font-face { font-family:'Inter Display'; src:url('fonts/InterDisplay-Medium.ttf') format('truetype'); font-weight:500; font-style:normal; font-display:swap; }
 :root{
-  --bg:#0F172A;
-  --panel:#1E293B;
-  --panel2:#1E293B;
-  --text:#F8FAFC;
-  --muted:#A8B8CC;
-  --soft:#A8B8CC;
-  --gold:#38BDF8;
-  --gold2:#0ea5e9;
-  --rose:#34D399;
-  --rose2:#10b981;
-  --cream:#F8FAFC;
-  --border:#334155;
-  --border-hover:#475569;
-  --gold-border:rgba(56,189,248,.45);
+  --bg:#ffffff;
+  --panel:#f6f7f8;
+  --panel2:#f6f7f8;
+  --text:#101214;
+  --muted:#5b6472;
+  --soft:#5b6472;
+  --gold:#0369a1;
+  --gold2:#075985;
+  --rose:#166534;
+  --rose2:#15803d;
+  --cream:#101214;
+  --border:#e5e8ec;
+  --border-hover:#c3cad2;
+  --gold-border:rgba(3,105,161,.45);
   --shadow:none;
   --radius:0px;
 }
@@ -44,9 +44,9 @@ body::before{
   z-index:-5;
   pointer-events:none;
   background:
-    radial-gradient(ellipse at 50% -10%, rgba(56,189,248,.18) 0%, rgba(15,23,42,0) 70%),
-    linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
+    radial-gradient(ellipse at 50% -10%, rgba(3,105,161,.07) 0%, rgba(255,255,255,0) 70%),
+    linear-gradient(to right, rgba(16,18,20,.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16,18,20,.04) 1px, transparent 1px);
   background-size:100% 100%, 24px 24px, 24px 24px;
 }
 a{color:inherit;text-decoration:none}
@@ -57,16 +57,17 @@ nav{
   right:0;
   z-index:1000;
   padding:14px 20px;
-  background:rgba(15,23,42,.75);
-  border-bottom:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.82);
+  border-bottom:1px solid rgba(16,18,20,.09);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
 }
 .nav-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{font-family:'Inter',Arial,sans-serif;font-size:22px;color:var(--cream);letter-spacing:-.3px}
+.logo{font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:19px;font-weight:500;color:var(--text);letter-spacing:-.4px}
+.logo em{font-style:normal;color:var(--gold)}
 .nav-links{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
 .nav-links a{font-family:'Inter',Arial,sans-serif;color:var(--muted);font-size:13px;font-weight:500;padding:6px 2px;letter-spacing:.2px;transition:.18s ease;border-bottom:1px solid transparent;}
-.nav-links a:hover{color:var(--text);border-bottom-color:rgba(56,189,248,.5)}
+.nav-links a:hover{color:var(--text);border-bottom-color:rgba(3,105,161,.5)}
 .nav-links .active{color:var(--gold);border-bottom-color:var(--gold-border)}
 .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto}
 .nav-toggle span{display:block;width:22px;height:2px;background:var(--text);transition:.25s}
@@ -98,8 +99,8 @@ h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:19px
   transition:.15s ease;
 }
 .btn.primary{
-  color:var(--text);
-  background:#020617;
+  color:#fff;
+  background:#101214;
 }
 .btn.secondary{
   color:var(--gold);
@@ -154,8 +155,8 @@ h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:19px
 }
 footer{
   position:relative;z-index:2;
-  border-top:1px solid rgba(255,255,255,.07);
-  background:rgba(0,0,0,.3);
+  border-top:1px solid rgba(16,18,20,.07);
+  background:#f6f7f8;
   padding:32px 20px;text-align:center;
 }
 .footer-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:14px}
@@ -175,7 +176,7 @@ footer{
 @media(max-width:720px){
   .nav-inner{flex-direction:row;align-items:center}
   .nav-toggle{display:flex}
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(15,23,42,.97);flex-direction:column;align-items:flex-start;gap:0;padding:10px 20px 16px;border-bottom:1px solid var(--border);flex-wrap:nowrap}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(255,255,255,.97);flex-direction:column;align-items:flex-start;gap:0;padding:10px 20px 16px;border-bottom:1px solid var(--border);flex-wrap:nowrap}
   nav.open .nav-links{display:flex}
   .nav-links a{width:100%;padding:12px 0;border-bottom:none}
   nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -200,6 +201,7 @@ footer{
 
 <nav>
   <div class='nav-inner'>
+    <a class='logo' href='index.html'>AS<em>.</em></a>
     <div class='nav-links'>
       <a href='index.html'>Home</a>
       <a href='index.html#about'>About</a>
