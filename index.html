@@ -116,10 +116,9 @@ nav{
   justify-content:space-between;
   gap:20px;
 }
-.nav-flat{display:flex;align-items:center;margin:0 auto}
-.nav-flat a{font-family:'Cormorant Garamond',Georgia,serif;color:var(--muted);font-size:17px;font-weight:500;padding:6px 2px;transition:.18s ease}
+.nav-flat{display:flex;align-items:center;margin:0 auto;gap:22px}
+.nav-flat a{font-family:'Cormorant Garamond',Georgia,serif;color:var(--muted);font-size:15px;font-weight:600;padding:6px 2px;transition:.18s ease;text-transform:uppercase;letter-spacing:1.5px}
 .nav-flat a:hover,.nav-flat a.active{color:var(--text)}
-.nav-flat .sep{color:var(--soft);margin:0 7px;font-size:13px;user-select:none}
 .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto}
 .nav-toggle span{display:block;width:22px;height:2px;background:var(--text);transition:.25s}
 nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -127,7 +126,7 @@ nav.open .nav-toggle span:nth-child(2){opacity:0}
 nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .nav-links{display:none;position:absolute;top:calc(100% + 15px);right:0;min-width:250px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px;box-shadow:0 18px 44px rgba(16,18,20,.14);flex-direction:column;z-index:1001}
 nav.open .nav-links{display:flex}
-.nav-links a{font-family:'Cormorant Garamond',Georgia,serif;color:var(--text);font-size:18px;font-weight:500;padding:10px 14px;border-radius:8px;transition:.15s ease}
+.nav-links a{font-family:'Cormorant Garamond',Georgia,serif;color:var(--text);font-size:16px;font-weight:600;text-transform:uppercase;letter-spacing:1px;padding:10px 14px;border-radius:8px;transition:.15s ease}
 .nav-links a:hover{background:var(--panel)}
 .nav-links a.active{color:var(--gold)}
 .nav-links-foot{display:flex;gap:16px;margin-top:6px;padding:12px 14px 6px;border-top:1px solid var(--border)}
@@ -364,15 +363,7 @@ footer{
 <nav>
   <div class="nav-inner">
     <div class="nav-flat">
-      <a href="#home" class="active">home</a><span class="sep">,</span>
-      <a href="#about">about</a><span class="sep">,</span>
-      <a href="#skills">skills</a><span class="sep">,</span>
-      <a href="#experience">experience</a><span class="sep">,</span>
-      <a href="projects.html">work</a><span class="sep">,</span>
-      <a href="diagrams.html">docs</a><span class="sep">,</span>
-      <a href="now.html">now</a><span class="sep">,</span>
-      <a href="cv.html">cv</a><span class="sep">,</span>
-      <a href="#contact">contact</a>
+      <a href="#home" class="active">home</a><a href="#about">about</a><a href="#skills">skills</a><a href="#experience">experience</a><a href="projects.html">work</a><a href="diagrams.html">docs</a><a href="now.html">now</a><a href="cv.html">cv</a><a href="#contact">contact</a>
     </div>
     <div class="nav-links">
       <a href="#home" class="active">home</a>
