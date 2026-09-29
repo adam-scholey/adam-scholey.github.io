@@ -1,4 +1,4 @@
-# framed@ — Architecture
+# framed@ - Architecture
 
 Ticketing platform for framedat.uk: passwordless customer auth, passkey-MFA staff admin,
 Stripe checkout, QR ticket delivery, door scanning, and an archive of event media.
@@ -22,18 +22,18 @@ same-origin. Frontend state lives in the DOM + `localStorage` hints only.
 
 ## Backend layout
 
-- `app/main.py` — app factory: routers, middleware (request-id, security headers),
+- `app/main.py` - app factory: routers, middleware (request-id, security headers),
   error handlers, CORS (off by default), static mounts.
-- `app/routers/` — `events`, `checkout`, `webhooks`, `auth`, `account`, `scanner`,
+- `app/routers/` - `events`, `checkout`, `webhooks`, `auth`, `account`, `scanner`,
   `media`, `site`, `subscribe`, `analytics`, `admin/`.
-- `app/routers/admin/` — `events`, `tiers`, `orders`, `tickets`, `marketing`,
+- `app/routers/admin/` - `events`, `tiers`, `orders`, `tickets`, `marketing`,
   `settings`, `staff`, `passkeys`, `scanner`, `subscribers`, `common`.
-- `app/services/` — `fulfilment`, `stripe_service`, `media_service`, `video_service`,
+- `app/services/` - `fulfilment`, `stripe_service`, `media_service`, `video_service`,
   `webauthn_service`, `site_config`, `email_service`, `qr_service`, `slug`,
   `availability`, `analytics_service`, `mailerlite_service`.
-- `app/jobs/` — `reminders` (event reminders), `rollup` (traffic/challenge/session GC).
-- `app/models.py` — single module, ~25 tables.
-- `app/dependencies.py` — `current_customer`, `current_staff`, scanner context, db.
+- `app/jobs/` - `reminders` (event reminders), `rollup` (traffic/challenge/session GC).
+- `app/models.py` - single module, ~25 tables.
+- `app/dependencies.py` - `current_customer`, `current_staff`, scanner context, db.
 
 ## Key flows
 
@@ -41,7 +41,7 @@ same-origin. Frontend state lives in the DOM + `localStorage` hints only.
 1. `POST /api/checkout-sessions` creates a `CheckoutHold` (reserves inventory,
    price snapshot) and a Stripe Checkout session; rejected when `sales_paused`.
 2. Stripe redirects back → `GET /api/orders/by-session/{id}` shows confirmation.
-   **The order is not fulfilled here** — only the webhook fulfils.
+   **The order is not fulfilled here** - only the webhook fulfils.
 3. `POST /api/webhooks/stripe` → `fulfilment.fulfil()`:
    - Dedupes via `processed_stripe_events`.
    - Claims capacity with an **atomic conditional `sold_count` update before
@@ -69,7 +69,7 @@ if it was revoked.
 drives the fixed banner + checkout guard + purchase-form gating; the admin PATCH
 flips it and SSE propagates.
 
-## Auth model (summary — see AUTH.md)
+## Auth model (summary - see AUTH.md)
 
 - Customers: magic link / 6-digit code → `fr_session` (SameSite=Lax).
 - Staff: email code → passkey assertion or self-enrolment → `fr_staff` (Strict).
@@ -93,7 +93,7 @@ Stripe/Resend/R2 keys, `ENVIRONMENT` (gates Secure cookies, HSTS, `/api/docs`),
 
 ## Testing
 
-- `tests/` — SQLite by default (`aiosqlite`); 90 tests.
+- `tests/` - SQLite by default (`aiosqlite`); 90 tests.
 - `TEST_DATABASE_URL` + `TEST_DB_SCHEMA` runs the same suite against real Postgres;
   `test_concurrency_pg.py` only runs there (real row-locking).
 - `npx eslint js/` for frontend lint; `ruff check app tests` (B008 `Depends`

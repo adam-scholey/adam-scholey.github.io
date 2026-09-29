@@ -13,15 +13,15 @@ For the request/response model of the auth flows, see `AUTH.md`.
 
 ## Authentication
 
-### Customers — passwordless
+### Customers - passwordless
 
 1. `POST /api/auth/magic-links` with `{ "email": "...", "redirect_to": "/my-tickets" }`
 2. The API sends a 6-digit code and a single-use link token by email.
 3. `POST /api/auth/sessions` with `{ "email", "code" }` or `{ "token" }` to receive the
    `fr_session` session cookie (HttpOnly, SameSite=Lax, Secure in production).
-4. Sessions are DB rows — revocation is real; SSE streams revalidate per tick.
+4. Sessions are DB rows - revocation is real; SSE streams revalidate per tick.
 
-### Staff / promoters — email code + passkey MFA
+### Staff / promoters - email code + passkey MFA
 
 1. `POST /api/auth/magic-links` then `POST /api/auth/sessions` as above.
 2. If the staff member has **no** passkey yet, a session is issued immediately
@@ -29,9 +29,9 @@ For the request/response model of the auth flows, see `AUTH.md`.
 3. If a passkey exists, the response is `200 { "mfa": "webauthn", "pending": "<id>" }`
    instead of a session. Complete it via one of:
    - `POST /api/auth/webauthn/options` → `navigator.credentials.get()` →
-     `POST /api/auth/webauthn/verify` — assertion from an existing passkey
+     `POST /api/auth/webauthn/verify` - assertion from an existing passkey
    - `POST /api/auth/webauthn/enrol-options` → `navigator.credentials.create()` →
-     `POST /api/auth/webauthn/enrol-verify` — self-enrol a new device and complete
+     `POST /api/auth/webauthn/enrol-verify` - self-enrol a new device and complete
      sign-in in one commit. Triggers an alert email to all active staff.
 4. The staff cookie is `fr_staff` (HttpOnly, SameSite=Strict) and satisfies
    `current_staff` for all `/api/admin/*` routes.
@@ -48,7 +48,7 @@ For the request/response model of the auth flows, see `AUTH.md`.
 | Method | Path | Purpose |
 |---|---|---|
 | `GET` | `/api/health` | Health check (DB `SELECT 1`) |
-| `GET` | `/api/site/status` | `{ sales_paused, announcement_text }` — drives the site banner + purchase gating |
+| `GET` | `/api/site/status` | `{ sales_paused, announcement_text }` - drives the site banner + purchase gating |
 | `GET` | `/api/events` | List published, upcoming events (incl. `poster_url`, `sales_paused`) |
 | `GET` | `/api/events/live` | SSE stream of the events list (~2s tick) |
 | `GET` | `/api/events/{slug}` | Event detail and ticket tiers |
@@ -141,14 +141,14 @@ All routes are under `/api/admin` and require a staff session.
 2. The backend validates content type, resizes to a 4K ceiling, and creates `480`,
    `1080`, and `2160` px WebP derivatives under safe storage keys.
 3. To use an image as the event poster, `PATCH /api/admin/events/{event_id}` with
-   `poster_media_id` — the image must belong to that event. Public payloads then
+   `poster_media_id` - the image must belong to that event. Public payloads then
    expose `poster_url`.
 
 ### Videos (R2, no Cloudflare Stream)
 
 1. `POST /api/admin/events/{event_id}/media/videos/upload` → returns a one-time
    presigned PUT URL (30 min expiry).
-2. The browser PUTs the file directly to R2 — the object never transits the server.
+2. The browser PUTs the file directly to R2 - the object never transits the server.
 3. `POST /api/admin/events/{event_id}/media/videos` with the object key registers it.
    The backend can pull ≤2 GiB objects back briefly to remux `faststart` (ffmpeg,
    15 min cap) so the archive player can start playback immediately.

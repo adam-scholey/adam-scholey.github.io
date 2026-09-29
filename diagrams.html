@@ -241,7 +241,7 @@ footer{
       <h3 style='color:var(--text);margin-bottom:8px'>Available projects</h3>
       <a class='project-list-link' href='diagrams.html?project=framedat'>
         <div class='list-title'>framed@</div>
-        <div class='list-desc'>Ticketing and event-archive platform — FastAPI, Stripe, passwordless auth, Cloudflare R2.</div>
+        <div class='list-desc'>Ticketing and event-archive platform - FastAPI, Stripe, passwordless auth, Cloudflare R2.</div>
       </a>
       <a class='project-list-link' href='diagrams.html?project=diamreserve'>
         <div class='list-title'>diamReserve</div>
@@ -279,13 +279,13 @@ const diagrams = {
   framedat: {
     name:'framed@',
     subtitle:'Ticketing &amp; Archive Platform',
-    desc:'Client ticketing and event-archive platform for a Northern UK arts and music promoter — FastAPI backend, Stripe ticketing, passwordless auth, and direct-to-R2 media uploads.',
+    desc:'Client ticketing and event-archive platform for a Northern UK arts and music promoter - FastAPI backend, Stripe ticketing, passwordless auth, and direct-to-R2 media uploads.',
     decisions:[
-      'Passwordless auth — magic links and 6-digit codes via Resend; tokens SHA-256 hashed, single-use, 5-minute TTL.',
-      'Direct-to-R2 uploads — browsers PUT multi-GB video via presigned URLs, so media never touches the app server.',
-      'ffmpeg faststart worker — phone-recorded MP4s store their index at the end of the file; a background task re-muxes so seeking works.',
-      'Idempotent Stripe webhooks — fulfilment, refunds and checkout holds are safe to retry.',
-      'Door scanning — a conditional UPDATE guarantees one admission even under concurrent scans.'
+      'Passwordless auth - magic links and 6-digit codes via Resend; tokens SHA-256 hashed, single-use, 5-minute TTL.',
+      'Direct-to-R2 uploads - browsers PUT multi-GB video via presigned URLs, so media never touches the app server.',
+      'ffmpeg faststart worker - phone-recorded MP4s store their index at the end of the file; a background task re-muxes so seeking works.',
+      'Idempotent Stripe webhooks - fulfilment, refunds and checkout holds are safe to retry.',
+      'Door scanning - a conditional UPDATE guarantees one admission even under concurrent scans.'
     ],
     tags:['Python','FastAPI','PostgreSQL','Stripe','Resend','Cloudflare R2'],
     docs:[
@@ -323,11 +323,11 @@ const diagrams = {
   diamreserve: {
     name:'diamReserve',
     subtitle:'Restaurant Booking System',
-    desc:'Production-ready booking platform — visual SVG floor plan, Stripe deposits, admin dashboard with analytics, and an offline-capable staff PWA.',
+    desc:'Production-ready booking platform - visual SVG floor plan, Stripe deposits, admin dashboard with analytics, and an offline-capable staff PWA.',
     decisions:[
-      'Stripe Checkout instead of handling card details — the server only ever sees a PCI-safe token, so payments stay out of PCI scope.',
+      'Stripe Checkout instead of handling card details - the server only ever sees a PCI-safe token, so payments stay out of PCI scope.',
       'Email worker sits outside the request path so SMTP latency never slows down a booking.',
-      'MySQL 8 in production, SQLite in development — SQLAlchemy makes the switch trivial.',
+      'MySQL 8 in production, SQLite in development - SQLAlchemy makes the switch trivial.',
       'PBKDF2 hashing, CSRF protection, rate limiting, secure cookies, CSP and HSTS are the baseline, not bolt-ons.',
       'Staff PWA keeps the floor plan usable even when the venue Wi-Fi drops.'
     ],
@@ -361,8 +361,8 @@ const diagrams = {
     subtitle:'Internal Search Engine',
     desc:'Multi-tenant search across internal databases with GDPR-compliant cross-border access, consent filtering and federated connectors.',
     decisions:[
-      'Row-level security plus table partitioning by region — data sovereignty is enforced inside Postgres, not application code.',
-      'Federated search via asyncio + httpx — queries fan out to sources in parallel instead of centralising data.',
+      'Row-level security plus table partitioning by region - data sovereignty is enforced inside Postgres, not application code.',
+      'Federated search via asyncio + httpx - queries fan out to sources in parallel instead of centralising data.',
       'tsvector + pg_trgm GIN indexes give full-text search without running a separate Elasticsearch cluster.',
       'Redis handles sessions, caching and distributed locks so workers stay stateless.',
       'Kubernetes HPA scales search workers under load; consent management and audit logging satisfy GDPR.'
@@ -396,11 +396,11 @@ const diagrams = {
   tracker: {
     name:'Tracker',
     subtitle:'Project Management',
-    desc:'Lifecycle tracker in daily use by the team — live SSE updates, GitHub OAuth, email notifications and a CLI client sharing one REST API.',
+    desc:'Lifecycle tracker in daily use by the team - live SSE updates, GitHub OAuth, email notifications and a CLI client sharing one REST API.',
     decisions:[
-      'Server-Sent Events instead of WebSockets — updates are one-way, so SSE gives live pushes without socket infrastructure.',
-      'GitHub OAuth via Authlib — no passwords to store, and the team already lives in GitHub.',
-      'plain sqlite3 over an ORM — the schema is small enough that raw SQL keeps it transparent.',
+      'Server-Sent Events instead of WebSockets - updates are one-way, so SSE gives live pushes without socket infrastructure.',
+      'GitHub OAuth via Authlib - no passwords to store, and the team already lives in GitHub.',
+      'plain sqlite3 over an ORM - the schema is small enough that raw SQL keeps it transparent.',
       'CLI and web UI share the same REST API, so project status is scriptable.',
       'Email worker is decoupled from the request path for status-change notifications.'
     ],
@@ -553,7 +553,7 @@ function renderDiagram(key){
   document.getElementById('decisions').innerHTML = d.decisions.map(function(x){ return `<li>${x}</li>`; }).join('');
   document.getElementById('info-tags').innerHTML = d.tags.map(function(t){ return `<span class='tag'>${t}</span>`; }).join('');
   document.getElementById('project-title').textContent = d.name + ' Documentation';
-  document.getElementById('project-subtitle').textContent = d.subtitle + ' — documentation and system design.';
+  document.getElementById('project-subtitle').textContent = d.subtitle + ' - documentation and system design.';
 }
 
 function renderTabs(activeKey){
