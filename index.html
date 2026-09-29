@@ -118,7 +118,8 @@ nav{
 }
 .nav-flat{display:flex;align-items:center;margin:0 auto;gap:22px}
 .nav-flat a{font-family:'Space Grotesk','Inter',Arial,sans-serif;color:var(--muted);font-size:14px;font-weight:500;padding:6px 2px;transition:.18s ease}
-.nav-flat a:hover,.nav-flat a.active{color:var(--text)}
+.nav-flat a:hover{color:var(--text)}
+.nav-flat a.active{color:var(--gold);box-shadow:inset 0 -2px 0 var(--gold)}
 .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto}
 .nav-toggle span{display:block;width:22px;height:2px;background:var(--text);transition:.25s}
 nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -142,7 +143,7 @@ section{
 
 /* HERO */
 .hero{max-width:none;padding:0;display:block;min-height:0}
-.hero-media{position:relative;height:88vh;min-height:480px;overflow:hidden;background:#101214}
+.hero-media{position:relative;height:calc(100vh - 60px);height:calc(100svh - 60px);min-height:480px;overflow:hidden;background:#101214}
 .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .hero-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,15,25,.78) 0%,rgba(10,15,25,.3) 45%,rgba(10,15,25,.12) 100%)}
 .hero-caption{position:absolute;left:0;right:0;bottom:0;padding:44px 40px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
@@ -345,7 +346,7 @@ footer{
   .nav-links a{padding:11px 8px;font-size:17px}
   section{padding:60px 16px}
   .hero{padding:0}
-  .hero-media{height:70vh;min-height:380px}
+  .hero-media{height:calc(100svh - 60px);min-height:0}
   .hero-caption{flex-direction:column;align-items:flex-start;gap:14px;padding:28px 20px}
   .hero-plate{text-align:left}
   .stat-grid{grid-template-columns:1fr}
@@ -388,7 +389,7 @@ footer{
 <main id="top">
   <section id="home" class="hero">
     <div class="hero-media">
-      <img src="images/hero.png" alt="Blue sky with scattered clouds">
+      <img src="images/hero.jpg" alt="Blue sky with white clouds">
       <div class="hero-shade"></div>
       <div class="hero-caption">
         <div class="hero-statement">Software, built with intent.</div>
@@ -671,7 +672,7 @@ const observer=new IntersectionObserver(function(entries){
 reveals.forEach(function(s){observer.observe(s)});
 
 // Active nav highlighting on scroll
-const navLinks=document.querySelectorAll(".nav-links a");
+const navLinks=document.querySelectorAll(".nav-flat a,.nav-links a");
 const sections=document.querySelectorAll("section[id]");
 function setActiveNav(){
   const threshold=120;
