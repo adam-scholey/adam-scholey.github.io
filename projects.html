@@ -175,8 +175,8 @@ footer{
 .footer-note{color:var(--soft);font-size:12px;margin-top:6px}
 
 .reveal{opacity:1;transform:none}
-.js .reveal{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .7s ease,transform .7s ease}
-.js .reveal.visible{opacity:1;transform:translateY(0) scale(1)}
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.visible{opacity:1;transform:translateY(0)}
 
 @media(max-width:960px){
   .showcase{grid-template-columns:1fr;gap:14px}
@@ -190,16 +190,21 @@ footer{
   section{padding:60px 16px}
   .showcase{padding:36px 0;gap:22px}
 }
+/* PAGE VEIL */
+.page-veil{position:fixed;inset:0;z-index:2000;background:var(--bg);opacity:0;pointer-events:none;transition:opacity .35s cubic-bezier(.4,0,.2,1)}
+.js .page-veil{opacity:1}
+.js .page-veil.ready{opacity:0}
 @media (prefers-reduced-motion: reduce){
   .js .reveal,.js .reveal.visible{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+  .page-veil{transition:none}
+  .js .page-veil{opacity:0}
 }
-.js body{opacity:0;transition:opacity .22s ease}
-.js body.ready{opacity:1}
-@media (prefers-reduced-motion:reduce){.js body{transition:none}}
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
+<div class="page-veil" aria-hidden="true"></div>
 
 <nav>
   <div class="nav-inner">
@@ -407,9 +412,9 @@ footer{
 const reveals=document.querySelectorAll(".reveal");
 const observer=new IntersectionObserver(function(entries){
   entries.forEach(function(entry){
-    if(entry.isIntersecting){entry.target.classList.add("visible")}
+    if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}
   });
-},{threshold:.05,rootMargin:"0px 0px -6% 0px"});
+},{threshold:.1,rootMargin:"0px 0px -50px 0px"});
 reveals.forEach(function(s){observer.observe(s)});
 
 const filterBtns=document.querySelectorAll(".filter-btn");
@@ -433,13 +438,48 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape"){var nav=doc
 document.getElementById("year").textContent=new Date().getFullYear();
 </script>
 <script>
-document.body.classList.add("ready");
-window.addEventListener("pageshow",function(){document.body.classList.add("ready")});
-document.querySelectorAll("a[href]").forEach(function(a){
+// Page transitions: veil fades in over outgoing page, fades out once the
+// destination is ready. Timing: FADE_MS (350ms) matches the .page-veil CSS.
+var veil=document.querySelector(".page-veil");
+var FADE_MS=350;
+var navTimer=null;
+var reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function veilIn(){if(veil){requestAnimationFrame(function(){requestAnimationFrame(function(){veil.classList.add("ready")})})}}
+function veilOut(){if(veil){veil.classList.remove("ready")}}
+veilIn();
+window.addEventListener("pageshow",function(){navTimer=null;veilIn()});
+document.addEventListener("click",function(e){
+  if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||navTimer)return;
+  var a=e.target.closest("a[href]");
+  if(!a||a.target||a.hasAttribute("download"))return;
   var h=a.getAttribute("href");
-  if(!h||h.charAt(0)==="#"||a.target||h.indexOf("mailto:")===0||h.indexOf("http")===0)return;
-  a.addEventListener("click",function(e){e.preventDefault();document.body.classList.remove("ready");setTimeout(function(){location.href=h},180)});
+  if(!h||h.charAt(0)==="#"||h.indexOf("mailto:")===0||h.indexOf("tel:")===0||h.indexOf("javascript:")===0)return;
+  var u;
+  try{u=new URL(h,location.href)}catch(err){return}
+  if(u.origin!==location.origin||u.href===location.href)return;
+  e.preventDefault();
+  if(reducedMotion){location.href=u.href;return}
+  veilOut();
+  navTimer=setTimeout(function(){location.href=u.href},FADE_MS);
+  setTimeout(function(){if(navTimer&&document.visibilityState==="visible"){navTimer=null;veilIn()}},3000);
 });
+
+// Prefetch eligible internal pages on hover/touch
+var prefetched={};
+function prefetchPage(h){
+  if(prefetched[h])return;
+  prefetched[h]=true;
+  var l=document.createElement("link");l.rel="prefetch";l.href=h;document.head.appendChild(l);
+}
+function maybePrefetch(e){
+  var t=e.target&&e.target.closest?e.target.closest("a[href]"):null;
+  if(!t||t.target||t.hasAttribute("download"))return;
+  var h=t.getAttribute("href");
+  if(!h||h.charAt(0)==="#"||h.indexOf("mailto:")===0||h.indexOf("tel:")===0||h.indexOf("javascript:")===0)return;
+  try{var u=new URL(h,location.href);if(u.origin===location.origin)prefetchPage(u.href)}catch(err){}
+}
+document.addEventListener("pointerover",maybePrefetch,{passive:true});
+document.addEventListener("touchstart",maybePrefetch,{passive:true});
 </script>
 </body>
 </html>
