@@ -141,6 +141,9 @@ footer{
 @media (prefers-reduced-motion: reduce){
   .js .reveal,.js .reveal.visible{opacity:1;transform:none;transition:none}
 }
+.js body{opacity:0;transition:opacity .22s ease}
+.js body.ready{opacity:1}
+@media (prefers-reduced-motion:reduce){.js body{transition:none}}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -149,18 +152,17 @@ footer{
 <nav>
   <div class="nav-inner">
     <div class="nav-flat">
-      <a href="index.html">Home</a><a href="index.html#about">About</a><a href="index.html#skills">Skills</a><a href="index.html#experience">Experience</a><a href="projects.html">Projects</a><a href="now.html" class="active">Working on</a><a href="cv.html">CV</a><a href="index.html#contact">Contact</a>
+      <a href="index.html">Home</a><a href="skills.html">Skills</a><a href="experience.html">Experience</a><a href="projects.html">Projects</a><a href="now.html" class="active">Working on</a><a href="cv.html">CV</a><a href="contact.html">Contact</a>
     </div>
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#skills">Skills</a>
-      <a href="index.html#experience">Experience</a>
+      <a href="skills.html">Skills</a>
+      <a href="experience.html">Experience</a>
       <a href="projects.html">Projects</a>
       <a href="diagrams.html">Docs &amp; architecture</a>
       <a href="now.html" class="active">Working on</a>
       <a href="cv.html">CV</a>
-      <a href="index.html#contact">Contact</a>
+      <a href="contact.html">Contact</a>
       <div class="nav-links-foot">
         <a href="https://github.com/adam-scholey" target="_blank" rel="noopener">github</a>
         <a href="https://www.linkedin.com/in/adam-scholey-8306892b0/" target="_blank" rel="noopener">linkedin</a>
@@ -249,13 +251,13 @@ footer{
 <footer>
   <div class='footer-nav'>
     <a href='index.html'>Home</a>
-    <a href='index.html#about'>About</a>
-    <a href='index.html#skills'>Skills</a>
-    <a href='index.html#experience'>Experience</a>
+    <a href='index.html'>About</a>
+    <a href='skills.html'>Skills</a>
+    <a href='experience.html'>Experience</a>
     <a href='projects.html'>Projects</a>
     <a href='now.html'>Working On</a>
     <a href='cv.html'>CV</a>
-    <a href='index.html#contact'>Contact</a>
+    <a href='contact.html'>Contact</a>
   </div>
   <p style='color:var(--soft);font-size:12px'>&copy; <span id='year'>2026</span> Adam Scholey &middot; Software Engineer</p>
 </footer>
@@ -275,5 +277,14 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape"){var nav=doc
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
+<script>
+document.body.classList.add("ready");
+window.addEventListener("pageshow",function(){document.body.classList.add("ready")});
+document.querySelectorAll("a[href]").forEach(function(a){
+  var h=a.getAttribute("href");
+  if(!h||h.charAt(0)==="#"||a.target||h.indexOf("mailto:")===0||h.indexOf("http")===0)return;
+  a.addEventListener("click",function(e){e.preventDefault();document.body.classList.remove("ready");setTimeout(function(){location.href=h},180)});
+});
+</script>
 </body>
 </html>

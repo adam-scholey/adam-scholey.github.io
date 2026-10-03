@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Adam Scholey - Software Engineer">
-<title>Adam Scholey - Software Engineer</title>
+<meta name="description" content="Technical skills of Adam Scholey - Adam Scholey">
+<title>Skills - Adam Scholey</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -367,11 +367,11 @@ footer{
 <nav>
   <div class="nav-inner">
     <div class="nav-flat">
-      <a href="#home" class="active">Home</a><a href="skills.html">Skills</a><a href="experience.html">Experience</a><a href="projects.html">Projects</a><a href="now.html">Working on</a><a href="cv.html">CV</a><a href="contact.html">Contact</a>
+      <a href="index.html">Home</a><a href="skills.html" class="active">Skills</a><a href="experience.html">Experience</a><a href="projects.html">Projects</a><a href="now.html">Working on</a><a href="cv.html">CV</a><a href="contact.html">Contact</a>
     </div>
     <div class="nav-links">
-      <a href="#home" class="active">Home</a>
-      <a href="skills.html">Skills</a>
+      <a href="index.html">Home</a>
+      <a href="skills.html" class="active">Skills</a>
       <a href="experience.html">Experience</a>
       <a href="projects.html">Projects</a>
       <a href="diagrams.html">Docs &amp; architecture</a>
@@ -388,53 +388,90 @@ footer{
   </div>
 </nav>
 
-<main id="top"><section id="home" class="hero">
-    <div class="hero-media">
-      <img src="images/hero.jpg" alt="Blue sky with white clouds">
-      <div class="hero-shade"></div>
-      <div class="hero-caption">
-        <div class="hero-statement">Software, built with intent.</div>
-        <div class="hero-plate">
-          <strong>Adam Scholey</strong>
-          <span>Software Engineer · diam Systems</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="reveal">
+<main id="top"><section id="skills" class="reveal">
     <div class="section-head">
-      <div class="kicker">About Me</div>
-      <h2>Built around engineering problems worth solving.</h2>
-      <p class="subtitle">Backend-focused software engineer with hands-on experience building production systems in Python - from search engines to real-time platforms to security tooling.</p>
+      <div class="kicker">Technical Skills</div>
+      <h2>A full-stack of engineering depth.</h2>
+      <p class="subtitle">Production skills across backend, databases, security, testing, and infrastructure - built through real systems, not just coursework.</p>
     </div>
-    <div class="grid-2">
+    <div class="grid-3">
       <div class="card">
-        <h3>Profile</h3>
-        <p>I'm a backend engineer based in the UK, focused on the problems that don't have obvious answers - how do you isolate one tenant's data from another at the database level? How do you keep a session store consistent when you have two workers and a cache? How do you design an encryption layer that survives a key rotation?</p>
-        <br>
-        <p>At <strong style="color:var(--text)">diam Systems</strong> I've designed and built multi-product backend systems in Python - an internal search engine with GDPR compliance, a project management app with GitHub OAuth, and a corporate platform integrating three third-party commerce APIs.</p>
-        <br>
-        <p>My personal projects fill the gaps: areas I wanted to understand deeply enough to be wrong about - zero-knowledge encryption, row-level multi-tenancy, security tooling. I build to learn, then I keep the code.</p>
-        <div class="tags">
-          <span class="tag">Backend Engineering</span>
-          <span class="tag">C# · .NET</span>
-          <span class="tag">Python · Flask</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">Security</span>
-          <span class="tag">REST APIs</span>
-          <span class="tag">SignalR</span>
-        </div>
+        <div class="icon">⚙️</div>
+        <h3>Backend</h3>
+        <ul class="skill-list">
+          <li>ASP.NET Core - REST APIs, middleware, auth pipelines</li>
+          <li>Flask - async routes, blueprints, SQLAlchemy</li>
+          <li>SignalR - real-time hubs and SSE</li>
+          <li>OAuth 2.0 / GitHub OAuth with Authlib</li>
+          <li>Rate limiting, JWT, BCrypt, RBAC</li>
+        </ul>
       </div>
-      <div class="stat-grid">
-        <div class="stat-card"><strong>8+</strong><span>Systems built end-to-end</span></div>
-        <div class="stat-card"><strong>370+</strong><span>Automated tests written</span></div>
-        <div class="stat-card"><strong>C# · Python</strong><span>Primary languages</span></div>
-        <div class="stat-card"><strong>diam Systems</strong><span>Oct 2025 - Present</span></div>
-        <div class="stat-card" style="grid-column:1/-1">
-          <strong style="font-size:14px;color:var(--gold)">Learner of the Year</strong>
-          <span>Computing, Science &amp; Environmental Technology · Skillshouse CTE</span>
-        </div>
+      <div class="card">
+        <div class="icon">🗄️</div>
+        <h3>Databases</h3>
+        <ul class="skill-list">
+          <li>PostgreSQL - RLS, migrations, query optimisation</li>
+          <li>SQLite - lightweight production DBs</li>
+          <li>EF Core - code-first schema, relationships</li>
+          <li>SQLAlchemy - ORM patterns and raw queries</li>
+          <li>Redis - caching, pub/sub, distributed locks</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">🔒</div>
+        <h3>Security</h3>
+        <ul class="skill-list">
+          <li>SAST / DAST / SCA</li>
+          <li>Semgrep</li>
+          <li>GitLeaks</li>
+          <li>Snyk</li>
+          <li>pip-audit</li>
+          <li>OWASP ZAP</li>
+          <li>Security testing</li>
+          <li>Threat modelling</li>
+          <li>AES-256 encryption, key rotation design</li>
+          <li>Zero-knowledge encryption patterns</li>
+          <li>JWT auth with refresh token rotation</li>
+          <li>GDPR compliance and data handling</li>
+          <li>Security headers, CSP, input validation</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">🧪</div>
+        <h3>Testing</h3>
+        <ul class="skill-list">
+          <li>xUnit - unit and integration tests</li>
+          <li>pytest - fixtures, parametrize, coverage</li>
+          <li>k6 - load testing and performance baselines</li>
+          <li>Playwright - E2E browser automation</li>
+          <li>Authenticated security testing with Playwright</li>
+          <li>370+ tests written across production systems</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">🖥️</div>
+        <h3>Desktop &amp; Mobile</h3>
+        <ul class="skill-list">
+          <li>WinUI 3 - modern Windows applications</li>
+          <li>.NET MAUI - cross-platform desktop/mobile</li>
+          <li>Blazor - component-based web UIs</li>
+          <li>CommunityToolkit.Mvvm - MVVM patterns</li>
+          <li>PWAs - progressive web apps</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon">☁️</div>
+        <h3>Infrastructure</h3>
+        <ul class="skill-list">
+          <li>Docker - containerisation and Compose</li>
+          <li>AWS S3 - object storage and signed URLs</li>
+          <li>Git - branching, PR workflows</li>
+          <li>CI/CD - build pipelines and deployment</li>
+          <li>Cloudflare</li>
+          <li>Cloudflare Tunnel</li>
+          <li>GitHub Actions</li>
+          <li>Kubernetes - full manifests (Deployment, HPA, NetworkPolicy)</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -444,13 +481,13 @@ footer{
 <footer>
   <div class="footer-nav">
     <a href="#top">Top</a>
-    <a href="index.html">About</a>
-    <a href="skills.html">Skills</a>
-    <a href="experience.html">Experience</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
     <a href="projects.html">Projects</a>
     <a href="now.html">Working On</a>
     <a href="cv.html">CV</a>
-    <a href="contact.html">Contact</a>
+    <a href="#contact">Contact</a>
   </div>
   <p style="color:var(--soft);font-size:12px">© <span id="year">2026</span> Adam Scholey · Software Engineer</p>
 </footer>
@@ -466,31 +503,6 @@ const observer=new IntersectionObserver(function(entries){
 },{threshold:.05,rootMargin:"0px 0px -6% 0px"});
 reveals.forEach(function(s){observer.observe(s)});
 
-// Active nav highlighting on scroll
-const navLinks=document.querySelectorAll(".nav-flat a,.nav-links a");
-const sections=document.querySelectorAll("section[id]");
-function setActiveNav(){
-  const threshold=120;
-  let current="";
-  sections.forEach(function(section){
-    if(section.getBoundingClientRect().top<=threshold) current=section.id;
-  });
-  navLinks.forEach(function(link){
-    link.classList.remove("active");
-    if(link.getAttribute("href")==="#"+current) link.classList.add("active");
-  });
-}
-let ticking=false;
-window.addEventListener("scroll",function(){
-  if(!ticking){
-    requestAnimationFrame(function(){
-      setActiveNav();
-      ticking=false;
-    });
-    ticking=true;
-  }
-},{passive:true});
-setActiveNav();
 
 // Mobile nav toggle
 const navToggle=document.getElementById("nav-toggle");
