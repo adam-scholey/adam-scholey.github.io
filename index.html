@@ -147,9 +147,10 @@ section{
 .hero-track{display:flex;height:100%;transition:transform .8s cubic-bezier(.65,0,.35,1);will-change:transform}
 .hero-slide{position:relative;flex:0 0 100%;height:100%;overflow:hidden}
 .hero-slide img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
-.slide-caption{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--text);padding:0 24px}
+.slide-caption{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;color:var(--text);padding:0 8vw;padding-bottom:6vh}
 .slide-kicker{font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:13px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(20,24,30,.6);margin-bottom:16px}
-.slide-title{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(38px,5.8vw,70px);line-height:1.05;letter-spacing:-1.5px;max-width:840px}
+.slide-title{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(36px,5.2vw,64px);line-height:1.05;letter-spacing:-1.5px;max-width:700px}
+.slide-sub{font-size:16.5px;line-height:1.55;color:rgba(20,24,30,.72);max-width:540px;margin-top:18px}
 .hero-dots{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:3}
 .hero-dot{width:9px;height:9px;border-radius:50%;border:1.5px solid rgba(20,24,30,.55);background:transparent;padding:0;cursor:pointer;transition:background .3s ease,transform .3s ease}
 .hero-dot.active{background:var(--text);transform:scale(1.2)}
@@ -411,6 +412,7 @@ footer{
           <div class="slide-caption">
             <div class="slide-kicker">Adam Scholey</div>
             <div class="slide-title">Software, built with intent.</div>
+            <div class="slide-sub">Backend-focused software engineer - I like the problems that don't have easy answers.</div>
           </div>
         </div>
         <div class="hero-slide">
@@ -418,6 +420,7 @@ footer{
           <div class="slide-caption">
             <div class="slide-kicker">Backend Engineering</div>
             <div class="slide-title">Systems that hold up in production.</div>
+            <div class="slide-sub">Multi-tenant platforms, real-time sync and search - built to survive real users, not just demos.</div>
           </div>
         </div>
         <div class="hero-slide">
@@ -425,6 +428,7 @@ footer{
           <div class="slide-caption">
             <div class="slide-kicker">Security</div>
             <div class="slide-title">Built in, not bolted on.</div>
+            <div class="slide-sub">Encryption, tenant isolation and session consistency - designed in from day one, not patched on later.</div>
           </div>
         </div>
         <div class="hero-slide">
@@ -432,6 +436,7 @@ footer{
           <div class="slide-caption">
             <div class="slide-kicker">Currently</div>
             <div class="slide-title">Engineering at diam Systems.</div>
+            <div class="slide-sub">Working across ticketing, infrastructure and product engineering on the diam suite.</div>
           </div>
         </div>
       </div>
@@ -599,7 +604,7 @@ document.addEventListener("touchstart",maybePrefetch,{passive:true});
 var heroTrack=document.querySelector(".hero-track");
 var heroSlides=document.querySelectorAll(".hero-slide");
 var heroDots=document.querySelectorAll(".hero-dot");
-var heroIdx=0,heroTimer=null,HERO_MS=6000;
+var heroIdx=0,heroTimer=null,HERO_MS=4500;
 if(heroTrack&&heroSlides.length>1)heroTrack.appendChild(heroSlides[0].cloneNode(true));
 function heroGo(i,instant){
   if(!heroTrack)return;
