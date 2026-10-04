@@ -541,7 +541,7 @@ function maybePrefetch(e){
   if(!t||t.target||t.hasAttribute("download"))return;
   var h=t.getAttribute("href");
   if(!h||h.charAt(0)==="#"||h.indexOf("mailto:")===0||h.indexOf("tel:")===0||h.indexOf("javascript:")===0)return;
-  try{var u=new URL(h,location.href);if(u.origin===location.origin)prefetchPage(u.href)}catch(err){}
+  try{var u=new URL(h,location.href);if(u.origin===location.origin)prefetchPage(u.href)}catch(err){/* malformed URL - skip prefetch */}
 }
 document.addEventListener("pointerover",maybePrefetch,{passive:true});
 document.addEventListener("touchstart",maybePrefetch,{passive:true});

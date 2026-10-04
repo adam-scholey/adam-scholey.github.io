@@ -590,7 +590,7 @@ function maybePrefetch(e){
   if(!t||t.target||t.hasAttribute("download"))return;
   var h=t.getAttribute("href");
   if(!h||h.charAt(0)==="#"||h.indexOf("mailto:")===0||h.indexOf("tel:")===0||h.indexOf("javascript:")===0)return;
-  try{var u=new URL(h,location.href);if(u.origin===location.origin)prefetchPage(u.href)}catch(err){}
+  try{var u=new URL(h,location.href);if(u.origin===location.origin)prefetchPage(u.href)}catch(err){/* malformed URL - skip prefetch */}
 }
 document.addEventListener("pointerover",maybePrefetch,{passive:true});
 document.addEventListener("touchstart",maybePrefetch,{passive:true});
@@ -607,7 +607,7 @@ function heroGo(i,instant){
   heroIdx=i;
   if(instant)heroTrack.style.transition="none";
   heroTrack.style.transform="translateX(-"+(i*100)+"%)";
-  if(instant){void heroTrack.offsetWidth;heroTrack.style.transition=""}
+  if(instant){if(heroTrack.offsetWidth)heroTrack.style.transition=""}
   var d=i%heroSlides.length;
   heroDots.forEach(function(dt,j){dt.classList.toggle("active",j===d)});
 }
