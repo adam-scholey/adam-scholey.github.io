@@ -146,11 +146,27 @@ section{
 .hero-media{position:relative;height:calc(100vh - 60px);height:calc(100svh - 60px);min-height:480px;overflow:hidden;background:#101214}
 .hero-track{display:flex;height:100%;transition:transform .8s cubic-bezier(.65,0,.35,1);will-change:transform}
 .hero-slide{position:relative;flex:0 0 100%;height:100%;overflow:hidden}
-.hero-slide img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.hero-slide img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;-webkit-user-drag:none;user-select:none}
+.hero-media{user-select:none;-webkit-user-select:none}
 .slide-caption{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;color:var(--text);padding:0 8vw;padding-bottom:6vh}
 .slide-kicker{font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:13px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(20,24,30,.6);margin-bottom:16px}
 .slide-title{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(36px,5.2vw,64px);line-height:1.05;letter-spacing:-1.5px;max-width:700px}
 .slide-sub{font-size:16.5px;line-height:1.55;color:rgba(20,24,30,.72);max-width:540px;margin-top:18px}
+.slide-link{display:inline-block;margin-top:26px;font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:14px;font-weight:600;color:var(--text);text-decoration:none;border-bottom:2px solid var(--text);padding-bottom:3px}
+.hero-slide.dark .slide-caption{color:#fff}
+.hero-slide.dark .slide-kicker{color:rgba(255,255,255,.78)}
+.hero-slide.dark .slide-sub{color:rgba(255,255,255,.88)}
+.hero-slide.dark .slide-link{color:#fff;border-color:#fff}
+.hero-facts{position:absolute;right:5vw;top:50%;transform:translateY(-50%);z-index:3;width:230px;background:rgba(255,255,255,.5);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.65);border-radius:16px;padding:20px 22px;color:var(--text)}
+.hero-facts .f-title{font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(20,24,30,.55);margin-bottom:12px}
+.hero-facts ul{list-style:none;padding:0;margin:0}
+.hero-facts li{font-size:14px;padding:8px 0;border-bottom:1px solid rgba(20,24,30,.08)}
+.hero-facts li:last-child{border-bottom:none}
+.hero-facts li span{display:block;font-size:11.5px;color:rgba(20,24,30,.55);letter-spacing:.3px;margin-top:2px}
+.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:44px;height:44px;border-radius:50%;border:1px solid rgba(20,24,30,.2);background:rgba(255,255,255,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--text);font-size:19px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s ease}
+.hero-arrow:hover{background:rgba(255,255,255,.8)}
+.hero-arrow.prev{left:26px}
+.hero-arrow.next{right:26px}
 .hero-dots{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:3}
 .hero-dot{width:9px;height:9px;border-radius:50%;border:1.5px solid rgba(20,24,30,.55);background:transparent;padding:0;cursor:pointer;transition:background .3s ease,transform .3s ease}
 .hero-dot.active{background:var(--text);transform:scale(1.2)}
@@ -358,6 +374,9 @@ footer{
   .hero-media{height:calc(100svh - 60px);min-height:0}
   .hero-caption{flex-direction:column;align-items:flex-start;gap:14px;padding:28px 20px}
   .hero-dots{bottom:auto;top:18px}
+  .hero-facts{display:none}
+  .hero-arrow{display:none}
+  .slide-caption{padding:0 24px;padding-bottom:10vh}
   .hero-plate{text-align:left}
   .stat-grid{grid-template-columns:1fr}
   .contact-links a{width:100%}
@@ -407,12 +426,13 @@ footer{
 <main id="top"><section id="home" class="hero">
     <div class="hero-media">
       <div class="hero-track">
-        <div class="hero-slide">
+        <div class="hero-slide dark">
           <img src="images/hero.jpg" decoding="async" alt="Blue sky with white clouds">
           <div class="slide-caption">
             <div class="slide-kicker">Adam Scholey</div>
             <div class="slide-title">Software, built with intent.</div>
             <div class="slide-sub">Backend-focused software engineer - I like the problems that don't have easy answers.</div>
+            <a class="slide-link" href="#about">More about me</a>
           </div>
         </div>
         <div class="hero-slide">
@@ -421,6 +441,7 @@ footer{
             <div class="slide-kicker">Backend Engineering</div>
             <div class="slide-title">Systems that hold up in production.</div>
             <div class="slide-sub">Multi-tenant platforms, real-time sync and search - built to survive real users, not just demos.</div>
+            <a class="slide-link" href="projects.html">View projects</a>
           </div>
         </div>
         <div class="hero-slide">
@@ -429,6 +450,7 @@ footer{
             <div class="slide-kicker">Security</div>
             <div class="slide-title">Built in, not bolted on.</div>
             <div class="slide-sub">Encryption, tenant isolation and session consistency - designed in from day one, not patched on later.</div>
+            <a class="slide-link" href="diagrams.html">Read the docs</a>
           </div>
         </div>
         <div class="hero-slide">
@@ -437,6 +459,7 @@ footer{
             <div class="slide-kicker">Currently</div>
             <div class="slide-title">Engineering at diam Systems.</div>
             <div class="slide-sub">Working across ticketing, infrastructure and product engineering on the diam suite.</div>
+            <a class="slide-link" href="now.html">What I'm working on</a>
           </div>
         </div>
       </div>
@@ -447,6 +470,17 @@ footer{
           <span>Software Engineer · diam Systems</span>
         </div>
       </div>
+      <aside class="hero-facts" aria-label="Quick facts">
+        <div class="f-title">At a glance</div>
+        <ul>
+          <li>Software Engineer<span>diam Systems</span></li>
+          <li>Based in the UK<span>Remote-friendly</span></li>
+          <li>Python · Postgres<span>Security &amp; real-time systems</span></li>
+          <li>4 products live<span>framed@ · tracker · seek · reserve</span></li>
+        </ul>
+      </aside>
+      <button class="hero-arrow prev" type="button" aria-label="Previous slide">&#8249;</button>
+      <button class="hero-arrow next" type="button" aria-label="Next slide">&#8250;</button>
       <div class="hero-dots">
         <button class="hero-dot active" type="button" aria-label="Image 1 of 4"></button>
         <button class="hero-dot" type="button" aria-label="Image 2 of 4"></button>
@@ -599,12 +633,13 @@ function maybePrefetch(e){
 document.addEventListener("pointerover",maybePrefetch,{passive:true});
 document.addEventListener("touchstart",maybePrefetch,{passive:true});
 
-// Hero carousel: track slides right every HERO_MS; clone of slide 1 makes
-// the loop seamless - on reaching it we snap back to 0 without a transition.
+// Hero carousel: manual swipe/arrows/dots. Clone of slide 1 makes the
+// forward loop seamless - on reaching it we snap back to 0.
 var heroTrack=document.querySelector(".hero-track");
+var heroMedia=document.querySelector(".hero-media");
 var heroSlides=document.querySelectorAll(".hero-slide");
 var heroDots=document.querySelectorAll(".hero-dot");
-var heroIdx=0,heroTimer=null,HERO_MS=4500;
+var heroIdx=0;
 if(heroTrack&&heroSlides.length>1)heroTrack.appendChild(heroSlides[0].cloneNode(true));
 function heroGo(i,instant){
   if(!heroTrack)return;
@@ -616,11 +651,37 @@ function heroGo(i,instant){
   heroDots.forEach(function(dt,j){dt.classList.toggle("active",j===d)});
 }
 if(heroTrack)heroTrack.addEventListener("transitionend",function(){if(heroIdx===heroSlides.length)heroGo(0,true)});
-function heroStart(){if(heroSlides.length>1&&!reducedMotion&&!heroTimer){heroTimer=setInterval(function(){heroGo(heroIdx+1)},HERO_MS)}}
-function heroStop(){if(heroTimer){clearInterval(heroTimer);heroTimer=null}}
-heroDots.forEach(function(d,i){d.addEventListener("click",function(){heroGo(i);heroStop();heroStart()})});
-document.addEventListener("visibilitychange",function(){if(document.hidden){heroStop()}else{heroStart()}});
-heroStart();
+heroDots.forEach(function(d,i){d.addEventListener("click",function(){heroGo(i)})});
+var prev=document.querySelector(".hero-arrow.prev"),next=document.querySelector(".hero-arrow.next");
+if(prev)prev.addEventListener("click",function(){heroGo(heroIdx===0?heroSlides.length-1:heroIdx-1)});
+if(next)next.addEventListener("click",function(){heroGo(heroIdx+1)});
+// touch/mouse swipe with live tracking
+var dragX=null,dragDX=0;
+if(heroMedia){
+  heroMedia.style.touchAction="pan-y";
+  heroMedia.addEventListener("pointerdown",function(e){
+    if(e.target.closest("button,a"))return;
+    dragX=e.clientX;dragDX=0;
+    heroTrack.style.transition="none";
+    heroMedia.setPointerCapture(e.pointerId);
+  });
+  heroMedia.addEventListener("pointermove",function(e){
+    if(dragX===null)return;
+    dragDX=e.clientX-dragX;
+    heroTrack.style.transform="translateX(calc(-"+(heroIdx*100)+"% + "+dragDX+"px))";
+  });
+  var dragEnd=function(){
+    if(dragX===null)return;
+    heroTrack.style.transition="";
+    var w=heroMedia.offsetWidth;
+    if(dragDX<-w*.12&&heroIdx<heroSlides.length)heroGo(heroIdx+1);
+    else if(dragDX>w*.12&&heroIdx>0)heroGo(heroIdx-1);
+    else heroGo(heroIdx);
+    dragX=null;dragDX=0;
+  };
+  heroMedia.addEventListener("pointerup",dragEnd);
+  heroMedia.addEventListener("pointercancel",dragEnd);
+}
 </script>
 </body>
 </html>
