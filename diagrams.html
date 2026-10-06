@@ -371,7 +371,7 @@ const diagrams = {
   seek: {
     name:'Seek',
     subtitle:'Enterprise Search Engine',
-    desc:'Multi-tenant search across an organisation's internal databases with GDPR-compliant cross-border access, consent filtering and federated connectors.',
+    desc:'Multi-tenant search across organisational databases with GDPR-compliant cross-border access, consent filtering and federated connectors.',
     decisions:[
       'Row-level security plus table partitioning by region - data sovereignty is enforced inside Postgres, not application code.',
       'Federated search via asyncio + httpx - queries fan out to sources in parallel instead of centralising data.',

@@ -107,6 +107,23 @@ class PrefetchTests(unittest.TestCase):
                 self.assertIn(guard, html, '{}: {}'.format(p, guard))
 
 
+class InlineScriptTests(unittest.TestCase):
+    """Every inline <script> must parse - one bad string breaks a whole page."""
+    def test_scripts_parse(self):
+        import shutil, subprocess, tempfile
+        if not shutil.which('node'):
+            self.skipTest('node not available')
+        for p in PAGES:
+            html = page(p)
+            for i, sc in enumerate(re.findall(r'<script>(.*?)</script>', html, re.S)):
+                with tempfile.NamedTemporaryFile('w', suffix='.js', delete=False, encoding='utf-8') as t:
+                    t.write(sc)
+                r = subprocess.run(['node', '--check', t.name], capture_output=True, text=True)
+                os.unlink(t.name)
+                self.assertEqual(r.returncode, 0,
+                                 '{} script {}: {}'.format(p, i, r.stderr.splitlines()[0] if r.stderr else ''))
+
+
 class SanityTests(unittest.TestCase):
     def test_all_pages_parse(self):
         from html.parser import HTMLParser
