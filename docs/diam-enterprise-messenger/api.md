@@ -160,7 +160,7 @@ rest) that is inactive until confirmed.
 ### `POST /api/users/me/totp/enable`
 
 Confirm enrolment with a current authenticator code. Returns 8 one-time backup
-codes — shown once, stored hashed.
+codes - shown once, stored hashed.
 
 **Request** `{ "code": "123456" }`
 **Response** `{ "ok": true, "backup_codes": ["abcd-1234", ...] }`
@@ -601,7 +601,7 @@ The server stores these as opaque blobs on `channel_members.encrypted_channel_ke
 ### `GET /api/channels`
 
 List visible channels (all public + private the user is a member of). Each
-channel includes `has_channel_key` — whether the caller has a wrapped channel key.
+channel includes `has_channel_key` - whether the caller has a wrapped channel key.
 
 ### `GET /api/channels/{channel_id}`
 
@@ -618,7 +618,7 @@ newly added members.
 
 ### `POST /api/channels/{channel_id}/keys`
 
-Distribute wrapped channel keys to members who don't have one yet — e.g. users
+Distribute wrapped channel keys to members who don't have one yet - e.g. users
 who joined after the channel was keyed. Any channel member may call this.
 
 **Request**
@@ -821,20 +821,20 @@ The client treats these as "something changed" hints and re-fetches the relevant
 
 - `GET /api/channels/{id}` additionally returns `key_version`, `rekey_required`, `key_history` (the caller's wrapped key for every epoch), per-member `key_versions`, and for owner/admin `org_key_history` (the org-escrow copy of every epoch).
 - `POST /api/channels/{id}/keys` accepts `{member_id: wrapped}` (current epoch) or `{member_id: {version: wrapped}}` to backfill older epochs. Fill-once only.
-- `POST /api/channels/{id}/rekey` (creator/admin) — `{keys: {member_id: wrapped}, org_wrapped_key?}` bumps `key_version`, distributes the new epoch to current members only, and clears `rekey_required`. Returns `{version}`. 409 on a concurrent rotation.
-- `POST /api/channels/{id}/messages` accepts `key_version` (epoch the ciphertext was written under) and `mentions` (list of member user ids — plaintext metadata used only to route notifications).
+- `POST /api/channels/{id}/rekey` (creator/admin) - `{keys: {member_id: wrapped}, org_wrapped_key?}` bumps `key_version`, distributes the new epoch to current members only, and clears `rekey_required`. Returns `{version}`. 409 on a concurrent rotation.
+- `POST /api/channels/{id}/messages` accepts `key_version` (epoch the ciphertext was written under) and `mentions` (list of member user ids - plaintext metadata used only to route notifications).
 
 ## Search
 
-- `GET /api/search?q=` — returns `{channels, people, files}` matching metadata the caller may see. Message bodies are E2EE and never searched server-side.
+- `GET /api/search?q=` - returns `{channels, people, files}` matching metadata the caller may see. Message bodies are E2EE and never searched server-side.
 
 ## Admin / Compliance
 
-- `GET /api/users/{id}/escrow-backup` (admin) — member's org-escrowed key backups; audit-logged.
-- `PATCH /api/organisations/current` — `{name?, retention_days?}`.
-- `GET /api/admin/export` (admin) — JSON export of org data (message bodies are ciphertext).
-- `POST /api/admin/purge` (admin) — `{confirm: true}` hard-deletes messages older than `retention_days`.
-- `GET /api/admin/audit` (admin) — recent audit events.
+- `GET /api/users/{id}/escrow-backup` (admin) - member's org-escrowed key backups; audit-logged.
+- `PATCH /api/organisations/current` - `{name?, retention_days?}`.
+- `GET /api/admin/export` (admin) - JSON export of org data (message bodies are ciphertext).
+- `POST /api/admin/purge` (admin) - `{confirm: true}` hard-deletes messages older than `retention_days`.
+- `GET /api/admin/audit` (admin) - recent audit events.
 
 ---
 

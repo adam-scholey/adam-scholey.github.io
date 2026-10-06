@@ -233,10 +233,10 @@ footer{
         <h3 id='info-title'>Project</h3>
         <div class='info-sub' id='info-sub'></div>
         <p class='info-desc' id='info-desc'></p>
-        <div id='info-about'></div>
         <h4>Documentation</h4>
         <div class='docs-list' id='docs-list'></div>
-        <h4>Why it is built this way</h4>
+        <div id='info-about'></div>
+        <h4>Key decisions</h4>
         <ul class='decisions' id='decisions'></ul>
         <div class='tags' id='info-tags'></div>
       </aside>
@@ -448,10 +448,16 @@ const diagrams = {
     subtitle:'Zero-Knowledge Enterprise Messaging',
     desc:'Multi-tenant messaging for diam and business customers, built on a hostile-server model - the backend stores and routes ciphertext, so all the interesting engineering is what you reinvent when the server cannot see plaintext.',
     about:[
-      'Why it is built this way - most enterprise chat trusts the server completely: Slack, Teams and most self-hosted options can read everything they store. diam assumes the server is hostile, which means reinventing everything a chat server normally does once it can no longer see plaintext.',
-      'The hard problems are the ones encryption creates. When a member leaves a channel they keep every key they ever had, so channel keys are versioned as epochs and removal triggers a client-driven re-key - history stays decryptable for everyone entitled, new messages are not readable by the departed. Search is split honestly: the server indexes only the metadata it may see, message bodies are searched client-side over decrypted content. Mentions travel as routing metadata outside the encrypted envelope, and organisation escrow wraps key backups and channel epochs to an org public key that only an owner password can unlock.',
-      'My work covered the E2EE model end to end - RSA-OAEP key wrapping, AES-GCM for messages and files, PBKDF2 recovery, non-extractable keys in IndexedDB - plus the channel key-epoch and re-keying flow, the auth stack (Argon2id, session binding, login lockout, TOTP enrolment, backup codes, per-session CSRF), the Postgres schema with all RLS policies and restricted-role provisioning, and the compliance surface: retention, gated purge, org export and the audit log.',
-      'The security model is verified, not claimed - Semgrep, GitLeaks, pip-audit, Trivy and an OWASP ZAP baseline run in CI on every push alongside a live-Postgres test proving RLS isolation at the raw-SQL level. That audit caught a real IDOR on staged uploads and a dockerised Postgres role that silently bypassed every policy; both are fixed.'
+      {h:'Why it is built this way', body:[
+        'Most enterprise chat trusts the server completely: Slack, Teams and most self-hosted options can read everything they store. diam assumes the server is hostile, which means reinventing everything a chat server normally does once it can no longer see plaintext.'
+      ]},
+      {h:'Problems solved', body:[
+        'When a member leaves a channel they keep every key they ever had, so channel keys are versioned as epochs and removal triggers a client-driven re-key. History stays decryptable for everyone entitled; new messages are not readable by the departed. Search is split honestly: the server indexes only the metadata it may see, while message bodies are searched client-side over decrypted content. Mentions travel as routing metadata outside the encrypted envelope, and organisation escrow wraps key backups and channel epochs to an org public key that only an owner password can unlock.'
+      ]},
+      {h:'What I was responsible for', body:[
+        'The E2EE model end to end (RSA-OAEP key wrapping, AES-GCM for messages and files, PBKDF2 recovery, non-extractable keys in IndexedDB), the channel key-epoch and re-keying flow, the auth stack (Argon2id, session binding, login lockout, TOTP enrolment, backup codes, per-session CSRF), the Postgres schema with all RLS policies and restricted-role provisioning, and the compliance surface: retention, gated purge, org export and the audit log.',
+        'The security model is verified, not claimed. Semgrep, GitLeaks, pip-audit, Trivy and an OWASP ZAP baseline run in CI on every push, alongside a live-Postgres test proving RLS isolation at the raw-SQL level. That audit caught a real IDOR on staged uploads and a dockerised Postgres role that silently bypassed every policy; both are fixed.'
+      ]}
     ],
     decisions:[
       'Hostile-server model - DMs and channels are end-to-end encrypted with the Web Crypto API; message keys never leave the browser.',
@@ -620,7 +626,9 @@ function renderDiagram(key){
   document.getElementById('info-title').textContent = d.name;
   document.getElementById('info-sub').textContent = d.subtitle;
   document.getElementById('info-desc').textContent = d.desc;
-  document.getElementById('info-about').innerHTML = (d.about||[]).map(function(x){ return '<p class="info-desc">'+x+'</p>'; }).join('');
+  document.getElementById('info-about').innerHTML = (d.about||[]).map(function(s){
+    return '<h4>'+s.h+'</h4>' + s.body.map(function(x){ return '<p class="info-desc">'+x+'</p>'; }).join('');
+  }).join('');
   renderDocsList(key);
   document.getElementById('decisions').innerHTML = d.decisions.map(function(x){ return `<li>${x}</li>`; }).join('');
   document.getElementById('info-tags').innerHTML = d.tags.map(function(t){ return `<span class='tag'>${t}</span>`; }).join('');

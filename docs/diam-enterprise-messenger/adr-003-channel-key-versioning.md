@@ -13,7 +13,7 @@ Accepted
 Channels were originally encrypted with a single AES-GCM key wrapped per member
 and stored in `channel_members.encrypted_channel_key`. When a member was
 removed they kept that key material, so they could decrypt *future* messages
-forever — the biggest E2EE gap in the product.
+forever - the biggest E2EE gap in the product.
 
 ## Decision
 
@@ -23,7 +23,7 @@ Introduce channel key **epochs**:
    flags channels that must be rotated.
 2. `channel_member_keys (channel_id, user_id, version, wrapped_key)` stores
    every wrapped key a member has ever held. Inserts are fill-once
-   (`INSERT OR IGNORE`) — a version slot can never be overwritten, preserving
+   (`INSERT OR IGNORE`) - a version slot can never be overwritten, preserving
    the key-substitution defence.
 3. `channel_key_history (channel_id, version, org_wrapped_key)` stores the
    org-escrow copy of every epoch so admins can recover any history.
@@ -43,13 +43,13 @@ Introduce channel key **epochs**:
 
 - Removed members cannot decrypt messages written after the rotation.
 - Old messages remain decryptable for retained members (no forward secrecy
-  loss relative to before — that requires a real ratchet, still out of scope).
+  loss relative to before - that requires a real ratchet, still out of scope).
 - A member missing a version is backfilled by any member who holds it.
 - Server still sees only opaque wrapped blobs; rotation is client-driven.
 
 ## Related Files
 
-- `server/channels.py` — `_record_key_version`, `distribute_channel_keys`, `rekey_channel`
-- `server/database.py` — `channel_member_keys`, `channel_key_history`, `messages.key_version`
-- `web/crypto.js` — versioned `channelKeys` map (channel_id → version → key)
-- `web/app.js` — `ensureChannelKey`, `rekeyChannel`, version-aware decrypt
+- `server/channels.py` - `_record_key_version`, `distribute_channel_keys`, `rekey_channel`
+- `server/database.py` - `channel_member_keys`, `channel_key_history`, `messages.key_version`
+- `web/crypto.js` - versioned `channelKeys` map (channel_id → version → key)
+- `web/app.js` - `ensureChannelKey`, `rekeyChannel`, version-aware decrypt

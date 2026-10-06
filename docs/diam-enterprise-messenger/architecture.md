@@ -2,7 +2,7 @@
 
 ## Overview
 
-diam Enterprise Messenger is a multi-tenant business messaging platform. The current implementation is a Python FastAPI backend with a vanilla JavaScript frontend, PostgreSQL (or SQLite) persistence, Redis-optional realtime messaging, and client-side end-to-end encryption for direct messages and channels (versioned channel key epochs — see `arch.md` for the diagram-oriented overview).
+diam Enterprise Messenger is a multi-tenant business messaging platform. The current implementation is a Python FastAPI backend with a vanilla JavaScript frontend, PostgreSQL (or SQLite) persistence, Redis-optional realtime messaging, and client-side end-to-end encryption for direct messages and channels (versioned channel key epochs - see `arch.md` for the diagram-oriented overview).
 
 The system is designed around a few core principles:
 
@@ -183,7 +183,7 @@ Thin `fetch` wrapper that sends `credentials: "include"` and handles JSON parsin
 5. Channel attachments use a per-file AES key wrapped with the channel key
    inside the message envelope (`files[].channel_key`).
 
-> **Note:** Channel re-keying on member removal is not implemented — a removed
+> **Note:** Channel re-keying on member removal is not implemented - a removed
 > member retains previously-distributed key material. A rotation endpoint is
 > tracked as a gap.
 
@@ -281,7 +281,7 @@ Tests use an isolated temporary SQLite database and do not require Docker.
 
 ## See Also
 
-- `documentation/api.md` — endpoint reference.
-- `documentation/progress.md` — current status and roadmap.
-- `documentation/developer-guide.md` — local development and conventions.
-- `documentation/decisions/` — architecture decision records.
+- `documentation/api.md` - endpoint reference.
+- `documentation/progress.md` - current status and roadmap.
+- `documentation/developer-guide.md` - local development and conventions.
+- `documentation/decisions/` - architecture decision records.
