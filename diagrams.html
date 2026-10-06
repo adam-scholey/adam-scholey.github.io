@@ -263,6 +263,10 @@ footer{
         <div class='list-title'>Tracker</div>
         <div class='list-desc'>Project management tool with real-time SSE updates, GitHub OAuth, and CLI integration.</div>
       </a>
+      <a class='project-list-link' href='diagrams.html?project=messenger'>
+        <div class='list-title'>diam Enterprise Messenger</div>
+        <div class='list-desc'>Zero-knowledge E2EE internal messaging - RLS tenancy, key epochs, org escrow.</div>
+      </a>
     </div>
   </section>
 </main>
@@ -436,6 +440,59 @@ const diagrams = {
       {from:'sse',to:'user',label:'live updates'},
       {from:'flask',to:'mail',label:'queues'},
       {from:'mail',to:'smtp',label:'SMTP'}
+    ]
+  },
+  messenger: {
+    name:'diam Enterprise Messenger',
+    subtitle:'Zero-Knowledge Internal Messaging',
+    desc:'Multi-tenant messaging built on a hostile-server model - the backend stores and routes ciphertext, so all the interesting engineering is what you reinvent when the server cannot see plaintext. Solo build.',
+    decisions:[
+      'Hostile-server model - DMs and channels are end-to-end encrypted with the Web Crypto API; message keys never leave the browser.',
+      'FORCE ROW LEVEL SECURITY - tenant isolation lives in Postgres, not application code; the app connects as a non-owner role because RLS is silently skipped for owners.',
+      'Channel key epochs - removal marks the channel for re-key; departing members keep history but get no new keys. Rotation is client-driven so plaintext keys never touch the server.',
+      'Split search - the server indexes only what it may see (channel names, people, file metadata); message bodies are searched client-side over locally decrypted content.',
+      'Org escrow - key backups and every channel epoch are wrapped with an organisation public key; only an owner/admin password unlocks the private key, client-side, with an audit event.',
+      'Opaque revocable sessions bound to IP and User-Agent, per-session CSRF, Argon2id, TOTP MFA with encrypted-at-rest secrets - no JWTs.',
+      'Verified, not claimed - Semgrep, GitLeaks, pip-audit, Trivy and a ZAP baseline in CI, plus a raw-SQL integration test proving RLS actually isolates tenants.'
+    ],
+    tags:['Python','FastAPI','Socket.IO','PostgreSQL RLS','Web Crypto','Docker'],
+    docs:[
+      {file:'diam-enterprise-messenger/CASE-STUDY.md',label:'CASE-STUDY.md'},
+      {file:'diam-enterprise-messenger/architecture.md',label:'ARCHITECTURE.md'},
+      {file:'diam-enterprise-messenger/api.md',label:'API.md'},
+      {file:'diam-enterprise-messenger/adr-001-e2ee-and-escrow.md',label:'ADR-001-e2ee-and-escrow.md'},
+      {file:'diam-enterprise-messenger/adr-002-postgresql-rls.md',label:'ADR-002-postgresql-rls.md'},
+      {file:'diam-enterprise-messenger/adr-003-channel-key-versioning.md',label:'ADR-003-channel-key-versioning.md'}
+    ],
+    height:640,
+    groups:[
+      {x:16,y:60,w:210,h:290,label:'Browser - trusted'},
+      {x:280,y:40,w:410,h:300,label:'Server - ciphertext only',app:true},
+      {x:280,y:390,w:660,h:210,label:'Key hierarchy - client-side'}
+    ],
+    nodes:[
+      {id:'user',x:75,y:100,w:90,h:100,title:'Member',type:'actor'},
+      {id:'client',x:36,y:225,w:170,h:90,title:'Web Crypto Client',sub:['E2EE + key storage','IndexedDB - non-extractable'],type:'service'},
+      {id:'api',x:330,y:95,w:280,h:140,title:'FastAPI + Socket.IO',sub:['routes ciphertext, never plaintext','opaque sessions &middot; TOTP MFA &middot; CSRF','mention IDs travel as metadata'],type:'service'},
+      {id:'pg',x:320,y:255,w:170,h:75,title:'PostgreSQL',sub:['RLS - FORCE security'],type:'db'},
+      {id:'redis',x:510,y:255,w:165,h:75,title:'Redis',sub:['optional broker'],type:'db'},
+      {id:'files',x:740,y:95,w:200,h:80,title:'Filesystem',sub:['encrypted file blobs'],type:'db'},
+      {id:'pass',x:300,y:445,w:130,h:76,title:'Password',sub:['PBKDF2 derived'],type:'service'},
+      {id:'ukey',x:455,y:445,w:155,h:76,title:'User RSA Keys',sub:['non-extractable'],type:'service'},
+      {id:'epoch',x:635,y:445,w:165,h:76,title:'Channel Key Epochs',sub:['wrapped per member','re-key on removal'],type:'service'},
+      {id:'msg',x:825,y:445,w:110,h:76,title:'Messages',sub:['AES-GCM'],type:'service'},
+      {id:'escrow',x:455,y:540,w:230,h:52,title:'Org Escrow',sub:['org pubkey wrap - admin unlocks client-side'],type:'service'}
+    ],
+    edges:[
+      {from:'user',to:'client',label:'unlocks keys'},
+      {from:'client',to:'api',label:'Socket.IO - ciphertext'},
+      {from:'api',to:'pg',label:'restricted non-owner role'},
+      {from:'api',to:'redis',label:'pub/sub'},
+      {from:'api',to:'files',label:'encrypted blobs'},
+      {from:'pass',to:'ukey',label:'derives'},
+      {from:'ukey',to:'epoch',label:'RSA-OAEP wrap'},
+      {from:'epoch',to:'msg',label:'AES-GCM'},
+      {from:'epoch',to:'escrow',label:'escrow wrap'}
     ]
   }
 };
