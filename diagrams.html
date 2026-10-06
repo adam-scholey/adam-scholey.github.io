@@ -257,7 +257,7 @@ footer{
       </a>
       <a class='project-list-link' href='diagrams.html?project=seek'>
         <div class='list-title'>Seek</div>
-        <div class='list-desc'>Internal search engine with GDPR-compliant cross-border data access and federated connectors.</div>
+        <div class='list-desc'>Enterprise search engine for organisational data - GDPR-compliant cross-border access, federated connectors.</div>
       </a>
       <a class='project-list-link' href='diagrams.html?project=tracker'>
         <div class='list-title'>Tracker</div>
@@ -370,8 +370,8 @@ const diagrams = {
   },
   seek: {
     name:'Seek',
-    subtitle:'Internal Search Engine',
-    desc:'Multi-tenant search across internal databases with GDPR-compliant cross-border access, consent filtering and federated connectors.',
+    subtitle:'Enterprise Search Engine',
+    desc:'Multi-tenant search across an organisation's internal databases with GDPR-compliant cross-border access, consent filtering and federated connectors.',
     decisions:[
       'Row-level security plus table partitioning by region - data sovereignty is enforced inside Postgres, not application code.',
       'Federated search via asyncio + httpx - queries fan out to sources in parallel instead of centralising data.',
@@ -444,8 +444,8 @@ const diagrams = {
   },
   messenger: {
     name:'diam Enterprise Messenger',
-    subtitle:'Zero-Knowledge Internal Messaging',
-    desc:'Multi-tenant messaging built on a hostile-server model - the backend stores and routes ciphertext, so all the interesting engineering is what you reinvent when the server cannot see plaintext. Solo build.',
+    subtitle:'Zero-Knowledge Enterprise Messaging',
+    desc:'Multi-tenant messaging for diam and business customers, built on a hostile-server model - the backend stores and routes ciphertext, so all the interesting engineering is what you reinvent when the server cannot see plaintext. Solo build.',
     decisions:[
       'Hostile-server model - DMs and channels are end-to-end encrypted with the Web Crypto API; message keys never leave the browser.',
       'FORCE ROW LEVEL SECURITY - tenant isolation lives in Postgres, not application code; the app connects as a non-owner role because RLS is silently skipped for owners.',
