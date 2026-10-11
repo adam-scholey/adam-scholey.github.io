@@ -197,7 +197,7 @@ footer{
           <li><strong>Stripe ticketing</strong> - hosted checkout, signed idempotent webhooks, QR-code tickets, and a per-event door scanner where a conditional UPDATE guarantees one admission even under concurrent scans.</li>
           <li><strong>Direct-to-R2 uploads</strong> - browsers PUT multi-GB videos straight to Cloudflare R2 via presigned SigV4 URLs, so large media never touches the app server.</li>
           <li><strong>Video pipeline</strong> - phone-recorded MP4s keep their moov atom at the end of the file, which broke seeking; an ffmpeg <code style='color:var(--rose)'>+faststart</code> background task re-muxes uploads in place.</li>
-          <li><strong>52+ pytest tests</strong> - feature-complete codebase; next step is the first Alembic migration and deployment artifacts.</li>
+          <li><strong>158 pytest tests</strong> - unit, route-level, concurrency and security-regression coverage; next step is the first Alembic migration and deployment artifacts.</li>
         </ul>
         <div class='tags'>
           <span class='tag'>FastAPI</span>
