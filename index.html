@@ -165,10 +165,6 @@ section{
 .hero-facts li{font-size:14px;padding:8px 0;border-bottom:1px solid rgba(20,24,30,.08)}
 .hero-facts li:last-child{border-bottom:none}
 .hero-facts li span{display:block;font-size:11.5px;color:rgba(20,24,30,.55);letter-spacing:.3px;margin-top:2px}
-.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:44px;height:44px;border-radius:50%;border:1px solid rgba(20,24,30,.2);background:rgba(255,255,255,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--text);font-size:19px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s ease}
-.hero-arrow:hover{background:rgba(255,255,255,.8)}
-.hero-arrow.prev{left:26px}
-.hero-arrow.next{right:26px}
 .hero-dots{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:3}
 .hero-dot{width:9px;height:9px;border-radius:50%;border:1.5px solid rgba(20,24,30,.55);background:transparent;padding:0;cursor:pointer;transition:background .3s ease,transform .3s ease}
 .hero-dot.active{background:var(--text);transform:scale(1.2)}
@@ -377,7 +373,6 @@ footer{
   .hero-caption{flex-direction:column;align-items:flex-start;gap:14px;padding:28px 20px}
   .hero-dots{bottom:auto;top:18px}
   .hero-facts{display:none}
-  .hero-arrow{display:none}
   .slide-caption{padding:0 24px;padding-bottom:10vh}
   .hero-plate{text-align:left}
   .stat-grid{grid-template-columns:1fr}
@@ -481,8 +476,6 @@ footer{
           <li>Learner of the Year<span>Computing, Science &amp; Environmental Tech</span></li>
         </ul>
       </aside>
-      <button class="hero-arrow prev" type="button" aria-label="Previous slide">&#8249;</button>
-      <button class="hero-arrow next" type="button" aria-label="Next slide">&#8250;</button>
       <div class="hero-dots">
         <button class="hero-dot active" type="button" aria-label="Image 1 of 4"></button>
         <button class="hero-dot" type="button" aria-label="Image 2 of 4"></button>
@@ -635,7 +628,7 @@ function maybePrefetch(e){
 document.addEventListener("pointerover",maybePrefetch,{passive:true});
 document.addEventListener("touchstart",maybePrefetch,{passive:true});
 
-// Hero carousel: manual swipe/arrows/dots. Clone of slide 1 makes the
+// Hero carousel: manual swipe/dots. Clone of slide 1 makes the
 // forward loop seamless - on reaching it we snap back to 0.
 var heroTrack=document.querySelector(".hero-track");
 var heroMedia=document.querySelector(".hero-media");
@@ -654,9 +647,6 @@ function heroGo(i,instant){
 }
 if(heroTrack)heroTrack.addEventListener("transitionend",function(){if(heroIdx===heroSlides.length)heroGo(0,true)});
 heroDots.forEach(function(d,i){d.addEventListener("click",function(){heroGo(i)})});
-var prev=document.querySelector(".hero-arrow.prev"),next=document.querySelector(".hero-arrow.next");
-if(prev)prev.addEventListener("click",function(){heroGo(heroIdx===0?heroSlides.length-1:heroIdx-1)});
-if(next)next.addEventListener("click",function(){heroGo(heroIdx+1)});
 // touch/mouse swipe with live tracking
 var dragX=null,dragDX=0;
 if(heroMedia){
