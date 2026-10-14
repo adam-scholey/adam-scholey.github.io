@@ -202,11 +202,11 @@ footer{
 }
 @page{margin:2cm 1.4cm}
 @media print{
-  nav,footer,.cv-actions{display:none}
+  nav,footer,.cv-actions,.no-print{display:none}
   body::before{display:none}
   .cv-hero .kicker{display:none}
   .js .reveal{opacity:1!important;transform:none!important}
-  body{font-size:12px;zoom:.82;line-height:1.45}
+  body{font-size:12px;zoom:.78;line-height:1.45}
   section{padding:8px 20px}
   h2{margin:16px 0 10px!important;break-after:avoid}
   h3,h4,h5{break-after:avoid}
@@ -324,7 +324,7 @@ footer{
 
     <h2 style='margin:40px 0 22px'>Skills</h2>
     <div class='skill-grid'>
-      <div class='cv-card reveal'>
+      <div class='cv-card reveal no-print'>
         <h3>Professional Skills</h3>
         <ul>
           <li><strong style='color:var(--text)'>Communication:</strong> Communicated directly with the framed@ client to gather requirements and share project updates; able to explain technical concepts clearly to non-technical stakeholders.</li>
@@ -439,7 +439,7 @@ footer{
         </ul>
       </div>
 
-      <div class='cv-card reveal cv-section'>
+      <div class='cv-card reveal cv-section no-print'>
         <h4>Restaurant Booking System</h4>
         <p class='meta'>Python, Flask, MySQL, Stripe</p>
         <ul>
