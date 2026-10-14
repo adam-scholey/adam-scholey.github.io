@@ -205,7 +205,14 @@ footer{
   nav,footer,.cv-actions{display:none}
   body::before{display:none}
   .cv-hero,.cv-card{border:1px solid #999}
-  section{padding:20px}
+  .js .reveal{opacity:1!important;transform:none!important}
+  body{font-size:12px;zoom:.82;line-height:1.45}
+  section{padding:8px 20px}
+  h2{margin:16px 0 10px!important}
+  .cv-card{padding:12px;margin-bottom:10px}
+  .cv-card ul{margin:6px 0}
+  .cv-card li{margin-bottom:3px}
+  .cv-hero{padding:14px;margin-bottom:12px}
 }
 </style>
 <script>document.documentElement.classList.add('js')</script>
@@ -262,7 +269,7 @@ footer{
 
     <div class='cv-card reveal' style='margin-bottom:22px'>
       <h3 style="font-family:'Playfair Display',Georgia,serif">Personal Statement</h3>
-      <p>A backend-focused Software Developer with hands-on experience building secure, production-oriented systems, primarily using Python and PostgreSQL. I specialise in building multi-tenant architectures with a strong emphasis on data security, including Seek, an enterprise search engine with row-level security and GDPR-compliant cross-border data access, and a live client platform built on FastAPI with Stripe payments and secure authentication. I hold a Distinction in Cyber Security and bring that security mindset into every system I build, from access control to data isolation. I am seeking a backend or full-stack software engineering role where I can apply this foundation to real-world products in a professional environment.</p>
+      <p>A backend-focused Software Developer with hands-on experience building secure, production-oriented systems, primarily using Python and PostgreSQL. I specialise in building multi-tenant architectures with a strong emphasis on data security, including an enterprise search engine with row-level security and GDPR-compliant cross-border data access, and a live client platform built on FastAPI with Stripe payments and secure authentication. I hold a Distinction in Cyber Security and bring that security mindset into every system I build, from access control to data isolation. I am seeking a backend or full-stack software engineering role where I can apply this foundation to real-world products in a professional environment.</p>
     </div>
 
     <h2 style='margin-bottom:22px'>Experience</h2>
@@ -271,10 +278,10 @@ footer{
         <h4>Software Developer (Part-time)</h4>
         <p class='meta'>diam Systems Ltd &middot; Oct 2025 - Present</p>
         <ul>
-          <li>Built Seek, a multi-tenant enterprise search engine using Python and PostgreSQL, with GDPR-compliant cross-border data access.</li>
+          <li>Built a multi-tenant enterprise search engine using Python and PostgreSQL, with GDPR-compliant cross-border data access.</li>
           <li>Implemented advanced PostgreSQL architecture with tsvector full-text search, row-level security, and table partitioning.</li>
-          <li>Developed Tracker, an internal project management tool in active daily use across the team, with real-time SSE updates and CLI integration.</li>
-          <li>Built diamReserve, a production-ready restaurant booking system using Python and Flask, with Stripe payments and a visual floor plan.</li>
+          <li>Developed an internal project management tool in active daily use across the team, with real-time SSE updates and CLI integration.</li>
+          <li>Built a production-ready restaurant booking system using Python and Flask, with Stripe payments and a visual floor plan.</li>
           <li>Building a paid client platform (framed@) on FastAPI with async SQLAlchemy, PostgreSQL, Stripe checkout, and passwordless authentication.</li>
           <li>Contributed to diamsystems.co.uk, the company website with e-commerce (Printify + Stripe) and i18n support.</li>
         </ul>
@@ -313,11 +320,11 @@ footer{
         <h3>Professional Skills</h3>
         <ul>
           <li><strong style='color:var(--text)'>Communication:</strong> Communicated directly with the framed@ client to gather requirements and share project updates; able to explain technical concepts clearly to non-technical stakeholders.</li>
-          <li><strong style='color:var(--text)'>Teamwork &amp; Collaboration:</strong> Collaborated with a team at diam Systems Ltd on multiple live products including Seek, Tracker, and diamReserve, contributing alongside other developers in a professional environment.</li>
+          <li><strong style='color:var(--text)'>Teamwork &amp; Collaboration:</strong> Collaborated with a team at diam Systems Ltd across multiple products - enterprise search, internal tooling and booking systems - contributing alongside other developers in a professional environment.</li>
           <li><strong style='color:var(--text)'>Self-Motivation &amp; Initiative:</strong> Independently designed and built multiple full-stack production systems from scratch, managing architecture, security, and deployment decisions without supervision.</li>
           <li><strong style='color:var(--text)'>Problem-Solving:</strong> Consistently tackled complex technical challenges across projects, including multi-region data sovereignty, real-time collaboration, and multi-agent AI coordination.</li>
           <li><strong style='color:var(--text)'>Adaptability:</strong> Quickly picked up new languages, frameworks, and tools across varied roles and projects, from production manufacturing to software development and accessibility testing.</li>
-          <li><strong style='color:var(--text)'>Attention to Detail:</strong> Maintained rigorous quality standards and test coverage across production systems, including FileFlow, ensuring reliability and correctness in both manufacturing and software roles.</li>
+          <li><strong style='color:var(--text)'>Attention to Detail:</strong> Maintained rigorous quality standards and test coverage across production systems, including a zero-knowledge cloud storage platform, ensuring reliability and correctness in both manufacturing and software roles.</li>
         </ul>
       </div>
 
@@ -392,7 +399,7 @@ footer{
     <h2 style='margin:40px 0 22px'>Projects</h2>
     <div class='cv-grid'>
       <div class='cv-card reveal cv-section'>
-        <h4>Seek &middot; Enterprise Search Engine for Organisations</h4>
+        <h4>Enterprise Search Platform</h4>
         <p class='meta'>Python, Flask, PostgreSQL, Redis, Kubernetes</p>
         <ul>
           <li>Multi-tenant SaaS platform with multi-region deployment across UK and EU.</li>
@@ -403,7 +410,7 @@ footer{
       </div>
 
       <div class='cv-card reveal cv-section'>
-        <h4>Tracker &middot; Project Management Tool</h4>
+        <h4>Internal Project Management Tool</h4>
         <p class='meta'>Python, Flask, SQLite</p>
         <ul>
           <li>Elegant project management tool with seven-stage lifecycle tracking.</li>
@@ -414,7 +421,7 @@ footer{
       </div>
 
       <div class='cv-card reveal cv-section'>
-        <h4>diamReserve &middot; Restaurant Booking System</h4>
+        <h4>Restaurant Booking System</h4>
         <p class='meta'>Python, Flask, MySQL, Stripe</p>
         <ul>
           <li>Production-ready booking system with visual SVG floor plan and time slider.</li>
@@ -436,7 +443,7 @@ footer{
       </div>
 
       <div class='cv-card reveal cv-section' style='grid-column:1/-1'>
-        <h4>FileFlow &middot; Zero-Knowledge Cloud Storage</h4>
+        <h4>Zero-Knowledge Cloud Storage Platform</h4>
         <p class='meta'>C#, Blazor, ASP.NET Core, PostgreSQL, AWS S3, SignalR</p>
         <ul>
           <li>Client-side AES-256 encryption before upload, so the server stores ciphertext only and never sees plaintext.</li>
