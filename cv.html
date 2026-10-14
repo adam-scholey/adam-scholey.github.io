@@ -150,7 +150,7 @@ h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:19px
 .skill-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
 .skill-group h5{color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.8px;margin-bottom:10px}
 .skill-list{list-style:none;padding:0}
-.skill-list li{position:relative;padding-left:16px;font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:6px}
+.skill-list li{position:relative;padding-left:16px;font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:6px}
 .skill-list li::before{content:'\2192';position:absolute;left:0;color:var(--gold);font-size:11px}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
 .tag{
@@ -209,7 +209,7 @@ footer{
   .js .reveal{opacity:1!important;transform:none!important}
   body{font-size:12px;zoom:.82;line-height:1.45}
   .skill-list{list-style:disc;padding-left:18px}
-  .skill-list li{padding-left:0;font-size:inherit}
+  .skill-list li{padding-left:0}
   .skill-list li::before{content:none}
   section{padding:8px 20px}
   h2{margin:16px 0 10px!important;break-after:avoid}
@@ -411,6 +411,17 @@ footer{
     <h2 style='margin:40px 0 22px'>Projects</h2>
     <div class='cv-grid'>
       <div class='cv-card reveal cv-section'>
+        <h4>framed@ &middot; Client Booking &amp; Events Platform</h4>
+        <p class='meta'>FastAPI, PostgreSQL, Stripe &middot; <a href='https://framedat.uk'>framedat.uk</a></p>
+        <ul>
+          <li>Paid client engagement building a music and events platform for framed@ Limited - scoped features, estimated effort, demoed progress and delivered against agreed milestones.</li>
+          <li>FastAPI backend with async SQLAlchemy, PostgreSQL, and Pydantic; Stripe hosted checkout and webhooks.</li>
+          <li>Passwordless magic-link authentication and real-time admin dashboard via SSE.</li>
+          <li>158 automated tests across unit, route-level and security-regression suites; live preview deployed ahead of production launch.</li>
+        </ul>
+      </div>
+
+      <div class='cv-card reveal cv-section'>
         <h4>Enterprise Search Platform</h4>
         <p class='meta'>Python, Flask, PostgreSQL, Redis, Kubernetes</p>
         <ul>
@@ -440,17 +451,6 @@ footer{
           <li>Stripe Checkout integration for secure &pound;10/head deposits with PCI compliance.</li>
           <li>Admin dashboard with Chart.js analytics, staff PWA with offline support.</li>
           <li>Email notifications, role-based access control, and comprehensive security.</li>
-        </ul>
-      </div>
-
-      <div class='cv-card reveal cv-section'>
-        <h4>framed@ &middot; Client Booking &amp; Events Platform</h4>
-        <p class='meta'>FastAPI, PostgreSQL, Stripe</p>
-        <ul>
-          <li>Paid client engagement building a music and events platform for framed@ Limited - scoped features, estimated effort, demoed progress and delivered against agreed milestones.</li>
-          <li>FastAPI backend with async SQLAlchemy, PostgreSQL, and Pydantic; Stripe hosted checkout and webhooks.</li>
-          <li>Passwordless magic-link authentication and real-time admin dashboard via SSE.</li>
-          <li>158 automated tests across unit, route-level and security-regression suites; live preview deployed ahead of production launch.</li>
         </ul>
       </div>
 
