@@ -208,11 +208,19 @@ footer{
   .js .reveal{opacity:1!important;transform:none!important}
   body{font-size:12px;zoom:.82;line-height:1.45}
   section{padding:8px 20px}
-  h2{margin:16px 0 10px!important}
-  .cv-card{padding:12px;margin-bottom:10px}
+  h2{margin:16px 0 10px!important;break-after:avoid}
+  h3,h4,h5{break-after:avoid}
+  /* Flatten grids to a single column so cards paginate naturally. */
+  .cv-grid,.skill-grid{display:block}
+  .cv-card{padding:12px;margin-bottom:10px;break-inside:avoid}
+  /* The technical-skills card is taller than a page — let it split between
+     skill groups instead of jumping wholesale to the next page. */
+  .cv-card:has(.skill-groups){break-inside:auto;box-decoration-break:clone}
+  .skill-group{break-inside:avoid;margin-bottom:10px}
   .cv-card ul{margin:6px 0}
-  .cv-card li{margin-bottom:3px}
-  .cv-hero{padding:14px;margin-bottom:12px}
+  .cv-card li{margin-bottom:3px;break-inside:avoid}
+  .cv-hero{padding:14px;margin-bottom:12px;break-inside:avoid}
+  p,li{orphans:2;widows:2}
 }
 </style>
 <script>document.documentElement.classList.add('js')</script>
