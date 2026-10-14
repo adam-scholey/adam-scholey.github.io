@@ -201,12 +201,16 @@ footer{
   .page-veil{transition:none}
   .js .page-veil{opacity:0}
 }
+@page{margin:2cm 1.4cm}
 @media print{
   nav,footer,.cv-actions{display:none}
   body::before{display:none}
-  .cv-hero,.cv-card{border:1px solid #999}
+  .cv-hero .kicker{display:none}
   .js .reveal{opacity:1!important;transform:none!important}
   body{font-size:12px;zoom:.82;line-height:1.45}
+  .skill-list{list-style:disc;padding-left:18px}
+  .skill-list li{padding-left:0;font-size:inherit}
+  .skill-list li::before{content:none}
   section{padding:8px 20px}
   h2{margin:16px 0 10px!important;break-after:avoid}
   h3,h4,h5{break-after:avoid}
