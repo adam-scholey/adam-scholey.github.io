@@ -568,14 +568,16 @@ function buildSvg(d){
     s += `<rect x='${g.x}' y='${g.y}' width='${g.w}' height='${g.h}' rx='8' fill='none' stroke='${g.app ? C.groupApp : C.group}' stroke-width='1.2' stroke-dasharray='6 5'/>
       <text x='${g.x+12}' y='${g.y+20}' font-size='11' letter-spacing='1.5' fill='${g.app ? C.arrow : C.sub}'>${g.label.toUpperCase()}</text>`;
   });
+  let labels = '';
   d.edges.forEach(function(e){
     const a = anchor(ns[e.from], ns[e.to]);
     const b = anchor(ns[e.to], ns[e.from]);
     const mx = (a.x + b.x)/2, my = (a.y + b.y)/2;
     s += `<line x1='${a.x}' y1='${a.y}' x2='${b.x}' y2='${b.y}' stroke='${C.edge}' stroke-width='1.5' marker-end='url(#arr)'/>`;
-    if(e.label) s += `<text x='${mx}' y='${my-5}' text-anchor='middle' font-size='10.5' fill='${C.sub}' paint-order='stroke' stroke='#1E293B' stroke-width='6'>${e.label}</text>`;
+    if(e.label) labels += `<text x='${mx}' y='${my-5}' text-anchor='middle' font-size='10.5' fill='${C.sub}' paint-order='stroke' stroke='#1E293B' stroke-width='6'>${e.label}</text>`;
   });
   d.nodes.forEach(function(n){ s += drawNode(n); });
+  s += labels;
   s += `</svg>`;
   return s;
 }
