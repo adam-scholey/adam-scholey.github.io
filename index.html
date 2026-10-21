@@ -159,21 +159,21 @@ section{
 .hero-slide.dark .slide-kicker{color:rgba(255,255,255,.78)}
 .hero-slide.dark .slide-sub{color:rgba(255,255,255,.88)}
 .hero-slide.dark .slide-link{color:#fff;border-color:#fff}
-.hero-facts{position:absolute;right:5vw;top:50%;transform:translateY(-50%);z-index:3;width:230px;background:rgba(255,255,255,.5);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.65);border-radius:16px;padding:20px 22px;color:var(--text)}
-.hero-facts .f-title{font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(20,24,30,.55);margin-bottom:12px}
+.hero-facts{position:absolute;right:5vw;top:50%;transform:translateY(-50%);z-index:3;width:230px;background:rgba(10,14,22,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px 22px;color:#fff}
+.hero-facts .f-title{font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:12px}
 .hero-facts ul{list-style:none;padding:0;margin:0}
-.hero-facts li{font-size:14px;padding:8px 0;border-bottom:1px solid rgba(20,24,30,.08)}
+.hero-facts li{font-size:14px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.1)}
 .hero-facts li:last-child{border-bottom:none}
-.hero-facts li span{display:block;font-size:11.5px;color:rgba(20,24,30,.55);letter-spacing:.3px;margin-top:2px}
+.hero-facts li span{display:block;font-size:11.5px;color:rgba(255,255,255,.55);letter-spacing:.3px;margin-top:2px}
 .hero-dots{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:3}
-.hero-dot{width:9px;height:9px;border-radius:50%;border:1.5px solid rgba(20,24,30,.55);background:transparent;padding:0;cursor:pointer;transition:background .3s ease,transform .3s ease}
-.hero-dot.active{background:var(--text);transform:scale(1.2)}
-.hero-dot:focus-visible{outline:2px solid var(--text);outline-offset:2px}
-.hero-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(255,255,255,.35) 0%,rgba(255,255,255,.1) 45%,transparent 100%)}
+.hero-dot{width:9px;height:9px;border-radius:50%;border:1.5px solid rgba(255,255,255,.6);background:transparent;padding:0;cursor:pointer;transition:background .3s ease,transform .3s ease}
+.hero-dot.active{background:#fff;transform:scale(1.2)}
+.hero-dot:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(to right,rgba(6,8,14,.6) 0%,rgba(6,8,14,.25) 45%,transparent 65%),linear-gradient(to top,rgba(6,8,14,.5) 0%,rgba(6,8,14,.15) 45%,transparent 100%)}
 .hero-caption{position:absolute;left:0;right:0;bottom:0;padding:44px 40px;display:flex;justify-content:flex-end;align-items:flex-end;gap:24px}
-.hero-plate{text-align:right;color:var(--text);flex-shrink:0}
+.hero-plate{text-align:right;color:#fff;flex-shrink:0}
 .hero-plate strong{display:block;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:24px;letter-spacing:-.5px}
-.hero-plate span{font-size:12.5px;color:rgba(20,24,30,.6);letter-spacing:.3px}
+.hero-plate span{font-size:12.5px;color:rgba(255,255,255,.65);letter-spacing:.3px}
 
 /* SECTION HEADS */
 .section-head{margin-bottom:36px}
@@ -424,7 +424,7 @@ footer{
     <div class="hero-media">
       <div class="hero-track">
         <div class="hero-slide dark">
-          <img src="images/hero.jpg" decoding="async" alt="Blue sky with white clouds">
+          <img src="images/dark-green.jpg" decoding="async" alt="Dark server racks with glowing green status lights">
           <div class="slide-caption">
             <div class="slide-kicker">Adam Scholey</div>
             <div class="slide-title">Software, built with <em>intent.</em></div>
@@ -432,8 +432,8 @@ footer{
             <a class="slide-link" href="#about">More about me</a>
           </div>
         </div>
-        <div class="hero-slide">
-          <img src="images/grad-blue.jpg" decoding="async" alt="Soft blue, lilac and pink gradient">
+        <div class="hero-slide dark">
+          <img src="images/dark-blue.jpg" decoding="async" alt="Dark server racks with glowing blue lights">
           <div class="slide-caption">
             <div class="slide-kicker">Backend Engineering</div>
             <div class="slide-title">Systems that hold up in production.</div>
@@ -441,8 +441,8 @@ footer{
             <a class="slide-link" href="projects.html">View projects</a>
           </div>
         </div>
-        <div class="hero-slide">
-          <img src="images/grad-peach.jpg" decoding="async" alt="Soft peach and coral gradient">
+        <div class="hero-slide dark">
+          <img src="images/dark-teal.jpg" decoding="async" alt="Dark server racks with glowing teal lights">
           <div class="slide-caption">
             <div class="slide-kicker">Security</div>
             <div class="slide-title">Built in, not bolted on.</div>
@@ -450,8 +450,8 @@ footer{
             <a class="slide-link" href="diagrams.html">Read the docs</a>
           </div>
         </div>
-        <div class="hero-slide">
-          <img src="images/grad-mint.jpg" decoding="async" alt="Soft mint and aqua gradient">
+        <div class="hero-slide dark">
+          <img src="images/dark-amber.jpg" decoding="async" alt="Dark server racks with glowing amber lights">
           <div class="slide-caption">
             <div class="slide-kicker">Currently</div>
             <div class="slide-title">Engineering at diam Systems.</div>
