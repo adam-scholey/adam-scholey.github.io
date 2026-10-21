@@ -155,7 +155,7 @@ section{
 .slide-title em{font-style:italic}
 .slide-sub{font-size:16.5px;line-height:1.55;color:rgba(20,24,30,.72);max-width:540px;margin-top:18px}
 .slide-link{display:inline-block;margin-top:26px;font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:14px;font-weight:600;color:var(--text);text-decoration:none;border-bottom:2px solid var(--text);padding-bottom:3px}
-.hero-slide.dark .slide-caption{color:#fff}
+.hero-slide.dark .slide-caption{color:#fff;text-shadow:0 1px 14px rgba(5,7,12,.55),0 0 2px rgba(5,7,12,.4)}
 .hero-slide.dark .slide-kicker{color:rgba(255,255,255,.78)}
 .hero-slide.dark .slide-sub{color:rgba(255,255,255,.88)}
 .hero-slide.dark .slide-link{color:#fff;border-color:#fff}
@@ -169,7 +169,7 @@ section{
 .hero-dot{width:9px;height:9px;border-radius:50%;border:1.5px solid rgba(255,255,255,.6);background:transparent;padding:0;cursor:pointer;transition:background .3s ease,transform .3s ease}
 .hero-dot.active{background:#fff;transform:scale(1.2)}
 .hero-dot:focus-visible{outline:2px solid #fff;outline-offset:2px}
-.hero-shade{position:absolute;inset:0;background:linear-gradient(to right,rgba(6,8,14,.6) 0%,rgba(6,8,14,.25) 45%,transparent 65%),linear-gradient(to top,rgba(6,8,14,.5) 0%,rgba(6,8,14,.15) 45%,transparent 100%)}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,7,12,.82) 0%,rgba(5,7,12,.55) 38%,rgba(5,7,12,.22) 62%,transparent 80%),linear-gradient(to top,rgba(5,7,12,.55) 0%,rgba(5,7,12,.18) 40%,transparent 70%)}
 .hero-caption{position:absolute;left:0;right:0;bottom:0;padding:44px 40px;display:flex;justify-content:flex-end;align-items:flex-end;gap:24px}
 .hero-plate{text-align:right;color:#fff;flex-shrink:0}
 .hero-plate strong{display:block;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:24px;letter-spacing:-.5px}
@@ -352,6 +352,9 @@ footer{
 .footer-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:14px}
 .footer-nav a{color:var(--soft);font-size:12px;padding:6px 8px;transition:.2s}
 .footer-nav a:hover{color:var(--gold)}
+.img-credits{color:var(--soft);font-size:11px;margin-top:10px;opacity:.75}
+.img-credits a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.img-credits a:hover{color:var(--gold)}
 
 /* REVEAL */
 .reveal{opacity:1;transform:none}
@@ -424,7 +427,8 @@ footer{
     <div class="hero-media">
       <div class="hero-track">
         <div class="hero-slide dark">
-          <img src="images/dark-green.jpg" decoding="async" alt="Dark server racks with glowing green status lights">
+          <img src="images/datacenter-blue.jpg" decoding="async" alt="Data centre corridor lined with server racks lit by blue status lights">
+          <div class="hero-shade"></div>
           <div class="slide-caption">
             <div class="slide-kicker">Adam Scholey</div>
             <div class="slide-title">Software, built with <em>intent.</em></div>
@@ -433,7 +437,8 @@ footer{
           </div>
         </div>
         <div class="hero-slide dark">
-          <img src="images/dark-blue.jpg" decoding="async" alt="Dark server racks with glowing blue lights">
+          <img src="images/datacenter-leds.jpg" decoding="async" alt="Dark server room aisle with rows of glowing multicoloured status lights">
+          <div class="hero-shade"></div>
           <div class="slide-caption">
             <div class="slide-kicker">Backend Engineering</div>
             <div class="slide-title">Systems that hold up in production.</div>
@@ -442,7 +447,8 @@ footer{
           </div>
         </div>
         <div class="hero-slide dark">
-          <img src="images/dark-teal.jpg" decoding="async" alt="Dark server racks with glowing teal lights">
+          <img src="images/datacenter-cables.jpg" decoding="async" alt="Rack-mounted servers with dense network cabling and status lights">
+          <div class="hero-shade"></div>
           <div class="slide-caption">
             <div class="slide-kicker">Security</div>
             <div class="slide-title">Built in, not bolted on.</div>
@@ -451,7 +457,8 @@ footer{
           </div>
         </div>
         <div class="hero-slide dark">
-          <img src="images/dark-amber.jpg" decoding="async" alt="Dark server racks with glowing amber lights">
+          <img src="images/datacenter-racks.jpg" decoding="async" alt="Close-up of dark server racks with green and blue status lights">
+          <div class="hero-shade"></div>
           <div class="slide-caption">
             <div class="slide-kicker">Currently</div>
             <div class="slide-title">Engineering at diam Systems.</div>
@@ -460,7 +467,6 @@ footer{
           </div>
         </div>
       </div>
-      <div class="hero-shade"></div>
       <div class="hero-caption">
         <div class="hero-plate">
           <strong>Adam Scholey</strong>
@@ -536,6 +542,7 @@ footer{
     <a href="contact.html">Contact</a>
   </div>
   <p style="color:var(--soft);font-size:12px">© <span id="year">2026</span> Adam Scholey · Software Engineer</p>
+  <p class="img-credits">Hero photos: <a href="https://commons.wikimedia.org/wiki/File:BalticServers_data_center.jpg">BalticServers.com</a>, <a href="https://commons.wikimedia.org/wiki/File:Blue_bay_light_(2926186864).jpg">Arthur Caranta</a> and <a href="https://commons.wikimedia.org/wiki/Category:Wikimedia_servers_in_Carrollton">Wikimedia Foundation</a>, via Wikimedia Commons - <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> / <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a></p>
 </footer>
 
 <script>
