@@ -4,7 +4,16 @@
 <meta charset='UTF-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 <meta name='description' content='Architecture diagrams for Adam Scholey projects'>
-<title>Documentation &amp; Architecture - Adam Scholey</title>
+<title>Documentation & Architecture - Adam Scholey</title>
+<meta name="description" content="Architecture diagrams, design decisions and technical documentation for the systems Adam Scholey builds.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Adam Scholey">
+<meta property="og:title" content="Documentation & Architecture - Adam Scholey">
+<meta property="og:description" content="Architecture diagrams, design decisions and technical documentation for the systems Adam Scholey builds.">
+<meta property="og:url" content="https://adam-scholey.github.io/diagrams.html">
+<meta property="og:image" content="https://adam-scholey.github.io/images/dc-corridor.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://adam-scholey.github.io/diagrams.html">
 <link rel='preconnect' href='https://fonts.googleapis.com'>
 <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Space+Grotesk:wght@500&amp;family=Inter:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap'>
@@ -84,7 +93,7 @@ main{position:relative;z-index:2}
 section{max-width:1180px;margin:0 auto;padding:72px 20px}
 .section-head{margin-bottom:36px}
 .kicker{color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:10px}
-h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.5px;margin-bottom:12px}
+h1,h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.5px;margin-bottom:12px}
 .subtitle{color:var(--muted);max-width:800px;font-size:16px;line-height:1.7}
 .proj-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
 .proj-tab{background:var(--panel);border:1px solid var(--border);padding:10px 18px;font-size:13px;color:var(--muted);cursor:pointer;transition:.15s;font-family:'Inter',Arial,sans-serif}
@@ -185,6 +194,7 @@ footer{
   .page-veil{transition:none}
   .js .page-veil{opacity:0}
 }
+a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -220,7 +230,7 @@ footer{
     <a href='projects.html' class='back-link'>&larr; Back to Projects</a>
     <div class='section-head'>
       <div class='kicker'>Documentation &amp; Architecture</div>
-      <h2 id='project-title'>Documentation &amp; Architecture</h2>
+      <h1 id='project-title'>Documentation &amp; Architecture</h1>
       <p class='subtitle' id='project-subtitle'>Hand-drawn system design and project documentation.</p>
     </div>
 

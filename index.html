@@ -4,8 +4,16 @@
 <meta charset="UTF-8">
 <meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Adam Scholey - Software Engineer">
-<title>Adam Scholey - Software Engineer</title>
+<meta name="description" content="Adam Scholey - backend-focused software engineer at diam Systems. Python, FastAPI, PostgreSQL, security and real-time systems. Projects, architecture docs and CV.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Adam Scholey">
+<meta property="og:title" content="Adam Scholey - Backend Software Engineer">
+<meta property="og:description" content="Adam Scholey - backend-focused software engineer at diam Systems. Python, FastAPI, PostgreSQL, security and real-time systems. Projects, architecture docs and CV.">
+<meta property="og:url" content="https://adam-scholey.github.io/">
+<meta property="og:image" content="https://adam-scholey.github.io/images/dc-corridor.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://adam-scholey.github.io/">
+<title>Adam Scholey - Backend Software Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -155,10 +163,14 @@ section{
 .slide-title em{font-style:italic}
 .slide-sub{font-size:16.5px;line-height:1.55;color:rgba(20,24,30,.72);max-width:540px;margin-top:18px}
 .slide-link{display:inline-block;margin-top:26px;font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:14px;font-weight:600;color:var(--text);text-decoration:none;border-bottom:2px solid var(--text);padding-bottom:3px}
+.slide-cta{display:flex;gap:22px;align-items:baseline;flex-wrap:wrap}
+.slide-link.alt{border-bottom-width:1px;opacity:.75;font-weight:500}
+.slide-link.alt:hover{opacity:1}
 .hero-slide.dark .slide-caption{color:#fff;text-shadow:0 1px 14px rgba(5,7,12,.55),0 0 2px rgba(5,7,12,.4)}
 .hero-slide.dark .slide-kicker{color:rgba(255,255,255,.78)}
 .hero-slide.dark .slide-sub{color:rgba(255,255,255,.88)}
 .hero-slide.dark .slide-link{color:#fff;border-color:#fff}
+.hero-slide.dark .slide-link.alt{border-color:rgba(255,255,255,.55)}
 .hero-facts{position:absolute;right:5vw;top:50%;transform:translateY(-50%);z-index:3;width:230px;background:rgba(10,14,22,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px 22px;color:#fff}
 .hero-facts .f-title{font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:12px}
 .hero-facts ul{list-style:none;padding:0;margin:0}
@@ -256,6 +268,15 @@ li{margin-bottom:8px}
   letter-spacing:.2px;
   font-weight:500;
 }
+.work-label{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.card-link{display:inline-block;margin-top:14px;font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:13px;font-weight:600;color:var(--gold);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px}
+.card-link:hover{border-color:var(--gold)}
+.more-link{margin-top:26px;text-align:center}
+.more-link a{font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:14px;font-weight:600;color:var(--text);text-decoration:none;border-bottom:2px solid var(--text);padding-bottom:3px}
+.stack-strip{margin-top:48px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;border:1px solid var(--border);background:var(--panel);padding:16px 20px}
+.stack-label{font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
+.stack-items{font-size:14px;color:var(--text);flex:1;min-width:220px}
+.stack-strip .card-link{margin-top:0;flex-shrink:0}
 
 /* STAT CARDS */
 .stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
@@ -392,6 +413,7 @@ footer{
   .js .page-veil{opacity:0}
   .hero-track{transition:none}
 }
+a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -427,13 +449,16 @@ footer{
     <div class="hero-media">
       <div class="hero-track">
         <div class="hero-slide dark">
-          <img src="images/dc-corridor.jpg" decoding="async" alt="Dark data centre corridor lined with glass-fronted server cabinets">
+          <img src="images/dc-corridor.jpg" decoding="async" fetchpriority="high" alt="Dark data centre corridor lined with glass-fronted server cabinets">
           <div class="hero-shade"></div>
           <div class="slide-caption">
             <div class="slide-kicker">Adam Scholey</div>
-            <div class="slide-title">Software, built with <em>intent.</em></div>
+            <h1 class="slide-title">Software, built with <em>intent.</em></h1>
             <div class="slide-sub">Backend-focused software engineer - I like the problems that don't have easy answers.</div>
-            <a class="slide-link" href="#about">More about me</a>
+            <div class="slide-cta">
+              <a class="slide-link" href="#about">More about me</a>
+              <a class="slide-link alt" href="cv.html">View CV</a>
+            </div>
           </div>
         </div>
         <div class="hero-slide dark">
@@ -483,10 +508,10 @@ footer{
         </ul>
       </aside>
       <div class="hero-dots">
-        <button class="hero-dot active" type="button" aria-label="Image 1 of 4"></button>
-        <button class="hero-dot" type="button" aria-label="Image 2 of 4"></button>
-        <button class="hero-dot" type="button" aria-label="Image 3 of 4"></button>
-        <button class="hero-dot" type="button" aria-label="Image 4 of 4"></button>
+        <button class="hero-dot active" type="button" aria-label="Go to slide 1"></button>
+        <button class="hero-dot" type="button" aria-label="Go to slide 2"></button>
+        <button class="hero-dot" type="button" aria-label="Go to slide 3"></button>
+        <button class="hero-dot" type="button" aria-label="Go to slide 4"></button>
       </div>
     </div>
   </section>
@@ -517,7 +542,7 @@ footer{
       </div>
       <div class="stat-grid">
         <div class="stat-card"><strong>8+</strong><span>Systems built end-to-end</span></div>
-        <div class="stat-card"><strong>370+</strong><span>Automated tests written</span></div>
+        <div class="stat-card"><strong>158</strong><span>Tests on the framed@ platform alone</span></div>
         <div class="stat-card"><strong>C# · Python</strong><span>Primary languages</span></div>
         <div class="stat-card"><strong>diam Systems</strong><span>Oct 2025 - Present</span></div>
         <div class="stat-card" style="grid-column:1/-1">
@@ -525,6 +550,50 @@ footer{
           <span>Computing, Science &amp; Environmental Technology · Skillshouse CTE</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="work" class="reveal">
+    <div class="section-head">
+      <div class="kicker">Selected Work</div>
+      <h2>Three systems, three different problems.</h2>
+      <p class="subtitle">A snapshot of what I actually build - the full breakdown, architecture diagrams and docs are on the projects page.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="work-label">Client work</div>
+        <h3>framed@</h3>
+        <p>A ticketing and event-archive platform for a paying client. The hard problems: passwordless auth, Stripe checkout and refunds via signed webhooks, and QR door scanning that can't double-admit.</p>
+        <div class="tags">
+          <span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">Stripe</span>
+        </div>
+        <a class="card-link" href="https://framedat.uk" target="_blank" rel="noopener">framedat.uk</a>
+      </div>
+      <div class="card">
+        <div class="work-label">Commercial work</div>
+        <h3>Enterprise Messenger</h3>
+        <p>Multi-tenant messaging where the server only ever stores ciphertext - end-to-end encrypted channels, key epochs, org-level escrow, and tenant isolation enforced in Postgres itself.</p>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Socket.IO</span><span class="tag">PostgreSQL RLS</span>
+        </div>
+        <a class="card-link" href="diagrams.html?project=messenger">Architecture and docs</a>
+      </div>
+      <div class="card">
+        <div class="work-label">Commercial work</div>
+        <h3>Seek</h3>
+        <p>Enterprise search across an organisation's internal data - full-text indexing, cross-border access rules, and tenant isolation designed around GDPR requirements.</p>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span>
+        </div>
+        <a class="card-link" href="diagrams.html?project=seek">Architecture and docs</a>
+      </div>
+    </div>
+    <p class="more-link"><a href="projects.html">View all projects and live demos</a></p>
+
+    <div class="stack-strip">
+      <span class="stack-label">Core stack</span>
+      <span class="stack-items">Python · FastAPI · Flask · PostgreSQL · SQLAlchemy · Redis · C# / .NET · Docker · Git · Automated Testing</span>
+      <a class="card-link" href="skills.html">Full skills</a>
     </div>
   </section>
 
