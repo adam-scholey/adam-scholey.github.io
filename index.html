@@ -126,17 +126,17 @@ nav{
   gap:20px;
 }
 .nav-flat{display:flex;align-items:center;margin:0 auto;gap:22px}
-.nav-flat a{font-family:'Space Grotesk','Inter',Arial,sans-serif;color:var(--muted);font-size:14px;font-weight:500;padding:6px 2px;transition:.18s ease}
+.nav-flat a{font-family:'Space Grotesk','Inter',Arial,sans-serif;color:var(--muted);font-size:14px;font-weight:500;padding:6px 2px;transition:color .18s ease}
 .nav-flat a:hover{color:var(--text)}
 .nav-flat a.active{color:var(--text);font-weight:600}
 .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto}
-.nav-toggle span{display:block;width:22px;height:2px;background:var(--text);transition:.25s}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--text);transition:transform .25s,opacity .25s}
 nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 nav.open .nav-toggle span:nth-child(2){opacity:0}
 nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .nav-links{display:none;position:absolute;top:calc(100% + 15px);right:0;min-width:250px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px;box-shadow:0 18px 44px rgba(16,18,20,.14);flex-direction:column;z-index:1001}
 nav.open .nav-links{display:flex}
-.nav-links a{font-family:'Space Grotesk','Inter',Arial,sans-serif;color:var(--text);font-size:15px;font-weight:500;padding:10px 14px;border-radius:8px;transition:.15s ease}
+.nav-links a{font-family:'Space Grotesk','Inter',Arial,sans-serif;color:var(--text);font-size:15px;font-weight:500;padding:10px 14px;border-radius:8px;transition:background-color .15s ease,color .15s ease}
 .nav-links a:hover{background:var(--panel)}
 .nav-links a.active{color:var(--text);font-weight:600}
 .nav-links-foot{display:flex;gap:16px;margin-top:6px;padding:12px 14px 6px;border-top:1px solid var(--border)}
@@ -152,11 +152,10 @@ section{
 
 /* HERO */
 .hero{max-width:none;padding:0;display:block;min-height:0}
-.hero-media{position:relative;height:calc(100vh - 60px);height:calc(100svh - 60px);min-height:480px;overflow:hidden;background:#101214}
+.hero-media{position:relative;height:calc(100vh - 60px);height:calc(100svh - 60px);min-height:480px;overflow:hidden;background:#101214;user-select:none;-webkit-user-select:none}
 .hero-track{display:flex;height:100%;transition:transform .8s cubic-bezier(.65,0,.35,1);will-change:transform}
 .hero-slide{position:relative;flex:0 0 100%;height:100%;overflow:hidden}
 .hero-slide img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;-webkit-user-drag:none;user-select:none}
-.hero-media{user-select:none;-webkit-user-select:none}
 .slide-caption{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;color:var(--text);padding:0 8vw;padding-bottom:6vh}
 .slide-kicker{font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:13px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(20,24,30,.6);margin-bottom:16px}
 .slide-title{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(36px,5.2vw,64px);line-height:1.05;letter-spacing:-1.5px;max-width:700px}
@@ -371,7 +370,7 @@ footer{
   text-align:center;
 }
 .footer-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:14px}
-.footer-nav a{color:var(--soft);font-size:12px;padding:6px 8px;transition:.2s}
+.footer-nav a{color:var(--soft);font-size:12px;padding:6px 8px;transition:color .2s}
 .footer-nav a:hover{color:var(--gold)}
 .img-credits{color:var(--soft);font-size:11px;margin-top:10px;opacity:.75}
 .img-credits a{color:inherit;text-decoration:underline;text-underline-offset:2px}
@@ -412,6 +411,8 @@ footer{
   .page-veil{transition:none}
   .js .page-veil{opacity:0}
   .hero-track{transition:none}
+  .card,.proj-card,.repo-card,.stat-card,.contact-links a{transition:border-color .2s ease}
+  .card:hover,.proj-card:hover,.repo-card:hover,.stat-card:hover,.contact-links a:hover{transform:none}
 }
 a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
 </style>
@@ -449,7 +450,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
     <div class="hero-media">
       <div class="hero-track">
         <div class="hero-slide dark">
-          <img src="images/dc-fiber.jpg" decoding="async" fetchpriority="high" alt="Fibre optic strands glowing blue and green against black">
+          <img src="images/ab-streaks.jpg" decoding="async" fetchpriority="high" alt="Thin cyan light streaks sweeping across a black background">
           <div class="hero-shade"></div>
           <div class="slide-caption">
             <div class="slide-kicker">Adam Scholey</div>
@@ -462,7 +463,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
           </div>
         </div>
         <div class="hero-slide dark">
-          <img src="images/dc-blue.jpg" decoding="async" alt="Rows of server racks illuminated in deep blue light">
+          <img src="images/ab-trails.jpg" decoding="async" alt="Multicoloured neon light trails scribbled across a black background">
           <div class="hero-shade"></div>
           <div class="slide-caption">
             <div class="slide-kicker">Backend Engineering</div>
@@ -472,17 +473,17 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
           </div>
         </div>
         <div class="hero-slide dark">
-          <img src="images/dc-neon.jpg" decoding="async" alt="Perforated metal surface glowing with pink and blue light">
+          <img src="images/ab-rgb.jpg" decoding="async" alt="PC components glowing with rainbow RGB lighting in a dark case" style="object-position:center 90%">
           <div class="hero-shade"></div>
           <div class="slide-caption">
             <div class="slide-kicker">Security</div>
             <div class="slide-title">Built in, not bolted on.</div>
             <div class="slide-sub">Encryption, tenant isolation and session consistency - designed in from day one, not patched on later.</div>
-            <a class="slide-link" href="diagrams.html">Read the docs</a>
+            <a class="slide-link" href="diagrams.html">See the architecture</a>
           </div>
         </div>
         <div class="hero-slide dark">
-          <img src="images/dc-panel.jpg" decoding="async" alt="Teal patch panel with neatly bundled network cables">
+          <img src="images/ab-pipes.jpg" decoding="async" alt="Metal pipes traced with red, green and blue neon light on black">
           <div class="hero-shade"></div>
           <div class="slide-caption">
             <div class="slide-kicker">Currently</div>
@@ -557,7 +558,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
     <div class="section-head">
       <div class="kicker">Selected Work</div>
       <h2>Three systems, three different problems.</h2>
-      <p class="subtitle">A snapshot of what I actually build - the full breakdown, architecture diagrams and docs are on the projects page.</p>
+      <p class="subtitle">A snapshot of what I actually build - the full breakdown and architecture diagrams are on the projects page.</p>
     </div>
     <div class="grid-3">
       <div class="card">
@@ -576,7 +577,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         <div class="tags">
           <span class="tag">Python</span><span class="tag">Socket.IO</span><span class="tag">PostgreSQL RLS</span>
         </div>
-        <a class="card-link" href="diagrams.html?project=messenger">Architecture and docs</a>
+        <a class="card-link" href="diagrams.html?project=messenger">Architecture diagram</a>
       </div>
       <div class="card">
         <div class="work-label">Commercial work</div>
@@ -585,7 +586,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         <div class="tags">
           <span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span>
         </div>
-        <a class="card-link" href="diagrams.html?project=seek">Architecture and docs</a>
+        <a class="card-link" href="diagrams.html?project=seek">Architecture diagram</a>
       </div>
     </div>
     <p class="more-link"><a href="projects.html">View all projects and live demos</a></p>
@@ -611,7 +612,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
     <a href="contact.html">Contact</a>
   </div>
   <p style="color:var(--soft);font-size:12px">© <span id="year">2026</span> Adam Scholey · Software Engineer</p>
-  <p class="img-credits">Hero photos: panumas nikhomkhai, Atlantic Ambience, Scott Webb and Brett Sayles via <a href="https://www.pexels.com">Pexels</a></p>
+  <p class="img-credits">Hero imagery via <a href="https://www.pexels.com">Pexels</a></p>
 </footer>
 
 <script>
