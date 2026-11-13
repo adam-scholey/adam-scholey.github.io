@@ -156,6 +156,12 @@ h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:19px
 }
 .cv-section ul{padding-left:18px}
 .cv-section li{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:8px}
+.other-roles{list-style:none;padding-left:0}
+.other-roles li{margin-bottom:14px}
+.other-roles li:last-child{margin-bottom:0}
+.other-role{display:block;color:var(--text);font-size:14px;font-weight:500}
+.other-roles .meta{display:block;margin-bottom:0}
+.other-note{display:block;color:var(--muted);font-size:13px;line-height:1.6;margin-top:2px}
 .skill-grid{display:grid;grid-template-columns:1fr;gap:20px}
 .skill-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
 .skill-group h5{color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.8px;margin-bottom:10px}
@@ -313,10 +319,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 
       <div class='cv-card reveal cv-section'>
         <h4>Other Experience</h4>
-        <ul>
-          <li><strong style='color:var(--text)'>Production Operator</strong> - Pure Pet Food Ltd &middot; Oct 2024 - Present</li>
-          <li><strong style='color:var(--text)'>Prototype Tester</strong> - Microsoft, Cambridge &middot; 2019 &middot; tested an accessibility-focused app prototype as a partially sighted user, giving structured feedback on screen readers and contrast</li>
-          <li><strong style='color:var(--text)'>Farm Hand</strong> - Brians Best Wools &middot; Sept 2023 - Aug 2024</li>
+        <ul class='other-roles'>
+          <li>
+            <span class='other-role'>Production Operator (Part-time)</span>
+            <span class='meta'>Pure Pet Food Ltd &middot; Oct 2024 - Present</span>
+          </li>
+          <li>
+            <span class='other-role'>Prototype Tester</span>
+            <span class='meta'>Microsoft, Cambridge &middot; 2019</span>
+            <span class='other-note'>Tested an accessibility-focused app prototype as a partially sighted user - structured feedback on screen readers and contrast.</span>
+          </li>
+          <li>
+            <span class='other-role'>Farm Hand</span>
+            <span class='meta'>Brians Best Wools &middot; Sept 2023 - Aug 2024</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -426,7 +442,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         </ul>
       </div>
 
-      <div class='cv-card reveal cv-section no-print'>
+      <div class='cv-card reveal cv-section'>
         <h4>Internal Project Management Tool</h4>
         <p class='meta'>Python, Flask, SQLite</p>
         <ul>
