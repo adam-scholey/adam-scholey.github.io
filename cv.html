@@ -239,7 +239,7 @@ footer{
   .cv-card,.btn,.cv-select{transition:border-color .2s ease}
   .cv-card:hover,.btn:hover,.cv-select:hover{transform:none}
 }
-@page{margin:1.7cm 1.7cm}
+@page{margin:1.5cm 1.7cm}
 @media print{
   nav,footer,.cv-actions,.no-print{display:none}
   body::before{display:none}
@@ -251,10 +251,10 @@ footer{
   .cv-grid,.skill-grid{display:block}
   .cv-card{border:none;background:none;padding:0;margin:0}
   .cv-card:hover{transform:none}
-  .cv-section{margin-bottom:9px;break-inside:avoid}
+  .cv-section{margin-bottom:8px;break-inside:avoid}
   .cv-card ul{margin:4px 0}
   .cv-card li{margin-bottom:1px;break-inside:avoid}
-  .cv-hero{padding:0 0 8px;margin-bottom:10px;border-bottom:1.5px solid #222;break-inside:avoid}
+  .cv-hero{padding:0 0 8px;margin-bottom:10px;break-inside:avoid}
   .cv-hero .cv-contact{margin-bottom:0}
   .cv-name{font-size:28px}
   .cv-h2,.cv-stmt-h{
@@ -265,8 +265,6 @@ footer{
     text-transform:uppercase;
     color:var(--muted);
     margin:14px 0 7px;
-    padding-bottom:3px;
-    border-bottom:1px solid #bbb;
     break-after:avoid;
   }
   .cv-stmt-h{margin-top:0}
@@ -274,16 +272,13 @@ footer{
   .cv-section h4{font-size:12px}
   .cv-section .meta{margin-bottom:4px;font-size:10.5px}
   .cv-card p,.cv-card li{font-size:10.5px;line-height:1.5}
-  /* Skills as compact "Label: items" lines. */
-  .skill-groups{display:flex;flex-direction:column;gap:5px}
+  /* Skills as grouped columns, no boxes. */
+  .skill-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 20px}
   .skill-group{margin:0;break-inside:avoid}
-  .skill-group h5{display:inline;font-size:10.5px;letter-spacing:0;text-transform:none}
-  .skill-group h5::after{content:': '}
-  .skill-list{display:inline;padding:0}
-  .skill-list li{display:inline;font-size:10.5px;line-height:1.5}
+  .skill-group h5{font-size:10px;margin-bottom:4px}
+  .skill-list{display:block;padding-left:14px;margin:0}
+  .skill-list li{display:list-item;font-size:10px;line-height:1.4;margin-bottom:1px}
   .skill-list li.no-print{display:none}
-  .skill-list li::after{content:' \00b7 ';color:#999}
-  .skill-list li:last-child::after{content:''}
   .other-roles li{margin-bottom:7px}
   .other-role{font-size:11px}
   .other-roles .meta,.other-note{font-size:10.5px}
@@ -294,6 +289,7 @@ footer{
   html[data-cv='backend'] .sg-test{order:3}
   html[data-cv='backend'] .sg-infra{order:4}
   html[data-cv='backend'] .sg-sec{order:5}
+  html[data-cv='backend'] .pj-ir{display:none}
   html[data-cv='security'] .stmt-general{display:none}
   html[data-cv='security'] .stmt-security{display:block}
   html[data-cv='security'] .sg-sec{order:-1}
