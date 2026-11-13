@@ -224,7 +224,7 @@ footer{
   body::before{display:none}
   .cv-hero .kicker{display:none}
   .js .reveal{opacity:1;transform:none}
-  body{font-size:12px;zoom:.58;line-height:1.45}
+  body{font-size:12px;zoom:.6;line-height:1.45}
   section{padding:6px 16px}
   .cv-h2{margin:12px 0 8px;break-after:avoid}
   h3,h4,h5{break-after:avoid}
@@ -464,13 +464,22 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         </ul>
       </div>
 
-      <div class='cv-card reveal cv-section' style='grid-column:1/-1'>
+      <div class='cv-card reveal cv-section'>
         <h4>Zero-Knowledge Cloud Storage Platform</h4>
         <p class='meta'>C#, Blazor, ASP.NET Core, PostgreSQL, AWS S3, SignalR</p>
         <ul>
           <li>Client-side AES-256 encryption before upload, so the server stores ciphertext only and never sees plaintext.</li>
           <li>Real-time collaborative editing via SignalR with Monaco editor and operational-transform conflict handling.</li>
           <li>AWS S3 object storage integration with signed URL handling for uploads and downloads.</li>
+        </ul>
+      </div>
+
+      <div class='cv-card reveal cv-section'>
+        <h4>Incident Response Platform</h4>
+        <p class='meta'>C#, .NET MAUI, SQLite &middot; <a href='https://github.com/AdamScholey25/Incident-Response-Platform'>GitHub</a></p>
+        <ul>
+          <li>The NIST incident response lifecycle as a structured workflow - guided playbooks for containment, eradication and recovery.</li>
+          <li>Immutable chain-of-custody records for evidence handling, with MTTD/MTTC/MTTR metrics tracked per incident.</li>
         </ul>
       </div>
     </div>
