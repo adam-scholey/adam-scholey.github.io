@@ -224,14 +224,16 @@ footer{
   body::before{display:none}
   .cv-hero .kicker{display:none}
   .js .reveal{opacity:1;transform:none}
-  body{font-size:12px;zoom:.6;line-height:1.45}
+  body{font-size:12px;zoom:.61;line-height:1.45}
   section{padding:6px 16px}
-  .cv-h2{margin:12px 0 8px;break-after:avoid}
+  /* Counteract the body zoom so the skills card keeps its size. */
+  .cv-card:has(.skill-groups){zoom:.984}
+  .cv-h2{margin:9px 0 6px;break-after:avoid}
   h3,h4,h5{break-after:avoid}
   /* Keep cards two-up in print; break-inside:avoid stops splits. */
-  .cv-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .cv-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
   .skill-grid{display:block}
-  .cv-card{padding:10px 12px;margin-bottom:8px;break-inside:avoid}
+  .cv-card{padding:9px 11px;margin-bottom:6px;break-inside:avoid}
   /* The technical-skills card is taller than a page — let it split between
      skill groups instead of jumping wholesale to the next page. */
   .cv-card:has(.skill-groups){break-inside:avoid}
