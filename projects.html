@@ -61,17 +61,17 @@ nav{
 }
 .nav-inner{position:relative;max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .nav-flat{display:flex;align-items:center;margin:0 auto;gap:22px}
-.nav-flat a{font-family:'Space Grotesk','Inter',Arial,sans-serif;color:var(--muted);font-size:14px;font-weight:500;padding:6px 2px;transition:.18s ease}
+.nav-flat a{font-family:'Space Grotesk','Inter',Arial,sans-serif;color:var(--muted);font-size:14px;font-weight:500;padding:6px 2px;transition:color .18s ease}
 .nav-flat a:hover{color:var(--text)}
 .nav-flat a.active{color:var(--text);font-weight:600}
 .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto}
-.nav-toggle span{display:block;width:22px;height:2px;background:var(--text);transition:.25s}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--text);transition:transform .25s,opacity .25s}
 nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 nav.open .nav-toggle span:nth-child(2){opacity:0}
 nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .nav-links{display:none;position:absolute;top:calc(100% + 15px);right:0;min-width:250px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px;box-shadow:0 18px 44px rgba(16,18,20,.14);flex-direction:column;z-index:1001}
 nav.open .nav-links{display:flex}
-.nav-links a{font-family:'Space Grotesk','Inter',Arial,sans-serif;color:var(--text);font-size:15px;font-weight:500;padding:10px 14px;border-radius:8px;transition:.15s ease}
+.nav-links a{font-family:'Space Grotesk','Inter',Arial,sans-serif;color:var(--text);font-size:15px;font-weight:500;padding:10px 14px;border-radius:8px;transition:background-color .15s ease,color .15s ease}
 .nav-links a:hover{background:var(--panel)}
 .nav-links a.active{color:var(--text);font-weight:600}
 .nav-links-foot{display:flex;gap:16px;margin-top:6px;padding:12px 14px 6px;border-top:1px solid var(--border)}
@@ -99,7 +99,7 @@ h1,h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:c
   font-size:13px;
   font-weight:500;
   cursor:pointer;
-  transition:.15s;
+  transition:border-color .15s,color .15s,background-color .15s;
 }
 .filter-btn:hover{border-color:var(--border-hover);color:var(--text)}
 .filter-btn.active{background:var(--text);border-color:var(--text);color:#fff}
@@ -121,7 +121,7 @@ h1,h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:c
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
 .tag{color:var(--muted);border:1px solid var(--border);border-radius:6px;padding:4px 9px;font-size:11px;letter-spacing:.2px;font-weight:500}
 .show-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.show-links a{color:var(--accent);font-size:13px;font-weight:600;transition:.15s}
+.show-links a{color:var(--accent);font-size:13px;font-weight:600;transition:color .15s}
 .show-links a:hover{color:var(--accent-hover);text-decoration:underline}
 .proj-status{display:inline-flex;align-items:center;padding:4px 11px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.4px}
 .status-dev{background:var(--blue-bg);color:var(--blue-text)}
@@ -168,7 +168,7 @@ h1,h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:c
   color:var(--text);
   font-size:13px;
   font-weight:500;
-  transition:.15s;
+  transition:border-color .15s;
 }
 .contact-links a:hover{border-color:var(--text)}
 .contact-links .small{color:var(--soft);font-size:12px;font-weight:400}
@@ -180,7 +180,7 @@ footer{
   text-align:center;
 }
 .footer-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:14px}
-.footer-nav a{color:var(--muted);font-size:12px;padding:6px 8px;transition:.2s}
+.footer-nav a{color:var(--muted);font-size:12px;padding:6px 8px;transition:color .2s}
 .footer-nav a:hover{color:var(--accent)}
 .footer-note{color:var(--soft);font-size:12px;margin-top:6px}
 
@@ -209,6 +209,8 @@ footer{
   html{scroll-behavior:auto}
   .page-veil{transition:none}
   .js .page-veil{opacity:0}
+  .mini-card{transition:border-color .2s}
+  .mini-card:hover{transform:none}
 }
 a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
 </style>
