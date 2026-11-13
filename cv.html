@@ -215,20 +215,22 @@ footer{
   body::before{display:none}
   .cv-hero .kicker{display:none}
   .js .reveal{opacity:1!important;transform:none!important}
-  body{font-size:12px;zoom:.78;line-height:1.45}
-  section{padding:8px 20px}
-  h2{margin:16px 0 10px!important;break-after:avoid}
+  body{font-size:12px;zoom:.6;line-height:1.45}
+  section{padding:6px 16px}
+  h2{margin:12px 0 8px!important;break-after:avoid}
   h3,h4,h5{break-after:avoid}
-  /* Flatten grids to a single column so cards paginate naturally. */
-  .cv-grid,.skill-grid{display:block}
-  .cv-card{padding:12px;margin-bottom:10px;break-inside:avoid}
+  /* Keep cards two-up in print; break-inside:avoid stops splits. */
+  .cv-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .skill-grid{display:block}
+  .cv-card{padding:10px 12px;margin-bottom:8px;break-inside:avoid}
   /* The technical-skills card is taller than a page — let it split between
      skill groups instead of jumping wholesale to the next page. */
   .cv-card:has(.skill-groups){break-inside:auto;box-decoration-break:clone}
   .skill-group{break-inside:avoid;margin-bottom:10px}
   .cv-card ul{margin:6px 0}
   .cv-card li{margin-bottom:3px;break-inside:avoid}
-  .cv-hero{padding:14px;margin-bottom:12px;break-inside:avoid}
+  .cv-hero{padding:10px 14px;margin-bottom:8px;break-inside:avoid}
+  .cv-hero .cv-contact{margin-bottom:10px}
   p,li{orphans:2;widows:2}
 }
 a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
@@ -255,7 +257,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
       <div class="nav-links-foot">
         <a href="https://github.com/adam-scholey" target="_blank" rel="noopener">github</a>
         <a href="https://www.linkedin.com/in/adam-scholey-8306892b0/" target="_blank" rel="noopener">linkedin</a>
-        <a href="mailto:adam@diamsystems.co.uk">email</a>
+        <a href="mailto:adamscholey25@gmail.com">email</a>
       </div>
     </div>
     <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -287,7 +289,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 
     <div class='cv-card reveal' style='margin-bottom:22px'>
       <h3 style="font-family:'Playfair Display',Georgia,serif">Personal Statement</h3>
-      <p>A backend-focused Software Developer with hands-on experience building secure, production-oriented systems, primarily using Python and PostgreSQL. I specialise in building multi-tenant architectures with a strong emphasis on data security, including an enterprise search engine with row-level security and GDPR-compliant cross-border data access, and a live client platform built on FastAPI with Stripe payments and secure authentication. I achieved Distinction-level results in the cyber security units of my BTEC IT (D*D*D) and bring that security mindset into every system I build, from access control to data isolation. I am seeking a backend or full-stack software engineering role where I can apply this foundation to real-world products in a professional environment.</p>
+      <p>A backend-focused Software Developer with hands-on experience building secure, production-oriented systems, primarily using Python and PostgreSQL. I specialise in building multi-tenant architectures with a strong emphasis on data security, including an enterprise search engine with row-level security designed for GDPR requirements, and a live client platform built on FastAPI with Stripe payments and secure authentication. I achieved Distinction-level results in the cyber security units of my BTEC IT (D*D*D) and bring that security mindset into every system I build, from access control to data isolation. I am seeking a backend or full-stack software engineering role where I can apply this foundation to real-world products in a professional environment.</p>
     </div>
 
     <h2 style='margin-bottom:22px'>Experience</h2>
@@ -296,19 +298,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         <h4>Software Developer (Part-time)</h4>
         <p class='meta'>diam Systems Ltd &middot; Oct 2025 - Present</p>
         <ul>
-          <li>Built a multi-tenant enterprise search engine using Python and PostgreSQL, with GDPR-compliant cross-border data access.</li>
+          <li>Built a multi-tenant enterprise search engine using Python and PostgreSQL, designed for GDPR requirements - consent management, audit logging and data residency.</li>
           <li>Implemented advanced PostgreSQL architecture with tsvector full-text search, row-level security, and table partitioning.</li>
           <li>Developed an internal project management tool in active daily use across the team, with real-time SSE updates and CLI integration.</li>
           <li>Built a production-ready restaurant booking system using Python and Flask, with Stripe payments and a visual floor plan.</li>
           <li>Building a paid client platform (framed@) on FastAPI with async SQLAlchemy, PostgreSQL, Stripe checkout, and passwordless authentication.</li>
-          <li>Contributed to diamsystems.co.uk, the company website with e-commerce (Printify + Stripe) and i18n support.</li>
+          <li>Key contributor to an end-to-end encrypted business messaging platform - channel key epochs, organisation key escrow, and PostgreSQL row-level security tenancy.</li>
+          <li>Contributed to <a href='https://diamsystems.co.uk' target='_blank' rel='noopener' style='color:var(--gold)'>diamsystems.co.uk</a>, the company website - Stripe, Gumroad licensing and Printify commerce with multi-locale support and full-text search.</li>
         </ul>
       </div>
 
       <div class='cv-card reveal cv-section'>
         <h4>Production Operator (Part-time)</h4>
         <p class='meta'>Pure Pet Food Ltd &middot; Oct 2024 - Present</p>
-        <ul>
+        <ul class='no-print'>
           <li>Operated production machinery in a fast-paced manufacturing environment.</li>
           <li>Maintained quality standards and met daily output targets.</li>
         </ul>
@@ -318,15 +321,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         <h4>Prototype Tester</h4>
         <p class='meta'>Microsoft, Cambridge &middot; 2019</p>
         <ul>
-          <li>Selected by Microsoft to test an accessibility-focused mobile application prototype as a partially sighted user.</li>
-          <li>Provided structured feedback on screen reader compatibility, contrast, and UX for visually impaired users.</li>
+          <li>Tested an accessibility-focused app prototype as a partially sighted user, giving structured feedback on screen reader compatibility and contrast.</li>
         </ul>
       </div>
 
       <div class='cv-card reveal cv-section'>
         <h4>Farm Hand</h4>
         <p class='meta'>Brians Best Wools &middot; Sept 2023 - Aug 2024</p>
-        <ul>
+        <ul class='no-print'>
           <li>Managed daily production tasks to strict schedules in a physically demanding environment, demonstrating reliability and consistency.</li>
         </ul>
       </div>
@@ -385,12 +387,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
             <ul class='skill-list'>
               <li>xUnit - unit and integration tests</li>
               <li>pytest - fixtures, parametrize, coverage</li>
-              <li>k6 - load testing and performance baselines</li>
+              <li class='no-print'>k6 - load testing and performance baselines</li>
               <li>Playwright - E2E browser automation</li>
               <li>370+ tests across production systems - unit, integration and E2E (158 on framed@ alone)</li>
             </ul>
           </div>
-          <div class='skill-group'>
+          <div class='skill-group no-print'>
             <h5>Desktop &amp; Mobile</h5>
             <ul class='skill-list'>
               <li>WinUI 3 - modern Windows applications</li>
@@ -404,10 +406,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
             <h5>Infrastructure</h5>
             <ul class='skill-list'>
               <li>Docker - containerisation and Compose</li>
-              <li>AWS S3 - object storage and signed URLs</li>
+              <li>S3 object storage - Cloudflare R2, AWS S3 (FileFlow, personal project)</li>
               <li>Git, GitHub Actions, CI/CD pipelines</li>
-              <li>Cloudflare and Cloudflare Tunnel</li>
-              <li>Kubernetes - Deployment, HPA, NetworkPolicy</li>
+              <li>Fly.io, Cloudflare and Cloudflare Tunnel</li>
+              <li class='no-print'>Kubernetes - Deployment, HPA, NetworkPolicy</li>
             </ul>
           </div>
         </div>
@@ -417,32 +419,42 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
     <h2 style='margin:40px 0 22px'>Projects</h2>
     <div class='cv-grid'>
       <div class='cv-card reveal cv-section'>
-        <h4>framed@ &middot; Client Booking &amp; Events Platform</h4>
+        <h4>framed@ &middot; Client Ticketing &amp; Event-Archive Platform</h4>
         <p class='meta'>FastAPI, PostgreSQL, Stripe &middot; <a href='https://framedat.uk'>framedat.uk</a></p>
         <ul>
           <li>Paid client engagement building a music and events platform for framed@ Limited - scoped features, estimated effort, demoed progress and delivered against agreed milestones.</li>
-          <li>FastAPI backend with async SQLAlchemy, PostgreSQL, and Pydantic; Stripe hosted checkout and webhooks.</li>
+          <li>FastAPI backend with async SQLAlchemy, PostgreSQL, and Pydantic; Stripe hosted checkout with signed webhooks, and QR door scanning that can't double-admit.</li>
           <li>Passwordless magic-link authentication and real-time admin dashboard via SSE.</li>
           <li>158 automated tests across unit, route-level and security-regression suites; live preview deployed ahead of production launch.</li>
         </ul>
       </div>
 
       <div class='cv-card reveal cv-section'>
-        <h4>Enterprise Search Platform</h4>
-        <p class='meta'>Python, Flask, PostgreSQL, Redis, Kubernetes</p>
+        <h4>diam Enterprise Messenger &middot; E2E Encrypted Messaging</h4>
+        <p class='meta'>Python, FastAPI, PostgreSQL, Socket.IO, Web Crypto</p>
         <ul>
-          <li>Multi-tenant SaaS platform with multi-region deployment across UK and EU.</li>
-          <li>Advanced PostgreSQL architecture: tsvector full-text search, pg_trgm GIN indexes, row-level security, table partitioning by region, and PgBouncer connection pooling.</li>
-          <li>GDPR-compliant cross-border data access with consent management, audit logging, and data sovereignty enforcement across UK and EU regions.</li>
-          <li>Kubernetes deployment with horizontal pod autoscaling, multi-connector parallel search via asyncio, and guided database connection wizard with SSH tunnel.</li>
+          <li>End-to-end encrypted DMs and channels - the server only ever stores ciphertext (RSA-OAEP key wrapping, AES-GCM, Web Crypto).</li>
+          <li>Channel key epochs with client-driven re-keying on member removal; organisation escrow for admin recovery.</li>
+          <li>Tenant isolation enforced by PostgreSQL row-level security with a restricted non-owner role, plus Argon2id auth, TOTP MFA and per-session CSRF.</li>
         </ul>
       </div>
 
       <div class='cv-card reveal cv-section'>
+        <h4>Seek &middot; Enterprise Search Platform</h4>
+        <p class='meta'>Python, Flask, PostgreSQL, Redis, Kubernetes</p>
+        <ul>
+          <li>Multi-tenant search platform designed for multi-region deployment across UK and EU.</li>
+          <li>Advanced PostgreSQL architecture: tsvector full-text search, pg_trgm GIN indexes, row-level security, table partitioning by region, and PgBouncer connection pooling.</li>
+          <li>Designed for GDPR requirements - consent management, audit logging and data residency across UK and EU regions.</li>
+          <li class='no-print'>Kubernetes deployment with horizontal pod autoscaling, multi-connector parallel search via asyncio, and guided database connection wizard with SSH tunnel.</li>
+        </ul>
+      </div>
+
+      <div class='cv-card reveal cv-section no-print'>
         <h4>Internal Project Management Tool</h4>
         <p class='meta'>Python, Flask, SQLite</p>
         <ul>
-          <li>Elegant project management tool with seven-stage lifecycle tracking.</li>
+          <li>Project management tool with seven-stage lifecycle tracking.</li>
           <li>Real-time updates via Server-Sent Events (SSE) and email notifications.</li>
           <li>CLI package for command-line project management with REST API integration.</li>
           <li>Deployed to Fly.io with SQLite database and SMTP email notifications.</li>
@@ -477,21 +489,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         <h4>Bradford College</h4>
         <p class='meta'>Sept 2023 - Jun 2026</p>
         <ul>
-          <li>Level 1/2 Information and Creative Technology - DM</li>
+          <li class='no-print'>Level 1/2 Information and Creative Technology - DM</li>
           <li>English Language (6), Mathematics (4)</li>
           <li>BTEC Level 3 National Extended Diploma in Information Technology - D*D*D</li>
           <li><strong style='color:var(--text)'>Award:</strong> Learner of the Year, Computing, Science &amp; Environmental Technology, University of Bradford &middot; Skillshouse CTE.</li>
         </ul>
       </div>
 
-      <div class='cv-card reveal cv-section'>
+      <div class='cv-card reveal cv-section no-print'>
         <h4>Trinity Academy Bradford</h4>
         <p class='meta'>Sept 2018 - June 2023</p>
         <ul>
           <li>English Literature (5)</li>
-          <li>BTEC Level 1/2 in Sport (Distinction)</li>
-          <li>BTEC Level 1/2 in Engineering (Merit)</li>
-          <li>BTEC Level 1/2 in Creative iMedia (Merit)</li>
+          <li class='no-print'>BTEC Level 1/2 in Sport (Distinction)</li>
+          <li class='no-print'>BTEC Level 1/2 in Engineering (Merit)</li>
+          <li class='no-print'>BTEC Level 1/2 in Creative iMedia (Merit)</li>
         </ul>
       </div>
     </div>
