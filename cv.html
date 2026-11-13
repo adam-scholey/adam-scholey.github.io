@@ -211,13 +211,13 @@ footer{
   .cv-card,.btn{transition:border-color .2s ease}
   .cv-card:hover,.btn:hover{transform:none}
 }
-@page{margin:2cm 1.4cm}
+@page{margin:1.5cm 1.4cm}
 @media print{
   nav,footer,.cv-actions,.no-print{display:none}
   body::before{display:none}
   .cv-hero .kicker{display:none}
   .js .reveal{opacity:1!important;transform:none!important}
-  body{font-size:12px;zoom:.6;line-height:1.45}
+  body{font-size:12px;zoom:.58;line-height:1.45}
   section{padding:6px 16px}
   h2{margin:12px 0 8px!important;break-after:avoid}
   h3,h4,h5{break-after:avoid}
@@ -227,7 +227,7 @@ footer{
   .cv-card{padding:10px 12px;margin-bottom:8px;break-inside:avoid}
   /* The technical-skills card is taller than a page — let it split between
      skill groups instead of jumping wholesale to the next page. */
-  .cv-card:has(.skill-groups){break-inside:auto;box-decoration-break:clone}
+  .cv-card:has(.skill-groups){break-inside:avoid}
   .skill-group{break-inside:avoid;margin-bottom:10px}
   .cv-card ul{margin:6px 0}
   .cv-card li{margin-bottom:3px;break-inside:avoid}
@@ -291,7 +291,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 
     <div class='cv-card reveal' style='margin-bottom:22px'>
       <h3 style="font-family:'Playfair Display',Georgia,serif">Personal Statement</h3>
-      <p>A backend-focused Software Developer with hands-on experience building secure, production-oriented systems, primarily using Python and PostgreSQL. I specialise in building multi-tenant architectures with a strong emphasis on data security, including an enterprise search engine with row-level security designed for GDPR requirements, and a live client platform built on FastAPI with Stripe payments and secure authentication. I achieved Distinction-level results in the cyber security units of my BTEC IT (D*D*D) and bring that security mindset into every system I build, from access control to data isolation. I am seeking a backend or full-stack software engineering role where I can apply this foundation to real-world products in a professional environment.</p>
+      <p>A backend-focused Software Developer with hands-on experience building secure, production-oriented systems, primarily using Python and PostgreSQL. I specialise in building multi-tenant architectures with a strong emphasis on data security, including row-level security designed for GDPR requirements, and a live client platform built on FastAPI with Stripe payments and secure authentication. I achieved Distinction-level results in the cyber security units of my BTEC IT (D*D*D) and bring that security mindset into every system I build, from access control to data isolation. I am seeking a backend or full-stack software engineering role where I can apply this foundation to real-world products in a professional environment.</p>
     </div>
 
     <h2 style='margin-bottom:22px'>Experience</h2>
@@ -311,27 +311,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
       </div>
 
       <div class='cv-card reveal cv-section'>
-        <h4>Production Operator (Part-time)</h4>
-        <p class='meta'>Pure Pet Food Ltd &middot; Oct 2024 - Present</p>
-        <ul class='no-print'>
-          <li>Operated production machinery in a fast-paced manufacturing environment.</li>
-          <li>Maintained quality standards and met daily output targets.</li>
-        </ul>
-      </div>
-
-      <div class='cv-card reveal cv-section'>
-        <h4>Prototype Tester</h4>
-        <p class='meta'>Microsoft, Cambridge &middot; 2019</p>
+        <h4>Other Experience</h4>
         <ul>
-          <li>Tested an accessibility-focused app prototype as a partially sighted user, giving structured feedback on screen reader compatibility and contrast.</li>
-        </ul>
-      </div>
-
-      <div class='cv-card reveal cv-section'>
-        <h4>Farm Hand</h4>
-        <p class='meta'>Brians Best Wools &middot; Sept 2023 - Aug 2024</p>
-        <ul class='no-print'>
-          <li>Managed daily production tasks to strict schedules in a physically demanding environment, demonstrating reliability and consistency.</li>
+          <li><strong style='color:var(--text)'>Production Operator</strong> - Pure Pet Food Ltd &middot; Oct 2024 - Present</li>
+          <li><strong style='color:var(--text)'>Prototype Tester</strong> - Microsoft, Cambridge &middot; 2019 &middot; tested an accessibility-focused app prototype as a partially sighted user, giving structured feedback on screen readers and contrast</li>
+          <li><strong style='color:var(--text)'>Farm Hand</strong> - Brians Best Wools &middot; Sept 2023 - Aug 2024</li>
         </ul>
       </div>
     </div>
@@ -441,17 +425,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         </ul>
       </div>
 
-      <div class='cv-card reveal cv-section'>
-        <h4>Seek &middot; Enterprise Search Platform</h4>
-        <p class='meta'>Python, Flask, PostgreSQL, Redis, Kubernetes</p>
-        <ul>
-          <li>Multi-tenant search platform designed for multi-region deployment across UK and EU.</li>
-          <li>Advanced PostgreSQL architecture: tsvector full-text search, pg_trgm GIN indexes, row-level security, table partitioning by region, and PgBouncer connection pooling.</li>
-          <li>Designed for GDPR requirements - consent management, audit logging and data residency across UK and EU regions.</li>
-          <li class='no-print'>Kubernetes deployment with horizontal pod autoscaling, multi-connector parallel search via asyncio, and guided database connection wizard with SSH tunnel.</li>
-        </ul>
-      </div>
-
       <div class='cv-card reveal cv-section no-print'>
         <h4>Internal Project Management Tool</h4>
         <p class='meta'>Python, Flask, SQLite</p>
@@ -463,7 +436,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         </ul>
       </div>
 
-      <div class='cv-card reveal cv-section no-print'>
+      <div class='cv-card reveal cv-section'>
         <h4>Restaurant Booking System</h4>
         <p class='meta'>Python, Flask, MySQL, Stripe</p>
         <ul>
