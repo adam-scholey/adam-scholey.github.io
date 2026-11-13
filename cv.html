@@ -17,7 +17,6 @@
 <link rel='preconnect' href='https://fonts.googleapis.com'>
 <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Space+Grotesk:wght@500&amp;family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap'>
-<script>var v=new URLSearchParams(location.search).get('v');if(v)document.documentElement.setAttribute('data-cv',v)</script>
 <style>
 @font-face { font-family:'Inter Display'; src:url('fonts/InterDisplay-Medium.ttf') format('truetype'); font-weight:500; font-style:normal; font-display:swap; }
 :root{color-scheme:light;
@@ -95,7 +94,6 @@ section{max-width:1180px;margin:0 auto;padding:72px 20px}
 .kicker{color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:10px}
 h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(24px,3.4vw,38px);line-height:1.05;letter-spacing:-1px;margin-bottom:12px}
 .cv-h2{margin:40px 0 22px}
-.cv-stmt-h{font-family:'Cormorant Garamond',Georgia,serif}
 h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:19px;margin-bottom:12px}
 .cv-hero{
   background:var(--panel);
@@ -129,25 +127,6 @@ h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:19px
   background:transparent;
 }
 .btn:hover{transform:translateY(-2px)}
-.cv-select{
-  appearance:none;
-  -webkit-appearance:none;
-  border:none;
-  border-radius:999px;
-  padding:13px 44px 13px 22px;
-  font-family:'Inter',Arial,sans-serif;
-  font-size:13px;
-  font-weight:500;
-  color:#fff;
-  background-color:#101214;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23fff' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-position:right 18px center;
-  cursor:pointer;
-  transition:transform .15s ease;
-}
-.cv-select:hover{transform:translateY(-2px)}
-.stmt-backend,.stmt-security,.pdf-variant{display:none}
 .cv-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 .cv-card{
   background:var(--panel);
@@ -236,65 +215,32 @@ footer{
   html{scroll-behavior:auto}
   .page-veil{transition:none}
   .js .page-veil{opacity:0}
-  .cv-card,.btn,.cv-select{transition:border-color .2s ease}
-  .cv-card:hover,.btn:hover,.cv-select:hover{transform:none}
+  .cv-card,.btn{transition:border-color .2s ease}
+  .cv-card:hover,.btn:hover{transform:none}
 }
-@page{margin:1.5cm 1.7cm}
+@page{margin:1.5cm 1.4cm}
 @media print{
   nav,footer,.cv-actions,.no-print{display:none}
   body::before{display:none}
   .cv-hero .kicker{display:none}
   .js .reveal{opacity:1;transform:none}
-  body{font-size:11px;line-height:1.5;zoom:1}
-  section{padding:0}
-  /* Flat typographic layout - no cards in print. */
-  .cv-grid,.skill-grid{display:block}
-  .cv-card{border:none;background:none;padding:0;margin:0}
-  .cv-card:hover{transform:none}
-  .cv-section{margin-bottom:8px;break-inside:avoid}
-  .cv-card ul{margin:4px 0}
-  .cv-card li{margin-bottom:1px;break-inside:avoid}
-  .cv-hero{padding:0 0 8px;margin-bottom:10px;break-inside:avoid}
-  .cv-hero .cv-contact{margin-bottom:0}
-  .cv-name{font-size:28px}
-  .cv-h2,.cv-stmt-h{
-    font-family:'Inter',Arial,sans-serif;
-    font-size:10.5px;
-    font-weight:600;
-    letter-spacing:2.5px;
-    text-transform:uppercase;
-    color:var(--muted);
-    margin:14px 0 7px;
-    break-after:avoid;
-  }
-  .cv-stmt-h{margin-top:0}
+  body{font-size:12px;zoom:.6;line-height:1.45}
+  section{padding:6px 16px}
+  .cv-h2{margin:12px 0 8px;break-after:avoid}
   h3,h4,h5{break-after:avoid}
-  .cv-section h4{font-size:12px}
-  .cv-section .meta{margin-bottom:4px;font-size:10.5px}
-  .cv-card p,.cv-card li{font-size:10.5px;line-height:1.5}
-  /* Skills as grouped columns, no boxes. */
-  .skill-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 20px}
-  .skill-group{margin:0;break-inside:avoid}
-  .skill-group h5{font-size:10px;margin-bottom:4px}
-  .skill-list{display:block;padding-left:14px;margin:0}
-  .skill-list li{display:list-item;font-size:10px;line-height:1.4;margin-bottom:1px}
-  .skill-list li.no-print{display:none}
-  .other-roles li{margin-bottom:7px}
-  .other-role{font-size:11px}
-  .other-roles .meta,.other-note{font-size:10.5px}
+  /* Keep cards two-up in print; break-inside:avoid stops splits. */
+  .cv-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .skill-grid{display:block}
+  .cv-card{padding:10px 12px;margin-bottom:8px;break-inside:avoid}
+  /* The technical-skills card is taller than a page — let it split between
+     skill groups instead of jumping wholesale to the next page. */
+  .cv-card:has(.skill-groups){break-inside:avoid}
+  .skill-group{break-inside:avoid;margin-bottom:10px}
+  .cv-card ul{margin:6px 0}
+  .cv-card li{margin-bottom:3px;break-inside:avoid}
+  .cv-hero{padding:10px 14px;margin-bottom:8px;break-inside:avoid}
+  .cv-hero .cv-contact{margin-bottom:10px}
   p,li{orphans:2;widows:2}
-  /* Tailored variants, selected via ?v= in the URL. */
-  html[data-cv='backend'] .stmt-general{display:none}
-  html[data-cv='backend'] .stmt-backend{display:block}
-  html[data-cv='backend'] .sg-test{order:3}
-  html[data-cv='backend'] .sg-infra{order:4}
-  html[data-cv='backend'] .sg-sec{order:5}
-  html[data-cv='backend'] .pj-ir{display:none}
-  html[data-cv='security'] .stmt-general{display:none}
-  html[data-cv='security'] .stmt-security{display:block}
-  html[data-cv='security'] .sg-sec{order:-1}
-  html[data-cv='security'] .pj-restaurant{display:none}
-  html[data-cv='security'] .pj-shield{display:block}
 }
 a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
 </style>
@@ -345,20 +291,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         <span>Bradford, West Yorkshire</span>
       </div>
       <div class='cv-actions'>
-        <select id='cv-variant' class='cv-select' aria-label='Download CV PDF'>
-          <option value='Adam_Scholey_CV.pdf'>Download PDF &darr; General CV</option>
-          <option value='Adam_Scholey_CV_Backend.pdf'>Download PDF &darr; Backend Engineering</option>
-          <option value='Adam_Scholey_CV_Security.pdf'>Download PDF &darr; Security / AppSec</option>
-        </select>
+        <a class='btn primary' href='Adam_Scholey_CV.pdf' download='Adam_Scholey_CV.pdf'>Download PDF &darr;</a>
         <a class='btn secondary' href='mailto:adamscholey25@gmail.com'>Get in Touch</a>
       </div>
     </div>
 
-    <div class='cv-card reveal cv-section'>
-      <h3 class='cv-stmt-h'>Personal Statement</h3>
-      <p class='stmt-general'>A backend-focused Software Developer with hands-on experience building secure, production-oriented systems, primarily using Python and PostgreSQL. I specialise in building multi-tenant architectures with a strong emphasis on data security, including row-level security designed for GDPR requirements, and a live client platform built on FastAPI with Stripe payments and secure authentication. I achieved Distinction-level results in the cyber security units of my BTEC IT (D*D*D) and bring that security mindset into every system I build, from access control to data isolation. I am seeking a backend or full-stack software engineering role where I can apply this foundation to real-world products in a professional environment.</p>
-      <p class='stmt-backend'>A backend-focused Software Developer specialising in Python, FastAPI and PostgreSQL. I build secure, production-oriented server systems: async REST APIs, multi-tenant architectures with row-level security, Stripe payment integrations and real-time services, backed by 370+ automated tests across production systems. I achieved Distinction-level results in the cyber security units of my BTEC IT (D*D*D) and bring that discipline to every system I build, from access control to data isolation. I am seeking a backend engineering role where I can take ownership of server-side systems in a professional environment.</p>
-      <p class='stmt-security'>A Software Developer with a security-first approach to building systems in Python and C#. My work includes an end-to-end encrypted messaging platform with organisation key escrow and tenant isolation, a zero-knowledge cloud storage system, and structured incident-response tooling built around the NIST lifecycle. I achieved Distinction-level results in the cyber security units of my BTEC IT (D*D*D) and apply SAST/DAST scanning and OWASP practices in CI pipelines. I am seeking a security-focused software engineering role where secure design is part of the job, not an afterthought.</p>
+    <div class='cv-card reveal' style='margin-bottom:22px'>
+      <h3 style="font-family:'Playfair Display',Georgia,serif">Personal Statement</h3>
+      <p>A backend-focused Software Developer with hands-on experience building secure, production-oriented systems, primarily using Python and PostgreSQL. I specialise in building multi-tenant architectures with a strong emphasis on data security, including row-level security designed for GDPR requirements, and a live client platform built on FastAPI with Stripe payments and secure authentication. I achieved Distinction-level results in the cyber security units of my BTEC IT (D*D*D) and bring that security mindset into every system I build, from access control to data isolation. I am seeking a backend or full-stack software engineering role where I can apply this foundation to real-world products in a professional environment.</p>
     </div>
 
     <h2 class='cv-h2'>Experience</h2>
@@ -414,7 +354,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
       <div class='cv-card reveal'>
         <h3>Technical Skills</h3>
         <div class='skill-groups'>
-          <div class='skill-group sg-back'>
+          <div class='skill-group'>
             <h5>Backend</h5>
             <ul class='skill-list'>
               <li>FastAPI - async endpoints, Pydantic, webhooks</li>
@@ -425,7 +365,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
               <li>Rate limiting, JWT, BCrypt, RBAC</li>
             </ul>
           </div>
-          <div class='skill-group sg-db'>
+          <div class='skill-group'>
             <h5>Databases</h5>
             <ul class='skill-list'>
               <li>PostgreSQL - RLS, migrations, query optimisation</li>
@@ -435,7 +375,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
               <li>Redis - caching, pub/sub, distributed locks</li>
             </ul>
           </div>
-          <div class='skill-group sg-sec'>
+          <div class='skill-group'>
             <h5>Security</h5>
             <ul class='skill-list'>
               <li>SAST / DAST / SCA - Semgrep, Snyk, GitLeaks, pip-audit</li>
@@ -445,7 +385,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
               <li>GDPR compliance, CSP, input validation</li>
             </ul>
           </div>
-          <div class='skill-group sg-test'>
+          <div class='skill-group'>
             <h5>Testing</h5>
             <ul class='skill-list'>
               <li>xUnit - unit and integration tests</li>
@@ -465,7 +405,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
               <li>PWAs - progressive web apps</li>
             </ul>
           </div>
-          <div class='skill-group sg-infra'>
+          <div class='skill-group'>
             <h5>Infrastructure</h5>
             <ul class='skill-list'>
               <li>Docker - containerisation and Compose</li>
@@ -481,7 +421,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 
     <h2 class='cv-h2'>Projects</h2>
     <div class='cv-grid'>
-      <div class='cv-card reveal cv-section pj-framedat'>
+      <div class='cv-card reveal cv-section'>
         <h4>framed@ &middot; Client Ticketing &amp; Event-Archive Platform</h4>
         <p class='meta'>FastAPI, PostgreSQL, Stripe &middot; <a href='https://framedat.uk'>framedat.uk</a></p>
         <ul>
@@ -492,7 +432,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         </ul>
       </div>
 
-      <div class='cv-card reveal cv-section pj-messenger'>
+      <div class='cv-card reveal cv-section'>
         <h4>diam Enterprise Messenger &middot; E2E Encrypted Messaging</h4>
         <p class='meta'>Python, FastAPI, PostgreSQL, Socket.IO, Web Crypto</p>
         <ul>
@@ -502,7 +442,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         </ul>
       </div>
 
-      <div class='cv-card reveal cv-section pj-pmtool'>
+      <div class='cv-card reveal cv-section'>
         <h4>Internal Project Management Tool</h4>
         <p class='meta'>Python, Flask, SQLite</p>
         <ul>
@@ -513,7 +453,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         </ul>
       </div>
 
-      <div class='cv-card reveal cv-section pj-restaurant'>
+      <div class='cv-card reveal cv-section'>
         <h4>Restaurant Booking System</h4>
         <p class='meta'>Python, Flask, MySQL, Stripe</p>
         <ul>
@@ -524,16 +464,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         </ul>
       </div>
 
-      <div class='cv-card reveal cv-section pj-shield pdf-variant'>
-        <h4>SecureShield &middot; Anti-Malware Console</h4>
-        <p class='meta'>C#, WinUI 3 &middot; <a href='https://github.com/AdamScholey25/Antivirus-Software'>GitHub</a></p>
-        <ul>
-          <li>Real-time file-system monitoring with FileSystemWatcher, SHA-256 signature matching and raw socket inspection.</li>
-          <li>Detection validated against the EICAR standard; WinUI 3 console with role-based access control.</li>
-        </ul>
-      </div>
-
-      <div class='cv-card reveal cv-section pj-zk'>
+      <div class='cv-card reveal cv-section'>
         <h4>Zero-Knowledge Cloud Storage Platform</h4>
         <p class='meta'>C#, Blazor, ASP.NET Core, PostgreSQL, AWS S3, SignalR</p>
         <ul>
@@ -543,7 +474,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         </ul>
       </div>
 
-      <div class='cv-card reveal cv-section pj-ir'>
+      <div class='cv-card reveal cv-section'>
         <h4>Incident Response Platform</h4>
         <p class='meta'>C#, .NET MAUI, SQLite &middot; <a href='https://github.com/AdamScholey25/Incident-Response-Platform'>GitHub</a></p>
         <ul>
@@ -652,13 +583,6 @@ function maybePrefetch(e){
 }
 document.addEventListener("pointerover",maybePrefetch,{passive:true});
 document.addEventListener("touchstart",maybePrefetch,{passive:true});
-var cvVariant=document.getElementById("cv-variant");
-if(cvVariant)cvVariant.addEventListener("change",function(){
-  if(!this.value)return;
-  var a=document.createElement("a");a.href=this.value;a.download=this.value.split("/").pop();
-  document.body.appendChild(a);a.click();a.remove();
-  this.selectedIndex=0;
-});
 </script>
 </body>
 </html>
