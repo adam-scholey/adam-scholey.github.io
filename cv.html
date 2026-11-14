@@ -17,6 +17,7 @@
 <link rel='preconnect' href='https://fonts.googleapis.com'>
 <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Space+Grotesk:wght@500&amp;family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap'>
+<script>var v=new URLSearchParams(location.search).get('v');if(v)document.documentElement.setAttribute('data-cv',v)</script>
 <style>
 @font-face { font-family:'Inter Display'; src:url('fonts/InterDisplay-Medium.ttf') format('truetype'); font-weight:500; font-style:normal; font-display:swap; }
 :root{color-scheme:light;
@@ -127,6 +128,27 @@ h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:19px
   background:transparent;
 }
 .btn:hover{transform:translateY(-2px)}
+.filter-btn{
+  padding:9px 18px;border-radius:999px;border:1px solid var(--border);
+  background:transparent;color:var(--muted);
+  font-family:'Inter',Arial,sans-serif;font-size:13px;font-weight:500;cursor:pointer;
+  transition:border-color .15s,color .15s,background-color .15s;
+}
+.filter-btn:hover{border-color:var(--border-hover);color:var(--text)}
+.filter-btn.active{background:var(--text);border-color:var(--text);color:#fff}
+.cv-filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.stmt-backend,.stmt-security,.pdf-variant{display:none}
+html[data-cv='backend'] .stmt-general{display:none}
+html[data-cv='backend'] .stmt-backend{display:block}
+html[data-cv='security'] .stmt-general{display:none}
+html[data-cv='security'] .stmt-security{display:block}
+html[data-cv='security'] .pj-restaurant,html[data-cv='security'] .pj-pmtool,html[data-cv='security'] .pj-ir{display:none}
+html[data-cv='security'] .pj-shield{display:block}
+html[data-cv='backend'] .pj-ir,html[data-cv='backend'] .pj-zk{display:none}
+html[data-cv='backend'] .sg-test{order:3}
+html[data-cv='backend'] .sg-infra{order:4}
+html[data-cv='backend'] .sg-sec{order:5}
+html[data-cv='security'] .sg-sec{order:-1}
 .cv-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 .cv-card{
   background:var(--panel);
@@ -220,7 +242,7 @@ footer{
 }
 @page{margin:1.5cm 1.4cm}
 @media print{
-  nav,footer,.cv-actions,.no-print{display:none}
+  nav,footer,.cv-actions,.cv-filters,.no-print{display:none}
   body::before{display:none}
   .cv-hero .kicker{display:none}
   .js .reveal{opacity:1;transform:none}
@@ -293,29 +315,37 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         <span>Bradford, West Yorkshire</span>
       </div>
       <div class='cv-actions'>
-        <a class='btn primary' href='Adam_Scholey_CV.pdf' download='Adam_Scholey_CV.pdf'>Download PDF &darr;</a>
+        <a class='btn primary' id='cv-dl' href='Adam_Scholey_CV.pdf' download='Adam_Scholey_CV.pdf'>Download PDF &darr;</a>
         <a class='btn secondary' href='mailto:adamscholey25@gmail.com'>Get in Touch</a>
       </div>
+    </div>
+
+    <div class='cv-filters' role='group' aria-label='CV variant'>
+      <button class='filter-btn active' data-cv=''>General</button>
+      <button class='filter-btn' data-cv='backend'>Backend</button>
+      <button class='filter-btn' data-cv='security'>Security</button>
     </div>
 
     <div class='cv-card reveal' style='margin-bottom:22px'>
       <h3 style="font-family:'Playfair Display',Georgia,serif">Personal Statement</h3>
       <p>A backend-focused Software Developer with hands-on experience building secure, production-oriented systems, primarily using Python and PostgreSQL. I specialise in building multi-tenant architectures with a strong emphasis on data security, including row-level security designed for GDPR requirements, and a live client platform built on FastAPI with Stripe payments and secure authentication. I achieved Distinction-level results in the cyber security units of my BTEC IT (D*D*D) and bring that security mindset into every system I build, from access control to data isolation. I am seeking a backend or full-stack software engineering role where I can apply this foundation to real-world products in a professional environment.</p>
+      <p class='stmt-backend'>A backend-focused Software Developer specialising in Python, FastAPI and PostgreSQL. I build secure, production-oriented server systems: async REST APIs, multi-tenant architectures with row-level security, and Stripe payment integrations, backed by 370+ automated tests. I achieved Distinction-level results in the cyber security units of my BTEC IT (D*D*D) and bring that discipline to every system I build. I am seeking a backend engineering role where I can take ownership of server-side systems.</p>
+      <p class='stmt-security'>A Software Developer with a security-first approach to building systems in Python and C#. My work spans an end-to-end encrypted messaging platform, a zero-knowledge cloud storage system, and incident-response tooling built around the NIST lifecycle. I achieved Distinction-level results in the cyber security units of my BTEC IT (D*D*D) and apply SAST/DAST scanning in CI pipelines. I am seeking a security-focused engineering role where secure design is part of the job.</p>
     </div>
 
     <h2 class='cv-h2'>Experience</h2>
     <div class='cv-grid'>
       <div class='cv-card reveal cv-section'>
         <h4>Software Developer (Part-time)</h4>
-        <p class='meta'>diam Systems Ltd &middot; Oct 2025 - Present</p>
+        <p class='meta'>diam Systems Ltd &middot; early-stage startup &middot; Oct 2025 - Present</p>
         <ul>
           <li>Built a multi-tenant enterprise search engine using Python and PostgreSQL, designed for GDPR requirements - consent management, audit logging and data residency.</li>
           <li>Implemented advanced PostgreSQL architecture with tsvector full-text search, row-level security, and table partitioning.</li>
           <li>Developed an internal project management tool in active daily use across the team, with real-time SSE updates and CLI integration.</li>
           <li>Built a production-ready restaurant booking system using Python and Flask, with Stripe payments and a visual floor plan.</li>
           <li>Building a paid client platform (framed@) on FastAPI with async SQLAlchemy, PostgreSQL, Stripe checkout, and passwordless authentication.</li>
-          <li>Key contributor to an end-to-end encrypted business messaging platform - channel key epochs, organisation key escrow, and PostgreSQL row-level security tenancy.</li>
-          <li>Contributed to <a href='https://diamsystems.co.uk' target='_blank' rel='noopener' style='color:var(--gold)'>diamsystems.co.uk</a>, the company website - Stripe, Gumroad licensing and Printify commerce with multi-locale support and full-text search.</li>
+          <li>Built the end-to-end encryption layer of a business messaging platform - channel key epochs, client-driven re-keying and organisation key escrow - backed by PostgreSQL row-level security tenancy.</li>
+          <li>Implemented Stripe, Gumroad licensing and Printify commerce integrations on <a href='https://diamsystems.co.uk' target='_blank' rel='noopener' style='color:var(--gold)'>diamsystems.co.uk</a>, the company website, with multi-locale support and full-text search.</li>
         </ul>
       </div>
 
@@ -356,38 +386,34 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
       <div class='cv-card reveal'>
         <h3>Technical Skills</h3>
         <div class='skill-groups'>
-          <div class='skill-group'>
+          <div class='skill-group sg-back'>
             <h5>Backend</h5>
             <ul class='skill-list'>
               <li>FastAPI - async endpoints, Pydantic, webhooks</li>
               <li>ASP.NET Core - REST APIs, middleware, auth pipelines</li>
-              <li>Flask - async routes, blueprints, SQLAlchemy</li>
+              <li>Flask - async routes, blueprints</li>
               <li>SignalR - real-time hubs and SSE</li>
-              <li>OAuth 2.0 / GitHub OAuth with Authlib</li>
-              <li>Rate limiting, JWT, BCrypt, RBAC</li>
+              <li>OAuth 2.0 / JWT / BCrypt / RBAC</li>
             </ul>
           </div>
-          <div class='skill-group'>
+          <div class='skill-group sg-db'>
             <h5>Databases</h5>
             <ul class='skill-list'>
               <li>PostgreSQL - RLS, migrations, query optimisation</li>
-              <li>SQLite - lightweight production DBs</li>
-              <li>EF Core - code-first schema, relationships</li>
               <li>SQLAlchemy - ORM patterns and raw queries</li>
               <li>Redis - caching, pub/sub, distributed locks</li>
+              <li>SQLite - lightweight production DBs</li>
             </ul>
           </div>
-          <div class='skill-group'>
+          <div class='skill-group sg-sec'>
             <h5>Security</h5>
             <ul class='skill-list'>
               <li>SAST / DAST / SCA - Semgrep, Snyk, GitLeaks, pip-audit</li>
-              <li>OWASP ZAP - authenticated security testing</li>
-              <li>AES-256 encryption, key rotation design</li>
-              <li>Zero-knowledge encryption patterns</li>
+              <li>AES-256 encryption, zero-knowledge patterns</li>
               <li>GDPR compliance, CSP, input validation</li>
             </ul>
           </div>
-          <div class='skill-group'>
+          <div class='skill-group sg-test'>
             <h5>Testing</h5>
             <ul class='skill-list'>
               <li>xUnit - unit and integration tests</li>
@@ -407,7 +433,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
               <li>PWAs - progressive web apps</li>
             </ul>
           </div>
-          <div class='skill-group'>
+          <div class='skill-group sg-infra'>
             <h5>Infrastructure</h5>
             <ul class='skill-list'>
               <li>Docker - containerisation and Compose</li>
@@ -423,18 +449,18 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 
     <h2 class='cv-h2'>Projects</h2>
     <div class='cv-grid'>
-      <div class='cv-card reveal cv-section'>
+      <div class='cv-card reveal cv-section pj-framedat'>
         <h4>framed@ &middot; Client Ticketing &amp; Event-Archive Platform</h4>
         <p class='meta'>FastAPI, PostgreSQL, Stripe &middot; <a href='https://framedat.uk'>framedat.uk</a></p>
         <ul>
-          <li>Paid client engagement building a music and events platform for framed@ Limited - scoped features, estimated effort, demoed progress and delivered against agreed milestones.</li>
+          <li>Paid client engagement building a music and events platform for framed@ Limited. Scoped features, estimated effort, demoed progress and delivered against agreed milestones.</li>
           <li>FastAPI backend with async SQLAlchemy, PostgreSQL, and Pydantic; Stripe hosted checkout with signed webhooks, and QR door scanning that can't double-admit.</li>
           <li>Passwordless magic-link authentication and real-time admin dashboard via SSE.</li>
           <li>158 automated tests across unit, route-level and security-regression suites; live preview deployed ahead of production launch.</li>
         </ul>
       </div>
 
-      <div class='cv-card reveal cv-section'>
+      <div class='cv-card reveal cv-section pj-messenger'>
         <h4>diam Enterprise Messenger &middot; E2E Encrypted Messaging</h4>
         <p class='meta'>Python, FastAPI, PostgreSQL, Socket.IO, Web Crypto</p>
         <ul>
@@ -444,7 +470,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         </ul>
       </div>
 
-      <div class='cv-card reveal cv-section'>
+      <div class='cv-card reveal cv-section pj-pmtool'>
         <h4>Internal Project Management Tool</h4>
         <p class='meta'>Python, Flask, SQLite</p>
         <ul>
@@ -455,7 +481,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         </ul>
       </div>
 
-      <div class='cv-card reveal cv-section'>
+      <div class='cv-card reveal cv-section pj-restaurant'>
         <h4>Restaurant Booking System</h4>
         <p class='meta'>Python, Flask, MySQL, Stripe</p>
         <ul>
@@ -466,7 +492,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         </ul>
       </div>
 
-      <div class='cv-card reveal cv-section'>
+      <div class='cv-card reveal cv-section pj-shield pdf-variant'>
+        <h4>SecureShield &middot; Anti-Malware Console</h4>
+        <p class='meta'>C#, WinUI 3 &middot; <a href='https://github.com/AdamScholey25/Antivirus-Software'>GitHub</a></p>
+        <ul>
+          <li>Real-time file-system monitoring with FileSystemWatcher, SHA-256 signature matching and raw socket inspection.</li>
+          <li>Detection validated against the EICAR standard; WinUI 3 console with role-based access control.</li>
+        </ul>
+      </div>
+
+      <div class='cv-card reveal cv-section pj-zk'>
         <h4>Zero-Knowledge Cloud Storage Platform</h4>
         <p class='meta'>C#, Blazor, ASP.NET Core, PostgreSQL, AWS S3, SignalR</p>
         <ul>
@@ -476,7 +511,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         </ul>
       </div>
 
-      <div class='cv-card reveal cv-section'>
+      <div class='cv-card reveal cv-section pj-ir'>
         <h4>Incident Response Platform</h4>
         <p class='meta'>C#, .NET MAUI, SQLite &middot; <a href='https://github.com/AdamScholey25/Incident-Response-Platform'>GitHub</a></p>
         <ul>
@@ -585,6 +620,20 @@ function maybePrefetch(e){
 }
 document.addEventListener("pointerover",maybePrefetch,{passive:true});
 document.addEventListener("touchstart",maybePrefetch,{passive:true});
+var cvFilters=document.querySelectorAll(".cv-filters .filter-btn");
+var cvDownload=document.getElementById("cv-dl");
+cvFilters.forEach(function(btn){
+  btn.addEventListener("click",function(){
+    cvFilters.forEach(function(b){b.classList.remove("active")});
+    btn.classList.add("active");
+    var v=btn.dataset.cv;
+    if(v){document.documentElement.setAttribute("data-cv",v)}else{document.documentElement.removeAttribute("data-cv")}
+    if(cvDownload){
+      var file=v?("Adam_Scholey_CV_"+(v==="security"?"Security":"Backend")+".pdf"):"Adam_Scholey_CV.pdf";
+      cvDownload.href=file;cvDownload.setAttribute("download",file);
+    }
+  });
+});
 </script>
 </body>
 </html>
