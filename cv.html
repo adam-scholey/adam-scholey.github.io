@@ -300,7 +300,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 
     <div class='cv-card reveal' style='margin-bottom:22px'>
       <h3 style="font-family:'Playfair Display',Georgia,serif">Personal Statement</h3>
-      <p>A backend-focused Software Developer with hands-on experience building secure, production-oriented systems, primarily using Python and PostgreSQL. I specialise in building multi-tenant architectures with a strong emphasis on data security, including row-level security designed for GDPR requirements, and a live client platform built on FastAPI with Stripe payments and secure authentication. I achieved Distinction-level results in the cyber security units of my BTEC IT (D*D*D) and bring that security mindset into every system I build, from access control to data isolation. I am seeking a backend or full-stack software engineering role where I can apply this foundation to real-world products in a professional environment.</p>
+      <p>A Software Developer who builds secure, production-oriented backend systems in Python, FastAPI and PostgreSQL, with security designed in from the start: WebAuthn authentication, row-level-security multi-tenancy, end-to-end encryption, and pre-launch audits using OWASP ZAP and Semgrep. I achieved Distinction-level results in the cyber security units of my BTEC IT (D*D*D) and back my work with 370+ automated tests. I am seeking a backend or application security engineering role where secure design is part of building the product.</p>
     </div>
 
     <h2 class='cv-h2'>Experience</h2>
@@ -378,7 +378,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
           <div class='skill-group'>
             <h5>Security</h5>
             <ul class='skill-list'>
-              <li>SAST / DAST / SCA - Semgrep, Snyk, GitLeaks, pip-audit</li>
+              <li>SAST / DAST - Semgrep, OWASP ZAP, Nuclei</li>
+              <li>Dependency &amp; secrets scanning - pip-audit, Trivy, GitLeaks, Checkov</li>
               <li>AES-256 encryption, zero-knowledge patterns</li>
               <li>GDPR compliance, CSP, input validation</li>
             </ul>
@@ -427,6 +428,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
           <li>FastAPI backend with async SQLAlchemy, PostgreSQL, and Pydantic; Stripe hosted checkout with signed webhooks, QR door scanning that can't double-admit, and a real-time admin dashboard over SSE.</li>
           <li>Passkey/WebAuthn two-factor auth for staff - an email code alone can never issue a session; passwordless customer sign-in via magic links with rate limiting and revocable sessions.</li>
           <li>Led the pre-launch security audit (OWASP ZAP, Semgrep, Trivy, GitLeaks): found and fixed six launch-blocking defects including an SSE session-revocation bypass; ZAP passed 65/65 checks.</li>
+          <li class='no-print'>Audit fixes included a sign-out that never revoked server sessions, live SSE streams leaking data after logout, a concurrent-fulfilment oversell race, orders recorded at the wrong price, silent login rate-limit rollback, and plain SHA-256 OTP hashes moved to HMAC-keyed.</li>
+          <li class='no-print'>Scanners run: OWASP ZAP baseline (65 pass / 0 fail), Semgrep, Checkov, Trivy fs, GitLeaks (0 secrets across 47 commits), pip-audit, Nuclei and Ruff/ESLint lint.</li>
           <li>158 automated tests across unit, route-level and security-regression suites; pip-audit and the full suite enforced in GitHub Actions on every push; live preview deployed ahead of production launch.</li>
         </ul>
       </div>
