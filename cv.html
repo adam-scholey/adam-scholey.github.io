@@ -424,9 +424,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         <p class='meta'>FastAPI, PostgreSQL, Stripe &middot; <a href='https://framedat.uk'>framedat.uk</a></p>
         <ul>
           <li>Paid client engagement building a music and events platform for framed@ Limited. Scoped features, estimated effort, demoed progress and delivered against agreed milestones.</li>
-          <li>FastAPI backend with async SQLAlchemy, PostgreSQL, and Pydantic; Stripe hosted checkout with signed webhooks, and QR door scanning that can't double-admit.</li>
-          <li>Passwordless magic-link authentication and real-time admin dashboard via SSE.</li>
-          <li>158 automated tests across unit, route-level and security-regression suites; live preview deployed ahead of production launch.</li>
+          <li>FastAPI backend with async SQLAlchemy, PostgreSQL, and Pydantic; Stripe hosted checkout with signed webhooks, QR door scanning that can't double-admit, and a real-time admin dashboard over SSE.</li>
+          <li>Passkey/WebAuthn two-factor auth for staff - an email code alone can never issue a session; passwordless customer sign-in via magic links with rate limiting and revocable sessions.</li>
+          <li>Led the pre-launch security audit (OWASP ZAP, Semgrep, Trivy, GitLeaks): found and fixed six launch-blocking defects including an SSE session-revocation bypass; ZAP passed 65/65 checks.</li>
+          <li>158 automated tests across unit, route-level and security-regression suites; pip-audit and the full suite enforced in GitHub Actions on every push; live preview deployed ahead of production launch.</li>
         </ul>
       </div>
 
