@@ -270,6 +270,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
         <div class='list-title'>diamReserve</div>
         <div class='list-desc'>Restaurant booking system with visual floor plan, Stripe deposits, and staff PWA.</div>
       </a>
+      <a class='project-list-link' href='diagrams.html?project=seek'>
+        <div class='list-title'>Seek</div>
+        <div class='list-desc'>Enterprise search engine for organisational data - GDPR-compliant cross-border access, federated connectors.</div>
+      </a>
       <a class='project-list-link' href='diagrams.html?project=tracker'>
         <div class='list-title'>Tracker</div>
         <div class='list-desc'>Project management tool with real-time SSE updates, GitHub OAuth, and CLI integration.</div>
@@ -372,6 +376,43 @@ const diagrams = {
       {from:'flask',to:'mail',label:'queues'},
       {from:'mail',to:'smtp',label:'SMTP'},
       {from:'flask',to:'stripe',label:'PCI token only'}
+    ]
+  },
+  seek: {
+    name:'Seek',
+    subtitle:'Enterprise Search Engine',
+    desc:'Multi-tenant search across organisational databases with GDPR-compliant cross-border access, consent filtering and federated connectors.',
+    decisions:[
+      'Row-level security plus table partitioning by region - data sovereignty is enforced inside Postgres, not application code.',
+      'Federated search via asyncio + httpx - queries fan out to sources in parallel instead of centralising data.',
+      'tsvector + pg_trgm GIN indexes give full-text search without running a separate Elasticsearch cluster.',
+      'Redis handles sessions, caching and distributed locks so workers stay stateless.',
+      'Kubernetes HPA scales search workers under load; consent management and audit logging satisfy GDPR.'
+    ],
+    tags:['Python','Flask','PostgreSQL','Redis','Kubernetes','GDPR'],
+    docs:[],
+    height:580,
+    groups:[
+      {x:16,y:60,w:210,h:270,label:'Client'},
+      {x:280,y:40,w:410,h:500,label:'Seek',app:true}
+    ],
+    nodes:[
+      {id:'user',x:75,y:100,w:90,h:100,title:'User / Admin',type:'actor'},
+      {id:'api',x:40,y:228,w:160,h:64,title:'API Client',type:'ext'},
+      {id:'flask',x:330,y:90,w:280,h:130,title:'Flask Web App',sub:['Python / Flask 3 &middot; Gunicorn','BCrypt &middot; JWT &middot; API keys'],type:'service'},
+      {id:'search',x:330,y:285,w:280,h:120,title:'Search Engine',sub:['Single / parallel &middot; federated','with consent filtering'],type:'service'},
+      {id:'pg',x:330,y:445,w:150,h:74,title:'PostgreSQL',type:'db'},
+      {id:'redis',x:520,y:445,w:160,h:74,title:'Redis',type:'db'},
+      {id:'sources',x:740,y:300,w:200,h:110,title:'External Data Sources',sub:['PostgreSQL &middot; MySQL &middot; MSSQL'],type:'db'}
+    ],
+    edges:[
+      {from:'user',to:'flask',label:'HTTPS + session'},
+      {from:'api',to:'flask',label:'HTTPS + API key'},
+      {from:'flask',to:'search',label:'queries'},
+      {from:'search',to:'sources',label:'federated &middot; httpx'},
+      {from:'search',to:'pg',label:'SQLAlchemy'},
+      {from:'flask',to:'pg',label:'admin / auth'},
+      {from:'flask',to:'redis',label:'sessions / cache'}
     ]
   },
   tracker: {
