@@ -1,0 +1,119 @@
+/* ============================================================
+   Shared theme layer — editorial typography inspired by
+   diamsystems.co.uk (Instrument Serif headings, Inter Display
+   body, lowercase kickers) plus optional dark mode.
+   Loaded after each page's inline <style> so these rules win.
+   ============================================================ */
+
+:root{
+  --font-serif:'Instrument Serif',Georgia,'Times New Roman',serif;
+  --font-sans:'Inter Display','Inter',Arial,sans-serif;
+}
+
+/* --- Typography ------------------------------------------------- */
+
+h1,h2,h3,h4{font-family:var(--font-serif);font-weight:400}
+.slide-title,.show-title,.personal-head h3,.diagram-info h3,
+.markdown-body h1,.markdown-body h2,.markdown-body h3,.cv-name,.now-card h3,.card h3{
+  font-family:var(--font-serif);font-weight:400;
+}
+
+.nav-flat a,.nav-links a,.nav-links-foot a,.slide-kicker,.slide-link,
+.hero-facts .f-title,.card-link,.more-link a,.stack-label,.tl-role,
+.mini-card h4,.list-title,.diagram-info h4,.kicker{
+  font-family:var(--font-sans);
+}
+
+/* Lowercase editorial kickers */
+.slide-kicker,.stack-label,.kicker{
+  text-transform:lowercase;
+  letter-spacing:.1em;
+}
+.kicker{color:var(--muted)}
+
+/* --- Theme toggle button ---------------------------------------- */
+
+.theme-toggle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:36px;height:36px;margin-left:10px;padding:0;
+  background:none;border:1px solid var(--border);border-radius:8px;
+  color:var(--muted);cursor:pointer;flex-shrink:0;
+  transition:color .15s ease,border-color .15s ease;
+}
+.theme-toggle:hover{color:var(--text);border-color:var(--border-hover)}
+.theme-toggle svg{width:16px;height:16px;display:block}
+.theme-toggle .icon-sun{display:none}
+html[data-theme="dark"] .theme-toggle .icon-sun{display:block}
+html[data-theme="dark"] .theme-toggle .icon-moon{display:none}
+
+/* --- Dark mode --------------------------------------------------- */
+
+html[data-theme="dark"]{color-scheme:dark}
+html[data-theme="dark"]{
+  --bg:#101114;
+  --panel:#17181c;
+  --panel2:#1c1d22;
+  --text:#eef1f4;
+  --muted:#9aa5b1;
+  --soft:#8b95a1;
+  --gold:#60a5fa;
+  --gold2:#93c5fd;
+  --rose:#4ade80;
+  --rose2:#86efac;
+  --cream:#eef1f4;
+  --border:rgba(255,255,255,.13);
+  --border-hover:rgba(255,255,255,.28);
+  --gold-border:rgba(96,165,250,.4);
+  --accent:#60a5fa;
+  --accent-hover:#93c5fd;
+  --green-bg:rgba(74,222,128,.12);
+  --green-text:#4ade80;
+  --blue-bg:rgba(96,165,250,.12);
+  --blue-text:#93c5fd;
+}
+
+html[data-theme="dark"] body::before{
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(96,165,250,.08) 0%, rgba(255,255,255,0) 70%),
+    linear-gradient(to right, rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.035) 1px, transparent 1px);
+}
+
+html[data-theme="dark"] nav{
+  background:rgba(16,17,20,.82);
+  border-bottom-color:rgba(255,255,255,.1);
+}
+html[data-theme="dark"] .nav-links{
+  background:#1a1b1f;
+  box-shadow:0 18px 44px rgba(0,0,0,.55);
+}
+html[data-theme="dark"] footer{
+  background:var(--panel);
+  border-top-color:rgba(255,255,255,.1);
+}
+html[data-theme="dark"] .stat-card::after{background:rgba(255,255,255,.12)}
+html[data-theme="dark"] .slide-kicker{color:rgba(255,255,255,.6)}
+html[data-theme="dark"] .slide-sub{color:rgba(255,255,255,.75)}
+html[data-theme="dark"] .doc-item:hover{background:rgba(255,255,255,.06)}
+html[data-theme="dark"] .filter-btn.active{color:var(--bg)}
+html[data-theme="dark"] .markdown-body code{
+  background:rgba(96,165,250,.12);
+  color:#93c5fd;
+}
+
+/* --- Print: always render the light CV --------------------------- */
+
+@media print{
+  html[data-theme="dark"]{
+    color-scheme:light;
+    --bg:#ffffff;--panel:#f6f7f8;--panel2:#f6f7f8;
+    --text:#101214;--muted:#5b6472;--soft:#5b6472;
+    --gold:#0369a1;--gold2:#075985;--gold-border:rgba(3,105,161,.45);
+    --rose:#166534;--rose2:#15803d;--cream:#101214;
+    --border:#e5e8ec;--border-hover:#c3cad2;
+    --accent:#0369a1;--accent-hover:#075985;
+    --green-bg:#dcfce7;--green-text:#166534;
+    --blue-bg:#e0f2fe;--blue-text:#075985;
+  }
+  html[data-theme="dark"] body::before{display:none}
+}
