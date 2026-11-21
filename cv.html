@@ -243,11 +243,26 @@ footer{
   .cv-hero{padding:10px 14px;margin-bottom:8px;break-inside:avoid}
   .cv-hero .cv-contact{margin-bottom:10px}
   p,li{orphans:2;widows:2}
+  /* ATS mode: one column, no boxes - maximally parseable */
+  html.ats body{zoom:.53}
+  html.ats .cv-grid{display:block}
+  html.ats .skill-groups{display:block}
+  html.ats .cv-card{padding:0 0 8px;margin-bottom:8px;border-bottom:.5px solid var(--border)}
+  html.ats .cv-hero{padding:6px 0;margin-bottom:8px;border-bottom:.5px solid var(--border)}
 }
 a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+
+/* ATS mode (cv.html?ats=1): flat single-column layout for screening systems */
+html.ats .cv-grid{display:block}
+html.ats .skill-groups{display:block}
+html.ats .cv-card{border:none;background:none;box-shadow:none;padding:14px 0;margin-bottom:10px;border-bottom:1px solid var(--border)}
+html.ats .cv-card:hover{transform:none}
+html.ats .cv-hero{border:none;background:none;box-shadow:none;padding:24px 0;margin-bottom:14px;border-bottom:1px solid var(--border)}
+html.ats .cv-h2{margin:24px 0 10px}
 </style>
 <link rel="stylesheet" href="theme.css">
 <script src="theme.js"></script>
+<script>if(/[?&]ats\b/.test(location.search))document.documentElement.classList.add('ats')</script>
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -297,6 +312,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
       </div>
       <div class='cv-actions'>
         <a class='btn primary' href='Adam_Scholey_CV.pdf' download='Adam_Scholey_CV.pdf'>Download PDF &darr;</a>
+        <a class='btn secondary' href='Adam_Scholey_CV_ATS.pdf' download='Adam_Scholey_CV_ATS.pdf'>Download ATS version &darr;</a>
         <a class='btn secondary' href='mailto:adamscholey25@gmail.com'>Get in Touch</a>
       </div>
     </div>

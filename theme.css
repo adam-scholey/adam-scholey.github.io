@@ -96,6 +96,7 @@ html[data-theme="dark"] .slide-kicker{color:rgba(255,255,255,.6)}
 html[data-theme="dark"] .slide-sub{color:rgba(255,255,255,.75)}
 html[data-theme="dark"] .doc-item:hover{background:rgba(255,255,255,.06)}
 html[data-theme="dark"] .filter-btn.active{color:var(--bg)}
+html[data-theme="dark"] .btn.primary{background:var(--text);color:var(--bg)}
 html[data-theme="dark"] .markdown-body code{
   background:rgba(96,165,250,.12);
   color:#93c5fd;
